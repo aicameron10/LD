@@ -7,13 +7,124 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		325DCA483F75431CFEF74DCD /* Pods_LifeDoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E6E9B1331BE38D017EBE08 /* Pods_LifeDoc.framework */; };
+		5916821462A87E8735DE32B6 /* Pods_LifeDocUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82DB60830F03EF13DB71C90 /* Pods_LifeDocUITests.framework */; };
+		828D9B5AB269CEC4526C2183 /* Pods_LifeDocTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74DFD26529F4400527B033 /* Pods_LifeDocTests.framework */; };
+		D60ECB151DD9B59F00E35CB0 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB141DD9B59F00E35CB0 /* ForgotPasswordController.swift */; };
+		D60ECB171DD9C58200E35CB0 /* ISRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB161DD9C58200E35CB0 /* ISRadioButton.swift */; };
+		D60ECB191DD9CD9800E35CB0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB181DD9CD9800E35CB0 /* SignUpController.swift */; };
+		D60ECB1A1DD9D94C00E35CB0 /* webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57B21DD4903F0045910F /* webfont.ttf */; };
+		D60ECB1C1DDAD2F400E35CB0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB1B1DDAD2F400E35CB0 /* SwiftyJSON.swift */; };
+		D60ECB1E1DDAF83800E35CB0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB1D1DDAF83800E35CB0 /* Constants.swift */; };
+		D60ECB371DE3125200E35CB0 /* ic_action_calendar_month.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB361DE3125200E35CB0 /* ic_action_calendar_month.png */; };
+		D60ECB491DF6BC2A00E35CB0 /* Duration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB411DF6BC2A00E35CB0 /* Duration.swift */; };
+		D60ECB4A1DF6BC2A00E35CB0 /* Int+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB421DF6BC2A00E35CB0 /* Int+Timepiece.swift */; };
+		D60ECB4B1DF6BC2A00E35CB0 /* NSCalendar+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB431DF6BC2A00E35CB0 /* NSCalendar+Timepiece.swift */; };
+		D60ECB4C1DF6BC2A00E35CB0 /* NSDate+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB441DF6BC2A00E35CB0 /* NSDate+Timepiece.swift */; };
+		D60ECB4D1DF6BC2A00E35CB0 /* NSDateComponents+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB451DF6BC2A00E35CB0 /* NSDateComponents+Timepiece.swift */; };
+		D60ECB4E1DF6BC2A00E35CB0 /* String+Timepiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB461DF6BC2A00E35CB0 /* String+Timepiece.swift */; };
+		D60ECB4F1DF6BC2A00E35CB0 /* WWCalendarTimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB471DF6BC2A00E35CB0 /* WWCalendarTimeSelector.storyboard */; };
+		D60ECB501DF6BC2A00E35CB0 /* WWCalendarTimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB481DF6BC2A00E35CB0 /* WWCalendarTimeSelector.swift */; };
+		D60ECB541DFA735800E35CB0 /* HealthAssessmentCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB531DFA735800E35CB0 /* HealthAssessmentCustomCell.swift */; };
+		D60ECB561DFE9F5600E35CB0 /* CholesterolController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB551DFE9F5600E35CB0 /* CholesterolController.swift */; };
+		D60ECB701DFEB04300E35CB0 /* blue_attach.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB571DFEB04300E35CB0 /* blue_attach.png */; };
+		D60ECB711DFEB04300E35CB0 /* blue_attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB581DFEB04300E35CB0 /* blue_attachment.png */; };
+		D60ECB721DFEB04300E35CB0 /* blue_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB591DFEB04300E35CB0 /* blue_camera.png */; };
+		D60ECB731DFEB04300E35CB0 /* blue_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB5A1DFEB04300E35CB0 /* blue_delete.png */; };
+		D60ECB741DFEB04300E35CB0 /* blue_hide.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB5B1DFEB04300E35CB0 /* blue_hide.png */; };
+		D60ECB751DFEB04300E35CB0 /* blue_medicine.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB5C1DFEB04300E35CB0 /* blue_medicine.png */; };
+		D60ECB761DFEB04300E35CB0 /* blue_more.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB5D1DFEB04300E35CB0 /* blue_more.png */; };
+		D60ECB771DFEB04300E35CB0 /* blue_unhide.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB5E1DFEB04300E35CB0 /* blue_unhide.png */; };
+		D60ECB781DFEB04300E35CB0 /* edit_details.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB5F1DFEB04300E35CB0 /* edit_details.png */; };
+		D60ECB791DFEB04300E35CB0 /* lifedoc_icons_allergy.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB601DFEB04300E35CB0 /* lifedoc_icons_allergy.png */; };
+		D60ECB7A1DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB611DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png */; };
+		D60ECB7B1DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB621DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png */; };
+		D60ECB7C1DFEB04300E35CB0 /* lifedoc_icons_bmi.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB631DFEB04300E35CB0 /* lifedoc_icons_bmi.png */; };
+		D60ECB7D1DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB641DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png */; };
+		D60ECB7E1DFEB04300E35CB0 /* lifedoc_icons_chol_new.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB651DFEB04300E35CB0 /* lifedoc_icons_chol_new.png */; };
+		D60ECB7F1DFEB04300E35CB0 /* lifedoc_icons_cholesterol.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB661DFEB04300E35CB0 /* lifedoc_icons_cholesterol.png */; };
+		D60ECB801DFEB04300E35CB0 /* lifedoc_icons_chronic_condition.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB671DFEB04300E35CB0 /* lifedoc_icons_chronic_condition.png */; };
+		D60ECB811DFEB04300E35CB0 /* lifedoc_icons_height.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB681DFEB04300E35CB0 /* lifedoc_icons_height.png */; };
+		D60ECB821DFEB04300E35CB0 /* lifedoc_icons_note.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB691DFEB04300E35CB0 /* lifedoc_icons_note.png */; };
+		D60ECB831DFEB04300E35CB0 /* lifedoc_icons_pulse.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6A1DFEB04300E35CB0 /* lifedoc_icons_pulse.png */; };
+		D60ECB841DFEB04300E35CB0 /* lifedoc_icons_weight.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6B1DFEB04300E35CB0 /* lifedoc_icons_weight.png */; };
+		D60ECB851DFEB04300E35CB0 /* loginpic.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6C1DFEB04300E35CB0 /* loginpic.png */; };
+		D60ECB861DFEB04300E35CB0 /* my_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6D1DFEB04300E35CB0 /* my_profile.png */; };
+		D60ECB871DFEB04300E35CB0 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6E1DFEB04300E35CB0 /* photo.jpg */; };
+		D60ECB881DFEB04300E35CB0 /* purple_health_record.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6F1DFEB04300E35CB0 /* purple_health_record.png */; };
 		D6293F4C1DD1AF080037B2B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F4B1DD1AF080037B2B2 /* AppDelegate.swift */; };
-		D6293F4E1DD1AF080037B2B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F4D1DD1AF080037B2B2 /* ViewController.swift */; };
-		D6293F511DD1AF080037B2B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6293F4F1DD1AF080037B2B2 /* Main.storyboard */; };
 		D6293F531DD1AF080037B2B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6293F521DD1AF080037B2B2 /* Assets.xcassets */; };
 		D6293F561DD1AF080037B2B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6293F541DD1AF080037B2B2 /* LaunchScreen.storyboard */; };
 		D6293F611DD1AF080037B2B2 /* LifeDocTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F601DD1AF080037B2B2 /* LifeDocTests.swift */; };
 		D6293F6C1DD1AF080037B2B2 /* LifeDocUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F6B1DD1AF080037B2B2 /* LifeDocUITests.swift */; };
+		D6293F7C1DD1CEA10037B2B2 /* AppNavigationDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F791DD1CEA10037B2B2 /* AppNavigationDrawerController.swift */; };
+		D6293F7D1DD1CEA10037B2B2 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F7A1DD1CEA10037B2B2 /* RootViewController.swift */; };
+		D6293F7E1DD1CEA10037B2B2 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F7B1DD1CEA10037B2B2 /* LeftViewController.swift */; };
+		D65601F01E1FC34700A8ED22 /* BmiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601EF1E1FC34700A8ED22 /* BmiController.swift */; };
+		D65601F21E26158500A8ED22 /* AppMenuSubRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601F11E26158500A8ED22 /* AppMenuSubRecords.swift */; };
+		D65601F41E26300300A8ED22 /* MainAllergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601F31E26300300A8ED22 /* MainAllergy.swift */; };
+		D65601F61E264B3700A8ED22 /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601F51E264B3700A8ED22 /* NiceButton.swift */; };
+		D65601FE1E26A34A00A8ED22 /* KCFABManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601F81E26A34A00A8ED22 /* KCFABManager.swift */; };
+		D65601FF1E26A34A00A8ED22 /* KCFABViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601F91E26A34A00A8ED22 /* KCFABViewController.swift */; };
+		D65602001E26A34A00A8ED22 /* KCFABWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601FA1E26A34A00A8ED22 /* KCFABWindow.swift */; };
+		D65602011E26A34A00A8ED22 /* KCFloatingActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601FB1E26A34A00A8ED22 /* KCFloatingActionButton.swift */; };
+		D65602021E26A34A00A8ED22 /* KCFloatingActionButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601FC1E26A34A00A8ED22 /* KCFloatingActionButtonDelegate.swift */; };
+		D65602031E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65601FD1E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift */; };
+		D65602091E28C68800A8ED22 /* ic_doc_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D65602041E28C68800A8ED22 /* ic_doc_sub.png */; };
+		D656020A1E28C68800A8ED22 /* ic_hos_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D65602051E28C68800A8ED22 /* ic_hos_sub.png */; };
+		D656020B1E28C68800A8ED22 /* ic_medi_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D65602061E28C68800A8ED22 /* ic_medi_sub.png */; };
+		D656020C1E28C68800A8ED22 /* ic_note_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D65602071E28C68800A8ED22 /* ic_note_sub.png */; };
+		D656020D1E28C68800A8ED22 /* ic_path_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D65602081E28C68800A8ED22 /* ic_path_sub.png */; };
+		D656020F1E28D05A00A8ED22 /* MainRecordCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656020E1E28D05A00A8ED22 /* MainRecordCustomCell.swift */; };
+		D659FDA11DFF0EDE00131288 /* AssessmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */; };
+		D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */; };
+		D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */; };
+		D69B8E9E1E025DF5008F1739 /* BodyTempController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */; };
+		D69B8EA01E0266BF008F1739 /* HeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8E9F1E0266BF008F1739 /* HeightController.swift */; };
+		D69B8EA21E026A3B008F1739 /* PulseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8EA11E026A3B008F1739 /* PulseController.swift */; };
+		D69B8EA41E026DE1008F1739 /* WeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8EA31E026DE1008F1739 /* WeightController.swift */; };
+		D6AE62921E0BECF200A33C94 /* HealthProfileCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE62911E0BECF200A33C94 /* HealthProfileCustomCell.swift */; };
+		D6AE62941E0D21B400A33C94 /* SideCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE62931E0D21B300A33C94 /* SideCustomCell.swift */; };
+		D6AE62991E0D2A9800A33C94 /* ic_profile_side.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AE62951E0D2A9800A33C94 /* ic_profile_side.png */; };
+		D6AE629A1E0D2A9800A33C94 /* ic_assess_health_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AE62961E0D2A9800A33C94 /* ic_assess_health_bar.png */; };
+		D6AE629B1E0D2A9800A33C94 /* ic_change_password.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AE62971E0D2A9800A33C94 /* ic_change_password.png */; };
+		D6AE629C1E0D2A9800A33C94 /* ic_profile_health.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AE62981E0D2A9800A33C94 /* ic_profile_health.png */; };
+		D6AE629E1E0D2B1C00A33C94 /* ic_otp_side.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AE629D1E0D2B1C00A33C94 /* ic_otp_side.png */; };
+		D6AE6FD21E2E16C000546B77 /* SubRecordsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AE6FD11E2E16C000546B77 /* SubRecordsCustomCell.swift */; };
+		D6BAC6E31DFFE97600C9514F /* SelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BAC6E21DFFE97600C9514F /* SelectController.swift */; };
+		D6BAC6E51E000D3100C9514F /* ic_action_drag.png in Resources */ = {isa = PBXBuildFile; fileRef = D6BAC6E41E000D3000C9514F /* ic_action_drag.png */; };
+		D6C770641E1F6EC20006A2E4 /* ic_profile_health_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770611E1F6EC20006A2E4 /* ic_profile_health_bar@2x.png */; };
+		D6C770651E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770621E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png */; };
+		D6C770661E1F6EC20006A2E4 /* ic_profile_health_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770631E1F6EC20006A2E4 /* ic_profile_health_bar.png */; };
+		D6C770681E1F822D0006A2E4 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C770671E1F822D0006A2E4 /* TermsViewController.swift */; };
+		D6C7706A1E1F88FB0006A2E4 /* ChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C770691E1F88FB0006A2E4 /* ChangePasswordController.swift */; };
+		D6C7706C1E1F89F30006A2E4 /* PersonalCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C7706B1E1F89F30006A2E4 /* PersonalCustomCell.swift */; };
+		D6C770751E1FBB6B0006A2E4 /* ic_otp_sub@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770731E1FBB6B0006A2E4 /* ic_otp_sub@2x.png */; };
+		D6C770761E1FBB6B0006A2E4 /* ic_otp_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770741E1FBB6B0006A2E4 /* ic_otp_sub.png */; };
+		D6C98FCD1E30834D00BACACF /* MainChronic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FCC1E30834D00BACACF /* MainChronic.swift */; };
+		D6FB577B1DD1D3C70045910F /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */; };
+		D6FB577C1DD1D3C70045910F /* HealthAssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */; };
+		D6FB577D1DD1D3C70045910F /* HealthProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */; };
+		D6FB577F1DD1D3D20045910F /* AppPageTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB577E1DD1D3D20045910F /* AppPageTabBarController.swift */; };
+		D6FB57831DD1DB9A0045910F /* AppToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57821DD1DB9A0045910F /* AppToolbarController.swift */; };
+		D6FB57851DD1E71A0045910F /* AppMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57841DD1E71A0045910F /* AppMenuController.swift */; };
+		D6FB57871DD1E8FA0045910F /* splashbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57861DD1E8FA0045910F /* splashbackground.jpg */; };
+		D6FB578D1DD310B30045910F /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB578C1DD310B30045910F /* RightViewController.swift */; };
+		D6FB57941DD31E980045910F /* profile_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57911DD31E980045910F /* profile_pic.jpg */; };
+		D6FB57951DD31E980045910F /* mainpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57921DD31E980045910F /* mainpic.jpg */; };
+		D6FB57961DD31E980045910F /* health_assess_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57931DD31E980045910F /* health_assess_pic.jpg */; };
+		D6FB57981DD338430045910F /* imageheader.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57971DD338430045910F /* imageheader.png */; };
+		D6FB579A1DD34E000045910F /* AppStatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57991DD34E000045910F /* AppStatusBarController.swift */; };
+		D6FB579C1DD441E50045910F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB579B1DD441E50045910F /* LoginController.swift */; };
+		D6FB579E1DD443AC0045910F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FB579D1DD443AC0045910F /* Main.storyboard */; };
+		D6FB57A51DD46F2F0045910F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57A31DD46F2F0045910F /* PageViewController.swift */; };
+		D6FB57A61DD46F2F0045910F /* ShowPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57A41DD46F2F0045910F /* ShowPageViewController.swift */; };
+		D6FB57AB1DD4733C0045910F /* 960x720your_family_health.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57A71DD4733C0045910F /* 960x720your_family_health.jpg */; };
+		D6FB57AC1DD4733C0045910F /* 960x720chronic_conditions.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57A81DD4733C0045910F /* 960x720chronic_conditions.jpg */; };
+		D6FB57AD1DD4733C0045910F /* 960x720share_records.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */; };
+		D6FB57AE1DD4733C0045910F /* 960x720key_health_indicators.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */; };
+		D6FB57B01DD48A360045910F /* logo_life.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57AF1DD48A360045910F /* logo_life.png */; };
+		D6FB57B41DD5A50B0045910F /* TermsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57B31DD5A50B0045910F /* TermsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +145,57 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1983A55890E926545CAE3677 /* Pods-LifeDocTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDocTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDocTests/Pods-LifeDocTests.release.xcconfig"; sourceTree = "<group>"; };
+		2264363A564F659A9045B401 /* Pods-LifeDoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDoc/Pods-LifeDoc.debug.xcconfig"; sourceTree = "<group>"; };
+		3BEE2C9E5ACA9D147FEBEE4D /* Pods-LifeDocTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDocTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDocTests/Pods-LifeDocTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E04EAA7CF528317E79E2B84 /* Pods-LifeDoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDoc/Pods-LifeDoc.release.xcconfig"; sourceTree = "<group>"; };
+		49E6E9B1331BE38D017EBE08 /* Pods_LifeDoc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeDoc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FD227B60DC22F71A8E51B14 /* Pods-LifeDocUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDocUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDocUITests/Pods-LifeDocUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CE56D72F628DFD245A848E0 /* Pods-LifeDocUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDocUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDocUITests/Pods-LifeDocUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A82DB60830F03EF13DB71C90 /* Pods_LifeDocUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeDocUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D60ECB141DD9B59F00E35CB0 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
+		D60ECB161DD9C58200E35CB0 /* ISRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISRadioButton.swift; sourceTree = "<group>"; };
+		D60ECB181DD9CD9800E35CB0 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		D60ECB1B1DDAD2F400E35CB0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		D60ECB1D1DDAF83800E35CB0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D60ECB361DE3125200E35CB0 /* ic_action_calendar_month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_action_calendar_month.png; sourceTree = "<group>"; };
+		D60ECB411DF6BC2A00E35CB0 /* Duration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duration.swift; sourceTree = "<group>"; };
+		D60ECB421DF6BC2A00E35CB0 /* Int+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Timepiece.swift"; sourceTree = "<group>"; };
+		D60ECB431DF6BC2A00E35CB0 /* NSCalendar+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSCalendar+Timepiece.swift"; sourceTree = "<group>"; };
+		D60ECB441DF6BC2A00E35CB0 /* NSDate+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Timepiece.swift"; sourceTree = "<group>"; };
+		D60ECB451DF6BC2A00E35CB0 /* NSDateComponents+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDateComponents+Timepiece.swift"; sourceTree = "<group>"; };
+		D60ECB461DF6BC2A00E35CB0 /* String+Timepiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Timepiece.swift"; sourceTree = "<group>"; };
+		D60ECB471DF6BC2A00E35CB0 /* WWCalendarTimeSelector.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WWCalendarTimeSelector.storyboard; sourceTree = "<group>"; };
+		D60ECB481DF6BC2A00E35CB0 /* WWCalendarTimeSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WWCalendarTimeSelector.swift; sourceTree = "<group>"; };
+		D60ECB531DFA735800E35CB0 /* HealthAssessmentCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAssessmentCustomCell.swift; sourceTree = "<group>"; };
+		D60ECB551DFE9F5600E35CB0 /* CholesterolController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CholesterolController.swift; sourceTree = "<group>"; };
+		D60ECB571DFEB04300E35CB0 /* blue_attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_attach.png; sourceTree = "<group>"; };
+		D60ECB581DFEB04300E35CB0 /* blue_attachment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_attachment.png; sourceTree = "<group>"; };
+		D60ECB591DFEB04300E35CB0 /* blue_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_camera.png; sourceTree = "<group>"; };
+		D60ECB5A1DFEB04300E35CB0 /* blue_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_delete.png; sourceTree = "<group>"; };
+		D60ECB5B1DFEB04300E35CB0 /* blue_hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_hide.png; sourceTree = "<group>"; };
+		D60ECB5C1DFEB04300E35CB0 /* blue_medicine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_medicine.png; sourceTree = "<group>"; };
+		D60ECB5D1DFEB04300E35CB0 /* blue_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_more.png; sourceTree = "<group>"; };
+		D60ECB5E1DFEB04300E35CB0 /* blue_unhide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_unhide.png; sourceTree = "<group>"; };
+		D60ECB5F1DFEB04300E35CB0 /* edit_details.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit_details.png; sourceTree = "<group>"; };
+		D60ECB601DFEB04300E35CB0 /* lifedoc_icons_allergy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_allergy.png; sourceTree = "<group>"; };
+		D60ECB611DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_blood_glucose.png; sourceTree = "<group>"; };
+		D60ECB621DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_blood_pressure.png; sourceTree = "<group>"; };
+		D60ECB631DFEB04300E35CB0 /* lifedoc_icons_bmi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_bmi.png; sourceTree = "<group>"; };
+		D60ECB641DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_body_temperature.png; sourceTree = "<group>"; };
+		D60ECB651DFEB04300E35CB0 /* lifedoc_icons_chol_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_chol_new.png; sourceTree = "<group>"; };
+		D60ECB661DFEB04300E35CB0 /* lifedoc_icons_cholesterol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_cholesterol.png; sourceTree = "<group>"; };
+		D60ECB671DFEB04300E35CB0 /* lifedoc_icons_chronic_condition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_chronic_condition.png; sourceTree = "<group>"; };
+		D60ECB681DFEB04300E35CB0 /* lifedoc_icons_height.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_height.png; sourceTree = "<group>"; };
+		D60ECB691DFEB04300E35CB0 /* lifedoc_icons_note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_note.png; sourceTree = "<group>"; };
+		D60ECB6A1DFEB04300E35CB0 /* lifedoc_icons_pulse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_pulse.png; sourceTree = "<group>"; };
+		D60ECB6B1DFEB04300E35CB0 /* lifedoc_icons_weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifedoc_icons_weight.png; sourceTree = "<group>"; };
+		D60ECB6C1DFEB04300E35CB0 /* loginpic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginpic.png; sourceTree = "<group>"; };
+		D60ECB6D1DFEB04300E35CB0 /* my_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_profile.png; sourceTree = "<group>"; };
+		D60ECB6E1DFEB04300E35CB0 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo.jpg; sourceTree = "<group>"; };
+		D60ECB6F1DFEB04300E35CB0 /* purple_health_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_health_record.png; sourceTree = "<group>"; };
 		D6293F481DD1AF080037B2B2 /* LifeDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6293F4B1DD1AF080037B2B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D6293F4D1DD1AF080037B2B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D6293F501DD1AF080037B2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6293F521DD1AF080037B2B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6293F551DD1AF080037B2B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6293F571DD1AF080037B2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +205,76 @@
 		D6293F671DD1AF080037B2B2 /* LifeDocUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeDocUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6293F6B1DD1AF080037B2B2 /* LifeDocUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeDocUITests.swift; sourceTree = "<group>"; };
 		D6293F6D1DD1AF080037B2B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6293F791DD1CEA10037B2B2 /* AppNavigationDrawerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationDrawerController.swift; sourceTree = "<group>"; };
+		D6293F7A1DD1CEA10037B2B2 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		D6293F7B1DD1CEA10037B2B2 /* LeftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		D65601EF1E1FC34700A8ED22 /* BmiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BmiController.swift; sourceTree = "<group>"; };
+		D65601F11E26158500A8ED22 /* AppMenuSubRecords.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenuSubRecords.swift; sourceTree = "<group>"; };
+		D65601F31E26300300A8ED22 /* MainAllergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAllergy.swift; sourceTree = "<group>"; };
+		D65601F51E264B3700A8ED22 /* NiceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NiceButton.swift; sourceTree = "<group>"; };
+		D65601F81E26A34A00A8ED22 /* KCFABManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABManager.swift; sourceTree = "<group>"; };
+		D65601F91E26A34A00A8ED22 /* KCFABViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABViewController.swift; sourceTree = "<group>"; };
+		D65601FA1E26A34A00A8ED22 /* KCFABWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFABWindow.swift; sourceTree = "<group>"; };
+		D65601FB1E26A34A00A8ED22 /* KCFloatingActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButton.swift; sourceTree = "<group>"; };
+		D65601FC1E26A34A00A8ED22 /* KCFloatingActionButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonDelegate.swift; sourceTree = "<group>"; };
+		D65601FD1E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KCFloatingActionButtonItem.swift; sourceTree = "<group>"; };
+		D65602041E28C68800A8ED22 /* ic_doc_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_doc_sub.png; sourceTree = "<group>"; };
+		D65602051E28C68800A8ED22 /* ic_hos_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hos_sub.png; sourceTree = "<group>"; };
+		D65602061E28C68800A8ED22 /* ic_medi_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_medi_sub.png; sourceTree = "<group>"; };
+		D65602071E28C68800A8ED22 /* ic_note_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_note_sub.png; sourceTree = "<group>"; };
+		D65602081E28C68800A8ED22 /* ic_path_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_path_sub.png; sourceTree = "<group>"; };
+		D656020E1E28D05A00A8ED22 /* MainRecordCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRecordCustomCell.swift; sourceTree = "<group>"; };
+		D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentsCell.swift; sourceTree = "<group>"; };
+		D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodGlucoseContoller.swift; sourceTree = "<group>"; };
+		D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPresssureContoller.swift; sourceTree = "<group>"; };
+		D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyTempController.swift; sourceTree = "<group>"; };
+		D69B8E9F1E0266BF008F1739 /* HeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightController.swift; sourceTree = "<group>"; };
+		D69B8EA11E026A3B008F1739 /* PulseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseController.swift; sourceTree = "<group>"; };
+		D69B8EA31E026DE1008F1739 /* WeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightController.swift; sourceTree = "<group>"; };
+		D6AE62911E0BECF200A33C94 /* HealthProfileCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthProfileCustomCell.swift; sourceTree = "<group>"; };
+		D6AE62931E0D21B300A33C94 /* SideCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideCustomCell.swift; sourceTree = "<group>"; };
+		D6AE62951E0D2A9800A33C94 /* ic_profile_side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_profile_side.png; sourceTree = "<group>"; };
+		D6AE62961E0D2A9800A33C94 /* ic_assess_health_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_assess_health_bar.png; sourceTree = "<group>"; };
+		D6AE62971E0D2A9800A33C94 /* ic_change_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_change_password.png; sourceTree = "<group>"; };
+		D6AE62981E0D2A9800A33C94 /* ic_profile_health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_profile_health.png; sourceTree = "<group>"; };
+		D6AE629D1E0D2B1C00A33C94 /* ic_otp_side.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_otp_side.png; sourceTree = "<group>"; };
+		D6AE6FD11E2E16C000546B77 /* SubRecordsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubRecordsCustomCell.swift; sourceTree = "<group>"; };
+		D6BAC6E21DFFE97600C9514F /* SelectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectController.swift; sourceTree = "<group>"; };
+		D6BAC6E41E000D3000C9514F /* ic_action_drag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_action_drag.png; sourceTree = "<group>"; };
+		D6C770611E1F6EC20006A2E4 /* ic_profile_health_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_profile_health_bar@2x.png"; sourceTree = "<group>"; };
+		D6C770621E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_profile_health_bar@3x.png"; sourceTree = "<group>"; };
+		D6C770631E1F6EC20006A2E4 /* ic_profile_health_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_profile_health_bar.png; sourceTree = "<group>"; };
+		D6C770671E1F822D0006A2E4 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		D6C770691E1F88FB0006A2E4 /* ChangePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordController.swift; sourceTree = "<group>"; };
+		D6C7706B1E1F89F30006A2E4 /* PersonalCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalCustomCell.swift; sourceTree = "<group>"; };
+		D6C770731E1FBB6B0006A2E4 /* ic_otp_sub@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_otp_sub@2x.png"; sourceTree = "<group>"; };
+		D6C770741E1FBB6B0006A2E4 /* ic_otp_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_otp_sub.png; sourceTree = "<group>"; };
+		D6C98FCC1E30834D00BACACF /* MainChronic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainChronic.swift; sourceTree = "<group>"; };
+		D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
+		D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAssessmentController.swift; sourceTree = "<group>"; };
+		D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthProfileController.swift; sourceTree = "<group>"; };
+		D6FB577E1DD1D3D20045910F /* AppPageTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPageTabBarController.swift; sourceTree = "<group>"; };
+		D6FB57821DD1DB9A0045910F /* AppToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToolbarController.swift; sourceTree = "<group>"; };
+		D6FB57841DD1E71A0045910F /* AppMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenuController.swift; sourceTree = "<group>"; };
+		D6FB57861DD1E8FA0045910F /* splashbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splashbackground.jpg; sourceTree = "<group>"; };
+		D6FB578C1DD310B30045910F /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		D6FB57911DD31E980045910F /* profile_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile_pic.jpg; sourceTree = "<group>"; };
+		D6FB57921DD31E980045910F /* mainpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mainpic.jpg; sourceTree = "<group>"; };
+		D6FB57931DD31E980045910F /* health_assess_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = health_assess_pic.jpg; sourceTree = "<group>"; };
+		D6FB57971DD338430045910F /* imageheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageheader.png; sourceTree = "<group>"; };
+		D6FB57991DD34E000045910F /* AppStatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStatusBarController.swift; sourceTree = "<group>"; };
+		D6FB579B1DD441E50045910F /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		D6FB579D1DD443AC0045910F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D6FB57A31DD46F2F0045910F /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		D6FB57A41DD46F2F0045910F /* ShowPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPageViewController.swift; sourceTree = "<group>"; };
+		D6FB57A71DD4733C0045910F /* 960x720your_family_health.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720your_family_health.jpg; sourceTree = "<group>"; };
+		D6FB57A81DD4733C0045910F /* 960x720chronic_conditions.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720chronic_conditions.jpg; sourceTree = "<group>"; };
+		D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720share_records.jpg; sourceTree = "<group>"; };
+		D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720key_health_indicators.jpg; sourceTree = "<group>"; };
+		D6FB57AF1DD48A360045910F /* logo_life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_life.png; sourceTree = "<group>"; };
+		D6FB57B21DD4903F0045910F /* webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = webfont.ttf; sourceTree = "<group>"; };
+		D6FB57B31DD5A50B0045910F /* TermsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsController.swift; sourceTree = "<group>"; };
+		EE74DFD26529F4400527B033 /* Pods_LifeDocTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeDocTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +282,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				325DCA483F75431CFEF74DCD /* Pods_LifeDoc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				828D9B5AB269CEC4526C2183 /* Pods_LifeDocTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +298,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5916821462A87E8735DE32B6 /* Pods_LifeDocUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		407AC93ADA86663FA9ACF8C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2264363A564F659A9045B401 /* Pods-LifeDoc.debug.xcconfig */,
+				3E04EAA7CF528317E79E2B84 /* Pods-LifeDoc.release.xcconfig */,
+				3BEE2C9E5ACA9D147FEBEE4D /* Pods-LifeDocTests.debug.xcconfig */,
+				1983A55890E926545CAE3677 /* Pods-LifeDocTests.release.xcconfig */,
+				5FD227B60DC22F71A8E51B14 /* Pods-LifeDocUITests.debug.xcconfig */,
+				7CE56D72F628DFD245A848E0 /* Pods-LifeDocUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		74B814B0319077776BB28ADB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				49E6E9B1331BE38D017EBE08 /* Pods_LifeDoc.framework */,
+				EE74DFD26529F4400527B033 /* Pods_LifeDocTests.framework */,
+				A82DB60830F03EF13DB71C90 /* Pods_LifeDocUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D60ECB401DF6BC1B00E35CB0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D60ECB411DF6BC2A00E35CB0 /* Duration.swift */,
+				D60ECB421DF6BC2A00E35CB0 /* Int+Timepiece.swift */,
+				D60ECB431DF6BC2A00E35CB0 /* NSCalendar+Timepiece.swift */,
+				D60ECB441DF6BC2A00E35CB0 /* NSDate+Timepiece.swift */,
+				D60ECB451DF6BC2A00E35CB0 /* NSDateComponents+Timepiece.swift */,
+				D60ECB461DF6BC2A00E35CB0 /* String+Timepiece.swift */,
+				D60ECB471DF6BC2A00E35CB0 /* WWCalendarTimeSelector.storyboard */,
+				D60ECB481DF6BC2A00E35CB0 /* WWCalendarTimeSelector.swift */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
 		D6293F3F1DD1AF080037B2B2 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +350,8 @@
 				D6293F5F1DD1AF080037B2B2 /* LifeDocTests */,
 				D6293F6A1DD1AF080037B2B2 /* LifeDocUITests */,
 				D6293F491DD1AF080037B2B2 /* Products */,
+				407AC93ADA86663FA9ACF8C2 /* Pods */,
+				74B814B0319077776BB28ADB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +368,57 @@
 		D6293F4A1DD1AF080037B2B2 /* LifeDoc */ = {
 			isa = PBXGroup;
 			children = (
+				D65601F71E26A33700A8ED22 /* KCFloatingActionButton */,
+				D60ECB401DF6BC1B00E35CB0 /* Sources */,
+				D6FB57B11DD48DC20045910F /* Resources */,
+				D6FB57901DD31E670045910F /* Supporting Files */,
 				D6293F4B1DD1AF080037B2B2 /* AppDelegate.swift */,
-				D6293F4D1DD1AF080037B2B2 /* ViewController.swift */,
-				D6293F4F1DD1AF080037B2B2 /* Main.storyboard */,
+				D60ECB161DD9C58200E35CB0 /* ISRadioButton.swift */,
+				D65601EF1E1FC34700A8ED22 /* BmiController.swift */,
+				D6FB579B1DD441E50045910F /* LoginController.swift */,
+				D6FB577E1DD1D3D20045910F /* AppPageTabBarController.swift */,
+				D6FB57841DD1E71A0045910F /* AppMenuController.swift */,
+				D6FB57821DD1DB9A0045910F /* AppToolbarController.swift */,
+				D60ECB1B1DDAD2F400E35CB0 /* SwiftyJSON.swift */,
+				D6FB57991DD34E000045910F /* AppStatusBarController.swift */,
+				D6293F791DD1CEA10037B2B2 /* AppNavigationDrawerController.swift */,
+				D6FB578C1DD310B30045910F /* RightViewController.swift */,
+				D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */,
+				D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */,
+				D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */,
+				D6293F7A1DD1CEA10037B2B2 /* RootViewController.swift */,
+				D6FB57A31DD46F2F0045910F /* PageViewController.swift */,
+				D6FB57A41DD46F2F0045910F /* ShowPageViewController.swift */,
+				D6293F7B1DD1CEA10037B2B2 /* LeftViewController.swift */,
 				D6293F521DD1AF080037B2B2 /* Assets.xcassets */,
+				D6FB579D1DD443AC0045910F /* Main.storyboard */,
 				D6293F541DD1AF080037B2B2 /* LaunchScreen.storyboard */,
 				D6293F571DD1AF080037B2B2 /* Info.plist */,
+				D6FB57B31DD5A50B0045910F /* TermsController.swift */,
+				D60ECB141DD9B59F00E35CB0 /* ForgotPasswordController.swift */,
+				D60ECB181DD9CD9800E35CB0 /* SignUpController.swift */,
+				D65601F51E264B3700A8ED22 /* NiceButton.swift */,
+				D60ECB1D1DDAF83800E35CB0 /* Constants.swift */,
+				D60ECB531DFA735800E35CB0 /* HealthAssessmentCustomCell.swift */,
+				D60ECB551DFE9F5600E35CB0 /* CholesterolController.swift */,
+				D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */,
+				D6BAC6E21DFFE97600C9514F /* SelectController.swift */,
+				D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */,
+				D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */,
+				D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */,
+				D69B8E9F1E0266BF008F1739 /* HeightController.swift */,
+				D69B8EA11E026A3B008F1739 /* PulseController.swift */,
+				D69B8EA31E026DE1008F1739 /* WeightController.swift */,
+				D6AE62911E0BECF200A33C94 /* HealthProfileCustomCell.swift */,
+				D6AE62931E0D21B300A33C94 /* SideCustomCell.swift */,
+				D6C770671E1F822D0006A2E4 /* TermsViewController.swift */,
+				D6C770691E1F88FB0006A2E4 /* ChangePasswordController.swift */,
+				D6C7706B1E1F89F30006A2E4 /* PersonalCustomCell.swift */,
+				D65601F11E26158500A8ED22 /* AppMenuSubRecords.swift */,
+				D65601F31E26300300A8ED22 /* MainAllergy.swift */,
+				D656020E1E28D05A00A8ED22 /* MainRecordCustomCell.swift */,
+				D6AE6FD11E2E16C000546B77 /* SubRecordsCustomCell.swift */,
+				D6C98FCC1E30834D00BACACF /* MainChronic.swift */,
 			);
 			path = LifeDoc;
 			sourceTree = "<group>";
@@ -125,6 +441,86 @@
 			path = LifeDocUITests;
 			sourceTree = "<group>";
 		};
+		D65601F71E26A33700A8ED22 /* KCFloatingActionButton */ = {
+			isa = PBXGroup;
+			children = (
+				D65601F81E26A34A00A8ED22 /* KCFABManager.swift */,
+				D65601F91E26A34A00A8ED22 /* KCFABViewController.swift */,
+				D65601FA1E26A34A00A8ED22 /* KCFABWindow.swift */,
+				D65601FB1E26A34A00A8ED22 /* KCFloatingActionButton.swift */,
+				D65601FC1E26A34A00A8ED22 /* KCFloatingActionButtonDelegate.swift */,
+				D65601FD1E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift */,
+			);
+			name = KCFloatingActionButton;
+			sourceTree = "<group>";
+		};
+		D6FB57901DD31E670045910F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D65602041E28C68800A8ED22 /* ic_doc_sub.png */,
+				D65602051E28C68800A8ED22 /* ic_hos_sub.png */,
+				D65602061E28C68800A8ED22 /* ic_medi_sub.png */,
+				D65602071E28C68800A8ED22 /* ic_note_sub.png */,
+				D65602081E28C68800A8ED22 /* ic_path_sub.png */,
+				D6C770731E1FBB6B0006A2E4 /* ic_otp_sub@2x.png */,
+				D6C770741E1FBB6B0006A2E4 /* ic_otp_sub.png */,
+				D6C770611E1F6EC20006A2E4 /* ic_profile_health_bar@2x.png */,
+				D6C770621E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png */,
+				D6C770631E1F6EC20006A2E4 /* ic_profile_health_bar.png */,
+				D6AE629D1E0D2B1C00A33C94 /* ic_otp_side.png */,
+				D6AE62951E0D2A9800A33C94 /* ic_profile_side.png */,
+				D6AE62961E0D2A9800A33C94 /* ic_assess_health_bar.png */,
+				D6AE62971E0D2A9800A33C94 /* ic_change_password.png */,
+				D6AE62981E0D2A9800A33C94 /* ic_profile_health.png */,
+				D6BAC6E41E000D3000C9514F /* ic_action_drag.png */,
+				D60ECB571DFEB04300E35CB0 /* blue_attach.png */,
+				D60ECB581DFEB04300E35CB0 /* blue_attachment.png */,
+				D60ECB591DFEB04300E35CB0 /* blue_camera.png */,
+				D60ECB5A1DFEB04300E35CB0 /* blue_delete.png */,
+				D60ECB5B1DFEB04300E35CB0 /* blue_hide.png */,
+				D60ECB5C1DFEB04300E35CB0 /* blue_medicine.png */,
+				D60ECB5D1DFEB04300E35CB0 /* blue_more.png */,
+				D60ECB5E1DFEB04300E35CB0 /* blue_unhide.png */,
+				D60ECB5F1DFEB04300E35CB0 /* edit_details.png */,
+				D60ECB601DFEB04300E35CB0 /* lifedoc_icons_allergy.png */,
+				D60ECB611DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png */,
+				D60ECB621DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png */,
+				D60ECB631DFEB04300E35CB0 /* lifedoc_icons_bmi.png */,
+				D60ECB641DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png */,
+				D60ECB651DFEB04300E35CB0 /* lifedoc_icons_chol_new.png */,
+				D60ECB661DFEB04300E35CB0 /* lifedoc_icons_cholesterol.png */,
+				D60ECB671DFEB04300E35CB0 /* lifedoc_icons_chronic_condition.png */,
+				D60ECB681DFEB04300E35CB0 /* lifedoc_icons_height.png */,
+				D60ECB691DFEB04300E35CB0 /* lifedoc_icons_note.png */,
+				D60ECB6A1DFEB04300E35CB0 /* lifedoc_icons_pulse.png */,
+				D60ECB6B1DFEB04300E35CB0 /* lifedoc_icons_weight.png */,
+				D60ECB6C1DFEB04300E35CB0 /* loginpic.png */,
+				D60ECB6D1DFEB04300E35CB0 /* my_profile.png */,
+				D60ECB6E1DFEB04300E35CB0 /* photo.jpg */,
+				D60ECB6F1DFEB04300E35CB0 /* purple_health_record.png */,
+				D60ECB361DE3125200E35CB0 /* ic_action_calendar_month.png */,
+				D6FB57A71DD4733C0045910F /* 960x720your_family_health.jpg */,
+				D6FB57A81DD4733C0045910F /* 960x720chronic_conditions.jpg */,
+				D6FB57AF1DD48A360045910F /* logo_life.png */,
+				D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */,
+				D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */,
+				D6FB57971DD338430045910F /* imageheader.png */,
+				D6FB57911DD31E980045910F /* profile_pic.jpg */,
+				D6FB57921DD31E980045910F /* mainpic.jpg */,
+				D6FB57931DD31E980045910F /* health_assess_pic.jpg */,
+				D6FB57861DD1E8FA0045910F /* splashbackground.jpg */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6FB57B11DD48DC20045910F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D6FB57B21DD4903F0045910F /* webfont.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +528,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6293F701DD1AF080037B2B2 /* Build configuration list for PBXNativeTarget "LifeDoc" */;
 			buildPhases = (
+				2B1E1C92037BFF31660967AF /* [CP] Check Pods Manifest.lock */,
 				D6293F441DD1AF080037B2B2 /* Sources */,
 				D6293F451DD1AF080037B2B2 /* Frameworks */,
 				D6293F461DD1AF080037B2B2 /* Resources */,
+				C0B513DFB105B23F3A71F648 /* [CP] Embed Pods Frameworks */,
+				3ADA2F5D8D25E560035E56BE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +548,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6293F731DD1AF080037B2B2 /* Build configuration list for PBXNativeTarget "LifeDocTests" */;
 			buildPhases = (
+				9BFF858BC624E0D869A8A172 /* [CP] Check Pods Manifest.lock */,
 				D6293F581DD1AF080037B2B2 /* Sources */,
 				D6293F591DD1AF080037B2B2 /* Frameworks */,
 				D6293F5A1DD1AF080037B2B2 /* Resources */,
+				820292C5FE6C7B332482D3ED /* [CP] Embed Pods Frameworks */,
+				31110244F720FC4CDB995144 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +569,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D6293F761DD1AF080037B2B2 /* Build configuration list for PBXNativeTarget "LifeDocUITests" */;
 			buildPhases = (
+				BC193E3819152A12551D068E /* [CP] Check Pods Manifest.lock */,
 				D6293F631DD1AF080037B2B2 /* Sources */,
 				D6293F641DD1AF080037B2B2 /* Frameworks */,
 				D6293F651DD1AF080037B2B2 /* Resources */,
+				0D9BD58D7380F6E6C57A6380 /* [CP] Copy Pods Resources */,
+				901C6BE33FEA679CC72E5DDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,20 +593,24 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = MediSwitch;
 				TargetAttributes = {
 					D6293F471DD1AF080037B2B2 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 9GUGB4SSXE;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					D6293F5B1DD1AF080037B2B2 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D6293F471DD1AF080037B2B2;
 					};
 					D6293F661DD1AF080037B2B2 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D6293F471DD1AF080037B2B2;
 					};
@@ -232,9 +641,63 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60ECB881DFEB04300E35CB0 /* purple_health_record.png in Resources */,
+				D6C770651E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png in Resources */,
+				D6FB57AC1DD4733C0045910F /* 960x720chronic_conditions.jpg in Resources */,
+				D6AE62991E0D2A9800A33C94 /* ic_profile_side.png in Resources */,
+				D60ECB731DFEB04300E35CB0 /* blue_delete.png in Resources */,
+				D6AE629E1E0D2B1C00A33C94 /* ic_otp_side.png in Resources */,
+				D60ECB851DFEB04300E35CB0 /* loginpic.png in Resources */,
+				D656020D1E28C68800A8ED22 /* ic_path_sub.png in Resources */,
+				D60ECB751DFEB04300E35CB0 /* blue_medicine.png in Resources */,
+				D60ECB7A1DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png in Resources */,
+				D6C770751E1FBB6B0006A2E4 /* ic_otp_sub@2x.png in Resources */,
+				D6FB57AD1DD4733C0045910F /* 960x720share_records.jpg in Resources */,
+				D656020A1E28C68800A8ED22 /* ic_hos_sub.png in Resources */,
 				D6293F561DD1AF080037B2B2 /* LaunchScreen.storyboard in Resources */,
+				D60ECB791DFEB04300E35CB0 /* lifedoc_icons_allergy.png in Resources */,
+				D60ECB841DFEB04300E35CB0 /* lifedoc_icons_weight.png in Resources */,
+				D6FB57AE1DD4733C0045910F /* 960x720key_health_indicators.jpg in Resources */,
+				D6BAC6E51E000D3100C9514F /* ic_action_drag.png in Resources */,
+				D6C770641E1F6EC20006A2E4 /* ic_profile_health_bar@2x.png in Resources */,
+				D656020B1E28C68800A8ED22 /* ic_medi_sub.png in Resources */,
+				D60ECB801DFEB04300E35CB0 /* lifedoc_icons_chronic_condition.png in Resources */,
+				D60ECB771DFEB04300E35CB0 /* blue_unhide.png in Resources */,
+				D6AE629A1E0D2A9800A33C94 /* ic_assess_health_bar.png in Resources */,
+				D60ECB831DFEB04300E35CB0 /* lifedoc_icons_pulse.png in Resources */,
+				D60ECB811DFEB04300E35CB0 /* lifedoc_icons_height.png in Resources */,
+				D6FB57951DD31E980045910F /* mainpic.jpg in Resources */,
+				D60ECB861DFEB04300E35CB0 /* my_profile.png in Resources */,
+				D60ECB4F1DF6BC2A00E35CB0 /* WWCalendarTimeSelector.storyboard in Resources */,
+				D60ECB7E1DFEB04300E35CB0 /* lifedoc_icons_chol_new.png in Resources */,
+				D656020C1E28C68800A8ED22 /* ic_note_sub.png in Resources */,
+				D60ECB371DE3125200E35CB0 /* ic_action_calendar_month.png in Resources */,
+				D60ECB871DFEB04300E35CB0 /* photo.jpg in Resources */,
+				D6AE629C1E0D2A9800A33C94 /* ic_profile_health.png in Resources */,
+				D60ECB711DFEB04300E35CB0 /* blue_attachment.png in Resources */,
+				D6FB57B01DD48A360045910F /* logo_life.png in Resources */,
+				D60ECB7F1DFEB04300E35CB0 /* lifedoc_icons_cholesterol.png in Resources */,
+				D65602091E28C68800A8ED22 /* ic_doc_sub.png in Resources */,
+				D6AE629B1E0D2A9800A33C94 /* ic_change_password.png in Resources */,
 				D6293F531DD1AF080037B2B2 /* Assets.xcassets in Resources */,
-				D6293F511DD1AF080037B2B2 /* Main.storyboard in Resources */,
+				D6FB579E1DD443AC0045910F /* Main.storyboard in Resources */,
+				D60ECB1A1DD9D94C00E35CB0 /* webfont.ttf in Resources */,
+				D6FB57961DD31E980045910F /* health_assess_pic.jpg in Resources */,
+				D60ECB7B1DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png in Resources */,
+				D60ECB7C1DFEB04300E35CB0 /* lifedoc_icons_bmi.png in Resources */,
+				D60ECB721DFEB04300E35CB0 /* blue_camera.png in Resources */,
+				D6C770761E1FBB6B0006A2E4 /* ic_otp_sub.png in Resources */,
+				D6C770661E1F6EC20006A2E4 /* ic_profile_health_bar.png in Resources */,
+				D6FB57871DD1E8FA0045910F /* splashbackground.jpg in Resources */,
+				D60ECB761DFEB04300E35CB0 /* blue_more.png in Resources */,
+				D6FB57941DD31E980045910F /* profile_pic.jpg in Resources */,
+				D6FB57981DD338430045910F /* imageheader.png in Resources */,
+				D60ECB781DFEB04300E35CB0 /* edit_details.png in Resources */,
+				D60ECB821DFEB04300E35CB0 /* lifedoc_icons_note.png in Resources */,
+				D60ECB7D1DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png in Resources */,
+				D60ECB701DFEB04300E35CB0 /* blue_attach.png in Resources */,
+				D6FB57AB1DD4733C0045910F /* 960x720your_family_health.jpg in Resources */,
+				D60ECB741DFEB04300E35CB0 /* blue_hide.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,13 +717,205 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D9BD58D7380F6E6C57A6380 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LifeDocUITests/Pods-LifeDocUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B1E1C92037BFF31660967AF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		31110244F720FC4CDB995144 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LifeDocTests/Pods-LifeDocTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3ADA2F5D8D25E560035E56BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LifeDoc/Pods-LifeDoc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		820292C5FE6C7B332482D3ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LifeDocTests/Pods-LifeDocTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		901C6BE33FEA679CC72E5DDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LifeDocUITests/Pods-LifeDocUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BFF858BC624E0D869A8A172 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BC193E3819152A12551D068E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C0B513DFB105B23F3A71F648 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LifeDoc/Pods-LifeDoc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D6293F441DD1AF080037B2B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6293F4E1DD1AF080037B2B2 /* ViewController.swift in Sources */,
+				D60ECB4E1DF6BC2A00E35CB0 /* String+Timepiece.swift in Sources */,
+				D6AE62941E0D21B400A33C94 /* SideCustomCell.swift in Sources */,
+				D6C7706C1E1F89F30006A2E4 /* PersonalCustomCell.swift in Sources */,
+				D60ECB191DD9CD9800E35CB0 /* SignUpController.swift in Sources */,
+				D65601F21E26158500A8ED22 /* AppMenuSubRecords.swift in Sources */,
+				D60ECB541DFA735800E35CB0 /* HealthAssessmentCustomCell.swift in Sources */,
+				D6293F7C1DD1CEA10037B2B2 /* AppNavigationDrawerController.swift in Sources */,
+				D6C7706A1E1F88FB0006A2E4 /* ChangePasswordController.swift in Sources */,
+				D6FB57A61DD46F2F0045910F /* ShowPageViewController.swift in Sources */,
+				D60ECB1C1DDAD2F400E35CB0 /* SwiftyJSON.swift in Sources */,
+				D6FB579A1DD34E000045910F /* AppStatusBarController.swift in Sources */,
+				D60ECB561DFE9F5600E35CB0 /* CholesterolController.swift in Sources */,
+				D65601FF1E26A34A00A8ED22 /* KCFABViewController.swift in Sources */,
+				D6293F7D1DD1CEA10037B2B2 /* RootViewController.swift in Sources */,
+				D65602021E26A34A00A8ED22 /* KCFloatingActionButtonDelegate.swift in Sources */,
+				D6C98FCD1E30834D00BACACF /* MainChronic.swift in Sources */,
+				D659FDA11DFF0EDE00131288 /* AssessmentsCell.swift in Sources */,
+				D6293F7E1DD1CEA10037B2B2 /* LeftViewController.swift in Sources */,
+				D69B8EA21E026A3B008F1739 /* PulseController.swift in Sources */,
+				D69B8E9E1E025DF5008F1739 /* BodyTempController.swift in Sources */,
+				D6FB578D1DD310B30045910F /* RightViewController.swift in Sources */,
+				D6FB577D1DD1D3C70045910F /* HealthProfileController.swift in Sources */,
+				D69B8EA01E0266BF008F1739 /* HeightController.swift in Sources */,
+				D656020F1E28D05A00A8ED22 /* MainRecordCustomCell.swift in Sources */,
+				D6FB577F1DD1D3D20045910F /* AppPageTabBarController.swift in Sources */,
+				D60ECB491DF6BC2A00E35CB0 /* Duration.swift in Sources */,
+				D65602001E26A34A00A8ED22 /* KCFABWindow.swift in Sources */,
+				D65602031E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift in Sources */,
+				D60ECB151DD9B59F00E35CB0 /* ForgotPasswordController.swift in Sources */,
+				D65601F41E26300300A8ED22 /* MainAllergy.swift in Sources */,
+				D60ECB1E1DDAF83800E35CB0 /* Constants.swift in Sources */,
+				D69B8EA41E026DE1008F1739 /* WeightController.swift in Sources */,
+				D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */,
+				D60ECB171DD9C58200E35CB0 /* ISRadioButton.swift in Sources */,
+				D6FB577B1DD1D3C70045910F /* ProfileListViewController.swift in Sources */,
+				D60ECB4D1DF6BC2A00E35CB0 /* NSDateComponents+Timepiece.swift in Sources */,
+				D60ECB4C1DF6BC2A00E35CB0 /* NSDate+Timepiece.swift in Sources */,
+				D6AE6FD21E2E16C000546B77 /* SubRecordsCustomCell.swift in Sources */,
+				D6FB57A51DD46F2F0045910F /* PageViewController.swift in Sources */,
+				D60ECB4A1DF6BC2A00E35CB0 /* Int+Timepiece.swift in Sources */,
+				D6FB579C1DD441E50045910F /* LoginController.swift in Sources */,
+				D60ECB4B1DF6BC2A00E35CB0 /* NSCalendar+Timepiece.swift in Sources */,
+				D6AE62921E0BECF200A33C94 /* HealthProfileCustomCell.swift in Sources */,
 				D6293F4C1DD1AF080037B2B2 /* AppDelegate.swift in Sources */,
+				D65601F61E264B3700A8ED22 /* NiceButton.swift in Sources */,
+				D6C770681E1F822D0006A2E4 /* TermsViewController.swift in Sources */,
+				D6FB57851DD1E71A0045910F /* AppMenuController.swift in Sources */,
+				D6FB57831DD1DB9A0045910F /* AppToolbarController.swift in Sources */,
+				D6FB577C1DD1D3C70045910F /* HealthAssessmentController.swift in Sources */,
+				D6FB57B41DD5A50B0045910F /* TermsController.swift in Sources */,
+				D60ECB501DF6BC2A00E35CB0 /* WWCalendarTimeSelector.swift in Sources */,
+				D65602011E26A34A00A8ED22 /* KCFloatingActionButton.swift in Sources */,
+				D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */,
+				D65601F01E1FC34700A8ED22 /* BmiController.swift in Sources */,
+				D6BAC6E31DFFE97600C9514F /* SelectController.swift in Sources */,
+				D65601FE1E26A34A00A8ED22 /* KCFABManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +951,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D6293F4F1DD1AF080037B2B2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D6293F501DD1AF080037B2B2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D6293F541DD1AF080037B2B2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -333,10 +980,12 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -355,7 +1004,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -383,10 +1032,12 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Thinus Bekker (U9E59R6Z38)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -399,10 +1050,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -410,30 +1061,50 @@
 		};
 		D6293F711DD1AF080037B2B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2264363A564F659A9045B401 /* Pods-LifeDoc.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LifeDoc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = za.co.mediswitch.LifeDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediswitch.LifeDoc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D6293F721DD1AF080037B2B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E04EAA7CF528317E79E2B84 /* Pods-LifeDoc.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LifeDoc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = za.co.mediswitch.LifeDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mediswitch.LifeDoc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		D6293F741DD1AF080037B2B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BEE2C9E5ACA9D147FEBEE4D /* Pods-LifeDocTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -448,6 +1119,7 @@
 		};
 		D6293F751DD1AF080037B2B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1983A55890E926545CAE3677 /* Pods-LifeDocTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -462,6 +1134,7 @@
 		};
 		D6293F771DD1AF080037B2B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FD227B60DC22F71A8E51B14 /* Pods-LifeDocUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = LifeDocUITests/Info.plist;
@@ -475,6 +1148,7 @@
 		};
 		D6293F781DD1AF080037B2B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CE56D72F628DFD245A848E0 /* Pods-LifeDocUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = LifeDocUITests/Info.plist;
@@ -505,6 +1179,7 @@
 				D6293F721DD1AF080037B2B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6293F731DD1AF080037B2B2 /* Build configuration list for PBXNativeTarget "LifeDocTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +1188,7 @@
 				D6293F751DD1AF080037B2B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D6293F761DD1AF080037B2B2 /* Build configuration list for PBXNativeTarget "LifeDocUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +1197,7 @@
 				D6293F781DD1AF080037B2B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
