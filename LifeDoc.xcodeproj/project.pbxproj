@@ -52,6 +52,7 @@
 		D60ECB861DFEB04300E35CB0 /* my_profile.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6D1DFEB04300E35CB0 /* my_profile.png */; };
 		D60ECB871DFEB04300E35CB0 /* photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6E1DFEB04300E35CB0 /* photo.jpg */; };
 		D60ECB881DFEB04300E35CB0 /* purple_health_record.png in Resources */ = {isa = PBXBuildFile; fileRef = D60ECB6F1DFEB04300E35CB0 /* purple_health_record.png */; };
+		D60F7F9F1E35FB8E009978FC /* segoe_print_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D60F7F9E1E35F9EA009978FC /* segoe_print_bold.ttf */; };
 		D6293F4C1DD1AF080037B2B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6293F4B1DD1AF080037B2B2 /* AppDelegate.swift */; };
 		D6293F531DD1AF080037B2B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6293F521DD1AF080037B2B2 /* Assets.xcassets */; };
 		D6293F561DD1AF080037B2B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6293F541DD1AF080037B2B2 /* LaunchScreen.storyboard */; };
@@ -102,6 +103,8 @@
 		D6C770751E1FBB6B0006A2E4 /* ic_otp_sub@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770731E1FBB6B0006A2E4 /* ic_otp_sub@2x.png */; };
 		D6C770761E1FBB6B0006A2E4 /* ic_otp_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D6C770741E1FBB6B0006A2E4 /* ic_otp_sub.png */; };
 		D6C98FCD1E30834D00BACACF /* MainChronic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FCC1E30834D00BACACF /* MainChronic.swift */; };
+		D6C98FCF1E30D24600BACACF /* NoteSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FCE1E30D24600BACACF /* NoteSubRecord.swift */; };
+		D6C98FD11E30D7FE00BACACF /* RecordsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FD01E30D7FE00BACACF /* RecordsCustomCell.swift */; };
 		D6FB577B1DD1D3C70045910F /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */; };
 		D6FB577C1DD1D3C70045910F /* HealthAssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */; };
 		D6FB577D1DD1D3C70045910F /* HealthProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */; };
@@ -194,6 +197,7 @@
 		D60ECB6D1DFEB04300E35CB0 /* my_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_profile.png; sourceTree = "<group>"; };
 		D60ECB6E1DFEB04300E35CB0 /* photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo.jpg; sourceTree = "<group>"; };
 		D60ECB6F1DFEB04300E35CB0 /* purple_health_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purple_health_record.png; sourceTree = "<group>"; };
+		D60F7F9E1E35F9EA009978FC /* segoe_print_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoe_print_bold.ttf; sourceTree = "<group>"; };
 		D6293F481DD1AF080037B2B2 /* LifeDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6293F4B1DD1AF080037B2B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6293F521DD1AF080037B2B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -250,6 +254,8 @@
 		D6C770731E1FBB6B0006A2E4 /* ic_otp_sub@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_otp_sub@2x.png"; sourceTree = "<group>"; };
 		D6C770741E1FBB6B0006A2E4 /* ic_otp_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_otp_sub.png; sourceTree = "<group>"; };
 		D6C98FCC1E30834D00BACACF /* MainChronic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainChronic.swift; sourceTree = "<group>"; };
+		D6C98FCE1E30D24600BACACF /* NoteSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSubRecord.swift; sourceTree = "<group>"; };
+		D6C98FD01E30D7FE00BACACF /* RecordsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsCustomCell.swift; sourceTree = "<group>"; };
 		D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
 		D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAssessmentController.swift; sourceTree = "<group>"; };
 		D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthProfileController.swift; sourceTree = "<group>"; };
@@ -419,6 +425,8 @@
 				D656020E1E28D05A00A8ED22 /* MainRecordCustomCell.swift */,
 				D6AE6FD11E2E16C000546B77 /* SubRecordsCustomCell.swift */,
 				D6C98FCC1E30834D00BACACF /* MainChronic.swift */,
+				D6C98FCE1E30D24600BACACF /* NoteSubRecord.swift */,
+				D6C98FD01E30D7FE00BACACF /* RecordsCustomCell.swift */,
 			);
 			path = LifeDoc;
 			sourceTree = "<group>";
@@ -516,6 +524,7 @@
 		D6FB57B11DD48DC20045910F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D60F7F9E1E35F9EA009978FC /* segoe_print_bold.ttf */,
 				D6FB57B21DD4903F0045910F /* webfont.ttf */,
 			);
 			name = Resources;
@@ -641,6 +650,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60F7F9F1E35FB8E009978FC /* segoe_print_bold.ttf in Resources */,
 				D60ECB881DFEB04300E35CB0 /* purple_health_record.png in Resources */,
 				D6C770651E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png in Resources */,
 				D6FB57AC1DD4733C0045910F /* 960x720chronic_conditions.jpg in Resources */,
@@ -873,11 +883,13 @@
 				D6FB579A1DD34E000045910F /* AppStatusBarController.swift in Sources */,
 				D60ECB561DFE9F5600E35CB0 /* CholesterolController.swift in Sources */,
 				D65601FF1E26A34A00A8ED22 /* KCFABViewController.swift in Sources */,
+				D6C98FD11E30D7FE00BACACF /* RecordsCustomCell.swift in Sources */,
 				D6293F7D1DD1CEA10037B2B2 /* RootViewController.swift in Sources */,
 				D65602021E26A34A00A8ED22 /* KCFloatingActionButtonDelegate.swift in Sources */,
 				D6C98FCD1E30834D00BACACF /* MainChronic.swift in Sources */,
 				D659FDA11DFF0EDE00131288 /* AssessmentsCell.swift in Sources */,
 				D6293F7E1DD1CEA10037B2B2 /* LeftViewController.swift in Sources */,
+				D6C98FCF1E30D24600BACACF /* NoteSubRecord.swift in Sources */,
 				D69B8EA21E026A3B008F1739 /* PulseController.swift in Sources */,
 				D69B8E9E1E025DF5008F1739 /* BodyTempController.swift in Sources */,
 				D6FB578D1DD310B30045910F /* RightViewController.swift in Sources */,
@@ -1053,7 +1065,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1096,7 +1108,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -23,6 +23,15 @@ struct Constants {
     
     static let appName: String = "LifeDoc"
     static let baseURL: String = "https://rvp-utility.mediswitch.co.za:8443/ldmgw/"
+    //static let baseURL: String = "http://192.168.149.113:8080/ldmgw/"
+    
+    
+    //Prod//https://secure.lifedoc.co.za/C0m9wcQbO76LAE5O3K4jYxJZgLs7aWgXWJMlZlarKQPERCENT3DPERCENT3DEncryptUtil
+    //Dev//https://rvp-utility.mediswitch.co.za:8443/bIlMix7LPB6PCqQSRenuLlKq9qcV7gsGwKBNR4R8HgPERCENT3DPERCENT3DEncryptUtil
+    
+    static let termsUrl: String = "https://secure.lifedoc.co.za/C0m9wcQbO76LAE5O3K4jYxJZgLs7aWgXWJMlZlarKQPERCENT3DPERCENT3DEncryptUtil"
+    //static let termsUrl: String = "https://rvp-utility.mediswitch.co.za:8443/bIlMix7LPB6PCqQSRenuLlKq9qcV7gsGwKBNR4R8HgPERCENT3DPERCENT3DEncryptUtil"
+
     
     static let err_msg_email_forgot: String = "Please enter a valid email address."
     

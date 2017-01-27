@@ -131,7 +131,7 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
         cell.name.text = subs.description
         
         
-        cell.count.layer.cornerRadius = 11.0
+        cell.count.layer.cornerRadius = 10.5
         cell.count.clipsToBounds = true
         
         

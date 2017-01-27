@@ -9,9 +9,17 @@
 import UIKit
 import Material
 import Alamofire
+import FileExplorer
 
 
-class HealthProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HealthProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FileExplorerViewControllerDelegate {
+    /// Tells the delegate that the user finished presentation of the file explorer.
+    ///
+    /// - Parameter controller: The controller object managing the file explorer interface.
+    public func fileExplorerViewControllerDidFinish(_ controller: FileExplorerViewController) {
+        //
+    }
+
     
     var refreshControl = UIRefreshControl()
     
@@ -158,6 +166,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         let state = longPress.state
         let locationInView = longPress.location(in: tableViewProfile)
         let indexPath = tableViewProfile.indexPathForRow(at: locationInView)
+        let section = indexPath?.section
         
         struct My {
             static var cellSnapshot : UIView? = nil
@@ -170,7 +179,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         switch state {
         case UIGestureRecognizerState.began:
-            if indexPath != nil {
+            if indexPath != nil && section! == 1{
                 Path.initialIndexPath = indexPath
                 let cell = tableViewProfile.cellForRow(at: indexPath!) as UITableViewCell!
                 My.cellSnapshot  = snapshotOfCell(cell!)
@@ -203,7 +212,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             }
             
         case UIGestureRecognizerState.changed:
-            if My.cellSnapshot != nil {
+            if My.cellSnapshot != nil && section! == 1 {
                 var center = My.cellSnapshot!.center
                 center.y = locationInView.y
                 My.cellSnapshot!.center = center
@@ -215,7 +224,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 }
             }
         default:
-            if Path.initialIndexPath != nil {
+            if Path.initialIndexPath != nil && section! == 1 {
                 let cell = tableViewProfile.cellForRow(at: Path.initialIndexPath!) as UITableViewCell!
                 if My.cellIsAnimating {
                     My.cellNeedToShow = true
@@ -360,7 +369,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
               
                     
                 }else if(cell.type.text!.uppercased() == "CHRONIC CONDITION"){
-                    
+                    recordType = "CHRONIC_CONDITION"
+                    recordValue = cell.recordId.text!
                     
                 }
 
@@ -385,9 +395,18 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 hideList.append(cell.recordId.text!)
                 
                 let hidden = cell.hiddenValue.text!
+       
                 
-                
-                recordType = cell.type.text!.uppercased()
+                if(cell.type.text!.uppercased() == "ALLERGY"){
+                    
+                    recordType = cell.type.text!.uppercased()
+
+                }else if(cell.type.text!.uppercased() == "CHRONIC CONDITION"){
+                 
+                    recordType = "CHRONIC_CONDITION"
+                   
+                }
+
                 
                 if(hidden == "false"){
                     let image = UIImage(named: "blue_hide") as UIImage?
@@ -435,8 +454,15 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     
                 }else if(cell.type.text!.uppercased() == "CHRONIC CONDITION"){
-                   
                     
+               
+                   
+                    recordType = "CHRONIC_CONDITION"
+                    recordValue = cell.recordId.text!
+                    
+                         print(recordType)
+                    
+                    getDetails()
                 }
     
                 
@@ -601,6 +627,10 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
+    public func fileExplorerViewController(_ controller: FileExplorerViewController, didChooseURLs urls: [URL]) {
+        //Your code here
+    }
+    
     func buttonMoreClicked(sender:UIButton) {
         
         
@@ -636,16 +666,74 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             (alert: UIAlertAction!) -> Void in
             
             
-            let buttonRow = sender.tag
-            self.indexOfDeletedCell = buttonRow
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            
+            let optionMenuPhoto = UIAlertController(title: nil, message: "Add Photo/Attachment", preferredStyle: .actionSheet)
+            
+            // 2
+            let photoAction = UIAlertAction(title: "Take a photo", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                
+                if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+                    imagePicker.allowsEditing = false
+                    imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.present(imagePicker, animated: true, completion: nil)
+                }
+            })
+            
+            // 2
+            let galleryAction = UIAlertAction(title: "Select from gallery", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+                    imagePicker.allowsEditing = true
+                    imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    imagePicker.navigationBar.tintColor = .white
+                    
+                    self.present(imagePicker, animated: true, completion: nil)
+                }            })
+            
+            let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
+                (alert: UIAlertAction!) -> Void in
+                
+                
+                let fileExplorer = FileExplorerViewController()
+                fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
+                fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
+                fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
+                fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("jpg"), Filter.extension("pdf"), Filter.extension("doc")]
+                
+                //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
+                                                          //  in: .userDomainMask).first!
+                //fileExplorer.initialDirectoryURL = documentsUrl
+                fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
+                fileExplorer.delegate = self
+                
+                self.present(fileExplorer, animated: true, completion: nil)
+               
+            })
+            //
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+                (alert: UIAlertAction!) -> Void in
+               
+            })
             
             
-            let indexPath = IndexPath(item: self.indexOfDeletedCell, section: 1)
-            self.tableViewProfile.beginUpdates()
-            self.tableViewProfile.reloadRows(at: [indexPath], with: .fade)
-            self.tableViewProfile.endUpdates()
+            // 4
+            optionMenuPhoto.addAction(photoAction)
+            optionMenuPhoto.addAction(galleryAction)
+            optionMenuPhoto.addAction(fileAction)
+            optionMenuPhoto.addAction(cancelAction)
             
-            self.showAreYouSure()
+            // 5
+            //presentViewController(optionMenu, animated: true, completion: nil)
+            self.view.window?.rootViewController?.present(optionMenuPhoto, animated: true, completion: nil)
+            //self.present(optionMenu, animated: true, completion: nil)
             
         })
         
@@ -671,7 +759,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     
     
     func showAreYouSure() {
-        let ac = UIAlertController(title: "Message", message: "Are you sure you wish to delete this information? Please note that all the Sub-records will also be deleted", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Message", message: "Are you sure you wish to delete this information? Please note that all the sub-records will also be deleted", preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default)
         { action -> Void in
@@ -743,9 +831,9 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    public func saveJSONAllergy(j: JSON) {
+    public func saveJSONAllergyChronic(j: JSON) {
         let prefs = UserDefaults.standard
-        prefs.set(j.rawString()!, forKey: "mainAllergy")
+        prefs.set(j.rawString()!, forKey: "mainAllergyChronic")
         
         // here I save my JSON as a string
     }
@@ -809,7 +897,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     if(responseJSON != nil){
                         let json1 = JSON(responseJSON as Any)
                         
-                        self.saveJSONAllergy(j: json1)
+                        self.saveJSONAllergyChronic(j: json1)
                     }
 
                     
@@ -826,8 +914,15 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         
                         self.present(allergyView, animated: false, completion: nil)
                         
-                    }else if(self.recordType == "CHRONIC CONDITION"){
+                    }else if(self.recordType == "CHRONIC_CONDITION"){
                         
+                        let chronic: MainChronic = {
+                            return UIStoryboard.viewController(identifier: "MainChronic") as! MainChronic
+                        }()
+                        
+                        let chronicView = AppMenuSubRecords(rootViewController: chronic)
+                        
+                        self.present(chronicView, animated: false, completion: nil)
                         
                     }
 

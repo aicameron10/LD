@@ -15,6 +15,7 @@ class MainRecordCustomCell: UITableViewCell {
     
     @IBOutlet weak var name: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
     
     
     

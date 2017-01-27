@@ -132,19 +132,8 @@ class AppToolbarController: ToolbarController {
         toolbar.backgroundColor = UIColor(red: 0/255, green: 153.0/255, blue: 217.0/255, alpha: 1.0)
         
         
-        let myString = "LifeDoc"
-        let myMutableString = NSMutableAttributedString(
-            string: myString,
-            attributes: [NSFontAttributeName:
-                UIFont(name: "SegoePrint", size: 20 )!
-            ]
-        )
-        
-        
-        let heading = myMutableString.string
-        
-        
-        toolbar.title = heading
+    
+        toolbar.title = "LifeDoc"
         toolbar.titleLabel.textColor = .white
         toolbar.titleLabel.textAlignment = .left
         toolbar.titleLabel.font = UIFont(name: "SegoePrint", size: 20)
@@ -154,3 +143,4 @@ class AppToolbarController: ToolbarController {
         toolbar.rightViews = [HealthButton, searchButton]
     }
 }
+

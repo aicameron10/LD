@@ -70,10 +70,11 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var dropDownOption = ""
     
+    var countAttachments = 0
     
     let chooseDropDown = DropDown()
     
-    var options = ["Notes", "Doctor Visits", "Medication", "Hospital Visits", "Pathology Results", "Attachments"]
+    var options = ["Notes", "Doctor Visits", "Medication", "Hospital Visits", "Pathology Results", "Attachments/Photos"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +95,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         somethingChanged = false
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             loadDataSingle()
             
         }
@@ -111,7 +112,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         preparedropdown()
         
-        
+         listAttachments()
         
     }
     
@@ -121,9 +122,9 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     public func loadJSONSingle() -> JSON {
         let prefs = UserDefaults.standard
         
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             
-            return JSON.parse(prefs.string(forKey: "mainAllergy")!)
+            return JSON.parse(prefs.string(forKey: "mainAllergyChronic")!)
         }else{
             return nil
         }
@@ -144,14 +145,24 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             let value = item["value"].stringValue
             
-            if(description == "Allergy"){
+            if(description == "Condition"){
                 condition.text = value
             }
             
-            if(description == "Severity"){
-                dropDownOption = value
+            if(description == "Status of condition"){
+                
+                if(value == "Uncontrolled, even with medication"){
+                        dropDownOption = "Uncontrolled, even with medication"
+                }
+                else if(value == "Under control, with medication"){
+                        dropDownOption = "Controlled, with medication"
+                }else if(value == "Under control, without  medication"){
+                        dropDownOption = "Controlled, without medication"
+                }else{
+                       dropDownOption = value
+                }
             }
-            if(description == "Date first observed"){
+            if(description == "Date first diagnosed"){
                 editDate = value
             }
             
@@ -233,6 +244,11 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         cell.name.text = options[indexPath.row]
         
+        if(cell.name.text == "Attachments/Photos"){
+            cell.count.text = String(describing: countAttachments)
+        }
+
+        
         cell.count.layer.cornerRadius = 11.0
         cell.count.clipsToBounds = true
         
@@ -285,10 +301,10 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         chooseDropDown.bottomOffset = CGPoint(x: 0, y: dropDownButton.bounds.height)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
-        chooseDropDown.dataSource = ["Mild", "Severe", "Life Threatening"]
+        chooseDropDown.dataSource = ["Uncontrolled, even with medication", "Controlled, with medication", "Controlled, without medication", "Life Threatening", "Other"]
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             
             self.dropDownButton.setTitle(self.dropDownOption, for: .normal)
             self.serverityValue = dropDownOption
@@ -328,7 +344,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     private func prepareCloseButton() {
         
         let leftNavItem = closeButton
-        leftNavItem?.action = #selector(MainAllergy.buttonTapActionClose)
+        leftNavItem?.action = #selector(MainChronic.buttonTapActionClose)
         
         
     }
@@ -344,7 +360,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     private func prepareDateView() {
         
-        let tapDateView: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MainAllergy.showDatePicker))
+        let tapDateView: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MainChronic.showDatePicker))
         dateView.addGestureRecognizer(tapDateView)
     }
     
@@ -391,7 +407,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let dateToday = Date()
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             bpDate.text = editDate
         }else{
             bpDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
@@ -468,7 +484,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let rightNavItem = saveButton
         rightNavItem?.action = #selector(BloodPresssureContoller.buttonTapAction)
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             rightNavItem?.title = "Apply"
         }
     }
@@ -518,7 +534,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     }
     
     func showAreYouSure() {
-        let ac = UIAlertController(title: "Message", message: "Are you sure you wish to delete this information? Please note that all the Sub-records will also be deleted", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Message", message: "Are you sure you wish to delete this information? Please note that all the sub-records will also be deleted", preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default)
         { action -> Void in
@@ -528,7 +544,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         ac.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default)
         { action -> Void in
             self.deleteRecord = true
-            self.sendMainAllergy()
+            self.sendMainAllergyChronic()
         })
         present(ac, animated: true)
     }
@@ -538,7 +554,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     private func prepareDeleteButton() {
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil) {
+        if (prefs.string(forKey: "mainAllergyChronic") != nil) {
             deleteButton.isHidden = false
         }else{
             deleteButton.isHidden = true
@@ -572,7 +588,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
         
-        sendMainAllergy()
+        sendMainAllergyChronic()
     }
     
     func showDate() {
@@ -647,9 +663,112 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         present(ac, animated: true)
     }
     
+    private func listAttachments() {
+        
+        
+        
+        let urlString: String
+        
+        urlString = Constants.baseURL + "records/listAttachments"
+        
+        print(urlString)
+        
+        
+        
+        let prefs = UserDefaults.standard
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        let authToken = prefs.string(forKey: "authToken")
+        
+        
+        
+        let parameters: Parameters = [
+            "loggedInUserDetailsId": String(loggedInUserDetailsId),
+            "currentActiveUserDetailsId": String(currentActiveUserDetailsId),
+            "recordId": recordValue,
+            "type": "ALLERGY"
+            
+        ]
+        
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+            
+        ]
+        
+        
+        
+        MainChronic.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            print(response)
+            
+            if let jsonResponse = response.result.value {
+                //print("JSON: \(json)")
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                self.messageStr = json["message"].string!
+                
+                
+                if status == "SUCCESS"{
+                    
+                    let count = json["attachments"].array?.count
+                    
+                    self.countAttachments = count!
+                    
+                    self.tableView.reloadData()
+                    
+                }else{
+                    
+                    //self.showError()
+                }
+                
+            }
+            
+            if let error = response.result.error  as? AFError {
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error  as? URLError {
+                print("URLError occurred: \(error)")
+                self.showNetworkError()
+                
+            }
+        }
+        
+        
+    }
+
     
-    
-    private func sendMainAllergy() {
+    private func sendMainAllergyChronic() {
         
         
         let strDate: String = bpDate.text!
@@ -666,7 +785,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         let urlString: String
         
-        urlString = Constants.baseURL + "healthProfiles/allergies"
+        urlString = Constants.baseURL + "healthProfiles/chronicConditions"
         
         print(urlString)
         
@@ -692,15 +811,16 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             "loggedInUserDetailsId": String(loggedInUserDetailsId),
             "currentActiveUserDetailsId": String(currentActiveUserDetailsId),
             "date": date,
-            "description": dec,
+            "condition": dec,
             "recordId": recordValue,
-            "severity": serverityValue,
+            "status": serverityValue,
             "_hide": hideBool,
             "_save": save,
             "_delete": del,
             "subRecords": subRecords
         ]
         
+  
         
         
         let headers: HTTPHeaders = [

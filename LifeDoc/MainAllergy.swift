@@ -69,11 +69,15 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     var recordValue = ""
     
     var dropDownOption = ""
+    
+    var countAttachments = 0
    
     
     let chooseDropDown = DropDown()
+  
+    var indexOfExpandedCell = -1
     
-    var options = ["Notes", "Doctor Visits", "Medication", "Hospital Visits", "Pathology Results", "Attachments"]
+    var options = ["Notes", "Doctor Visits", "Medication", "Hospital Visits", "Pathology Results", "Attachments/Photos"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +98,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         somethingChanged = false
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             loadDataSingle()
         
         }
@@ -111,7 +115,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         preparedropdown()
         
-      
+        listAttachments()
         
     }
     
@@ -121,9 +125,9 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     public func loadJSONSingle() -> JSON {
         let prefs = UserDefaults.standard
         
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             
-            return JSON.parse(prefs.string(forKey: "mainAllergy")!)
+            return JSON.parse(prefs.string(forKey: "mainAllergyChronic")!)
         }else{
             return nil
         }
@@ -233,6 +237,37 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         cell.name.text = options[indexPath.row]
         
+        if(cell.name.text == "Attachments/Photos"){
+         cell.count.text = String(describing: countAttachments)
+        }
+        
+        
+        
+        if(indexPath.row == indexOfExpandedCell)
+        {
+            //let prefs = UserDefaults.standard
+            //prefs.removeObject(forKey: "measurementValue")
+            
+            //let json = JSON(cell.measurements.text!)
+            
+            
+            //print(json)
+            
+            //self.saveJSONNow(j: json)
+            
+            
+            //let type = cell.assessName.text!
+            //prefs.set(type, forKey: "AssessmentType")
+            
+            // design your read more label here
+            cell.tableView.isHidden = false
+            
+            cell.tableView.reloadData()
+           
+        }else{
+            cell.tableView.isHidden = true
+        }
+        
         cell.count.layer.cornerRadius = 11.0
         cell.count.clipsToBounds = true
         
@@ -246,12 +281,14 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        /*
-         let cholesterolController: CholesterolController = {
-         return UIStoryboard.viewController(identifier: "CholesterolController") as! CholesterolController
-         }()
-         self.present(cholesterolController, animated: true, completion: nil)
-         */
+        print("touch me")
+        
+        indexOfExpandedCell = indexPath.row
+        //print(indexOfEditCell)
+        let indexPathNow = IndexPath(item: indexOfExpandedCell, section: 0)
+        self.tableView.beginUpdates()
+        self.tableView.reloadRows(at: [indexPathNow], with: .fade)
+        self.tableView.endUpdates()
         
     }
     
@@ -259,8 +296,13 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-     
+        if(indexPath.row == indexOfExpandedCell && indexPath.section == 0){
+            
+            return 240 //Your desired height for the expanded cell
+        }else{
             return 40
+        }
+        
         
         
         
@@ -288,7 +330,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         chooseDropDown.dataSource = ["Mild", "Severe", "Life Threatening"]
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             
             self.dropDownButton.setTitle(self.dropDownOption, for: .normal)
             self.serverityValue = dropDownOption
@@ -391,7 +433,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let dateToday = Date()
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             bpDate.text = editDate
         }else{
             bpDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
@@ -468,7 +510,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let rightNavItem = saveButton
         rightNavItem?.action = #selector(BloodPresssureContoller.buttonTapAction)
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil){
+        if (prefs.string(forKey: "mainAllergyChronic") != nil){
             rightNavItem?.title = "Apply"
         }
     }
@@ -518,7 +560,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     }
     
     func showAreYouSure() {
-        let ac = UIAlertController(title: "Message", message: "Are you sure you wish to delete this information? Please note that all the Sub-records will also be deleted", preferredStyle: .alert)
+        let ac = UIAlertController(title: "Message", message: "Are you sure you wish to delete this information? Please note that all the sub-records will also be deleted", preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default)
         { action -> Void in
@@ -538,7 +580,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     private func prepareDeleteButton() {
         
         let prefs = UserDefaults.standard
-        if (prefs.string(forKey: "mainAllergy") != nil) {
+        if (prefs.string(forKey: "mainAllergyChronic") != nil) {
             deleteButton.isHidden = false
         }else{
             deleteButton.isHidden = true
@@ -801,7 +843,110 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
+    private func listAttachments() {
+        
+ 
+        
+        let urlString: String
+        
+        urlString = Constants.baseURL + "records/listAttachments"
+        
+        print(urlString)
+        
+      
+        
+        let prefs = UserDefaults.standard
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        let authToken = prefs.string(forKey: "authToken")
+        
+        
+        
+        let parameters: Parameters = [
+            "loggedInUserDetailsId": String(loggedInUserDetailsId),
+            "currentActiveUserDetailsId": String(currentActiveUserDetailsId),
+            "recordId": recordValue,
+            "type": "ALLERGY"
     
+        ]
+        
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+            
+        ]
+        
+        
+        
+        MainAllergy.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            print(response)
+            
+            if let jsonResponse = response.result.value {
+                //print("JSON: \(json)")
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                self.messageStr = json["message"].string!
+                
+                
+                if status == "SUCCESS"{
+                    
+                 let count = json["attachments"].array?.count
+                  
+                  self.countAttachments = count!
+                    
+                  self.tableView.reloadData()
+                    
+                }else{
+                    
+                    //self.showError()
+                }
+                
+            }
+            
+            if let error = response.result.error  as? AFError {
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error  as? URLError {
+                print("URLError occurred: \(error)")
+             self.showNetworkError()
+                
+            }
+        }
+        
+        
+    }
+
     
     
     private static var Manager: Alamofire.SessionManager = {

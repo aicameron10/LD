@@ -29,7 +29,7 @@ class TermsController: UIViewController,UIWebViewDelegate  {
         
         webView.delegate = self
         
-        let url = NSURL(string: "https://rvp-utility.mediswitch.co.za:8443/bIlMix7LPB6PCqQSRenuLlKq9qcV7gsGwKBNR4R8HgPERCENT3DPERCENT3DEncryptUtil")
+        let url = NSURL(string: Constants.termsUrl)
         let urlRequest = NSURLRequest(url: url! as URL)
         self.webView.loadRequest(urlRequest as URLRequest)
         

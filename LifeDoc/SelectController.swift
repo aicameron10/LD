@@ -48,7 +48,7 @@ class SelectContoller: UIViewController {
         
         let prefs = UserDefaults.standard
         prefs.removeObject(forKey: "singleMeasurement")
-        prefs.removeObject(forKey: "mainAllergy")
+        prefs.removeObject(forKey: "mainAllergyChronic")
         
         
         

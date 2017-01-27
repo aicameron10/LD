@@ -129,6 +129,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         let state = longPress.state
         let locationInView = longPress.location(in: tableViewAssess)
         let indexPath = tableViewAssess.indexPathForRow(at: locationInView)
+        let section = indexPath?.section
         
         struct My {
             static var cellSnapshot : UIView? = nil
@@ -141,7 +142,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         
         switch state {
         case UIGestureRecognizerState.began:
-            if indexPath != nil {
+            if indexPath != nil && section! == 1 {
                 Path.initialIndexPath = indexPath
                 let cell = tableViewAssess.cellForRow(at: indexPath!) as UITableViewCell!
                 My.cellSnapshot  = snapshotOfCell(cell!)
@@ -174,7 +175,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             }
             
         case UIGestureRecognizerState.changed:
-            if My.cellSnapshot != nil {
+            if My.cellSnapshot != nil && section! == 1 {
                 var center = My.cellSnapshot!.center
                 center.y = locationInView.y
                 My.cellSnapshot!.center = center
@@ -186,7 +187,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 }
             }
         default:
-            if Path.initialIndexPath != nil {
+            if Path.initialIndexPath != nil && section! == 1 {
                 let cell = tableViewAssess.cellForRow(at: Path.initialIndexPath!) as UITableViewCell!
                 if My.cellIsAnimating {
                     My.cellNeedToShow = true

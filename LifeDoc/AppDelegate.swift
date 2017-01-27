@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import Alamofire
+import FileExplorer
 
 extension UIStoryboard {
     class func viewController(identifier: String) -> UIViewController {
@@ -75,7 +76,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName: UIColor.white,
              NSFontAttributeName: UIFont(name: "SegoePrint", size: 20)!]
         
+        //UIFont.familyNames.sorted().forEach({print($0)})
+    
+
+        
         mainViewLoad()
+        
+        
+        
         
         return true
     }

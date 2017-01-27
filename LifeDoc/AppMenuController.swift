@@ -127,7 +127,7 @@ extension AppMenuController {
         OTPMenuItem.button.image = imageotp
         OTPMenuItem.button.tintColor = .white
         OTPMenuItem.button.pulseColor = .white
-        OTPMenuItem.button.backgroundColor = Color.green.base
+        OTPMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 168/255, blue: 89/255, alpha: 1.0)
         OTPMenuItem.button.depthPreset = .depth1
         OTPMenuItem.title = "OTP"
         
@@ -140,7 +140,7 @@ extension AppMenuController {
         recordMenuItem.button.image = Icon.cm.add
         recordMenuItem.button.tintColor = .white
         recordMenuItem.button.pulseColor = .white
-        recordMenuItem.button.backgroundColor = Color.red.base
+        recordMenuItem.button.backgroundColor = UIColor(red: 237/255, green: 51/255, blue: 56/255, alpha: 1.0)
         recordMenuItem.title = "Add record"
         
         recordMenuItem.button.addTarget(self, action: #selector(handleSelect), for: .touchUpInside)
