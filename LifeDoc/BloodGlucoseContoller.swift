@@ -611,7 +611,23 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         let str2: String = bgHb1ac.text!
         let str3: String = bgRandom.text!
         
+        let dateToday = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let dateNow = bgDate.text
+        let TimeNow = bgTime.text
         
+        let dateTime = dateNow! + " " + TimeNow! + ":00"
+        let date = dateFormatter.date(from: dateTime)
+        
+        if (date! > dateToday) {
+            print("future time")
+            
+            
+            self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+            return
+        }
+
         
         
         if (str1.isEmpty && str2.isEmpty && str3.isEmpty) {
@@ -819,6 +835,7 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     private func showCal() {
         
         singleDate = Date()
+       
         
         let selector = UIStoryboard(name: "WWCalendarTimeSelector", bundle: nil).instantiateInitialViewController() as! WWCalendarTimeSelector
         selector.delegate = self
@@ -827,7 +844,8 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         selector.optionStyles.showMonth(false)
         selector.optionStyles.showYear(true)
         selector.optionStyles.showTime(false)
-        
+        selector.optionCalendarFontColorFutureDates = UIColor.lightGray
+       
         
         
         
@@ -841,6 +859,8 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         singleDate = Date()
         
+        
+        
         let selector = UIStoryboard(name: "WWCalendarTimeSelector", bundle: nil).instantiateInitialViewController() as! WWCalendarTimeSelector
         selector.delegate = self
         selector.optionCurrentDate = singleDate
@@ -852,6 +872,7 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
         
+        
         /*
          Any other options are to be set before presenting selector!
          */
@@ -859,7 +880,7 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     }
     
     
-    
+       
     func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
         print("Selected \n\(date)\n---")
         singleDate = date
@@ -877,7 +898,24 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             }
         }
         if(NewTime == true){
-            bgTime.text = date.stringFromFormat("HH:mm")
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateNow = bgDate.text
+            
+            let dateTime = dateFormatter.string(from: dateToday)
+            
+            if (date > dateToday && dateNow == dateTime) {
+                print("future time")
+                
+                
+                self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+                
+            }else{
+                
+                 bgTime.text = date.stringFromFormat("HH:mm")
+            }
+           
         }
         
         NewDate = false

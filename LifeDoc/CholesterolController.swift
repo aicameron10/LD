@@ -678,6 +678,22 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
         let strLDL: String = cholesterolLDL.text!
         
         
+        let dateToday = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let dateNow = cholesterolDate.text
+        let TimeNow = cholesterolTime.text
+        
+        let dateTime = dateNow! + " " + TimeNow! + ":00"
+        let date = dateFormatter.date(from: dateTime)
+
+        if (date! > dateToday) {
+            print("future time")
+            
+            
+            self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+            return
+        }
         
         if (strTotal.isEmpty && strTrig.isEmpty && strHDL.isEmpty && strLDL.isEmpty) {
             
@@ -846,7 +862,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
         selector.optionStyles.showMonth(false)
         selector.optionStyles.showYear(true)
         selector.optionStyles.showTime(false)
-        
+        selector.optionCalendarFontColorFutureDates = UIColor.lightGray
         
         
         
@@ -897,7 +913,25 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
             }
         }
         if(NewTime == true){
-            cholesterolTime.text = date.stringFromFormat("HH:mm")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateNow = cholesterolDate.text
+            
+            let dateTime = dateFormatter.string(from: dateToday)
+        
+            
+            if (date > dateToday && dateNow == dateTime) {
+                print("future time")
+                
+                
+                self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+                
+            }else{
+                
+                 cholesterolTime.text = date.stringFromFormat("HH:mm")
+            }
+
+           
         }
         
         NewDate = false

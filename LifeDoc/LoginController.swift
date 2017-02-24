@@ -402,8 +402,6 @@ class LoginController: UIViewController {
                 appDelegate.hideActivityIndicator(uiView: self.view)
                 self.showNetworkError()
                 
-            } else {
-                              
             }
         }
         

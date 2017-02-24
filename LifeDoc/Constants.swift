@@ -66,8 +66,41 @@ struct Constants {
     static let err_msg_allergy: String = "Please enter an allergy description"
     static let err_msg_chronic: String = "Please enter a chronic condition"
     
+    static let err_msg_date_note: String = "Please enter a date"
+    static let err_msg_desc_note: String = "Please enter a note"
     
     
+     static let err_msg_date_hos: String = "Please enter a date"
+     static let err_msg_date_hos_ad: String = "Date cannot be before the Admission date"
+     static let err_msg_date_medi_end: String = "Date cannot be before the start date"
+     static let err_msg_date_medi_start: String = "Please enter a date"
+     static let err_msg_name_hos: String = "Please enter a Hospital Name"
+     static let err_msg_name_hos_treat: String = "Please enter a Doctor Name"
+    
+    static let err_msg_name_medi_doc: String = "Please enter a Doctor Name"
+    static let err_msg_medi_repeat: String = "Please enter the number of repeats"
+    static let err_msg_medi_repeat_error: String = "Cannot be a negative number or zero.Minimum = 1, Maximum = 12"
+    static let err_msg_name_medi: String = "Please enter a Medicine Name"
+    
+   static let err_msg_date_medi: String = "Date cannot be before the start date"
+  
+    static let err_msg_date_path: String = "Please enter a date"
+    static let err_msg_name_path: String = "Please enter a Doctor Name"
+    static let err_msg_name_path_desc: String = "Please enter a test description"
+    
+    
+        static let err_msg_filename: String = "Please enter a filename"
+        static let err_msg_file_desc: String = "Please enter a description"
+        static let err_msg_file_type: String = "Please select an attachment type"
+    
+   
+        static let err_msg_profile_first_name: String = "Please enter your first name"
+        static let err_msg_profile_last_name: String = "Please enter your surname."
+        static let err_msg_profile_dob: String = "Please enter your date of birth."
+        static let err_msg_profile_id: String = "Please enter a valid 13-digit South African ID number."
+    
+   
+   
     static let regex: String = "^(?=(.*\\d){1})(?=.*[a-zA-Z])(?=.*[!@#$%^/|=&*?~\\^])[0-9a-zA-Z!@#$%^/|=&*?~\\^]{8,20}"
     
     static let err_msg_cholesterol: String = "Please capture between 0.00 and 20.00"

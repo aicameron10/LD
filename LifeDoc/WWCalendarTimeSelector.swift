@@ -579,7 +579,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     fileprivate var calRow1StartDate: Date = Date()
     fileprivate var calRow2StartDate: Date = Date()
     fileprivate var calRow3StartDate: Date = Date()
-    fileprivate var yearRow1: Int = 2016
+    fileprivate var yearRow1: Int = 2017
     fileprivate var multipleDates: [Date] { return optionCurrentDates.sorted(by: { $0.compare($1) == ComparisonResult.orderedAscending }) }
     fileprivate var multipleDatesLastAdded: Date?
     fileprivate var flashDate: Date?

@@ -85,6 +85,9 @@ extension AppMenuSubRecords {
         
         closeMenu()
         
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: "NotesEdit")
+
         let note: NoteSubRecord = {
         return UIStoryboard.viewController(identifier: "NoteSubRecord") as! NoteSubRecord}()
         
@@ -92,8 +95,66 @@ extension AppMenuSubRecords {
         self.present(note, animated: true, completion: nil)
     }
     
+    /// Handle the menu toggle event.
+    internal func handlePath(button: Button) {
+        
+        closeMenu()
+        
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: "PathEdit")
+        
+        let path: PathSubRecord = {
+            return UIStoryboard.viewController(identifier: "PathSubRecord") as! PathSubRecord}()
+        
+        
+        self.present(path, animated: true, completion: nil)
+    }
+
+    /// Handle the menu toggle event.
+    internal func handleDoc(button: Button) {
+        
+        closeMenu()
+        
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: "DocEdit")
+        
+        let doc: DoctorSubRecord = {
+            return UIStoryboard.viewController(identifier: "DoctorSubRecord") as! DoctorSubRecord}()
+        
+        
+        self.present(doc, animated: true, completion: nil)
+    }
+
+    /// Handle the menu toggle event.
+    internal func handleHos(button: Button) {
+        
+        closeMenu()
+        
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: "HosEdit")
+        
+        let hos: HospitalSubRecord = {
+            return UIStoryboard.viewController(identifier: "HospitalSubRecord") as! HospitalSubRecord}()
+        
+        
+        self.present(hos, animated: true, completion: nil)
+    }
     
-    
+    /// Handle the menu toggle event.
+    internal func handlemedi(button: Button) {
+        
+        closeMenu()
+        
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: "MediEdit")
+        
+        let medi: MedicationSubRecord = {
+            return UIStoryboard.viewController(identifier: "MedicationSubRecord") as! MedicationSubRecord}()
+        
+        
+        self.present(medi, animated: true, completion: nil)
+    }
+
     
     internal func prepareAddButton() {
         addButton = FabButton(image: Icon.cm.add, tintColor: .white)
@@ -128,7 +189,7 @@ extension AppMenuSubRecords {
         DocMenuItem.button.backgroundColor = UIColor(red: 237/255, green: 51/255, blue: 56/255, alpha: 1.0)
         DocMenuItem.title = "Doctor Visit"
         
-        DocMenuItem.button.addTarget(self, action: #selector(handleNote), for: .touchUpInside)
+        DocMenuItem.button.addTarget(self, action: #selector(handleDoc), for: .touchUpInside)
     }
     
     internal func prepareMediButton() {
@@ -141,7 +202,7 @@ extension AppMenuSubRecords {
         MediMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 168/255, blue: 89/255, alpha: 1.0)
         MediMenuItem.title = "Medication"
         
-        MediMenuItem.button.addTarget(self, action: #selector(handleNote), for: .touchUpInside)
+        MediMenuItem.button.addTarget(self, action: #selector(handlemedi), for: .touchUpInside)
     }
 
     internal func prepareHosButton() {
@@ -154,7 +215,7 @@ extension AppMenuSubRecords {
         HosMenuItem.button.backgroundColor = UIColor(red: 245/255, green: 135/255, blue: 51/255, alpha: 1.0)
         HosMenuItem.title = "Hospital Visit"
         
-        HosMenuItem.button.addTarget(self, action: #selector(handleNote), for: .touchUpInside)
+        HosMenuItem.button.addTarget(self, action: #selector(handleHos), for: .touchUpInside)
     }
 
     internal func preparePathButton() {
@@ -167,7 +228,7 @@ extension AppMenuSubRecords {
         PathMenuItem.button.backgroundColor = UIColor(red: 168/255, green: 82/255, blue: 138/255, alpha: 1.0)
         PathMenuItem.title = "Pathology Results"
         
-        PathMenuItem.button.addTarget(self, action: #selector(handleNote), for: .touchUpInside)
+        PathMenuItem.button.addTarget(self, action: #selector(handlePath), for: .touchUpInside)
     }
 
   

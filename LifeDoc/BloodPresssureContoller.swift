@@ -538,7 +538,23 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         let str2: String = bpDiastolic.text!
         
         
+        let dateToday = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let dateNow = bpDate.text
+        let TimeNow = bpTime.text
         
+        let dateTime = dateNow! + " " + TimeNow! + ":00"
+        let date = dateFormatter.date(from: dateTime)
+        
+        if (date! > dateToday) {
+            print("future time")
+            
+            
+            self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+            return
+        }
+
         
         if(str1.isEmpty || !validateValueSys(testStr: str1)){
             bpSystolic.isErrorRevealed = true
@@ -691,6 +707,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         selector.optionStyles.showMonth(false)
         selector.optionStyles.showYear(true)
         selector.optionStyles.showTime(false)
+        selector.optionCalendarFontColorFutureDates = UIColor.lightGray
         
         
         
@@ -741,7 +758,24 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
             }
         }
         if(NewTime == true){
-            bpTime.text = date.stringFromFormat("HH:mm")
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateNow = bpDate.text
+            
+            let dateTime = dateFormatter.string(from: dateToday)
+            
+             if (date > dateToday && dateNow == dateTime) {
+                print("future time")
+                
+                
+                self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+                
+            }else{
+                
+                bpTime.text = date.stringFromFormat("HH:mm")
+            }
+          
         }
         
         NewDate = false

@@ -605,6 +605,25 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         let str1: String = height.text!
         let str2: String = weight.text!
         
+        
+        let dateToday = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let dateNow = sDate.text
+        let TimeNow = Time.text
+        
+        let dateTime = dateNow! + " " + TimeNow! + ":00"
+        let date = dateFormatter.date(from: dateTime)
+        
+        if (date! > dateToday) {
+            print("future time")
+            
+            
+            self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+            return
+        }
+
+        
  
         if(str2.isEmpty || !validateValueWeight(testStr: str2)){
             weight.isErrorRevealed = true
@@ -758,6 +777,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         selector.optionStyles.showMonth(false)
         selector.optionStyles.showYear(true)
         selector.optionStyles.showTime(false)
+        selector.optionCalendarFontColorFutureDates = UIColor.lightGray
         
         
         
@@ -808,7 +828,24 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
             }
         }
         if(NewTime == true){
-            Time.text = date.stringFromFormat("HH:mm")
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let dateNow = sDate.text
+            
+            let dateTime = dateFormatter.string(from: dateToday)
+
+            
+             if (date > dateToday && dateNow == dateTime) {
+                print("future time")
+                
+                
+                self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
+                
+            }else{
+                
+                          Time.text = date.stringFromFormat("HH:mm")
+            }
+
         }
         
         NewDate = false

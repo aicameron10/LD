@@ -10,6 +10,7 @@ import UIKit
 import Material
 import Alamofire
 import FileExplorer
+import UserNotifications
 
 extension UIStoryboard {
     class func viewController(identifier: String) -> UIViewController {
@@ -76,9 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName: UIColor.white,
              NSFontAttributeName: UIFont(name: "SegoePrint", size: 20)!]
         
+       //application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         //UIFont.familyNames.sorted().forEach({print($0)})
     
+        let prefs = UserDefaults.standard
+      
+        prefs.removeObject(forKey: "savedOrderProfile")
+        //prefs.removeObject(forKey: "savedOrder")
+          prefs.removeObject(forKey: "savedServerMessage")
+        
 
+        
         
         mainViewLoad()
         
@@ -90,6 +99,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func mainView() {
+        
+        let prefs = UserDefaults.standard
+        
+        prefs.removeObject(forKey: "savedServerMessage")
+        
+       
+        
+     
+        self.checkTerms()
+        self.checkAuthToken()
+ 
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
         
         setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139.0/255, blue: 197.0/255, alpha: 1.0))
         
@@ -105,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = statusController
         
         window!.makeKeyAndVisible()
+
         
         
     }
@@ -292,6 +314,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          self.window!.rootViewController?.present(ac, animated: true)
 
     }
+    
+    
+    private func showTerms(){
+        
+       
+        let msg = "Please note that the LifeDoc Terms and Conditions have been updated. By continuing you accept the changes to the Terms and Conditions. If you do not accept the updated Terms and Conditions, you will no longer be able to use LifeDoc."
+        
+        
+        let ac = UIAlertController(title: "Terms and Conditions", message: msg, preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "View T&C's", style: UIAlertActionStyle.default)
+        { action -> Void in
+            let terms: TermsCheckController = {
+                return UIStoryboard.viewController(identifier: "TermsCheckController") as! TermsCheckController
+            }()
+            
+   
+         
+             self.window!.rootViewController?.present(terms, animated: true)
+        })
+
+        
+        ac.addAction(UIAlertAction(title: "Decline", style: UIAlertActionStyle.default)
+        { action -> Void in
+            self.logOut()
+        })
+        ac.addAction(UIAlertAction(title: "Accept", style: UIAlertActionStyle.default)
+        { action -> Void in
+            self.acceptTermsConditions()
+        })
+       
+        
+        
+        self.window!.rootViewController?.present(ac, animated: true)
+        
+    }
+    
+    
+    
+
     
     private func shareNow(){
         // text to share
@@ -685,6 +747,434 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    public func checkTerms() {
+        
+        
+        
+        let urlString: String
+        
+        
+        urlString = Constants.baseURL + "checkTermsConditions"
+        
+        
+        let prefs = UserDefaults.standard
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        let authToken = prefs.string(forKey: "authToken")
+        
+        let parameters: Parameters = [
+            "currentActiveUserDetailsId": currentActiveUserDetailsId,
+            "loggedInUserDetailsId": loggedInUserDetailsId
+            
+            
+        ]
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json"
+        ]
+        
+        
+        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
+        
+        
+        
+        // Both calls are equivalent
+        AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            
+            
+            if let jsonResponse = response.result.value {
+                print("JSON: \(jsonResponse)")
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                self.messageStr = json["message"].string!
+                   let value = json["value"].bool!
+                
+                
+                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
+                
+                
+                if status == "SUCCESS"{
+                    
+                    if (value == false) {
+                      
+                        self.showTerms()
+                    }
+                    
+                    
+                    
+                }
+                
+            }
+            if let error = response.result.error as? AFError{
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error as? URLError {
+                print("URLError occurred: \(error)")
+                self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                self.showNetworkError()
+                
+            }
+        }
+        
+        
+    }
+
+    
+    public func acceptTermsConditions() {
+        
+        
+        
+        let urlString: String
+        
+        
+        urlString = Constants.baseURL + "acceptTermsConditions"
+        
+        
+        let prefs = UserDefaults.standard
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        let authToken = prefs.string(forKey: "authToken")
+        
+        let parameters: Parameters = [
+            "currentActiveUserDetailsId": currentActiveUserDetailsId,
+            "loggedInUserDetailsId": loggedInUserDetailsId
+           
+            
+        ]
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json"
+        ]
+        
+        
+        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
+        
+        
+        
+        // Both calls are equivalent
+        AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            
+            
+            if let jsonResponse = response.result.value {
+                //print("JSON: \(jsonResponse)")
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                self.messageStr = json["message"].string!
+              
+                
+                
+                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
+                
+                
+                if status == "SUCCESS"{
+                    
+                     self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 3.0, position: .bottom)
+                    
+                }else{
+                     self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 3.0, position: .bottom)
+                    self.checkTerms()
+                }
+                
+            }
+            if let error = response.result.error as? AFError{
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error as? URLError {
+                print("URLError occurred: \(error)")
+                self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                self.showNetworkError()
+                
+            }
+        }
+        
+        
+    }
+
+    
+    public func checkAuthToken() {
+        
+        
+        
+        let urlString: String
+        
+        
+        urlString = Constants.baseURL + "checkAuthToken"
+        
+        
+        let prefs = UserDefaults.standard
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        let authToken = prefs.string(forKey: "authToken")
+        
+        let parameters: Parameters = [
+            "currentActiveUserDetailsId": currentActiveUserDetailsId,
+            "loggedInUserDetailsId": loggedInUserDetailsId,
+            "authToken": authToken as Any
+            
+        ]
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json"
+        ]
+        
+        
+        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
+        
+        
+        
+        // Both calls are equivalent
+        AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            
+            
+            if let jsonResponse = response.result.value {
+                print("JSON: \(jsonResponse)")
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                self.messageStr = json["message"].string!
+                let value = json["value"].bool!
+                
+                
+                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
+                
+                
+                if status == "SUCCESS"{
+                    
+                    if (value == false) {
+                        //logout
+                        self.logOut()
+                    }
+                    
+                    
+                    
+                }
+                
+            }
+            if let error = response.result.error as? AFError{
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error as? URLError {
+                print("URLError occurred: \(error)")
+                self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                self.showNetworkError()
+                
+            }
+        }
+        
+        
+    }
+    
+    
+    private func logOut() {
+        
+        let prefs = UserDefaults.standard
+        prefs.removeObject(forKey: "userloggedin")
+        prefs.removeObject(forKey: "jsonHealthAssess")
+        prefs.removeObject(forKey: "jsonHealthProfile")
+        prefs.removeObject(forKey: "savedOrder")
+        prefs.removeObject(forKey: "savedOrderProfile")
+        prefs.removeObject(forKey: "savedServerMessage")
+        
+        
+    
+
+        
+        let urlString: String
+        
+        urlString = Constants.baseURL + "logout"
+        
+        print(urlString)
+      
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        let authToken = prefs.string(forKey: "authToken")
+        
+        let parameters: Parameters = [
+            "loggedInUserDetailsId": loggedInUserDetailsId,
+            "currentActiveUserDetailsId": currentActiveUserDetailsId
+            
+        ]
+        
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json"
+        ]
+        
+        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
+        
+        
+        
+        // Both calls are equivalent
+        AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            
+            
+            if let jsonResponse = response.result.value {
+                
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                let msg = json["message"].string!
+                
+                if status == "SUCCESS"{
+                    
+                    // get a reference to the app delegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    
+                    
+                    let prefs = UserDefaults.standard
+                    prefs.set(msg, forKey: "savedServerMessage")
+                    
+                    appDelegate.logOutScreen()
+                    appDelegate.showToast()
+                    
+                    
+                }else{
+                    
+                    
+                }
+                
+            }
+            
+            if let error = response.result.error  as? AFError {
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error  as? URLError {
+                print("URLError occurred: \(error)")
+                self.showNetworkError()
+                
+            }
+            
+        }
+        
+        
+    }
+
+
+    
     func showNetworkError() {
         let ac = UIAlertController(title: "Error", message:  "Your device is unable to connect,  Please check your device internet settings or contact 0800 695 433 (0800 My Life) for further assistance", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -725,4 +1215,31 @@ extension NSURLRequest {
         return true
     }
     #endif
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if parentResponder is UIViewController {
+                return parentResponder as! UIViewController!
+            }
+        }
+        return nil
+    }
+}
+public extension Array {
+    mutating func swap(ind1: Int, _ ind2: Int){
+        var temp: Element
+        temp = self[ind1]
+        self[ind1] = self[ind2]
+        self[ind2] = temp
+    }
+}
+
+public extension Array {
+    mutating func rearrange(from: Int, to: Int) {
+        insert(remove(at: from), at: to)
+    }
 }

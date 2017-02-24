@@ -74,7 +74,11 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
                 subs.description = object["description"].stringValue
                 
                 if(object["count"].stringValue != "0"){
+                   
                     self.arraySubs.append(subs)
+                    
+
+                    
                 }
                 
             }
@@ -128,10 +132,30 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
         let subs = arraySubs[indexPath.row]
         
         cell.count.text = subs.count
-        cell.name.text = subs.description
+     
+        
+        if(subs.description == "Doctor Visit"){
+            cell.name.text = "Doctor Visits"
+        }
+        
+        if(subs.description == "Hospital Visit"){
+            cell.name.text = "Hospital Visits"
+        }
+        
+        if(subs.description == "Pathology"){
+            cell.name.text = "Pathology Results"
+        }
+        
+        if(subs.description == "Medicine"){
+            cell.name.text = "Medication"
+        }
+        
+        if(subs.description == "Notes"){
+            cell.name.text = "Notes"
+        }
         
         
-        cell.count.layer.cornerRadius = 10.5
+        cell.count.layer.cornerRadius = 11.5
         cell.count.clipsToBounds = true
         
         
@@ -171,7 +195,7 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 30
+        return 45
         
         
     }

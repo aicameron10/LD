@@ -80,6 +80,10 @@
 		D659FDA11DFF0EDE00131288 /* AssessmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */; };
 		D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */; };
 		D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */; };
+		D67EFD541E4870970073DF8F /* PathSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD531E4870960073DF8F /* PathSubRecord.swift */; };
+		D67EFD561E4985E00073DF8F /* DoctorSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */; };
+		D67EFD581E498E920073DF8F /* HospitalSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */; };
+		D67EFD5A1E4AE6880073DF8F /* MedicationSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD591E4AE6870073DF8F /* MedicationSubRecord.swift */; };
 		D69B8E9E1E025DF5008F1739 /* BodyTempController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */; };
 		D69B8EA01E0266BF008F1739 /* HeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8E9F1E0266BF008F1739 /* HeightController.swift */; };
 		D69B8EA21E026A3B008F1739 /* PulseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8EA11E026A3B008F1739 /* PulseController.swift */; };
@@ -105,6 +109,9 @@
 		D6C98FCD1E30834D00BACACF /* MainChronic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FCC1E30834D00BACACF /* MainChronic.swift */; };
 		D6C98FCF1E30D24600BACACF /* NoteSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FCE1E30D24600BACACF /* NoteSubRecord.swift */; };
 		D6C98FD11E30D7FE00BACACF /* RecordsCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C98FD01E30D7FE00BACACF /* RecordsCustomCell.swift */; };
+		D6F2FA1C1E53137D0007A7DB /* TermsCheckController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2FA1B1E53137D0007A7DB /* TermsCheckController.swift */; };
+		D6F2FA1E1E5AE5410007A7DB /* AttachmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2FA1D1E5AE5410007A7DB /* AttachmentController.swift */; };
+		D6F2FA201E5D6B010007A7DB /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2FA1F1E5D6B010007A7DB /* ProfileController.swift */; };
 		D6FB577B1DD1D3C70045910F /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */; };
 		D6FB577C1DD1D3C70045910F /* HealthAssessmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */; };
 		D6FB577D1DD1D3C70045910F /* HealthProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */; };
@@ -231,6 +238,10 @@
 		D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentsCell.swift; sourceTree = "<group>"; };
 		D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodGlucoseContoller.swift; sourceTree = "<group>"; };
 		D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPresssureContoller.swift; sourceTree = "<group>"; };
+		D67EFD531E4870960073DF8F /* PathSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSubRecord.swift; sourceTree = "<group>"; };
+		D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorSubRecord.swift; sourceTree = "<group>"; };
+		D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalSubRecord.swift; sourceTree = "<group>"; };
+		D67EFD591E4AE6870073DF8F /* MedicationSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationSubRecord.swift; sourceTree = "<group>"; };
 		D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyTempController.swift; sourceTree = "<group>"; };
 		D69B8E9F1E0266BF008F1739 /* HeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightController.swift; sourceTree = "<group>"; };
 		D69B8EA11E026A3B008F1739 /* PulseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseController.swift; sourceTree = "<group>"; };
@@ -256,6 +267,9 @@
 		D6C98FCC1E30834D00BACACF /* MainChronic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainChronic.swift; sourceTree = "<group>"; };
 		D6C98FCE1E30D24600BACACF /* NoteSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteSubRecord.swift; sourceTree = "<group>"; };
 		D6C98FD01E30D7FE00BACACF /* RecordsCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsCustomCell.swift; sourceTree = "<group>"; };
+		D6F2FA1B1E53137D0007A7DB /* TermsCheckController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsCheckController.swift; sourceTree = "<group>"; };
+		D6F2FA1D1E5AE5410007A7DB /* AttachmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttachmentController.swift; sourceTree = "<group>"; };
+		D6F2FA1F1E5D6B010007A7DB /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		D6FB57781DD1D3C70045910F /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileListViewController.swift; sourceTree = "<group>"; };
 		D6FB57791DD1D3C70045910F /* HealthAssessmentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAssessmentController.swift; sourceTree = "<group>"; };
 		D6FB577A1DD1D3C70045910F /* HealthProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthProfileController.swift; sourceTree = "<group>"; };
@@ -427,6 +441,13 @@
 				D6C98FCC1E30834D00BACACF /* MainChronic.swift */,
 				D6C98FCE1E30D24600BACACF /* NoteSubRecord.swift */,
 				D6C98FD01E30D7FE00BACACF /* RecordsCustomCell.swift */,
+				D67EFD531E4870960073DF8F /* PathSubRecord.swift */,
+				D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */,
+				D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */,
+				D67EFD591E4AE6870073DF8F /* MedicationSubRecord.swift */,
+				D6F2FA1B1E53137D0007A7DB /* TermsCheckController.swift */,
+				D6F2FA1D1E5AE5410007A7DB /* AttachmentController.swift */,
+				D6F2FA1F1E5D6B010007A7DB /* ProfileController.swift */,
 			);
 			path = LifeDoc;
 			sourceTree = "<group>";
@@ -870,9 +891,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67EFD561E4985E00073DF8F /* DoctorSubRecord.swift in Sources */,
 				D60ECB4E1DF6BC2A00E35CB0 /* String+Timepiece.swift in Sources */,
 				D6AE62941E0D21B400A33C94 /* SideCustomCell.swift in Sources */,
 				D6C7706C1E1F89F30006A2E4 /* PersonalCustomCell.swift in Sources */,
+				D67EFD5A1E4AE6880073DF8F /* MedicationSubRecord.swift in Sources */,
+				D6F2FA201E5D6B010007A7DB /* ProfileController.swift in Sources */,
 				D60ECB191DD9CD9800E35CB0 /* SignUpController.swift in Sources */,
 				D65601F21E26158500A8ED22 /* AppMenuSubRecords.swift in Sources */,
 				D60ECB541DFA735800E35CB0 /* HealthAssessmentCustomCell.swift in Sources */,
@@ -902,6 +926,7 @@
 				D65602031E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift in Sources */,
 				D60ECB151DD9B59F00E35CB0 /* ForgotPasswordController.swift in Sources */,
 				D65601F41E26300300A8ED22 /* MainAllergy.swift in Sources */,
+				D6F2FA1E1E5AE5410007A7DB /* AttachmentController.swift in Sources */,
 				D60ECB1E1DDAF83800E35CB0 /* Constants.swift in Sources */,
 				D69B8EA41E026DE1008F1739 /* WeightController.swift in Sources */,
 				D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */,
@@ -916,6 +941,7 @@
 				D60ECB4B1DF6BC2A00E35CB0 /* NSCalendar+Timepiece.swift in Sources */,
 				D6AE62921E0BECF200A33C94 /* HealthProfileCustomCell.swift in Sources */,
 				D6293F4C1DD1AF080037B2B2 /* AppDelegate.swift in Sources */,
+				D67EFD581E498E920073DF8F /* HospitalSubRecord.swift in Sources */,
 				D65601F61E264B3700A8ED22 /* NiceButton.swift in Sources */,
 				D6C770681E1F822D0006A2E4 /* TermsViewController.swift in Sources */,
 				D6FB57851DD1E71A0045910F /* AppMenuController.swift in Sources */,
@@ -923,7 +949,9 @@
 				D6FB577C1DD1D3C70045910F /* HealthAssessmentController.swift in Sources */,
 				D6FB57B41DD5A50B0045910F /* TermsController.swift in Sources */,
 				D60ECB501DF6BC2A00E35CB0 /* WWCalendarTimeSelector.swift in Sources */,
+				D67EFD541E4870970073DF8F /* PathSubRecord.swift in Sources */,
 				D65602011E26A34A00A8ED22 /* KCFloatingActionButton.swift in Sources */,
+				D6F2FA1C1E53137D0007A7DB /* TermsCheckController.swift in Sources */,
 				D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */,
 				D65601F01E1FC34700A8ED22 /* BmiController.swift in Sources */,
 				D6BAC6E31DFFE97600C9514F /* SelectController.swift in Sources */,
@@ -1056,6 +1084,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1065,7 +1094,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1079,7 +1108,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9GUGB4SSXE;
 				INFOPLIST_FILE = LifeDoc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1100,7 +1129,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9GUGB4SSXE;
 				INFOPLIST_FILE = LifeDoc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1108,7 +1137,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

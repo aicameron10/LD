@@ -38,7 +38,15 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     
     var tempCell = 0
     
+    
     var arrayHealthAssessment = [HealthAssessment]()
+    
+    
+    var intialValue = -1
+    
+    var movedValue = -1
+    
+    var saveOrder : [String] = []
     
     var add : Array<String> = Array()
     
@@ -65,6 +73,9 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadListHistory), name: NSNotification.Name(rawValue: "loadTableHistory"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
+
+        
         //self.loadJSON()
         if(self.loadJSON() != nil){
             print("loading history Assess")
@@ -82,6 +93,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     func loadList(notification: NSNotification){
         //load data here
         gethealthAssessments()
+        //gethealthAssessmentsHistory()
         print("relaoding")
     }
     
@@ -94,6 +106,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     func refresh(sender:AnyObject) {
         
         gethealthAssessments()
+        //gethealthAssessmentsHistory()
     }
     
     private func preparePageTabBarItem() {
@@ -147,6 +160,10 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 let cell = tableViewAssess.cellForRow(at: indexPath!) as UITableViewCell!
                 My.cellSnapshot  = snapshotOfCell(cell!)
                 
+                intialValue = (indexPath?[1])!
+                
+                print(intialValue)
+                
                 var center = cell?.center
                 My.cellSnapshot!.center = center!
                 My.cellSnapshot!.alpha = 0.0
@@ -175,6 +192,8 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             }
             
         case UIGestureRecognizerState.changed:
+            
+             if(section != nil){
             if My.cellSnapshot != nil && section! == 1 {
                 var center = My.cellSnapshot!.center
                 center.y = locationInView.y
@@ -184,10 +203,21 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     arrayHealthAssessment.insert(arrayHealthAssessment.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
                     tableViewAssess.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                     Path.initialIndexPath = indexPath
+                    
+                    movedValue = (indexPath?[1])!
+                    
+                    print(movedValue)
+                                       //saveOrder.removeAll()
+                    //tableViewAssess.reloadData()
+                    
+                    
                 }
             }
+            }
+          
+            
         default:
-            if Path.initialIndexPath != nil && section! == 1 {
+            if Path.initialIndexPath != nil {
                 let cell = tableViewAssess.cellForRow(at: Path.initialIndexPath!) as UITableViewCell!
                 if My.cellIsAnimating {
                     My.cellNeedToShow = true
@@ -195,12 +225,23 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     cell?.isHidden = false
                     cell?.alpha = 0.0
                 }
+                if(section == 1){
+                let prefs = UserDefaults.standard
+                self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
+                
+                self.saveOrder.rearrange(from:intialValue, to: movedValue)
+                //self.saveOrder.swap(ind1:intialValue,movedValue) // swopping values
+                
+                prefs.set(self.saveOrder, forKey: "savedOrder")
+                }
                 
                 UIView.animate(withDuration: 0.25, animations: { () -> Void in
+                    if (My.cellSnapshot != nil) {
                     My.cellSnapshot!.center = (cell?.center)!
                     My.cellSnapshot!.transform = CGAffineTransform.identity
                     My.cellSnapshot!.alpha = 0.0
                     cell?.alpha = 1.0
+                    }
                     
                 }, completion: { (finished) -> Void in
                     if finished {
@@ -273,9 +314,10 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
             
             let healthAssess = arrayHealthAssessment[indexPath.row]
+    
             
             cell.assessName.text = healthAssess.type
-        
+            
             cell.showMoreAssess.tag = indexPath.row
             
             cell.showMoreAssess.addTarget(self,action:#selector(self.buttonClicked), for: .touchUpInside)
@@ -286,10 +328,10 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
             cell.measurements.text = healthAssess.measurements
             
-            cell.count.layer.cornerRadius = 11.0
+            cell.count.layer.cornerRadius = 11.5
             cell.count.clipsToBounds = true
             cell.count.text = healthAssess.count
-        
+            
             
             if(shouldCellBeExpanded && indexPath.row == indexOfExpandedCell)
             {
@@ -303,7 +345,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 
                 self.saveJSONNow(j: json)
                 
-              
+                
                 let type = cell.assessName.text!
                 prefs.set(type, forKey: "AssessmentType")
                 
@@ -374,14 +416,16 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         if(ShowMoreLess == "Show More"){
             shouldCellBeExpanded = true
             
-            
+    
             
             let indexPath = IndexPath(item: indexOfExpandedCell, section: 1)
             
             self.tableViewAssess.beginUpdates()
+           
             self.tableViewAssess.reloadRows(at: [indexPath], with: .fade)
+            
             self.tableViewAssess.endUpdates()
-      
+            
             
         }else{
             
@@ -391,7 +435,9 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             let indexPath = IndexPath(item: indexOfExpandedCell, section: 1)
             
             self.tableViewAssess.beginUpdates()
+            
             self.tableViewAssess.reloadRows(at: [indexPath], with: .fade)
+     
             self.tableViewAssess.endUpdates()
         }
         
@@ -428,15 +474,15 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             return 120
             
         }else{
-            return 75
+            return 95
         }
         
         
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    /*func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-    }
+    }*/
     
     
     public func saveJSON(j: JSON) {
@@ -463,19 +509,20 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         
         self.arrayHealthAssessment.removeAll()
         
-          indexOfExpandedCell = -1
+        indexOfExpandedCell = -1
         
         let json = self.loadJSON()
         
-        
+        var counter = -1
         for item in json["assessments"].arrayValue {
-            
+            counter += 1
             
             let healthAssess = HealthAssessment()
             healthAssess.id = item["id"].stringValue
             healthAssess.type = item["type"].stringValue
             healthAssess.count = item["count"].stringValue
             healthAssess.measurements = String(describing: item["events"].arrayValue)
+            healthAssess.sortNum = counter
             
             
             self.arrayHealthAssessment.append(healthAssess)
@@ -483,10 +530,165 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         }
         
         
+        //re-order assesements to saved order list
+        
+        let prefs = UserDefaults.standard
+        if (prefs.object(forKey: "savedOrder") == nil){
+            //re-order code
+           
+            for i in 0 ..< self.arrayHealthAssessment.count  {
+                
+                let type = self.arrayHealthAssessment[i].type
+                
+                saveOrder.append(type)
+
+            }
+
+            
+            prefs.set(saveOrder, forKey: "savedOrder")
+            
+           
+            
+            //end re-order code
+            
+        }else{
+        
+            
+            self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
+            
+          
+             if(self.saveOrder.count == self.arrayHealthAssessment.count){
+            
+            var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
+            
+            for i in 0 ..< self.arrayHealthAssessment.count  {
+                
+                let obj = self.arrayHealthAssessment[i]
+                
+                let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                
+                arrayHealthAssessmentTemp[new_index!] = obj
+                
+                }
+                
+            
+            self.arrayHealthAssessment.removeAll()
+            self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                
+             }else if(self.arrayHealthAssessment.count > self.saveOrder.count){
+                
+                var TempOrder : [String] = []
+                TempOrder.removeAll()
+                for i in 0 ..< self.arrayHealthAssessment.count  {
+                    
+                    TempOrder.append(self.arrayHealthAssessment[i].type)
+                }
+                
+                
+                let addValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                
+                let addThis = addValue[0]
+                
+                self.saveOrder.insert(addThis, at: 0)
+                
+                var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
+                
+                for i in 0 ..< self.arrayHealthAssessment.count  {
+                    
+                    let obj = self.arrayHealthAssessment[i]
+                    
+                    let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                    
+                    arrayHealthAssessmentTemp[new_index!] = obj
+                    
+                }
+                
+                prefs.set(saveOrder, forKey: "savedOrder")
+                self.arrayHealthAssessment.removeAll()
+                self.arrayHealthAssessment = arrayHealthAssessmentTemp
+
+            }
+             else if(self.arrayHealthAssessment.count < self.saveOrder.count){
+                var TempOrder : [String] = []
+                TempOrder.removeAll()
+                for i in 0 ..< self.arrayHealthAssessment.count  {
+                    
+                    TempOrder.append(self.arrayHealthAssessment[i].type)
+                }
+
+             
+                
+                let deleteValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                
+               let deleteThis = deleteValue[0]
+                
+                print(deleteThis)
+                
+               self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
+                
+                var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
+                
+                for i in 0 ..< self.arrayHealthAssessment.count  {
+                    
+                    let obj = self.arrayHealthAssessment[i]
+                    
+                    let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                    
+                    arrayHealthAssessmentTemp[new_index!] = obj
+                    
+                }
+                
+                prefs.set(saveOrder, forKey: "savedOrder")
+                self.arrayHealthAssessment.removeAll()
+                self.arrayHealthAssessment = arrayHealthAssessmentTemp
+            }
+
+            
+        }
+        
+        
+        //end re-order
+       
         self.tableViewAssess?.reloadData()
         
     }
     
+    
+    func arrayOfNonCommonElements <T, U> (lhs: T, rhs: U) -> [T.Iterator.Element] where T: Sequence, U: Sequence, T.Iterator.Element: Equatable, T.Iterator.Element == U.Iterator.Element {
+        
+        var returnArray:[T.Iterator.Element] = []
+        var found = false
+        
+        for lhsItem in lhs {
+            for rhsItem in rhs {
+                if lhsItem == rhsItem {
+                    found = true
+                    break
+                }
+            }
+            
+            if (!found){
+                returnArray.append(lhsItem)
+            }
+            
+            found = false
+        }
+        for rhsItem in rhs {
+            for lhsItem in lhs {
+                if rhsItem == lhsItem {
+                    found = true
+                    break
+                }
+            }
+            
+            if (!found){
+                returnArray.append(rhsItem)
+            }
+            
+            found = false
+        }
+        return returnArray
+    }
     
     public func gethealthAssessments() {
         
@@ -536,10 +738,10 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
             //print(response)
             let responseJSON = response.result.value
-              if(responseJSON != nil){
-            let json1 = JSON(responseJSON as Any)
-            
-            self.saveJSON(j: json1)
+            if(responseJSON != nil){
+                let json1 = JSON(responseJSON as Any)
+                
+                self.saveJSON(j: json1)
             }
             
             if let jsonResponse = response.result.value {
@@ -554,7 +756,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
-
+                    
                     
                     self.arrayHealthAssessment.removeAll()
                     
@@ -565,21 +767,140 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     }
                     
                     
+                    var counter = -1
                     for item in json["assessments"].arrayValue {
                         
-                        
+                        counter += 1
                         let healthAssess = HealthAssessment()
                         healthAssess.id = item["id"].stringValue
                         healthAssess.type = item["type"].stringValue
                         healthAssess.count = item["count"].stringValue
                         healthAssess.measurements = String(describing: item["events"].arrayValue)
-                        
+                        healthAssess.sortNum = counter
                         
                         self.arrayHealthAssessment.append(healthAssess)
+                    }
+                    
+                    //re-order assesements to saved order list
+                    
+                    let prefs = UserDefaults.standard
+                    if (prefs.object(forKey: "savedOrder") == nil){
+                        //re-order code
+                        
+                        for i in 0 ..< self.arrayHealthAssessment.count  {
+                            
+                            let type = self.arrayHealthAssessment[i].type
+                            
+                            self.saveOrder.append(type)
+                            
+                        }
+                        
+                        
+                        prefs.set(self.saveOrder, forKey: "savedOrder")
+                        
+                     
+                        
+                        //end re-order code
+                        
+                    }else{
+                        
+                        
+                        self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
+                        
+                       
+                        
+                        if(self.saveOrder.count == self.arrayHealthAssessment.count){
+                            
+                            var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
+                            
+                            for i in 0 ..< self.arrayHealthAssessment.count  {
+                                
+                                let obj = self.arrayHealthAssessment[i]
+                                
+                                let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                                
+                                arrayHealthAssessmentTemp[new_index!] = obj
+                                
+                            }
+                            
+                            
+                            self.arrayHealthAssessment.removeAll()
+                            self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                            
+                        }else if(self.arrayHealthAssessment.count > self.saveOrder.count){
+                            
+                            var TempOrder : [String] = []
+                            TempOrder.removeAll()
+                            for i in 0 ..< self.arrayHealthAssessment.count  {
+                                
+                                TempOrder.append(self.arrayHealthAssessment[i].type)
+                            }
+                            
+                            
+                            let addValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                            
+                            let addThis = addValue[0]
+                            
+                            self.saveOrder.insert(addThis, at: 0)
+                            
+                            var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
+                            
+                            for i in 0 ..< self.arrayHealthAssessment.count  {
+                                
+                                let obj = self.arrayHealthAssessment[i]
+                                
+                                let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                                
+                                arrayHealthAssessmentTemp[new_index!] = obj
+                                
+                            }
+                            
+                            prefs.set(self.saveOrder, forKey: "savedOrder")
+                            self.arrayHealthAssessment.removeAll()
+                            self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                            
+                        }
+                        else if(self.arrayHealthAssessment.count < self.saveOrder.count){
+                            var TempOrder : [String] = []
+                            TempOrder.removeAll()
+                            for i in 0 ..< self.arrayHealthAssessment.count  {
+                                
+                                TempOrder.append(self.arrayHealthAssessment[i].type)
+                            }
+                            
+                           
+                            
+                            let deleteValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                            
+                            let deleteThis = deleteValue[0]
+                            
+                            print(deleteThis)
+                            
+                            self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
+                            
+                            var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
+                            
+                            for i in 0 ..< self.arrayHealthAssessment.count  {
+                                
+                                let obj = self.arrayHealthAssessment[i]
+                                
+                                let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                                
+                                arrayHealthAssessmentTemp[new_index!] = obj
+                                
+                            }
+                            
+                            prefs.set(self.saveOrder, forKey: "savedOrder")
+                            self.arrayHealthAssessment.removeAll()
+                            self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                        }
                         
                         
                     }
                     
+                    
+                    //end re-order
+                        self.saveOrder.removeAll()
                     self.tableViewAssess?.reloadData()
                     
                     
@@ -683,7 +1004,7 @@ class HealthAssessment {
     var type = ""
     var count = ""
     var measurements = ""
-    
+    var sortNum = 0
     
     
 }

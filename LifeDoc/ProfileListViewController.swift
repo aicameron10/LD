@@ -113,6 +113,12 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
         if(indexPath.section == 0 && indexPath.row == 0){
            print("Clicked me")
             
+            let profile: ProfileController = {
+                return UIStoryboard.viewController(identifier: "ProfileController") as! ProfileController
+            }()
+            
+            self.present(profile, animated: false, completion: nil)
+            
         }
         
         

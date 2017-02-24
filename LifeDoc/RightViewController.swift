@@ -95,12 +95,18 @@ class RightViewController: UIViewController {
         prefs.removeObject(forKey: "userloggedin")
         prefs.removeObject(forKey: "jsonHealthAssess")
         prefs.removeObject(forKey: "jsonHealthProfile")
+        prefs.removeObject(forKey: "savedOrder")
+        prefs.removeObject(forKey: "savedOrderProfile")
+        prefs.removeObject(forKey: "savedServerMessage")
+        
         
         logOut()
         
-        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         
-      
+       
+        
+        //UIApplication.shared.keyWindow?.rootViewController = pageViewController
         
         // get a reference to the app delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
