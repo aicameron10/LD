@@ -74,7 +74,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         NotificationCenter.default.addObserver(self, selector: #selector(loadListHistory), name: NSNotification.Name(rawValue: "loadTableHistory"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
-
+        
         
         //self.loadJSON()
         if(self.loadJSON() != nil){
@@ -193,28 +193,27 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
         case UIGestureRecognizerState.changed:
             
-             if(section != nil){
-            if My.cellSnapshot != nil && section! == 1 {
-                var center = My.cellSnapshot!.center
-                center.y = locationInView.y
-                My.cellSnapshot!.center = center
-                
-                if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                    arrayHealthAssessment.insert(arrayHealthAssessment.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
-                    tableViewAssess.moveRow(at: Path.initialIndexPath!, to: indexPath!)
-                    Path.initialIndexPath = indexPath
+            if(section != nil){
+                if My.cellSnapshot != nil && section! == 1 {
+                    var center = My.cellSnapshot!.center
+                    center.y = locationInView.y
+                    My.cellSnapshot!.center = center
                     
-                    movedValue = (indexPath?[1])!
-                    
-                    print(movedValue)
-                                       //saveOrder.removeAll()
-                    //tableViewAssess.reloadData()
-                    
-                    
+                    if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
+                        arrayHealthAssessment.insert(arrayHealthAssessment.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
+                        tableViewAssess.moveRow(at: Path.initialIndexPath!, to: indexPath!)
+                        Path.initialIndexPath = indexPath
+                        
+                        movedValue = (indexPath?[1])!
+                        
+                       
+                        tableViewAssess.reloadData()
+                        
+                        
+                    }
                 }
             }
-            }
-          
+            
             
         default:
             if Path.initialIndexPath != nil {
@@ -225,29 +224,34 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     cell?.isHidden = false
                     cell?.alpha = 0.0
                 }
-                if(section == 1){
-                let prefs = UserDefaults.standard
-                self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
-                
-                self.saveOrder.rearrange(from:intialValue, to: movedValue)
-                //self.saveOrder.swap(ind1:intialValue,movedValue) // swopping values
-                
-                prefs.set(self.saveOrder, forKey: "savedOrder")
+                if(section == 1 && intialValue != -1 && movedValue != -1){
+                    let prefs = UserDefaults.standard
+                    self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
+                    
+                    self.saveOrder.rearrange(from:intialValue, to: movedValue)
+                    //self.saveOrder.swap(ind1:intialValue,movedValue) // swopping values
+                    
+                    prefs.set(self.saveOrder, forKey: "savedOrder")
                 }
                 
                 UIView.animate(withDuration: 0.25, animations: { () -> Void in
                     if (My.cellSnapshot != nil) {
-                    My.cellSnapshot!.center = (cell?.center)!
-                    My.cellSnapshot!.transform = CGAffineTransform.identity
-                    My.cellSnapshot!.alpha = 0.0
-                    cell?.alpha = 1.0
+                        if(cell != nil){
+
+                        My.cellSnapshot!.center = (cell?.center)!
+                        My.cellSnapshot!.transform = CGAffineTransform.identity
+                        My.cellSnapshot!.alpha = 0.0
+                        cell?.alpha = 1.0
+                        }
                     }
                     
                 }, completion: { (finished) -> Void in
+                     if (My.cellSnapshot != nil) {
                     if finished {
                         Path.initialIndexPath = nil
                         My.cellSnapshot!.removeFromSuperview()
                         My.cellSnapshot = nil
+                    }
                     }
                 })
             }
@@ -314,7 +318,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
             
             let healthAssess = arrayHealthAssessment[indexPath.row]
-    
+            
             
             cell.assessName.text = healthAssess.type
             
@@ -322,13 +326,15 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
             cell.showMoreAssess.addTarget(self,action:#selector(self.buttonClicked), for: .touchUpInside)
             
-            cell.showMoreAssess.setTitle("Show More", for: .normal)
+            cell.showMoreAssess.setTitle("Show More/Less", for: .normal)
+            
             
             //cell.showMoreAssess.setTitle("Show More", for: .normal)
             
             cell.measurements.text = healthAssess.measurements
             
-            cell.count.layer.cornerRadius = 11.5
+            cell.count.layer.cornerRadius =  cell.count.frame.size.width / 2
+            
             cell.count.clipsToBounds = true
             cell.count.text = healthAssess.count
             
@@ -353,12 +359,14 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 cell.tableView.isHidden = false
                 
                 cell.tableView.reloadData()
-                cell.showMoreAssess.setTitle("Show Less", for: .normal)
+                cell.showMoreAssess.setTitle("Show More/Less", for: .normal)
                 ShowMoreLess = "Show Less"
+                
             }else{
                 cell.tableView.isHidden = true
-                cell.showMoreAssess.setTitle("Show More", for: .normal)
+                cell.showMoreAssess.setTitle("Show More/Less", for: .normal)
                 ShowMoreLess = "Show More"
+                
             }
             
             
@@ -408,26 +416,33 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     
     func buttonClicked(sender:UIButton) {
         
+        
+        
+        
         let buttonRow = sender.tag
         indexOfExpandedCell = buttonRow
         
         
-        
         if(ShowMoreLess == "Show More"){
-            shouldCellBeExpanded = true
             
-    
+            
+            shouldCellBeExpanded = true
             
             let indexPath = IndexPath(item: indexOfExpandedCell, section: 1)
             
             self.tableViewAssess.beginUpdates()
-           
-            self.tableViewAssess.reloadRows(at: [indexPath], with: .fade)
+            
+            
+            
+            self.tableViewAssess.reloadRows(at: [indexPath], with: .none)
+            
             
             self.tableViewAssess.endUpdates()
             
             
+            
         }else{
+            
             
             shouldCellBeExpanded = false
             
@@ -436,10 +451,14 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
             
             self.tableViewAssess.beginUpdates()
             
-            self.tableViewAssess.reloadRows(at: [indexPath], with: .fade)
-     
+            
+            self.tableViewAssess.reloadRows(at: [indexPath], with: .none)
+            
             self.tableViewAssess.endUpdates()
+            
+            
         }
+        
         
     }
     
@@ -481,8 +500,8 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     }
     
     /*func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }*/
+     return UITableViewAutomaticDimension
+     }*/
     
     
     public func saveJSON(j: JSON) {
@@ -535,47 +554,47 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         let prefs = UserDefaults.standard
         if (prefs.object(forKey: "savedOrder") == nil){
             //re-order code
-           
+            
             for i in 0 ..< self.arrayHealthAssessment.count  {
                 
                 let type = self.arrayHealthAssessment[i].type
                 
                 saveOrder.append(type)
-
+                
             }
-
+            
             
             prefs.set(saveOrder, forKey: "savedOrder")
             
-           
+            
             
             //end re-order code
             
         }else{
-        
+            
             
             self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
             
-          
-             if(self.saveOrder.count == self.arrayHealthAssessment.count){
             
-            var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
-            
-            for i in 0 ..< self.arrayHealthAssessment.count  {
+            if(self.saveOrder.count == self.arrayHealthAssessment.count){
                 
-                let obj = self.arrayHealthAssessment[i]
+                var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
                 
-                let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
-                
-                arrayHealthAssessmentTemp[new_index!] = obj
-                
+                for i in 0 ..< self.arrayHealthAssessment.count  {
+                    
+                    let obj = self.arrayHealthAssessment[i]
+                    
+                    let new_index =  self.saveOrder.index(of: self.arrayHealthAssessment[i].type)
+                    
+                    arrayHealthAssessmentTemp[new_index!] = obj
+                    
                 }
                 
-            
-            self.arrayHealthAssessment.removeAll()
-            self.arrayHealthAssessment = arrayHealthAssessmentTemp
                 
-             }else if(self.arrayHealthAssessment.count > self.saveOrder.count){
+                self.arrayHealthAssessment.removeAll()
+                self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                
+            }else if(self.arrayHealthAssessment.count > self.saveOrder.count){
                 
                 var TempOrder : [String] = []
                 TempOrder.removeAll()
@@ -606,25 +625,25 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 prefs.set(saveOrder, forKey: "savedOrder")
                 self.arrayHealthAssessment.removeAll()
                 self.arrayHealthAssessment = arrayHealthAssessmentTemp
-
+                
             }
-             else if(self.arrayHealthAssessment.count < self.saveOrder.count){
+            else if(self.arrayHealthAssessment.count < self.saveOrder.count){
                 var TempOrder : [String] = []
                 TempOrder.removeAll()
                 for i in 0 ..< self.arrayHealthAssessment.count  {
                     
                     TempOrder.append(self.arrayHealthAssessment[i].type)
                 }
-
-             
+                
+                
                 
                 let deleteValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                 
-               let deleteThis = deleteValue[0]
+                let deleteThis = deleteValue[0]
                 
                 print(deleteThis)
                 
-               self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
+                self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
                 
                 var arrayHealthAssessmentTemp = [HealthAssessment](repeating: self.arrayHealthAssessment[0],count: self.arrayHealthAssessment.count)
                 
@@ -642,13 +661,13 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 self.arrayHealthAssessment.removeAll()
                 self.arrayHealthAssessment = arrayHealthAssessmentTemp
             }
-
+            
             
         }
         
         
         //end re-order
-       
+        
         self.tableViewAssess?.reloadData()
         
     }
@@ -798,7 +817,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                         
                         prefs.set(self.saveOrder, forKey: "savedOrder")
                         
-                     
+                        
                         
                         //end re-order code
                         
@@ -807,7 +826,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                         
                         self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
                         
-                       
+                        
                         
                         if(self.saveOrder.count == self.arrayHealthAssessment.count){
                             
@@ -868,7 +887,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                                 TempOrder.append(self.arrayHealthAssessment[i].type)
                             }
                             
-                           
+                            
                             
                             let deleteValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                             
@@ -900,7 +919,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     
                     
                     //end re-order
-                        self.saveOrder.removeAll()
+                    self.saveOrder.removeAll()
                     self.tableViewAssess?.reloadData()
                     
                     

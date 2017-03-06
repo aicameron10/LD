@@ -13,7 +13,35 @@ import Toast_Swift
 import DropDown
 
 
-class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UITextViewDelegate{
+class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            let upright = image.fixOrientation()
+       
+            let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
+            let base64String = UIImageJPEGRepresentation(upright, jpegCompressionQuality)?.base64EncodedString()
+     
+            
+            let prefs = UserDefaults.standard
+            prefs.set(base64String, forKey: "attachBase64Profile")
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            UploadProfilePic()
+            
+            
+        }
+        
+    }
+    
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    let imagePicker = UIImagePickerController()
+
     
     @IBOutlet weak var navBar: UINavigationBar!
     
@@ -21,6 +49,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
     
+    @IBOutlet weak var profilePic: UIImageView!
     
     @IBOutlet weak var navItem: UINavigationItem!
     
@@ -124,8 +153,12 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         view.addSubview(scrollView)
         
+           NotificationCenter.default.addObserver(self, selector: #selector(loadProfilePic), name: NSNotification.Name(rawValue: "loadProfilePic"), object: nil)
+        
         self.navItem.title = "Personal Details"
         
+        
+        imagePicker.delegate = self
         
         NewDate = false
         validateID = false
@@ -153,6 +186,8 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         prepareOrgan()
         prepareBlood()
         
+        prepareProfilePic()
+        
         getDetails()
         
         
@@ -160,9 +195,19 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     }
     
     
-    
-    
-    
+    func loadProfilePic(notification: NSNotification){
+        //load data here
+        
+        let prefs = UserDefaults.standard
+        
+        let image = prefs.string(forKey: "attachBase64Profile")
+        
+        let dataDecoded : Data = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        self.profilePic.image = decodedimage?.fixOrientation()
+    }
+
+   
     
     
     //Calls this function when the tap is recognized.
@@ -220,7 +265,71 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         dateView.addGestureRecognizer(tapDateView)
     }
     
+    private func prepareProfilePic() {
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profilePic.isUserInteractionEnabled = true
+        profilePic.addGestureRecognizer(tapGestureRecognizer)
+        
+        profilePic.layer.cornerRadius = profilePic.frame.size.width / 2;
+        profilePic.clipsToBounds = true
+       
+        
+    }
+
     
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        let optionMenuPhoto = UIAlertController(title: nil, message: "Add Photo", preferredStyle: .actionSheet)
+        
+        // 2
+        let photoAction = UIAlertAction(title: "Take a photo", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+        
+            
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+                
+                self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
+                self.imagePicker.allowsEditing = false
+                self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }
+        })
+        
+        // 2
+        let galleryAction = UIAlertAction(title: "Select from gallery", style: .default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+                
+                self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+                self.imagePicker.allowsEditing = true
+                self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                self.imagePicker.navigationBar.tintColor = .white
+                
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }            })
+        
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+        })
+        
+        
+        // 4
+        optionMenuPhoto.addAction(photoAction)
+        optionMenuPhoto.addAction(galleryAction)
+    
+        optionMenuPhoto.addAction(cancelAction)
+        
+        // 5
+        //presentViewController(optionMenu, animated: true, completion: nil)
+        self.present(optionMenuPhoto, animated: true, completion: nil)
+        //self.present(optionMenu, animated: true, completion: nil)
+
+        
+    }
     
     
     private func prepareCalendarButton() {
@@ -873,44 +982,88 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     
     
      func validateValueID(testStr:String) -> Bool {
-   
-   /* //Now perform the checkdigit for Id No
-    var lastDigit = Int(String(testStr.charAt(testStr.length()-1)))
-    
-    var oddDigits = 0
         
-    for (int i = 0; i < (testStr.length()-1); i+=2) {
-    oddDigits += Int(String(testStr.charAt(i)))
-    }
-    
-    var strEvenDigits = ""
+        //Now perform the checkdigit for Id No
         
-    for (int i = 1; i < (testStr.length()); i+=2) {
-    strEvenDigits += testStr.charAt(i)
-    }
-    strEvenDigits = String(Long(strEvenDigits) * 2)
-    var evenDigits = 0
-    for (int i = 0; i < (strEvenDigits.length()); i++) {
-    evenDigits += Int(String(strEvenDigits.charAt(i)))
-    }
-    
-    var sumOfOddEven = oddDigits + evenDigits
-        if (sumOfOddEven < 10){
-        return false
+        let lastDigit = String(testStr[testStr.index(before: testStr.endIndex)])
+
+        
+        
+        var oddDigits = 0
+        
+      
+        var lengName = testStr.substring(to: testStr.index(before: testStr.endIndex))
+  
+        let leng = lengName.characters.count
+        
+        for oddnumber in 0...leng where oddnumber % 2 == 1 {
+      
+           
+            oddDigits = oddDigits + Int(String(lengName[oddnumber - 1]))!
         }
-    var controlDigit = 10 - ((String(String(sumOfOddEven).charAt(1))).toInt())
+        
+           //print(oddDigits)
+        
+        var strEvenDigits = ""
+        for evennumber in 0...leng where evennumber % 2 == 0 {
+            
+              //print(evennumber)
+            strEvenDigits += String(lengName[evennumber + 1])
+        }
+        
+       //print(strEvenDigits)
+        
+        let evenmulti = Int(strEvenDigits)!*2
+        
+         // print(evenmulti)
+        
+         var evenDigits = 0
+        
+        let leng2 = String(evenmulti).characters.count
+        
+        let ss = String(evenmulti)
+        
+        //print(ss)
+      
+        
+        for evennumbertotal in 0...leng2 - 1{
+            
+            //print(evennumbertotal)
+            
+            evenDigits = evenDigits + Int(ss[evennumbertotal])!
+        }
+        
+              //print(evenDigits)
+        
+        let sumOfOddEven = oddDigits + evenDigits
+        if (sumOfOddEven < 10){
+            return false
+        }
+        
+        //print(sumOfOddEven)
+        
+        let str = String(sumOfOddEven)
+        
+        let ww = String(str[str.index(before: str.endIndex)])
+        
+        //print(ww)
+        
+        var controlDigit = 10 - Int(ww)!
+        
+        //print(controlDigit)
+        
         
         if (controlDigit > 9) {
-            controlDigit = Int(String(String(sumOfOddEven).charAt(1)))
-        }
-    
-        if (controlDigit != lastDigit){
-               return false
+            
+            let i = Int(String(str[str.index(before: str.endIndex)]))!
+            controlDigit = i
         }
         
-    
-    
-    */
+        
+        if (controlDigit != Int(lastDigit)){
+            return false
+        }
+   
    
     return true
     }
@@ -927,6 +1080,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         selector.optionStyles.showMonth(false)
         selector.optionStyles.showYear(true)
         selector.optionStyles.showTime(false)
+        selector.optionCalendarFontColorFutureDates = UIColor.lightGray
         
         /*
          Any other options are to be set before presenting selector!
@@ -1211,6 +1365,20 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
                 let maritalStatus = json["maritalStatus"].string
                 let nationality = json["nationality"].string
                 
+                 let profilePictureData = json["profilePictureData"].string
+                
+                if(profilePictureData != nil){
+                
+                let prefs = UserDefaults.standard
+                prefs.set(profilePictureData, forKey: "attachBase64Profile")
+                
+                let dataDecoded : Data = Data(base64Encoded: profilePictureData!, options: .ignoreUnknownCharacters)!
+                let decodedimage = UIImage(data: dataDecoded)
+                self.profilePic.image = decodedimage?.fixOrientation()
+                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+                    
+                }
+                
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
                 
                 
@@ -1312,8 +1480,168 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
     }
     
+    public func showAttachMessage(){
+        
+        let prefs = UserDefaults.standard
+        var msg = ""
+        if (prefs.string(forKey: "savedServerMessage") != nil){
+            
+            msg = prefs.string(forKey: "savedServerMessage")!
+            
+        }
+        
+        let ac = UIAlertController(title: "LifeDoc", message: msg, preferredStyle: .alert)
+        
+        
+        ac.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
+        { action -> Void in
+            
+         
+            
+        })
+        
+        
+        
+        present(ac, animated: true)
+        
+    }
+
     
     
+    private func UploadProfilePic() {
+        
+    
+        // get a reference to the app delegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.showActivityIndicator(uiView: self.view)
+        
+        self.view.makeToast("Upload started...", duration: 1.0, position: .bottom)
+        
+        let urlString: String
+        
+        urlString = Constants.baseURL + "profilePicture"
+        
+        print(urlString)
+        
+        let prefs = UserDefaults.standard
+        let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
+        let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
+        
+        let authToken = prefs.string(forKey: "authToken")
+     
+        let base = prefs.string(forKey: "attachBase64Profile")!
+      
+        
+        let parameters: Parameters = [
+            "currentActiveUserDetailsId": currentActiveUserDetailsId,
+            "loggedInUserDetailsId": loggedInUserDetailsId,
+            "name": "LifeDoc_profile.jpg",
+            "data": base
+            
+            
+        ]
+        
+        //print(parameters)
+        
+        let headers: HTTPHeaders = [
+            "Authorization-Token": authToken!,
+            "Accept": "application/json"
+        ]
+        
+        
+        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
+        
+        
+        
+        // Both calls are equivalent
+        ProfileController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+            
+            
+            
+            if let jsonResponse = response.result.value {
+                print("JSON: \(jsonResponse)")
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                self.messageStr = json["message"].string!
+                
+                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
+                
+                
+                if status == "SUCCESS"{
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.hideActivityIndicator(uiView: self.view)
+                    
+                    
+                    
+                    self.messageStr = "Profile picture uploaded successfully"
+                    
+                    
+                    prefs.set(self.messageStr, forKey: "savedServerMessage")
+                    
+                    
+                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadProfilePic"), object: nil)
+                    
+                      NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+                    
+                    self.showAttachMessage()
+                    
+                    
+                }else{
+                    
+                    // get a reference to the app delegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.hideActivityIndicator(uiView: self.view)
+                    self.showError()
+                    
+                }
+                
+            }
+            if let error = response.result.error as? AFError{
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error as? URLError {
+                print("URLError occurred: \(error)")
+                
+                // get a reference to the app delegate
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.hideActivityIndicator(uiView: self.view)
+                self.showNetworkError()
+                
+                
+            }
+        }
+        
+        
+    }
+
     
     
     
@@ -1427,7 +1755,7 @@ extension ProfileController: TextFieldDelegate {
             
             return string == filtered
         }else if(initials.isEditing){
-            let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ").inverted
+            let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").inverted
             let components = string.components(separatedBy: inverseSet)
             let filtered = components.joined(separator: "")  // use join("", components) if you are using Swift
             
@@ -1491,5 +1819,32 @@ extension ProfileController: TextFieldDelegate {
         (textField as? ErrorTextField)?.isErrorRevealed = false
     }
     
+    
+}
+extension String {
+    
+    var length: Int {
+        return self.characters.count
+    }
+    
+    subscript (i: Int) -> String {
+        return self[Range(i ..< i + 1)]
+    }
+    
+    func substring(from: Int) -> String {
+        return self[Range(min(from, length) ..< length)]
+    }
+    
+    func substring(to: Int) -> String {
+        return self[Range(0 ..< max(0, to))]
+    }
+    
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return self[Range(start ..< end)]
+    }
     
 }

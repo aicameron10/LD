@@ -20,13 +20,13 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         //
     }
     
-   
+    
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             //save image
             //display image
-          
+            
             
             //let myImage = image.resized(withPercentage: 50)
             
@@ -34,7 +34,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(image, jpegCompressionQuality)?.base64EncodedString()
-          print(base64String as Any)
+            print(base64String as Any)
             
             let prefs = UserDefaults.standard
             prefs.set(base64String, forKey: "attachBase64")
@@ -42,12 +42,12 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             let attach: AttachmentController = {
                 return UIStoryboard.viewController(identifier: "AttachmentController") as! AttachmentController
             }()
-             self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
             self.present(attach, animated: true, completion: nil)
-          
-
+            
+            
         }
-       
+        
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -55,8 +55,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     }
     
     let imagePicker = UIImagePickerController()
-  
-
+    
+    
     
     var refreshControl = UIRefreshControl()
     
@@ -97,7 +97,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     
     var arrayHealthProfile = [HealthProfile]()
     
-   var saveOrder : [String] = []
+    var saveOrder : [String] = []
     
     var add : Array<String> = Array()
     
@@ -142,8 +142,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         NotificationCenter.default.addObserver(self, selector: #selector(loadDetails), name: NSNotification.Name(rawValue: "loadGetDetail"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadListFirst), name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
-
-    
+        
+        
         
         imagePicker.delegate = self
         
@@ -159,7 +159,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         
         let prefs = UserDefaults.standard
-         prefs.removeObject(forKey: "globalDoctor")
+        prefs.removeObject(forKey: "globalDoctor")
     }
     
     func loadList(notification: NSNotification){
@@ -169,10 +169,12 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     }
     func loadListFirst(notification: NSNotification){
         //load data here
-         tableViewProfile.reloadData()
+        
+        arrayHealthProfile.removeAll()
+        tableViewProfile.reloadData()
         gethealthProfile()
-       
-        print("relaoding")
+        
+        print("relaoding first")
     }
     func loadDetails(notification: NSNotification){
         //load data here
@@ -186,8 +188,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         gethealthProfileHistory()
         
     }
-   
-
+    
+    
     
     func refresh(sender:AnyObject) {
         
@@ -221,7 +223,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-   
+    
     
     func longPressGestureRecognized(_ gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
@@ -246,7 +248,10 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 let cell = tableViewProfile.cellForRow(at: indexPath!) as UITableViewCell!
                 My.cellSnapshot  = snapshotOfCell(cell!)
                 
-                 intialValue = (indexPath?[1])!
+   
+                intialValue = (indexPath?[1])!
+                
+                print(intialValue)
                 
                 var center = cell?.center
                 My.cellSnapshot!.center = center!
@@ -278,22 +283,25 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         case UIGestureRecognizerState.changed:
             
             if(section != nil){
-            if My.cellSnapshot != nil && section! == 1 {
-                var center = My.cellSnapshot!.center
-                center.y = locationInView.y
-                My.cellSnapshot!.center = center
-                
-                
-                if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                    arrayHealthProfile.insert(arrayHealthProfile.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
-                    tableViewProfile.moveRow(at: Path.initialIndexPath!, to: indexPath!)
-                    Path.initialIndexPath = indexPath
+                if My.cellSnapshot != nil && section! == 1 {
+                    var center = My.cellSnapshot!.center
+                    center.y = locationInView.y
+                    My.cellSnapshot!.center = center
                     
-                    movedValue = (indexPath?[1])!
                     
-                     //tableViewProfile.reloadData()
+                    if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
+                        arrayHealthProfile.insert(arrayHealthProfile.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
+                        tableViewProfile.moveRow(at: Path.initialIndexPath!, to: indexPath!)
+                        Path.initialIndexPath = indexPath
+                        
+                        movedValue = (indexPath?[1])!
+                        
+                        print(movedValue)
+                    
+                        
+                        tableViewProfile.reloadData()
+                    }
                 }
-            }
             }
         default:
             if Path.initialIndexPath != nil  {
@@ -304,31 +312,40 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     cell?.isHidden = false
                     cell?.alpha = 0.0
                 }
-                if(section == 1){
-                let prefs = UserDefaults.standard
-                self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
-                
-                self.saveOrder.rearrange(from:intialValue, to: movedValue)
-                //self.saveOrder.swap(ind1:intialValue,movedValue) // swopping values
-                
-                prefs.set(self.saveOrder, forKey: "savedOrderProfile")
+                if(section == 1 && intialValue != -1 && movedValue != -1){
+                    let prefs = UserDefaults.standard
+                    self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
+                    
+                    self.saveOrder.rearrange(from:intialValue, to: movedValue)
+                    //self.saveOrder.swap(ind1:intialValue,movedValue) // swopping values
+                    
+                    prefs.set(self.saveOrder, forKey: "savedOrderProfile")
+                    
+                     
                 }
                 
                 UIView.animate(withDuration: 0.25, animations: { () -> Void in
                     
                     if (My.cellSnapshot != nil) {
-                    My.cellSnapshot!.center = (cell?.center)!
-                    My.cellSnapshot!.transform = CGAffineTransform.identity
-                    My.cellSnapshot!.alpha = 0.0
-                    cell?.alpha = 1.0
+                        
+                        if(cell != nil){
+                       
+                        My.cellSnapshot!.center = (cell?.center)!
+                        My.cellSnapshot!.transform = CGAffineTransform.identity
+                        My.cellSnapshot!.alpha = 0.0
+                        cell?.alpha = 1.0
+                        }
+                        
                     }
                     
                 }, completion: { (finished) -> Void in
+                     if (My.cellSnapshot != nil) {
                     if finished {
                         Path.initialIndexPath = nil
                         My.cellSnapshot!.removeFromSuperview()
                         My.cellSnapshot = nil
                     }
+                }
                 })
             }
         }
@@ -375,16 +392,16 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     
     
     func getAllIndexPaths() -> [IndexPath] {
-      
+        
         
         // Assuming that tableView is your self.tableView defined somewhere
-    
-            for j in 0..<tableViewProfile.numberOfRows(inSection: 1) {
-                indexPaths.append(IndexPath(row: j, section: 1))
-            }
-       
         
-       
+        for j in 0..<tableViewProfile.numberOfRows(inSection: 1) {
+            indexPaths.append(IndexPath(row: j, section: 1))
+        }
+        
+        
+        
         return indexPaths
     }
     
@@ -430,7 +447,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             cell.recordId.text = healthProfile.recordId
             
             
-            cell.showMore.setTitle("Show More", for: .normal)
+            cell.showMore.setTitle("Show More/Less", for: .normal)
             
             if(cell.count.text! == "0"){
                 cell.showMore.isHidden = true
@@ -466,24 +483,24 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     recordType = cell.type.text!.uppercased()
                     recordValue = cell.recordId.text!
-              
+                    
                     
                 }else if(cell.type.text!.uppercased() == "CHRONIC CONDITION"){
                     recordType = "CHRONIC_CONDITION"
                     recordValue = cell.recordId.text!
                     
                 }
-
-              
+                
+                
                 cell.tableViewSubs.isHidden = false
                 
                 cell.tableViewSubs.reloadData()
                 
-                cell.showMore.setTitle("Show Less", for: .normal)
+                cell.showMore.setTitle("Show More/Less", for: .normal)
                 ShowMoreLess = "Show Less"
             }else{
                 cell.tableViewSubs.isHidden = true
-                cell.showMore.setTitle("Show More", for: .normal)
+                cell.showMore.setTitle("Show More/Less", for: .normal)
                 ShowMoreLess = "Show More"
             }
             
@@ -495,18 +512,18 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 hideList.append(cell.recordId.text!)
                 
                 let hidden = cell.hiddenValue.text!
-       
+                
                 
                 if(cell.type.text!.uppercased() == "ALLERGY"){
                     
                     recordType = cell.type.text!.uppercased()
-
+                    
                 }else if(cell.type.text!.uppercased() == "CHRONIC CONDITION"){
-                 
+                    
                     recordType = "CHRONIC_CONDITION"
-                   
+                    
                 }
-
+                
                 
                 if(hidden == "false"){
                     let image = UIImage(named: "blue_hide") as UIImage?
@@ -526,12 +543,12 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             if(indexPath.row == indexOfDeletedCell)
             {
                 
-             
+                
                 deletedListValue = cell.recordId.text!
                 
                 //print(cell.type.text!.uppercased())
-               
-                  self.delIndexKey = deletedListValue
+                
+                self.delIndexKey = deletedListValue
                 
                 if(cell.type.text!.uppercased() == "ALLERGY"){
                     deleteValue = "allergies"
@@ -552,7 +569,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 //print(cell.type.text!.uppercased())
                 var listValueType = ""
-               
+                
                 
                 if(cell.type.text!.uppercased() == "ALLERGY"){
                     listValueType = "ALLERGY"
@@ -564,11 +581,11 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 let prefs = UserDefaults.standard
                 prefs.set(attachListValue, forKey: "attachId")
-                 prefs.set(listValueType, forKey: "attachType")
-
+                prefs.set(listValueType, forKey: "attachType")
+                
                 
             }
-
+            
             
             if(indexPath.row == indexOfEditCell)
             {
@@ -579,23 +596,23 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     recordType = cell.type.text!.uppercased()
                     recordValue = cell.recordId.text!
                     
-                  
+                    
                     
                     getDetails()
                     
                     
                 }else if(cell.type.text!.uppercased() == "CHRONIC CONDITION"){
                     
-               
-                   
+                    
+                    
                     recordType = "CHRONIC_CONDITION"
                     recordValue = cell.recordId.text!
                     
-                         print(recordType)
+                    print(recordType)
                     
                     getDetails()
                 }
-    
+                
                 
                 
             }
@@ -605,7 +622,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             
             
-            cell.count.layer.cornerRadius = 11.5
+            
+            cell.count.layer.cornerRadius =  cell.count.frame.size.width / 2
             cell.count.clipsToBounds = true
             
             cell.edit.tag = indexPath.row
@@ -658,7 +676,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         self.tableViewProfile.beginUpdates()
         self.tableViewProfile.reloadRows(at: [indexPath], with: .fade)
         self.tableViewProfile.endUpdates()
-
+        
         
     }
     
@@ -705,12 +723,12 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         let section = indexPath.section
         if(section == 1){
-          indexOfEditCell = indexPath.row
-       //print(indexOfEditCell)
-        let indexPathNow = IndexPath(item: indexOfEditCell, section: 1)
-        self.tableViewProfile.beginUpdates()
-        self.tableViewProfile.reloadRows(at: [indexPathNow], with: .fade)
-        self.tableViewProfile.endUpdates()
+            indexOfEditCell = indexPath.row
+            //print(indexOfEditCell)
+            let indexPathNow = IndexPath(item: indexOfEditCell, section: 1)
+            self.tableViewProfile.beginUpdates()
+            self.tableViewProfile.reloadRows(at: [indexPathNow], with: .fade)
+            self.tableViewProfile.endUpdates()
         }
         
     }
@@ -737,8 +755,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     }
     
     /*func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }*/
+     return UITableViewAutomaticDimension
+     }*/
     
     
     func buttonHideClicked(sender:UIButton) {
@@ -825,7 +843,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
                     self.imagePicker.allowsEditing = false
-                     self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
                     self.present(self.imagePicker, animated: true, completion: nil)
                 }
             })
@@ -834,11 +852,11 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             let galleryAction = UIAlertAction(title: "Select from gallery", style: .default, handler: {
                 (alert: UIAlertAction!) -> Void in
                 if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
-                   
-                     self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
-                     self.imagePicker.allowsEditing = true
-                     self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
-                     self.imagePicker.navigationBar.tintColor = .white
+                    
+                    self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+                    self.imagePicker.allowsEditing = true
+                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.imagePicker.navigationBar.tintColor = .white
                     
                     self.present(self.imagePicker, animated: true, completion: nil)
                 }            })
@@ -846,26 +864,30 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
                 (alert: UIAlertAction!) -> Void in
                 
+                let navigationBarAppearace = UINavigationBar.appearance()
+                
+                navigationBarAppearace.tintColor = .white
+                navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
                 
                 let fileExplorer = FileExplorerViewController()
                 fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
                 fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
                 fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
-                fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("jpg"), Filter.extension("pdf"), Filter.extension("doc"),Filter.extension("png")]
+                fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
                 
                 //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
-                                                          //  in: .userDomainMask).first!
+                //  in: .userDomainMask).first!
                 //fileExplorer.initialDirectoryURL = documentsUrl
                 fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
                 fileExplorer.delegate = self
                 
                 self.present(fileExplorer, animated: true, completion: nil)
-               
+                
             })
             //
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
-               
+                
             })
             
             
@@ -977,7 +999,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         }
         return returnArray
     }
-
+    
     
     private func gethealthProfileHistory() {
         
@@ -991,26 +1013,26 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         let prefs = UserDefaults.standard
         
-                    var counter = -1
-            for item in json["records"].arrayValue {
-                
-                counter += 1
-                let healthprofile = HealthProfile()
-                healthprofile.recordId = item["recordId"].stringValue
-                healthprofile.description = item["description"].stringValue
-                healthprofile.subRecordCount = item["subRecordCount"].stringValue
-                healthprofile.hide = item["_hide"].stringValue
-                
-                healthprofile.lastUpdated = item["lastUpdated"].stringValue
-                healthprofile.name = item["attributes"][0]["value"].stringValue
-                
-                healthprofile.subRecords = String(describing: item["subRecords"].arrayValue)
-                
-                
-                self.arrayHealthProfile.append(healthprofile)
-                
-            }
-
+        var counter = -1
+        for item in json["records"].arrayValue {
+            
+            counter += 1
+            let healthprofile = HealthProfile()
+            healthprofile.recordId = item["recordId"].stringValue
+            healthprofile.description = item["description"].stringValue
+            healthprofile.subRecordCount = item["subRecordCount"].stringValue
+            healthprofile.hide = item["_hide"].stringValue
+            
+            healthprofile.lastUpdated = item["lastUpdated"].stringValue
+            healthprofile.name = item["attributes"][0]["value"].stringValue
+            
+            healthprofile.subRecords = String(describing: item["subRecords"].arrayValue)
+            
+            
+            self.arrayHealthProfile.append(healthprofile)
+            
+        }
+        
         
         
         //re-order assesements to saved order list
@@ -1030,7 +1052,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             prefs.set(saveOrder, forKey: "savedOrderProfile")
             
-           
+            
             
             //end re-order code
             
@@ -1039,7 +1061,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
             
-          
+            
             
             if(self.saveOrder.count == self.arrayHealthProfile.count){
                 
@@ -1132,7 +1154,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         
         //end re-order
-       
+        
         
         self.tableViewProfile?.reloadData()
         
@@ -1153,7 +1175,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         // get a reference to the app delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.showActivityIndicator(uiView: self.view)
-      
+        
         let urlString: String
         
         urlString = Constants.baseURL + "healthProfiles/details"
@@ -1207,7 +1229,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         
                         self.saveJSONAllergyChronic(j: json1)
                     }
-
+                    
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
@@ -1217,7 +1239,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         let prefs = UserDefaults.standard
                         prefs.removeObject(forKey: "Notes")
                         prefs.removeObject(forKey: "Pathology")
-                         prefs.removeObject(forKey: "Doctors")
+                        prefs.removeObject(forKey: "Doctors")
                         prefs.removeObject(forKey: "Hospitals")
                         prefs.removeObject(forKey: "Medication")
                         
@@ -1237,7 +1259,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         prefs.removeObject(forKey: "Doctors")
                         prefs.removeObject(forKey: "Hospitals")
                         prefs.removeObject(forKey: "Medication")
-
+                        
                         
                         let chronic: MainChronic = {
                             return UIStoryboard.viewController(identifier: "MainChronic") as! MainChronic
@@ -1248,11 +1270,11 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         self.present(chronicView, animated: false, completion: nil)
                         
                     }
-
-                   
                     
-                 
-
+                    
+                    
+                    
+                    
                     //let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     //appDelegate.hideActivityIndicator(uiView: self.view)
                     //self.showSuccess()
@@ -1325,7 +1347,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         
     }
-
+    
     
     private func gethealthProfile() {
         
@@ -1374,7 +1396,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         HealthProfileController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
             
-            print(response)
+            //print(response)
             
             let responseJSON = response.result.value
             
@@ -1396,6 +1418,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 if status == "SUCCESS"{
                     
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+                    
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
                     
@@ -1412,7 +1436,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     let prefs = UserDefaults.standard
                     
-                                   var counter = -1
+                    var counter = -1
                     for item in json["records"].arrayValue {
                         
                         counter += 1
@@ -1431,8 +1455,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         self.arrayHealthProfile.append(healthprofile)
                         
                     }
-
-                   
+                    
+                    
                     
                     //re-order assesements to saved order list
                     
@@ -1451,7 +1475,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         
                         prefs.set(self.saveOrder, forKey: "savedOrderProfile")
                         
-                        print(prefs.object(forKey: "savedOrderProfile") as Any)
+                        //print(prefs.object(forKey: "savedOrderProfile") as Any)
                         
                         //end re-order code
                         
@@ -1460,7 +1484,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         
                         self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
                         
-                    
+                        
                         
                         if(self.saveOrder.count == self.arrayHealthProfile.count){
                             
@@ -1553,7 +1577,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     
                     //end re-order
-
+                    
                     
                     self.tableViewProfile?.reloadData()
                     
@@ -1820,9 +1844,9 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     
                     let prefs = UserDefaults.standard
-                   
-      
-        
+                    
+                    
+                    
                     
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     

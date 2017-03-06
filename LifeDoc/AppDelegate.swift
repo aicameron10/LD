@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var add : Array<String> = Array()
     
-        var messageStr : String = String()
+    var messageStr : String = String()
     
     var container: UIView = UIView()
     var loadingView: UIView = UIView()
@@ -77,16 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName: UIColor.white,
              NSFontAttributeName: UIFont(name: "SegoePrint", size: 20)!]
         
-       //application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+        //application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         //UIFont.familyNames.sorted().forEach({print($0)})
-    
+        
         let prefs = UserDefaults.standard
-      
+        
         prefs.removeObject(forKey: "savedOrderProfile")
         //prefs.removeObject(forKey: "savedOrder")
-          prefs.removeObject(forKey: "savedServerMessage")
+        prefs.removeObject(forKey: "savedServerMessage")
         
-
+        
         
         
         mainViewLoad()
@@ -104,13 +104,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         prefs.removeObject(forKey: "savedServerMessage")
         
-       
         
-     
         self.checkTerms()
         self.checkAuthToken()
- 
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
+        
+        
         
         setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139.0/255, blue: 197.0/255, alpha: 1.0))
         
@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.rootViewController = statusController
         
         window!.makeKeyAndVisible()
-
+        
         
         
     }
@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let navigationController  = AppNavigationDrawerController(rootViewController: menuController, leftViewController: leftViewController,rightViewController: rightViewController)
             let statusController = AppStatusBarController(rootViewController: navigationController)
-
+            
             window!.rootViewController = statusController
         }else{
             window!.rootViewController = pageViewController
@@ -184,7 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func showToast(){
-          
+        
         
         let prefs = UserDefaults.standard
         
@@ -194,7 +194,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
         }
-
+        
     }
     
     
@@ -289,7 +289,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // here I save my JSON as a string
     }
-
+    
     
     private func showShare(){
         
@@ -300,9 +300,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             msg = prefs.string(forKey: "savedServerMessage")!
             
         }
-
+        
         let ac = UIAlertController(title: "Generate OTP", message: msg, preferredStyle: .alert)
-       
+        
         ac.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default)
         { action -> Void in
             
@@ -311,14 +311,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { action -> Void in
             self.shareNow()
         })
-         self.window!.rootViewController?.present(ac, animated: true)
-
+        self.window!.rootViewController?.present(ac, animated: true)
+        
     }
     
     
     private func showTerms(){
         
-       
+        
         let msg = "Please note that the LifeDoc Terms and Conditions have been updated. By continuing you accept the changes to the Terms and Conditions. If you do not accept the updated Terms and Conditions, you will no longer be able to use LifeDoc."
         
         
@@ -330,11 +330,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return UIStoryboard.viewController(identifier: "TermsCheckController") as! TermsCheckController
             }()
             
-   
-         
-             self.window!.rootViewController?.present(terms, animated: true)
+            
+            
+            self.window!.rootViewController?.present(terms, animated: true)
         })
-
+        
         
         ac.addAction(UIAlertAction(title: "Decline", style: UIAlertActionStyle.default)
         { action -> Void in
@@ -344,7 +344,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         { action -> Void in
             self.acceptTermsConditions()
         })
-       
+        
         
         
         self.window!.rootViewController?.present(ac, animated: true)
@@ -353,7 +353,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-
+    
     
     private func shareNow(){
         // text to share
@@ -364,7 +364,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             msg = prefs.string(forKey: "savedServerMessage")!
             
         }
-      
+        
         
         // set up activity view controller
         let textToShare = [ msg ]
@@ -380,8 +380,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     public func generateOTP() {
- 
-         self.showActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+        
+        self.showActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
         let urlString: String
         
         urlString = Constants.baseURL + "generateOTP"
@@ -424,11 +424,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if status == "SUCCESS"{
                     
-                 let prefs = UserDefaults.standard
+                    let prefs = UserDefaults.standard
                     prefs.set(msg, forKey: "savedServerMessage")
                     self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
                     self.showShare()
-
+                    
                     
                 }else{
                     self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
@@ -468,7 +468,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Underlying error: \(error.underlyingError)")
             } else if let error = response.result.error  as? URLError {
                 print("URLError occurred: \(error)")
-               self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
                 
             }
             
@@ -476,7 +476,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-
+    
     
     public func gethealthProfile() {
         
@@ -535,8 +535,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 let status = json["status"]
-                 self.messageStr = json["message"].string!
-               
+                self.messageStr = json["message"].string!
+                
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
                 
                 
@@ -556,12 +556,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
                     }
-               
+                    
                     
                 }else{
-                     self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-                     self.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                     self.showError()
+                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                    self.showError()
                 }
                 
             }
@@ -597,8 +597,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Underlying error: \(error.underlyingError)")
             } else if let error = response.result.error as? URLError {
                 print("URLError occurred: \(error)")
-                 self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-            self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                 self.showNetworkError()
             } else {
                 
@@ -612,8 +612,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-
-
+    
+    
     
     public func gethealthAssessments() {
         
@@ -664,29 +664,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 let status = json["status"]
-                 self.messageStr = json["message"].string!
-    
+                self.messageStr = json["message"].string!
+                
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
                 
                 
                 if status == "SUCCESS"{
                     
-                 self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-                  self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                     
-                  NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableHistory"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableHistory"), object: nil)
                     
                     
                     let prefs = UserDefaults.standard
                     
                     if (prefs.string(forKey: "savedServerMessage") != nil){
                         
-                  self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
-                    
-                 
+                        self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
+                        
+                        
                     }
-               
-                
+                    
+                    
                     
                     
                 }else{
@@ -694,7 +694,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
                     self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                     self.showError()
-                 
+                    
                 }
                 
             }
@@ -730,8 +730,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Underlying error: \(error.underlyingError)")
             } else if let error = response.result.error as? URLError {
                 print("URLError occurred: \(error)")
-                 self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-            self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                 self.showNetworkError()
                 
             } else {
@@ -791,7 +791,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var json = JSON(jsonResponse)
                 let status = json["status"]
                 self.messageStr = json["message"].string!
-                   let value = json["value"].bool!
+                let value = json["value"].bool!
                 
                 
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
@@ -800,7 +800,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if status == "SUCCESS"{
                     
                     if (value == false) {
-                      
+                        
                         self.showTerms()
                     }
                     
@@ -850,7 +850,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-
+    
     
     public func acceptTermsConditions() {
         
@@ -870,7 +870,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,
             "loggedInUserDetailsId": loggedInUserDetailsId
-           
+            
             
         ]
         
@@ -896,7 +896,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var json = JSON(jsonResponse)
                 let status = json["status"]
                 self.messageStr = json["message"].string!
-              
+                
                 
                 
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
@@ -904,10 +904,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if status == "SUCCESS"{
                     
-                     self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 3.0, position: .bottom)
+                    self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 3.0, position: .bottom)
                     
                 }else{
-                     self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 3.0, position: .bottom)
+                    self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 3.0, position: .bottom)
                     self.checkTerms()
                 }
                 
@@ -953,7 +953,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-
+    
     
     public func checkAuthToken() {
         
@@ -1069,17 +1069,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prefs.removeObject(forKey: "savedOrder")
         prefs.removeObject(forKey: "savedOrderProfile")
         prefs.removeObject(forKey: "savedServerMessage")
+        prefs.removeObject(forKey: "attachBase64Profile")
         
         
-    
-
         
         let urlString: String
         
         urlString = Constants.baseURL + "logout"
         
         print(urlString)
-      
+        
         let loggedInUserDetailsId = prefs.integer(forKey: "loggedInUserDetailsId")
         let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
         let authToken = prefs.string(forKey: "authToken")
@@ -1172,13 +1171,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     }
-
-
+    
+    
     
     func showNetworkError() {
         let ac = UIAlertController(title: "Error", message:  "Your device is unable to connect,  Please check your device internet settings or contact 0800 695 433 (0800 My Life) for further assistance", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
-         self.window!.rootViewController?.present(ac, animated: true)
+        self.window!.rootViewController?.present(ac, animated: true)
     }
     
     func showError() {
@@ -1186,8 +1185,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ac.addAction(UIAlertAction(title: "OK", style: .default))
         self.window!.rootViewController?.present(ac, animated: true)
     }
-
-
+    
+    
     
     private static var Manager: Alamofire.SessionManager = {
         
@@ -1206,7 +1205,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return manager
     }()
-
+    
 }
 
 extension NSURLRequest {
@@ -1240,6 +1239,23 @@ public extension Array {
 
 public extension Array {
     mutating func rearrange(from: Int, to: Int) {
+        
         insert(remove(at: from), at: to)
+        
+    }
+}
+
+extension UIImage {
+    func fixOrientation() -> UIImage {
+        if self.imageOrientation == UIImageOrientation.up {
+            return self
+        }
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        self.draw(in: CGRect(x:0, y:0, width:self.size.width, height:self.size.height))
+        let normalizedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage;
     }
 }

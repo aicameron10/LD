@@ -11,6 +11,8 @@ import UIKit
 import Alamofire
 import Toast_Swift
 import FileExplorer
+import Photos
+
 class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDelegate,FileExplorerViewControllerDelegate {
     
     
@@ -1453,21 +1455,27 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         ac.addAction(UIAlertAction(title: "View", style: UIAlertActionStyle.default)
         { action -> Void in
             
+   
             let fileExplorer = FileExplorerViewController()
-            fileExplorer.navigationItem.titleLabel.textColor = UIColor.black
+            
+            let navigationBarAppearace = UINavigationBar.appearance()
+            
+            navigationBarAppearace.tintColor = .white
+            navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+            
             fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
             fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
             fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
-            fileExplorer.fileFilters = [Filter.extension("jpg"),Filter.extension("png")]
-            
-            //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
-            //  in: .userDomainMask).first!
+            fileExplorer.fileFilters = [Filter.extension("jpg"),Filter.extension("png"),Filter.extension("pdf")]
+           
+            //let documentsUrl = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
             //fileExplorer.initialDirectoryURL = documentsUrl
             fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
             fileExplorer.delegate = self
             
-
-             UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(fileExplorer, animated: true, completion: nil)
+            
+            UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(fileExplorer, animated: true, completion: nil)
+      
         })
         
 
@@ -1570,6 +1578,22 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     let filename = self.getDocumentsDirectory().appendingPathComponent(name)
                     try? data.write(to: filename)
                 }
+                    
+                    PHPhotoLibrary.shared().performChanges({
+                        PHAssetChangeRequest.creationRequestForAsset(from: decodedimage!)
+                    }, completionHandler: { success, error in
+                        if success {
+                            // Saved successfully!
+                        }
+                        else if let error = error {
+                            // Save photo failed with error
+                            
+                            print(error)
+                        }
+                        else {
+                            // Save photo failed with no error
+                        }
+                    })
 
                 
                 self.messageStr =  self.downloadName +  " downloaded successfully"
@@ -1581,7 +1605,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     // get a reference to the app delegate
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: (self.parentViewController?.view)!)
-                    self.messageStr =  "Download of " + self.downloadName + ".jpg" + " failed. Please try again."
+                    self.messageStr =  "Download of " + self.downloadName  + " failed. Please try again."
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     self.showAttachMessage1()
  
@@ -1626,7 +1650,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 // get a reference to the app delegate
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.hideActivityIndicator(uiView: (self.parentViewController?.view)!)
-                self.messageStr =  "Download of " + self.downloadName + ".jpg" + " failed. Please try again."
+                self.messageStr =  "Download of " + self.downloadName  + " failed. Please try again."
                 prefs.set(self.messageStr, forKey: "savedServerMessage")
                 self.showAttachMessage1()
          

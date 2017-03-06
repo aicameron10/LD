@@ -762,7 +762,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
 
         
-        cell.count.layer.cornerRadius = 11.5
+        cell.count.layer.cornerRadius =  cell.count.frame.size.width / 2
         cell.count.clipsToBounds = true
         
         return cell
@@ -888,12 +888,18 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
                 (alert: UIAlertAction!) -> Void in
                 
+                let navigationBarAppearace = UINavigationBar.appearance()
+                
+                navigationBarAppearace.tintColor = .white
+                navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+
+                
                 
                 let fileExplorer = FileExplorerViewController()
                 fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
                 fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
                 fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
-                fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("jpg"), Filter.extension("pdf"), Filter.extension("doc"),Filter.extension("png")]
+                     fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
                 
                 //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
                 //  in: .userDomainMask).first!

@@ -614,6 +614,7 @@ class SignUpController: UIViewController, WWCalendarTimeSelectorProtocol  {
         selector.optionStyles.showMonth(false)
         selector.optionStyles.showYear(true)
         selector.optionStyles.showTime(false)
+        selector.optionCalendarFontColorFutureDates = UIColor.lightGray
         
         
         

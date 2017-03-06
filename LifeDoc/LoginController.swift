@@ -313,7 +313,7 @@ class LoginController: UIViewController {
         LoginController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
             
-            print(response)
+            //print(response)
             
             if let jsonResponse = response.result.value {
                 //print("JSON: \(json)")
@@ -341,6 +341,21 @@ class LoginController: UIViewController {
                     prefs.set(firstName, forKey: "firstName")
                     prefs.set(lastName, forKey: "lastName")
                     
+                    
+                    let profilePictureData = json["detail"]["profilePictureData"].string
+                    
+                   
+                    
+                    if(profilePictureData != nil){
+                        
+                        let prefs = UserDefaults.standard
+                        prefs.set(profilePictureData, forKey: "attachBase64Profile")
+                        
+                      
+                        
+                    }
+
+                 
                     
                     if(self.switchOn == true){
                         prefs.set("true", forKey: "userloggedin")

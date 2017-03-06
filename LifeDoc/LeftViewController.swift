@@ -11,6 +11,7 @@ import Material
 
 class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var tableViewSide: UITableView!
     @IBOutlet weak var welcomeLabel: UILabel!
     private var transitionButton: FlatButton!
@@ -26,6 +27,67 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             welcomeLabel.text = "Welcome " + prefs.string(forKey: "firstName")! + " " + prefs.string(forKey: "lastName")!
             
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loadProfilePic), name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+        
+        prepareProfilePic()
+        
+    }
+    
+    
+    private func prepareProfilePic() {
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        profilePic.isUserInteractionEnabled = true
+        profilePic.addGestureRecognizer(tapGestureRecognizer)
+        
+        profilePic.layer.cornerRadius = profilePic.frame.size.width / 2;
+        profilePic.clipsToBounds = true
+        
+        
+        let prefs = UserDefaults.standard
+        if (prefs.string(forKey: "attachBase64Profile") != nil){
+            
+            let image = prefs.string(forKey: "attachBase64Profile")
+            
+            let dataDecoded : Data = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            profilePic.image = decodedimage?.fixOrientation()
+        }else{
+            
+            profilePic.image = UIImage(named: "blue_camera.png")
+        }
+        
+    }
+    
+    func loadProfilePic(notification: NSNotification){
+        //load data here
+        
+        let prefs = UserDefaults.standard
+        if (prefs.string(forKey: "attachBase64Profile") != nil) {
+      
+            let image = prefs.string(forKey: "attachBase64Profile")
+            
+            let dataDecoded : Data = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)!
+            let decodedimage = UIImage(data: dataDecoded)
+            self.profilePic.image = decodedimage?.fixOrientation()
+            
+        }
+    }
+    
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        
+        
+        navigationDrawerController?.closeLeftView()
+        let profile: ProfileController = {
+            return UIStoryboard.viewController(identifier: "ProfileController") as! ProfileController
+        }()
+        
+        
+        self.present(profile, animated: true, completion: nil)
+        
         
     }
     
@@ -59,12 +121,12 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }()
     
     
-   
-
     
-    var textNames = ["Health Profile", "Health Assessments", "Profile", "Change Password"]
+    
+    
+    var textNames = ["Health Profile", "Health Assessments", "My Profile", "Change Password"]
     var textNames1 = ["Generate OTP"]
-  
+    
     var pics = ["ic_profile_health.png", "ic_assess_health_bar.png", "ic_profile_side.png", "ic_change_password.png"]
     var pics1 = ["ic_otp_side.png"]
     
@@ -79,8 +141,8 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             return "Communicate"
         }
-
-       
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,10 +165,10 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         var cell = SideCustomCell()
         
-    
-            
-            cell = tableView.dequeueReusableCell(withIdentifier: "sideCell", for: indexPath) as! SideCustomCell
-            
+        
+        
+        cell = tableView.dequeueReusableCell(withIdentifier: "sideCell", for: indexPath) as! SideCustomCell
+        
         if(indexPath.section == 0){
             cell.textStr.text = textNames[indexPath.row]
             
@@ -118,11 +180,11 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.textStr.text = textNames1[indexPath.row]
             
             cell.pic.image = UIImage(named:pics1[indexPath.row])
-
+            
             
         }
         
-            
+        
         
         
         return cell
@@ -144,11 +206,11 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             navigationDrawerController?.closeLeftView()
             
-             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
             
             UIApplication.shared.keyWindow?.rootViewController = statusController
             //self.present((rootViewController: statusController),animated: false)
-
+            
         }else if(indexPath.section == 0 && indexPath.row == 1){
             
             let pageTabBarController = AppPageTabBarController(viewControllers: [healthProfileController, healthAssessmentController, profileListViewController], selectedIndex: 1)
@@ -158,13 +220,13 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let navigationController  = AppNavigationDrawerController(rootViewController: menuController, leftViewController: leftViewController,rightViewController: rightViewController)
             let statusController = AppStatusBarController(rootViewController: navigationController)
             
-             navigationDrawerController?.closeLeftView()
+            navigationDrawerController?.closeLeftView()
             
-             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
             
             UIApplication.shared.keyWindow?.rootViewController = statusController
             //self.present((rootViewController: statusController),animated: false)
-
+            
         }else if(indexPath.section == 0 && indexPath.row == 2){
             
             let pageTabBarController = AppPageTabBarController(viewControllers: [healthProfileController, healthAssessmentController, profileListViewController], selectedIndex: 2)
@@ -176,16 +238,16 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             navigationDrawerController?.closeLeftView()
             
-             self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
             
             UIApplication.shared.keyWindow?.rootViewController = statusController
             //self.present((rootViewController: statusController),animated: false)
             
         }
-        
+            
         else if(indexPath.section == 0 && indexPath.row == 3){
             
-             navigationDrawerController?.closeLeftView()
+            navigationDrawerController?.closeLeftView()
             let change: ChangePasswordController = {
                 return UIStoryboard.viewController(identifier: "ChangePasswordController") as! ChangePasswordController
             }()
@@ -197,23 +259,23 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             print("Generate OTP")
             
-              navigationDrawerController?.closeLeftView()
+            navigationDrawerController?.closeLeftView()
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.generateOTP()
         }
-
         
-
-
+        
+        
+        
         
         
     }
-  
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
- 
+        
         if(indexPath.section == 0){
             
             return 45
@@ -224,6 +286,6 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         
     }
-
+    
     
 }

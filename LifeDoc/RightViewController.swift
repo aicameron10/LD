@@ -98,6 +98,8 @@ class RightViewController: UIViewController {
         prefs.removeObject(forKey: "savedOrder")
         prefs.removeObject(forKey: "savedOrderProfile")
         prefs.removeObject(forKey: "savedServerMessage")
+        prefs.removeObject(forKey: "attachBase64Profile")
+     
         
         
         logOut()

@@ -25,6 +25,8 @@ import UIKit
         }
     }
     
+   
+    
     public func showMonth(_ show: Bool) {
         showMonth = show
         showDateMonth = show ? false : showDateMonth
@@ -502,6 +504,8 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     ///
     /// - Note: Defaults to 3 / 8
     open var optionLayoutLandscapeRatio: CGFloat = 3/8
+    
+    open var displayYearNew = -1
     
     // All Views
     @IBOutlet fileprivate weak var topContainerView: UIView!
@@ -1436,6 +1440,31 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
         return multipleDates.count
     }
     
+    open  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        //print("scrolling")
+        targetContentOffset.pointee = scrollView.contentOffset
+        
+    }
+    
+    open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+         //print("scrolling acc")
+        
+    }
+    
+    open func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        //print("scrolling acc start" )
+        
+    }
+    open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+         //print("start scrolling")
+        
+        
+    }
+    
+    open func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
     open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
         
@@ -1513,6 +1542,18 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
             
             let currentYear = Date().year
             let displayYear = yearRow1 + (indexPath as NSIndexPath).row
+            displayYearNew = yearRow1 + (indexPath as NSIndexPath).row
+            
+            if(displayYear >= 1900){
+                tableView.isScrollEnabled = true
+            }else{
+                
+                tableView.isScrollEnabled = false
+   
+
+            }
+            if(displayYear >= 1900){
+                
             if displayYear > currentYear {
                 cell.textLabel?.font = optionCurrentDate.year == displayYear ? optionCalendarFontFutureYearsHighlight : optionCalendarFontFutureYears
                 cell.textLabel?.textColor = optionCurrentDate.year == displayYear ? optionCalendarFontColorFutureYearsHighlight : optionCalendarFontColorFutureYears
@@ -1525,7 +1566,13 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 cell.textLabel?.font = optionCurrentDate.year == displayYear ? optionCalendarFontCurrentYearHighlight : optionCalendarFontCurrentYear
                 cell.textLabel?.textColor = optionCurrentDate.year == displayYear ? optionCalendarFontColorCurrentYearHighlight : optionCalendarFontColorCurrentYear
             }
+               
             cell.textLabel?.text = "\(displayYear)"
+            }else{
+                
+                cell.isHidden = true
+            }
+            
         }
         else { // multiple dates table
             if let c = tableView.dequeueReusableCell(withIdentifier: "cell") {
@@ -1549,13 +1596,17 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == yearTable {
+            
             let displayYear = yearRow1 + (indexPath as NSIndexPath).row
+           if(displayYear >= 1900){
             let newDate = optionCurrentDate.change(year: displayYear)
+          
             if delegate?.WWCalendarTimeSelectorShouldSelectDate?(self, date: newDate!) ?? true {
                 optionCurrentDate = newDate!
                 updateDate()
                 tableView.reloadData()
             }
+        }
         }
         else if tableView == selMultipleDatesTable {
             let date = multipleDates[(indexPath as NSIndexPath).row]
@@ -1609,6 +1660,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 scrollView.contentOffset = CGPoint(x: 0, y: offsetY - twoRow * 2)
                 calendarTable.reloadData()
             }
+            
         }
         else if scrollView == yearTable {
             let triggerPoint = backgroundContentView.frame.height / 10 * 3
@@ -1728,8 +1780,12 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
         if delegate?.WWCalendarTimeSelectorShouldSelectDate?(self, date: date) ?? true {
             switch optionSelectionType {
             case .single:
+                
+                if(date.year >= 1900){
                 optionCurrentDate = optionCurrentDate.change(year: date.year, month: date.month, day: date.day)
                 updateDate()
+                }
+                
                 
             case .multiple:
                 var indexPath: IndexPath

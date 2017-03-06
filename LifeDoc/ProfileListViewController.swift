@@ -54,7 +54,7 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
         //pageTabBarItem.title = "My Profile"
         //pageTabBarItem.titleColor = Color.white
         
-        let myString = "Profile"
+        let myString = "My Profile"
         let myMutableString = NSMutableAttributedString(
             string: myString,
             attributes: [NSFontAttributeName:
@@ -65,7 +65,7 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
                                      value: UIColor.white,
                                      range: NSRange(
                                         location:0,
-                                        length:7))
+                                        length:10 ))
         
         pageTabBarItem.setAttributedTitle(myMutableString, for: UIControlState.normal)
         
