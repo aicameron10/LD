@@ -1121,6 +1121,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 let addValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                 
+                   if(!addValue.isEmpty){
+                
                 let addThis = addValue[0]
                 
                 self.saveOrder.insert(addThis, at: 0)
@@ -1140,6 +1142,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 prefs.set(saveOrder, forKey: "savedOrderProfile")
                 self.arrayHealthProfile.removeAll()
                 self.arrayHealthProfile = arrayHealthProfileTemp
+                }
                 
             }
             else if(self.arrayHealthProfile.count < self.saveOrder.count){
@@ -1153,6 +1156,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 
                 let deleteValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                
+                   if(!deleteValue.isEmpty){
                 
                 let deleteThis = deleteValue[0]
                 
@@ -1175,6 +1180,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 prefs.set(saveOrder, forKey: "savedOrderProfile")
                 self.arrayHealthProfile.removeAll()
                 self.arrayHealthProfile = arrayHealthProfileTemp
+                    
+                }
             }
             
             
@@ -1574,6 +1581,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                             
                             let addValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                             
+                             if(!addValue.isEmpty){
+                            
                             let addThis = addValue[0]
                             
                             self.saveOrder.insert(addThis, at: 0)
@@ -1593,6 +1602,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                             prefs.set(self.saveOrder, forKey: "savedOrderProfile")
                             self.arrayHealthProfile.removeAll()
                             self.arrayHealthProfile = arrayHealthProfileTemp
+                                
+                            }
                             
                         }
                         else if(self.arrayHealthProfile.count < self.saveOrder.count){
@@ -1606,6 +1617,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                             
                             
                             let deleteValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                            
+                               if(!deleteValue.isEmpty){
                             
                             let deleteThis = deleteValue[0]
                             
@@ -1628,6 +1641,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                             prefs.set(self.saveOrder, forKey: "savedOrderProfile")
                             self.arrayHealthProfile.removeAll()
                             self.arrayHealthProfile = arrayHealthProfileTemp
+                                
+                            }
                         }
                         
                         

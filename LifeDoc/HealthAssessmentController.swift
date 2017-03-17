@@ -621,6 +621,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 
                 
                 let addValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                 if(!addValue.isEmpty){
                 
                 let addThis = addValue[0]
                 
@@ -641,6 +642,8 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 prefs.set(saveOrder, forKey: "savedOrder")
                 self.arrayHealthAssessment.removeAll()
                 self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                    
+                }
                 
             }
             else if(self.arrayHealthAssessment.count < self.saveOrder.count){
@@ -655,9 +658,12 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 
                 let deleteValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                 
-                let deleteThis = deleteValue[0]
+              
                 
-                print(deleteThis)
+                if(!deleteValue.isEmpty){
+                
+                let deleteThis = deleteValue[0]
+               
                 
                 self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
                 
@@ -676,6 +682,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 prefs.set(saveOrder, forKey: "savedOrder")
                 self.arrayHealthAssessment.removeAll()
                 self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                }
             }
             
             
@@ -903,6 +910,8 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                             
                             let addValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                             
+                             if(!addValue.isEmpty){
+                            
                             let addThis = addValue[0]
                             
                             self.saveOrder.insert(addThis, at: 0)
@@ -922,6 +931,8 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                             prefs.set(self.saveOrder, forKey: "savedOrder")
                             self.arrayHealthAssessment.removeAll()
                             self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                                
+                            }
                             
                         }
                         else if(self.arrayHealthAssessment.count < self.saveOrder.count){
@@ -935,10 +946,11 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                             
                             
                             let deleteValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                               if(!deleteValue.isEmpty){
                             
                             let deleteThis = deleteValue[0]
                             
-                            print(deleteThis)
+                            
                             
                             self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
                             
@@ -957,6 +969,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                             prefs.set(self.saveOrder, forKey: "savedOrder")
                             self.arrayHealthAssessment.removeAll()
                             self.arrayHealthAssessment = arrayHealthAssessmentTemp
+                            }
                         }
                         
                         
