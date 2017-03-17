@@ -75,6 +75,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(noData), name: NSNotification.Name(rawValue: "showNoDataLabelAssess"), object: nil)
         
         //self.loadJSON()
         if(self.loadJSON() != nil){
@@ -92,6 +93,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     
     func loadList(notification: NSNotification){
         //load data here
+        removeSubview()
         gethealthAssessments()
         //gethealthAssessmentsHistory()
         print("relaoding")
@@ -99,10 +101,24 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     
     func loadListHistory(notification: NSNotification){
         //load data here
+        removeSubview()
         gethealthAssessmentsHistory()
         print("relaoding History")
     }
     
+    func noData(notification: NSNotification){
+        //create label here
+        arrayHealthAssessment.removeAll()
+        tableViewAssess.reloadData()
+        saveOrder.removeAll()
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        label.center = CGPoint(x: 160, y: 200)
+        label.numberOfLines = 0
+        label.tag = 101
+        label.textAlignment = .center
+        label.text = Constants.welcome_nodata
+        self.view.addSubview(label)
+    }
     func refresh(sender:AnyObject) {
         
         gethealthAssessments()
@@ -709,6 +725,15 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         return returnArray
     }
     
+    func removeSubview(){
+        print("Start remove subview")
+        if let viewWithTag = self.view.viewWithTag(101) {
+            viewWithTag.removeFromSuperview()
+        }else{
+            print("No!")
+        }
+    }
+    
     public func gethealthAssessments() {
         
         // tell refresh control it can stop showing up now
@@ -753,25 +778,45 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
         
         // Both calls are equivalent
         HealthAssessmentController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
-            
-            
-            //print(response)
-            let responseJSON = response.result.value
-            if(responseJSON != nil){
-                let json1 = JSON(responseJSON as Any)
-                
-                self.saveJSON(j: json1)
-            }
-            
+    
             if let jsonResponse = response.result.value {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 let status = json["status"]
+                let assessments = json["assessments"]
                 self.messageStr = json["message"].string!
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
-                
+                if(assessments.isEmpty){
+                    
+                    let prefs = UserDefaults.standard
+
+                    prefs.removeObject(forKey: "jsonHealthAssess")
+                    prefs.removeObject(forKey: "savedOrder")
+                    self.arrayHealthAssessment.removeAll()
+                    self.saveOrder.removeAll()
+                    
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.hideActivityIndicator(uiView: self.view)
+                    print("make label")
+                    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+                    label.center = CGPoint(x: 160, y: 200)
+                    label.numberOfLines = 0
+                    label.tag = 101
+                    label.textAlignment = .center
+                    label.text = Constants.welcome_nodata
+                    self.view.addSubview(label)
+                }else{
                 
                 if status == "SUCCESS"{
+                    
+                    let responseJSON = response.result.value
+                    if(responseJSON != nil){
+                        let json1 = JSON(responseJSON as Any)
+                        
+                        self.saveJSON(j: json1)
+                    }
+                    
+                    self.removeSubview()
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
@@ -930,6 +975,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
                     self.showError()
+                }
                 }
                 
             }

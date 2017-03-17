@@ -869,7 +869,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
                     self.imagePicker.allowsEditing = false
-                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
                     self.present(self.imagePicker, animated: true, completion: nil)
                 }
             })
@@ -887,13 +887,13 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
                     self.imagePicker.allowsEditing = true
-                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
                     self.imagePicker.navigationBar.tintColor = .white
                     
                     self.present(self.imagePicker, animated: true, completion: nil)
                 }            })
             
-            let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
+            /*let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
                 (alert: UIAlertAction!) -> Void in
                 
                 let navigationBarAppearace = UINavigationBar.appearance()
@@ -916,7 +916,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 
                 self.present(fileExplorer, animated: true, completion: nil)
                 
-            })
+            })*/
             //
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
@@ -927,7 +927,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             // 4
             optionMenuPhoto.addAction(photoAction)
             optionMenuPhoto.addAction(galleryAction)
-            optionMenuPhoto.addAction(fileAction)
+            //optionMenuPhoto.addAction(fileAction)
             optionMenuPhoto.addAction(cancelAction)
             
             // 5

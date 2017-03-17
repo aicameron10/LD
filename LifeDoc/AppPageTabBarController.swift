@@ -47,7 +47,7 @@ extension AppPageTabBarController {
         pageTabBar.dividerColor = nil
         pageTabBar.lineColor = Color.white
         pageTabBar.lineAlignment = .bottom
-        pageTabBar.backgroundColor = UIColor(red: 0/255, green: 153.0/255, blue: 217.0/255, alpha: 1.0)
+        pageTabBar.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
         
         
     }

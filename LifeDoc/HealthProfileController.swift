@@ -34,7 +34,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(image, jpegCompressionQuality)?.base64EncodedString()
-            print(base64String as Any)
+            //print(base64String as Any)
             
             let prefs = UserDefaults.standard
             prefs.set(base64String, forKey: "attachBase64")
@@ -143,6 +143,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadListFirst), name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
         
+         NotificationCenter.default.addObserver(self, selector: #selector(noData), name: NSNotification.Name(rawValue: "showNoDataLabel"), object: nil)
         
         
         imagePicker.delegate = self
@@ -167,11 +168,27 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         gethealthProfile()
         print("relaoding")
     }
+    
+    func noData(notification: NSNotification){
+        //create label here
+        arrayHealthProfile.removeAll()
+        tableViewProfile.reloadData()
+        saveOrder.removeAll()
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        label.center = CGPoint(x: 160, y: 200)
+        label.numberOfLines = 0
+        label.tag = 100
+        label.textAlignment = .center
+        label.text = Constants.welcome_nodata
+        self.view.addSubview(label)
+    }
     func loadListFirst(notification: NSNotification){
         //load data here
         
         arrayHealthProfile.removeAll()
+        saveOrder.removeAll()
         tableViewProfile.reloadData()
+        removeSubview()
         gethealthProfile()
         
         print("relaoding first")
@@ -185,6 +202,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     func loadListHistory(notification: NSNotification){
         //load data here
         print("relaoding History Profile")
+        removeSubview()
         gethealthProfileHistory()
         
     }
@@ -251,7 +269,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
    
                 intialValue = (indexPath?[1])!
                 
-                print(intialValue)
+                //print(intialValue)
                 
                 var center = cell?.center
                 My.cellSnapshot!.center = center!
@@ -296,7 +314,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         
                         movedValue = (indexPath?[1])!
                         
-                        print(movedValue)
+                        //print(movedValue)
                     
                         
                         tableViewProfile.reloadData()
@@ -608,9 +626,12 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     recordType = "CHRONIC_CONDITION"
                     recordValue = cell.recordId.text!
                     
-                    print(recordType)
+                    //print(recordType)
                     
                     getDetails()
+                }else{
+                    
+                     self.view.makeToast("This record can only be viewed and not edited. If you wish to edit this record, please visit www.lifedoc.co.za. This functionality will be available on the App soon.", duration: 3.0, position: .center)
                 }
                 
                 
@@ -843,7 +864,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     self.imagePicker.sourceType = UIImagePickerControllerSourceType.camera;
                     self.imagePicker.allowsEditing = false
-                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
                     self.present(self.imagePicker, animated: true, completion: nil)
                 }
             })
@@ -855,13 +876,13 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     self.imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
                     self.imagePicker.allowsEditing = true
-                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+                    self.imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
                     self.imagePicker.navigationBar.tintColor = .white
                     
                     self.present(self.imagePicker, animated: true, completion: nil)
                 }            })
             
-            let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
+            /*let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
                 (alert: UIAlertAction!) -> Void in
                 
                 let navigationBarAppearace = UINavigationBar.appearance()
@@ -883,7 +904,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 self.present(fileExplorer, animated: true, completion: nil)
                 
-            })
+            })*/
             //
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
@@ -894,7 +915,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             // 4
             optionMenuPhoto.addAction(photoAction)
             optionMenuPhoto.addAction(galleryAction)
-            optionMenuPhoto.addAction(fileAction)
+            //optionMenuPhoto.addAction(fileAction)
             optionMenuPhoto.addAction(cancelAction)
             
             // 5
@@ -1031,8 +1052,10 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             self.arrayHealthProfile.append(healthprofile)
             
+            //print(item["recordId"].stringValue)
+            
         }
-        
+        //print(self.arrayHealthProfile)
         
         
         //re-order assesements to saved order list
@@ -1040,15 +1063,18 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         if (prefs.object(forKey: "savedOrderProfile") == nil){
             //re-order code
+            print("Im in the right place")
             
             for i in 0 ..< self.arrayHealthProfile.count  {
                 
                 let recordID = self.arrayHealthProfile[i].recordId
                 
+                //print(recordID)
+                
                 saveOrder.append(recordID)
                 
             }
-            
+            //print(saveOrder)
             
             prefs.set(saveOrder, forKey: "savedOrderProfile")
             
@@ -1060,6 +1086,8 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
             
             self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
+            
+            //print(self.saveOrder)
             
             
             
@@ -1128,7 +1156,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 let deleteThis = deleteValue[0]
                 
-                print(deleteThis)
+                //print(deleteThis)
                 
                 self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
                 
@@ -1348,6 +1376,15 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
     }
     
+    func removeSubview(){
+        print("Start remove subview")
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }else{
+            print("No!")
+        }
+    }
+    
     
     private func gethealthProfile() {
         
@@ -1395,28 +1432,49 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         // Both calls are equivalent
         HealthProfileController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
-            
-            //print(response)
-            
-            let responseJSON = response.result.value
-            
-            if(responseJSON != nil){
-                let json1 = JSON(responseJSON as Any)
-                
-                self.saveJSON(j: json1)
-            }
-            
-            
+         
             
             if let jsonResponse = response.result.value {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
+                
+   
                 let status = json["status"]
+                let records = json["records"]
                 self.messageStr = json["message"].string!
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
                 
+                if(records.isEmpty){
+                    
+                    let prefs = UserDefaults.standard
+                   
+                    prefs.removeObject(forKey: "jsonHealthProfile")
+                    prefs.removeObject(forKey: "savedOrderProfile")
+                    self.arrayHealthProfile.removeAll()
+                    self.saveOrder.removeAll()
+
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.hideActivityIndicator(uiView: self.view)
+                    print("make label")
+                    let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+                    label.center = CGPoint(x: 160, y: 200)
+                    label.numberOfLines = 0
+                    label.tag = 100
+                    label.textAlignment = .center
+                    label.text = Constants.welcome_nodata
+                    self.view.addSubview(label)
+                }else{
                 
                 if status == "SUCCESS"{
+                    
+                    let responseJSON = response.result.value
+                    
+                    if(responseJSON != nil){
+                        let json1 = JSON(responseJSON as Any)
+                        
+                        self.saveJSON(j: json1)
+                    }
+                    self.removeSubview()
                     
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
                     
@@ -1590,6 +1648,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 }
                 
             }
+        }
             if let error = response.result.error as? AFError{
                 switch error {
                 case .invalidURL(let url):

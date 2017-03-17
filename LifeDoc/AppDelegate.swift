@@ -77,6 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             [NSForegroundColorAttributeName: UIColor.white,
              NSFontAttributeName: UIFont(name: "SegoePrint", size: 20)!]
         
+        
+        
         //application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         //UIFont.familyNames.sorted().forEach({print($0)})
         
@@ -111,8 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
         
         
-        
-        setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139.0/255, blue: 197.0/255, alpha: 1.0))
+        setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139/255, blue: 197/255, alpha: 1.0))
         
         let pageTabBarController = AppPageTabBarController(viewControllers: [healthProfileController, healthAssessmentController, profileListViewController], selectedIndex: 0)
         let toolbarController = AppToolbarController(rootViewController: pageTabBarController)
@@ -134,7 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func mainViewLoad() {
         
         
-        setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139.0/255, blue: 197.0/255, alpha: 1.0))
+       setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139/255, blue: 197/255, alpha: 1.0))
         
         let prefs = UserDefaults.standard
         window = UIWindow(frame: Screen.bounds)
@@ -161,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func logOutScreen() {
         
-        setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139.0/255, blue: 197.0/255, alpha: 1.0))
+        setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139/255, blue: 197/255, alpha: 1.0))
         
         self.window!.rootViewController?.dismiss(animated: false, completion: nil)
         
@@ -190,7 +191,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if (prefs.string(forKey: "savedServerMessage") != nil){
             
-            self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
+            self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .center)
             
             
         }
@@ -319,7 +320,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func showTerms(){
         
         
-        let msg = "Please note that the LifeDoc Terms and Conditions have been updated. By continuing you accept the changes to the Terms and Conditions. If you do not accept the updated Terms and Conditions, you will no longer be able to use LifeDoc."
+        let msg = Constants.msg_lifedoc_terms
         
         
         let ac = UIAlertController(title: "Terms and Conditions", message: msg, preferredStyle: .alert)
@@ -521,13 +522,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             //print(response)
             
-            let responseJSON = response.result.value
-            
-            if(responseJSON != nil){
-                let json1 = JSON(responseJSON as Any)
-                
-                self.saveJSONProfile(j: json1)
-            }
             
             
             
@@ -535,14 +529,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 let status = json["status"]
+                let records = json["records"]
                 self.messageStr = json["message"].string!
                 
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
-                
+                if(records.isEmpty){
+                    
+                    let prefs = UserDefaults.standard
+                    
+                    prefs.removeObject(forKey: "jsonHealthProfile")
+                    prefs.removeObject(forKey: "savedOrderProfile")
+                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showNoDataLabel"), object: nil)
+                   
+                }else{
                 
                 if status == "SUCCESS"{
                     
-                    print("success")
+                    
+                    let responseJSON = response.result.value
+                    
+                    if(responseJSON != nil){
+                        let json1 = JSON(responseJSON as Any)
+                        
+                        self.saveJSONProfile(j: json1)
+                    }
+
                     
                     self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
                     self.window!.rootViewController?.dismiss(animated: false, completion: nil)
@@ -563,7 +576,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                     self.showError()
                 }
-                
+                }
             }
             if let error = response.result.error as? AFError{
                 switch error {
@@ -664,10 +677,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 let status = json["status"]
+                let assessments = json["assessments"]
                 self.messageStr = json["message"].string!
                 
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
-                
+                if(assessments.isEmpty){
+                    
+                    let prefs = UserDefaults.standard
+                    
+                    prefs.removeObject(forKey: "jsonHealthAssess")
+                    prefs.removeObject(forKey: "savedOrder")
+                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showNoDataLabelAssess"), object: nil)
+                    
+                }else{
                 
                 if status == "SUCCESS"{
                     
@@ -695,6 +719,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                     self.showError()
                     
+                }
                 }
                 
             }
@@ -1257,5 +1282,26 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return normalizedImage;
+    }
+}
+
+extension String {
+    
+    func fileName() -> String {
+        
+        if let fileNameWithoutExtension = NSURL(fileURLWithPath: self).deletingPathExtension?.lastPathComponent {
+            return fileNameWithoutExtension
+        } else {
+            return ""
+        }
+    }
+    
+    func fileExtension() -> String {
+        
+        if let fileExtension = NSURL(fileURLWithPath: self).pathExtension {
+            return fileExtension
+        } else {
+            return ""
+        }
     }
 }

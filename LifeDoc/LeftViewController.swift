@@ -70,9 +70,36 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
             let dataDecoded : Data = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)!
             let decodedimage = UIImage(data: dataDecoded)
-            self.profilePic.image = decodedimage?.fixOrientation()
+            let size = CGSize(width:65, height:65)
+            let resizeImg = resizeImage(image: decodedimage!, newSize: size)
+            
+            self.profilePic.image = resizeImg.fixOrientation()
+
             
         }
+    }
+    
+    func resizeImage(image: UIImage, newSize: CGSize) -> (UIImage) {
+        
+        let newRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height).integral
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        
+        // Set the quality level to use when rescaling
+        context!.interpolationQuality = CGInterpolationQuality.default
+        let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: newSize.height)
+        
+        context!.concatenate(flipVertical)
+        // Draw into the context; this scales the image
+        context?.draw(image.cgImage!, in: CGRect(x: 0.0,y: 0.0, width: newRect.width, height: newRect.height))
+        
+        let newImageRef = context!.makeImage()! as CGImage
+        let newImage = UIImage(cgImage: newImageRef)
+        
+        // Get the resized image from the context and a UIImage
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
     
     

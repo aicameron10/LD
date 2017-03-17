@@ -114,9 +114,9 @@ extension AppMenuController {
     internal func prepareAddButton() {
         addButton = FabButton(image: Icon.cm.add, tintColor: .white)
         addButton.pulseColor = .white
-        addButton.backgroundColor = UIColor(red: 0/255, green: 153.0/255, blue: 217.0/255, alpha: 1.0)
+        addButton.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
         
-        
+       
         addButton.addTarget(self, action: #selector(handleToggleMenu), for: .touchUpInside)
     }
     
@@ -127,10 +127,10 @@ extension AppMenuController {
         OTPMenuItem.button.image = imageotp
         OTPMenuItem.button.tintColor = .white
         OTPMenuItem.button.pulseColor = .white
-        OTPMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 168/255, blue: 89/255, alpha: 1.0)
+        OTPMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 157/255, blue: 78/255, alpha: 1.0)
         OTPMenuItem.button.depthPreset = .depth1
         OTPMenuItem.title = "OTP"
-        
+         
         OTPMenuItem.button.addTarget(self, action: #selector(handleOTP), for: .touchUpInside)
         
     }
@@ -140,8 +140,9 @@ extension AppMenuController {
         recordMenuItem.button.image = Icon.cm.add
         recordMenuItem.button.tintColor = .white
         recordMenuItem.button.pulseColor = .white
-        recordMenuItem.button.backgroundColor = UIColor(red: 237/255, green: 51/255, blue: 56/255, alpha: 1.0)
+        recordMenuItem.button.backgroundColor = UIColor(red: 217/255, green: 42/255, blue: 24/255, alpha: 1.0)
         recordMenuItem.title = "Add record"
+       
         
         recordMenuItem.button.addTarget(self, action: #selector(handleSelect), for: .touchUpInside)
     }

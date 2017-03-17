@@ -42,7 +42,7 @@ class AppStatusBarController: StatusBarController {
 extension AppStatusBarController {
     fileprivate func prepareStatusBar() {
         statusBarStyle = .lightContent
-        statusBar.backgroundColor = UIColor(red: 1/255, green: 139.0/255, blue: 197.0/255, alpha: 1.0)
+        statusBar.backgroundColor = UIColor(red: 1/255, green: 139/255, blue: 197/255, alpha: 1.0)
         
     }
 }

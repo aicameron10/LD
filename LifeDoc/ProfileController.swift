@@ -19,10 +19,10 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             let upright = image.fixOrientation()
-       
-            let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
+            
+            let jpegCompressionQuality: CGFloat = 0.7 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(upright, jpegCompressionQuality)?.base64EncodedString()
-     
+            
             
             let prefs = UserDefaults.standard
             prefs.set(base64String, forKey: "attachBase64Profile")
@@ -41,7 +41,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     }
     
     let imagePicker = UIImagePickerController()
-
+    
     
     @IBOutlet weak var navBar: UINavigationBar!
     
@@ -85,12 +85,12 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     
     var messageStr : String = String()
     
-
+    
     
     var NewDate : Bool = Bool()
- 
     
-     var validateID : Bool = Bool()
+    
+    var validateID : Bool = Bool()
     
     
     
@@ -153,7 +153,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         view.addSubview(scrollView)
         
-           NotificationCenter.default.addObserver(self, selector: #selector(loadProfilePic), name: NSNotification.Name(rawValue: "loadProfilePic"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(loadProfilePic), name: NSNotification.Name(rawValue: "loadProfilePic"), object: nil)
         
         self.navItem.title = "Personal Details"
         
@@ -204,10 +204,13 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         let dataDecoded : Data = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
-        self.profilePic.image = decodedimage?.fixOrientation()
+        let size = CGSize(width:100, height:100)
+        let resizeImg = resizeImage(image: decodedimage!, newSize: size)
+        
+        self.profilePic.image = resizeImg.fixOrientation()
     }
-
-   
+    
+    
     
     
     //Calls this function when the tap is recognized.
@@ -233,6 +236,28 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     }
     
     
+    func resizeImage(image: UIImage, newSize: CGSize) -> (UIImage) {
+        
+        let newRect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height).integral
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+        let context = UIGraphicsGetCurrentContext()
+        
+        // Set the quality level to use when rescaling
+        context!.interpolationQuality = CGInterpolationQuality.default
+        let flipVertical = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: newSize.height)
+        
+        context!.concatenate(flipVertical)
+        // Draw into the context; this scales the image
+        context?.draw(image.cgImage!, in: CGRect(x: 0.0,y: 0.0, width: newRect.width, height: newRect.height))
+        
+        let newImageRef = context!.makeImage()! as CGImage
+        let newImage = UIImage(cgImage: newImageRef)
+        
+        // Get the resized image from the context and a UIImage
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }    
     
     private func prepareCloseButton() {
         
@@ -273,10 +298,10 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         profilePic.layer.cornerRadius = profilePic.frame.size.width / 2;
         profilePic.clipsToBounds = true
-       
+        
         
     }
-
+    
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
@@ -286,7 +311,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         // 2
         let photoAction = UIAlertAction(title: "Take a photo", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-        
+            
             
             if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
                 
@@ -320,14 +345,14 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         // 4
         optionMenuPhoto.addAction(photoAction)
         optionMenuPhoto.addAction(galleryAction)
-    
+        
         optionMenuPhoto.addAction(cancelAction)
         
         // 5
         //presentViewController(optionMenu, animated: true, completion: nil)
         self.present(optionMenuPhoto, animated: true, completion: nil)
         //self.present(optionMenu, animated: true, completion: nil)
-
+        
         
     }
     
@@ -935,8 +960,8 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
                 
                 return
             }
-
-
+            
+            
         }
         
         
@@ -981,50 +1006,50 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     }
     
     
-     func validateValueID(testStr:String) -> Bool {
+    func validateValueID(testStr:String) -> Bool {
         
         //Now perform the checkdigit for Id No
         
         let lastDigit = String(testStr[testStr.index(before: testStr.endIndex)])
-
+        
         
         
         var oddDigits = 0
         
-      
+        
         var lengName = testStr.substring(to: testStr.index(before: testStr.endIndex))
-  
+        
         let leng = lengName.characters.count
         
         for oddnumber in 0...leng where oddnumber % 2 == 1 {
-      
-           
+            
+            
             oddDigits = oddDigits + Int(String(lengName[oddnumber - 1]))!
         }
         
-           //print(oddDigits)
+        //print(oddDigits)
         
         var strEvenDigits = ""
         for evennumber in 0...leng where evennumber % 2 == 0 {
             
-              //print(evennumber)
+            //print(evennumber)
             strEvenDigits += String(lengName[evennumber + 1])
         }
         
-       //print(strEvenDigits)
+        //print(strEvenDigits)
         
         let evenmulti = Int(strEvenDigits)!*2
         
-         // print(evenmulti)
+        // print(evenmulti)
         
-         var evenDigits = 0
+        var evenDigits = 0
         
         let leng2 = String(evenmulti).characters.count
         
         let ss = String(evenmulti)
         
         //print(ss)
-      
+        
         
         for evennumbertotal in 0...leng2 - 1{
             
@@ -1033,7 +1058,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
             evenDigits = evenDigits + Int(ss[evennumbertotal])!
         }
         
-              //print(evenDigits)
+        //print(evenDigits)
         
         let sumOfOddEven = oddDigits + evenDigits
         if (sumOfOddEven < 10){
@@ -1063,9 +1088,9 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         if (controlDigit != Int(lastDigit)){
             return false
         }
-   
-   
-    return true
+        
+        
+        return true
     }
     
     
@@ -1365,17 +1390,21 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
                 let maritalStatus = json["maritalStatus"].string
                 let nationality = json["nationality"].string
                 
-                 let profilePictureData = json["profilePictureData"].string
+                let profilePictureData = json["profilePictureData"].string
                 
                 if(profilePictureData != nil){
-                
-                let prefs = UserDefaults.standard
-                prefs.set(profilePictureData, forKey: "attachBase64Profile")
-                
-                let dataDecoded : Data = Data(base64Encoded: profilePictureData!, options: .ignoreUnknownCharacters)!
-                let decodedimage = UIImage(data: dataDecoded)
-                self.profilePic.image = decodedimage?.fixOrientation()
-                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+                    
+                    let prefs = UserDefaults.standard
+                    prefs.set(profilePictureData, forKey: "attachBase64Profile")
+                    
+                    let dataDecoded : Data = Data(base64Encoded: profilePictureData!, options: .ignoreUnknownCharacters)!
+                    let decodedimage = UIImage(data: dataDecoded)
+                     let size = CGSize(width:100, height:100)
+                    let resizeImg = self.resizeImage(image: decodedimage!, newSize: size)
+                    
+                    self.profilePic.image = resizeImg.fixOrientation()
+                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
                     
                 }
                 
@@ -1401,7 +1430,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
                     if(idNumber != ""){
                         self.validateID = true
                     }else{
-                         self.validateID = false
+                        self.validateID = false
                     }
                     
                     
@@ -1496,7 +1525,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         ac.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
         { action -> Void in
             
-         
+            
             
         })
         
@@ -1505,12 +1534,12 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         present(ac, animated: true)
         
     }
-
+    
     
     
     private func UploadProfilePic() {
         
-    
+        
         // get a reference to the app delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.showActivityIndicator(uiView: self.view)
@@ -1528,9 +1557,9 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
         
         let authToken = prefs.string(forKey: "authToken")
-     
+        
         let base = prefs.string(forKey: "attachBase64Profile")!
-      
+        
         
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,
@@ -1580,9 +1609,9 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     
                     
-                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadProfilePic"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadProfilePic"), object: nil)
                     
-                      NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
                     
                     self.showAttachMessage()
                     
@@ -1641,7 +1670,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         
     }
-
+    
     
     
     
@@ -1848,3 +1877,4 @@ extension String {
     }
     
 }
+

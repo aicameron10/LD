@@ -159,8 +159,8 @@ extension AppMenuSubRecords {
     internal func prepareAddButton() {
         addButton = FabButton(image: Icon.cm.add, tintColor: .white)
         addButton.pulseColor = .white
-        addButton.backgroundColor = UIColor(red: 0/255, green: 153.0/255, blue: 217.0/255, alpha: 1.0)
-    
+        addButton.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
+     
         
         addButton.addTarget(self, action: #selector(handleToggleMenu), for: .touchUpInside)
     }
@@ -172,10 +172,10 @@ extension AppMenuSubRecords {
         NoteMenuItem.button.image = imageotp
         NoteMenuItem.button.tintColor = .white
         NoteMenuItem.button.pulseColor = .white
-        NoteMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 153.0/255, blue: 217.0/255, alpha: 1.0)
+        NoteMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
         NoteMenuItem.button.depthPreset = .depth1
         NoteMenuItem.title = "Notes"
-        
+       
         NoteMenuItem.button.addTarget(self, action: #selector(handleNote), for: .touchUpInside)
         
     }
@@ -186,9 +186,9 @@ extension AppMenuSubRecords {
         DocMenuItem.button.image = imageotp
         DocMenuItem.button.tintColor = .white
         DocMenuItem.button.pulseColor = .white
-        DocMenuItem.button.backgroundColor = UIColor(red: 237/255, green: 51/255, blue: 56/255, alpha: 1.0)
+        DocMenuItem.button.backgroundColor = UIColor(red: 217/255, green: 42/255, blue: 24/255, alpha: 1.0)
         DocMenuItem.title = "Doctor Visit"
-        
+         
         DocMenuItem.button.addTarget(self, action: #selector(handleDoc), for: .touchUpInside)
     }
     
@@ -199,7 +199,7 @@ extension AppMenuSubRecords {
         MediMenuItem.button.image = imageotp
         MediMenuItem.button.tintColor = .white
         MediMenuItem.button.pulseColor = .white
-        MediMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 168/255, blue: 89/255, alpha: 1.0)
+        MediMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 157/255, blue: 78/255, alpha: 1.0)
         MediMenuItem.title = "Medication"
         
         MediMenuItem.button.addTarget(self, action: #selector(handlemedi), for: .touchUpInside)
@@ -212,7 +212,7 @@ extension AppMenuSubRecords {
         HosMenuItem.button.image = imageotp
         HosMenuItem.button.tintColor = .white
         HosMenuItem.button.pulseColor = .white
-        HosMenuItem.button.backgroundColor = UIColor(red: 245/255, green: 135/255, blue: 51/255, alpha: 1.0)
+        HosMenuItem.button.backgroundColor = UIColor(red: 255/255, green: 126/255, blue: 46/255, alpha: 1.0)
         HosMenuItem.title = "Hospital Visit"
         
         HosMenuItem.button.addTarget(self, action: #selector(handleHos), for: .touchUpInside)
@@ -225,7 +225,7 @@ extension AppMenuSubRecords {
         PathMenuItem.button.image = imageotp
         PathMenuItem.button.tintColor = .white
         PathMenuItem.button.pulseColor = .white
-        PathMenuItem.button.backgroundColor = UIColor(red: 168/255, green: 82/255, blue: 138/255, alpha: 1.0)
+        PathMenuItem.button.backgroundColor = UIColor(red: 169/255, green: 78/255, blue: 145/255, alpha: 1.0)
         PathMenuItem.title = "Pathology Results"
         
         PathMenuItem.button.addTarget(self, action: #selector(handlePath), for: .touchUpInside)

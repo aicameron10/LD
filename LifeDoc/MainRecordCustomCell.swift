@@ -20,7 +20,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         //
     }
     
-
+    
     
     @IBOutlet weak var count: UILabel!
     
@@ -125,7 +125,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }
         
     }
-
+    
     public func loadJSONHos() -> JSON {
         let prefs = UserDefaults.standard
         
@@ -139,7 +139,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }
         
     }
-
+    
     public func loadJSONMedi() -> JSON {
         let prefs = UserDefaults.standard
         
@@ -153,7 +153,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }
         
     }
-
+    
     
     public func loadJSONAttach() -> JSON {
         let prefs = UserDefaults.standard
@@ -168,12 +168,12 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }
         
     }
-
+    
     func loadDataAttach(){
         
         let json = self.loadJSONAttach()
         
-       
+        
         
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "Attachments") != nil){
@@ -182,7 +182,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             var count = -1
             
             for item in json["attachments"].arrayValue {
-            
+                
                 //print(object["Date"].stringValue)
                 count += 1
                 
@@ -191,9 +191,9 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 attach.attachmentName = item["attachmentName"].stringValue
                 attach.attachmentType = item["attachmentType"].stringValue
                 attach.description = item["description"].stringValue
-              
+                
                 attach.pos = count
-
+                
                 self.arrayAttachSub.append(attach)
                 
                 
@@ -201,7 +201,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
         }
     }
-
+    
     
     func loadDataPath(){
         
@@ -278,7 +278,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
         }
     }
-
+    
     
     func loadDataHos(){
         
@@ -315,11 +315,11 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 self.arrayHosSub.append(hos)
                 
                 
-              }
+            }
             
         }
     }
-
+    
     func loadDataMedi(){
         
         let json = self.loadJSONMedi()
@@ -358,7 +358,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
         }
     }
-
+    
     
     func loadData(){
         
@@ -408,16 +408,16 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             type = prefs.string(forKey: "SubType")!
             
         }
-    
+        
         
         self.arrayNoteSub.removeAll()
         self.arrayPathSub.removeAll()
         self.arrayDocSub.removeAll()
         self.arrayHosSub.removeAll()
         self.arrayMediSub.removeAll()
-         self.arrayAttachSub.removeAll()
+        self.arrayAttachSub.removeAll()
         
-       
+        
         
         if(type == "Notes"){
             loadData()
@@ -427,7 +427,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             } else {
                 return 0
             }
-
+            
         }else if(type == "Pathology Results"){
             loadDataPath()
             
@@ -472,7 +472,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 return 0
             }
         }
-
+        
         
         return 0
     }
@@ -496,10 +496,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
         }
         
-         cell.hide.isHidden = false
-         cell.delete.isHidden = false
+        cell.hide.isHidden = false
+        cell.delete.isHidden = false
         
-       
+        
         
         let image = UIImage(named : "edit_details.png")
         cell.edit.setBackgroundImage(image, for: .normal)
@@ -619,12 +619,12 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             cell.name.text = medi.mediName
             if(medi.dateend == ""){
-               cell.dateStr.text = medi.datestart
+                cell.dateStr.text = medi.datestart
             }else{
                 cell.dateStr.text = medi.datestart + " to " +  medi.dateend
             }
             
-
+            
             cell.recordId.text = medi.id
             
             
@@ -652,7 +652,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             let image = UIImage(named : "blue_attach.png")
             cell.edit.setBackgroundImage(image, for: .normal)
-          
+            
             
             
             //cell.pos.text = String(indexPath.row)
@@ -660,27 +660,27 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.name.text = attach.attachmentName
             
             cell.dateStr.text = attach.description
-       
+            
             cell.recordId.text = attach.id
             
-         
+            
             cell.pos.text = String(describing: attach.pos)
             
             cell.edit.tag = indexPath.row
             
             cell.edit.addTarget(self,action:#selector(self.buttonAttachClicked), for: .touchUpInside)
             
-       
+            
             
             
         }
-
-
-
-
-
         
-       
+        
+        
+        
+        
+        
+        
         
         if(cell.hiddenValue.text! == "false"){
             let image = UIImage(named: "blue_unhide") as UIImage?
@@ -698,10 +698,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         {
             let prefs = UserDefaults.standard
             prefs.removeObject(forKey: "NotesEdit")
-             prefs.removeObject(forKey: "PathEdit")
-             prefs.removeObject(forKey: "DocEdit")
-             prefs.removeObject(forKey: "HosEdit")
-             prefs.removeObject(forKey: "MediEdit")
+            prefs.removeObject(forKey: "PathEdit")
+            prefs.removeObject(forKey: "DocEdit")
+            prefs.removeObject(forKey: "HosEdit")
+            prefs.removeObject(forKey: "MediEdit")
             
             let pos = cell.pos.text!
             
@@ -742,7 +742,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         {
             let prefs = UserDefaults.standard
             prefs.removeObject(forKey: "NotesEdit")
-             prefs.removeObject(forKey: "PathEdit")
+            prefs.removeObject(forKey: "PathEdit")
             prefs.removeObject(forKey: "DocEdit")
             prefs.removeObject(forKey: "HosEdit")
             prefs.removeObject(forKey: "MediEdit")
@@ -762,10 +762,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             print("gotID")
             downLoadID = cell.recordId.text!
             downloadName = cell.name.text!
-          
+            
             
         }
-
+        
         
         
         if(indexPath.row == indexOfEditCell)
@@ -774,7 +774,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             let prefs = UserDefaults.standard
             prefs.removeObject(forKey: "NotesEdit")
-             prefs.removeObject(forKey: "PathEdit")
+            prefs.removeObject(forKey: "PathEdit")
             prefs.removeObject(forKey: "DocEdit")
             prefs.removeObject(forKey: "HosEdit")
             prefs.removeObject(forKey: "MediEdit")
@@ -789,21 +789,21 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             
             if(type == "Notes"){
-                 self.saveJSONSubNote()
+                self.saveJSONSubNote()
             }else if(type == "Pathology Results"){
                 self.saveJSONSubPath()
             }else if(type == "Doctor Visits"){
                 self.saveJSONSubDoc()
             }
             else if(type == "Hospital Visits"){
-                 self.saveJSONSubHos()
+                self.saveJSONSubHos()
             }
             else if(type == "Medication"){
-               self.saveJSONSubMedi()
+                self.saveJSONSubMedi()
             }
-
             
-           
+            
+            
             
             
         }
@@ -813,7 +813,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         
         
         
-      
+        
         
         cell.hide.tag = indexPath.row
         
@@ -937,7 +937,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         let medi: MedicationSubRecord = {
             return UIStoryboard.viewController(identifier: "MedicationSubRecord") as! MedicationSubRecord
         }()
-
+        
         
         
         if(typeOf == "Notes"){
@@ -984,13 +984,28 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         self.tableView.reloadRows(at: [indexPath], with: .fade)
         self.tableView.endUpdates()
         
-        self.download()
+      let fileExtension = self.downloadName.fileExtension()
+        
+        if(fileExtension == "jpg" || fileExtension == "jpeg" || fileExtension == "png"){
+            
+           self.download()
+        }
+            
+        else if(fileExtension == "pdf"){
+            self.download()
+        }
+        else{
+            
+            self.parentViewController?.view.makeToast("Only PDF or image based files can be downloaded from the app.Login via the website to complete your download.", duration: 3.0, position: .center)
+        }
+
+       
         
         self.indexOfAttachCell = -1
         
         
     }
-
+    
     
     
     func buttonHideClicked(sender:UIButton) {
@@ -1047,13 +1062,13 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             var type = ""
             if (prefs.string(forKey: "SubType") != nil){
                 type = prefs.string(forKey: "SubType")!
-               
+                
                 
                 if(type == "Notes"){
-                       print("delete path")
+                    print("delete path")
                     self.deleteNote()
                 }else if(type == "Pathology Results"){
-                       print("delete path")
+                    print("delete path")
                     self.deletePath()
                 }else if(type == "Doctor Visits"){
                     print("delete path")
@@ -1070,8 +1085,8 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 
             }
             
-           
-           
+            
+            
             
         })
         parentViewController?.present(ac, animated: true)
@@ -1135,9 +1150,9 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }
         
     }
-
-
-
+    
+    
+    
     
     public func saveJSONNote(j: JSON) {
         let prefs = UserDefaults.standard
@@ -1246,7 +1261,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
         
     }
-
+    
     private func deleteHos() {
         
         let prefs = UserDefaults.standard
@@ -1270,8 +1285,8 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
         
     }
-
-
+    
+    
     private func deleteMedi() {
         
         let prefs = UserDefaults.standard
@@ -1362,7 +1377,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
         
     }
-
+    
     
     private func hideDoc() {
         
@@ -1450,12 +1465,12 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         ac.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default)
         { action -> Void in
             
-           
+            
         })
         ac.addAction(UIAlertAction(title: "View", style: UIAlertActionStyle.default)
         { action -> Void in
             
-   
+            
             let fileExplorer = FileExplorerViewController()
             
             let navigationBarAppearace = UINavigationBar.appearance()
@@ -1467,7 +1482,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
             fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
             fileExplorer.fileFilters = [Filter.extension("jpg"),Filter.extension("png"),Filter.extension("pdf")]
-           
+            
             //let documentsUrl = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
             //fileExplorer.initialDirectoryURL = documentsUrl
             fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
@@ -1475,10 +1490,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             
             UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(fileExplorer, animated: true, completion: nil)
-      
+            
         })
         
-
+        
         UIApplication.shared.keyWindow?.rootViewController?.presentedViewController?.present(ac, animated: true, completion: nil)
         
         
@@ -1512,8 +1527,8 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         
         
     }
-
-
+    
+    
     private func download() {
         
         // get a reference to the app delegate
@@ -1535,7 +1550,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         let authToken = prefs.string(forKey: "authToken")
         
         let idd = downLoadID
-     
+        
         
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,
@@ -1560,47 +1575,65 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         
         // Both calls are equivalent
         MainRecordCustomCell.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).response { response in
+       
             
-           
+            let fileExtension = self.downloadName.fileExtension()
+            
             
             if let data = response.data?.base64EncodedString(){
-            
+                
                 if(data != ""){
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.hideActivityIndicator(uiView: (self.parentViewController?.view)!)
-                
-                
-                let dataDecoded : Data = Data(base64Encoded: data, options: .ignoreUnknownCharacters)!
-                let decodedimage = UIImage(data: dataDecoded)
-                
-                if let data = UIImageJPEGRepresentation(decodedimage!, 0.8) {
-                    let name = self.downloadName
-                    let filename = self.getDocumentsDirectory().appendingPathComponent(name)
-                    try? data.write(to: filename)
-                }
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.hideActivityIndicator(uiView: (self.parentViewController?.view)!)
                     
-                    PHPhotoLibrary.shared().performChanges({
-                        PHAssetChangeRequest.creationRequestForAsset(from: decodedimage!)
-                    }, completionHandler: { success, error in
-                        if success {
-                            // Saved successfully!
+                    
+                    
+                    if(fileExtension == "jpg" || fileExtension == "jpeg" || fileExtension == "png"){
+                        
+                        let dataDecoded : Data = Data(base64Encoded: data, options: .ignoreUnknownCharacters)!
+                        let decodedimage = UIImage(data: dataDecoded)
+                        
+                        if let data = UIImageJPEGRepresentation(decodedimage!, 0.8) {
+                            let name = self.downloadName
+                            let filename = self.getDocumentsDirectory().appendingPathComponent(name)
+                            try? data.write(to: filename)
                         }
-                        else if let error = error {
-                            // Save photo failed with error
-                            
-                            print(error)
-                        }
-                        else {
-                            // Save photo failed with no error
-                        }
-                    })
-
-                
-                self.messageStr =  self.downloadName +  " downloaded successfully"
- 
-                prefs.set(self.messageStr, forKey: "savedServerMessage")
-                self.showAttachMessage()
-                
+                        
+                        PHPhotoLibrary.shared().performChanges({
+                            PHAssetChangeRequest.creationRequestForAsset(from: decodedimage!)
+                        }, completionHandler: { success, error in
+                            if success {
+                                // Saved successfully!
+                            }
+                            else if let error = error {
+                                // Save photo failed with error
+                                
+                                print(error)
+                            }
+                            else {
+                                // Save photo failed with no error
+                            }
+                        })
+                        
+                    }
+                        
+                    if(fileExtension == "pdf"){
+                        let dataDecoded : Data = Data(base64Encoded: data, options: .ignoreUnknownCharacters)!
+                        
+                        let name = self.downloadName
+                        let filename = self.getDocumentsDirectory().appendingPathComponent(name)
+                        try? dataDecoded.write(to: filename)
+                    }
+                    
+                    
+                    
+                    
+                    
+                    self.messageStr =  self.downloadName +  " downloaded successfully"
+                    
+                    prefs.set(self.messageStr, forKey: "savedServerMessage")
+                    self.showAttachMessage()
+                    
                 }else{
                     // get a reference to the app delegate
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -1608,12 +1641,12 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     self.messageStr =  "Download of " + self.downloadName  + " failed. Please try again."
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     self.showAttachMessage1()
- 
+                    
                 }
-            
+                
             }
             
-         
+            
             if let error = response.error as? AFError{
                 switch error {
                 case .invalidURL(let url):
@@ -1653,22 +1686,22 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 self.messageStr =  "Download of " + self.downloadName  + " failed. Please try again."
                 prefs.set(self.messageStr, forKey: "savedServerMessage")
                 self.showAttachMessage1()
-         
+                
                 
             }
         }
         
         
     }
-
+    
     
     func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
-
-
+    
+    
     private func hideMedi() {
         
         let prefs = UserDefaults.standard
@@ -1701,7 +1734,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
         
     }
-
+    
     
     private static var Manager: Alamofire.SessionManager = {
         
@@ -1812,6 +1845,6 @@ class AttachSub {
     var delete = ""
     var pos = 0
     var tag = 0
-   
+    
     
 }

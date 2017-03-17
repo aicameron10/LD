@@ -10,6 +10,21 @@
 		325DCA483F75431CFEF74DCD /* Pods_LifeDoc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E6E9B1331BE38D017EBE08 /* Pods_LifeDoc.framework */; };
 		5916821462A87E8735DE32B6 /* Pods_LifeDocUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82DB60830F03EF13DB71C90 /* Pods_LifeDocUITests.framework */; };
 		828D9B5AB269CEC4526C2183 /* Pods_LifeDocTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE74DFD26529F4400527B033 /* Pods_LifeDocTests.framework */; };
+		D600D5E11E79366600549C65 /* mom-withipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5DE1E79366600549C65 /* mom-withipad.jpg */; };
+		D600D5E21E79366600549C65 /* mom-withipad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5DF1E79366600549C65 /* mom-withipad@2x.jpg */; };
+		D600D5E31E79366600549C65 /* mom-withipad@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5E01E79366600549C65 /* mom-withipad@3x.jpg */; };
+		D600D5E71E79371E00549C65 /* mom-baby.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5E41E79371E00549C65 /* mom-baby.jpg */; };
+		D600D5E81E79371E00549C65 /* mom-baby@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5E51E79371E00549C65 /* mom-baby@2x.jpg */; };
+		D600D5E91E79371E00549C65 /* mom-baby@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5E61E79371E00549C65 /* mom-baby@3x.jpg */; };
+		D600D5ED1E7937A300549C65 /* running-girl@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5EA1E7937A300549C65 /* running-girl@3x.jpg */; };
+		D600D5EE1E7937A300549C65 /* running-girl.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5EB1E7937A300549C65 /* running-girl.jpg */; };
+		D600D5EF1E7937A300549C65 /* running-girl@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5EC1E7937A300549C65 /* running-girl@2x.jpg */; };
+		D600D5F31E7938AD00549C65 /* daughter-mom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5F01E7938AD00549C65 /* daughter-mom.jpg */; };
+		D600D5F41E7938AD00549C65 /* daughter-mom@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5F11E7938AD00549C65 /* daughter-mom@2x.jpg */; };
+		D600D5F51E7938AD00549C65 /* daughter-mom@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5F21E7938AD00549C65 /* daughter-mom@3x.jpg */; };
+		D600D5F91E79676F00549C65 /* launch-image@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5F61E79676F00549C65 /* launch-image@2x.jpg */; };
+		D600D5FA1E79676F00549C65 /* launch-image@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5F71E79676F00549C65 /* launch-image@3x.jpg */; };
+		D600D5FB1E79676F00549C65 /* launch-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D600D5F81E79676F00549C65 /* launch-image.jpg */; };
 		D60ECB151DD9B59F00E35CB0 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB141DD9B59F00E35CB0 /* ForgotPasswordController.swift */; };
 		D60ECB171DD9C58200E35CB0 /* ISRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB161DD9C58200E35CB0 /* ISRadioButton.swift */; };
 		D60ECB191DD9CD9800E35CB0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60ECB181DD9CD9800E35CB0 /* SignUpController.swift */; };
@@ -80,6 +95,9 @@
 		D659FDA11DFF0EDE00131288 /* AssessmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */; };
 		D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */; };
 		D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */; };
+		D66E937A1E7AE6D7003DA2C5 /* ld.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93771E7AE6D7003DA2C5 /* ld.png */; };
+		D66E937B1E7AE6D7003DA2C5 /* ld@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93781E7AE6D7003DA2C5 /* ld@3x.png */; };
+		D66E937C1E7AE6D7003DA2C5 /* ld@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93791E7AE6D7003DA2C5 /* ld@2x.png */; };
 		D67EFD541E4870970073DF8F /* PathSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD531E4870960073DF8F /* PathSubRecord.swift */; };
 		D67EFD561E4985E00073DF8F /* DoctorSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */; };
 		D67EFD581E498E920073DF8F /* HospitalSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */; };
@@ -135,6 +153,15 @@
 		D6FB57AE1DD4733C0045910F /* 960x720key_health_indicators.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */; };
 		D6FB57B01DD48A360045910F /* logo_life.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57AF1DD48A360045910F /* logo_life.png */; };
 		D6FB57B41DD5A50B0045910F /* TermsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57B31DD5A50B0045910F /* TermsController.swift */; };
+		D6FD816C1E792A090092BAA6 /* health-profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81691E792A090092BAA6 /* health-profile.jpg */; };
+		D6FD816D1E792A090092BAA6 /* health-profile@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD816A1E792A090092BAA6 /* health-profile@2x.jpg */; };
+		D6FD816E1E792A090092BAA6 /* health-profile@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD816B1E792A090092BAA6 /* health-profile@3x.jpg */; };
+		D6FD81721E792AB80092BAA6 /* health-assessments@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD816F1E792AB80092BAA6 /* health-assessments@2x.jpg */; };
+		D6FD81731E792AB80092BAA6 /* health-assessments.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81701E792AB80092BAA6 /* health-assessments.jpg */; };
+		D6FD81741E792AB80092BAA6 /* health-assessments@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81711E792AB80092BAA6 /* health-assessments@3x.jpg */; };
+		D6FD81781E792BC60092BAA6 /* my-profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81751E792BC60092BAA6 /* my-profile.jpg */; };
+		D6FD81791E792BC60092BAA6 /* my-profile@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81761E792BC60092BAA6 /* my-profile@2x.jpg */; };
+		D6FD817A1E792BC60092BAA6 /* my-profile@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81771E792BC60092BAA6 /* my-profile@3x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +190,21 @@
 		5FD227B60DC22F71A8E51B14 /* Pods-LifeDocUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDocUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDocUITests/Pods-LifeDocUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CE56D72F628DFD245A848E0 /* Pods-LifeDocUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeDocUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LifeDocUITests/Pods-LifeDocUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A82DB60830F03EF13DB71C90 /* Pods_LifeDocUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeDocUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D600D5DE1E79366600549C65 /* mom-withipad.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mom-withipad.jpg"; sourceTree = "<group>"; };
+		D600D5DF1E79366600549C65 /* mom-withipad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mom-withipad@2x.jpg"; sourceTree = "<group>"; };
+		D600D5E01E79366600549C65 /* mom-withipad@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mom-withipad@3x.jpg"; sourceTree = "<group>"; };
+		D600D5E41E79371E00549C65 /* mom-baby.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mom-baby.jpg"; sourceTree = "<group>"; };
+		D600D5E51E79371E00549C65 /* mom-baby@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mom-baby@2x.jpg"; sourceTree = "<group>"; };
+		D600D5E61E79371E00549C65 /* mom-baby@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "mom-baby@3x.jpg"; sourceTree = "<group>"; };
+		D600D5EA1E7937A300549C65 /* running-girl@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "running-girl@3x.jpg"; sourceTree = "<group>"; };
+		D600D5EB1E7937A300549C65 /* running-girl.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "running-girl.jpg"; sourceTree = "<group>"; };
+		D600D5EC1E7937A300549C65 /* running-girl@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "running-girl@2x.jpg"; sourceTree = "<group>"; };
+		D600D5F01E7938AD00549C65 /* daughter-mom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "daughter-mom.jpg"; sourceTree = "<group>"; };
+		D600D5F11E7938AD00549C65 /* daughter-mom@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "daughter-mom@2x.jpg"; sourceTree = "<group>"; };
+		D600D5F21E7938AD00549C65 /* daughter-mom@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "daughter-mom@3x.jpg"; sourceTree = "<group>"; };
+		D600D5F61E79676F00549C65 /* launch-image@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "launch-image@2x.jpg"; sourceTree = "<group>"; };
+		D600D5F71E79676F00549C65 /* launch-image@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "launch-image@3x.jpg"; sourceTree = "<group>"; };
+		D600D5F81E79676F00549C65 /* launch-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "launch-image.jpg"; sourceTree = "<group>"; };
 		D60ECB141DD9B59F00E35CB0 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		D60ECB161DD9C58200E35CB0 /* ISRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISRadioButton.swift; sourceTree = "<group>"; };
 		D60ECB181DD9CD9800E35CB0 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -238,6 +280,9 @@
 		D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentsCell.swift; sourceTree = "<group>"; };
 		D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodGlucoseContoller.swift; sourceTree = "<group>"; };
 		D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPresssureContoller.swift; sourceTree = "<group>"; };
+		D66E93771E7AE6D7003DA2C5 /* ld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ld.png; sourceTree = "<group>"; };
+		D66E93781E7AE6D7003DA2C5 /* ld@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ld@3x.png"; sourceTree = "<group>"; };
+		D66E93791E7AE6D7003DA2C5 /* ld@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ld@2x.png"; sourceTree = "<group>"; };
 		D67EFD531E4870960073DF8F /* PathSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathSubRecord.swift; sourceTree = "<group>"; };
 		D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorSubRecord.swift; sourceTree = "<group>"; };
 		D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalSubRecord.swift; sourceTree = "<group>"; };
@@ -294,6 +339,15 @@
 		D6FB57AF1DD48A360045910F /* logo_life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_life.png; sourceTree = "<group>"; };
 		D6FB57B21DD4903F0045910F /* webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = webfont.ttf; sourceTree = "<group>"; };
 		D6FB57B31DD5A50B0045910F /* TermsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsController.swift; sourceTree = "<group>"; };
+		D6FD81691E792A090092BAA6 /* health-profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "health-profile.jpg"; sourceTree = "<group>"; };
+		D6FD816A1E792A090092BAA6 /* health-profile@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "health-profile@2x.jpg"; sourceTree = "<group>"; };
+		D6FD816B1E792A090092BAA6 /* health-profile@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "health-profile@3x.jpg"; sourceTree = "<group>"; };
+		D6FD816F1E792AB80092BAA6 /* health-assessments@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "health-assessments@2x.jpg"; sourceTree = "<group>"; };
+		D6FD81701E792AB80092BAA6 /* health-assessments.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "health-assessments.jpg"; sourceTree = "<group>"; };
+		D6FD81711E792AB80092BAA6 /* health-assessments@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "health-assessments@3x.jpg"; sourceTree = "<group>"; };
+		D6FD81751E792BC60092BAA6 /* my-profile.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "my-profile.jpg"; sourceTree = "<group>"; };
+		D6FD81761E792BC60092BAA6 /* my-profile@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "my-profile@2x.jpg"; sourceTree = "<group>"; };
+		D6FD81771E792BC60092BAA6 /* my-profile@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "my-profile@3x.jpg"; sourceTree = "<group>"; };
 		EE74DFD26529F4400527B033 /* Pods_LifeDocTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeDocTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -486,6 +540,24 @@
 		D6FB57901DD31E670045910F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D600D5DE1E79366600549C65 /* mom-withipad.jpg */,
+				D600D5DF1E79366600549C65 /* mom-withipad@2x.jpg */,
+				D600D5E01E79366600549C65 /* mom-withipad@3x.jpg */,
+				D6FD81751E792BC60092BAA6 /* my-profile.jpg */,
+				D66E93771E7AE6D7003DA2C5 /* ld.png */,
+				D66E93781E7AE6D7003DA2C5 /* ld@3x.png */,
+				D66E93791E7AE6D7003DA2C5 /* ld@2x.png */,
+				D600D5F61E79676F00549C65 /* launch-image@2x.jpg */,
+				D600D5F71E79676F00549C65 /* launch-image@3x.jpg */,
+				D600D5F81E79676F00549C65 /* launch-image.jpg */,
+				D6FD81761E792BC60092BAA6 /* my-profile@2x.jpg */,
+				D6FD81771E792BC60092BAA6 /* my-profile@3x.jpg */,
+				D6FD816F1E792AB80092BAA6 /* health-assessments@2x.jpg */,
+				D6FD81701E792AB80092BAA6 /* health-assessments.jpg */,
+				D6FD81711E792AB80092BAA6 /* health-assessments@3x.jpg */,
+				D6FD81691E792A090092BAA6 /* health-profile.jpg */,
+				D6FD816A1E792A090092BAA6 /* health-profile@2x.jpg */,
+				D6FD816B1E792A090092BAA6 /* health-profile@3x.jpg */,
 				D65602041E28C68800A8ED22 /* ic_doc_sub.png */,
 				D65602051E28C68800A8ED22 /* ic_hos_sub.png */,
 				D65602061E28C68800A8ED22 /* ic_medi_sub.png */,
@@ -534,6 +606,15 @@
 				D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */,
 				D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */,
 				D6FB57971DD338430045910F /* imageheader.png */,
+				D600D5E41E79371E00549C65 /* mom-baby.jpg */,
+				D600D5E51E79371E00549C65 /* mom-baby@2x.jpg */,
+				D600D5E61E79371E00549C65 /* mom-baby@3x.jpg */,
+				D600D5EA1E7937A300549C65 /* running-girl@3x.jpg */,
+				D600D5EB1E7937A300549C65 /* running-girl.jpg */,
+				D600D5F01E7938AD00549C65 /* daughter-mom.jpg */,
+				D600D5F11E7938AD00549C65 /* daughter-mom@2x.jpg */,
+				D600D5F21E7938AD00549C65 /* daughter-mom@3x.jpg */,
+				D600D5EC1E7937A300549C65 /* running-girl@2x.jpg */,
 				D6FB57911DD31E980045910F /* profile_pic.jpg */,
 				D6FB57921DD31E980045910F /* mainpic.jpg */,
 				D6FB57931DD31E980045910F /* health_assess_pic.jpg */,
@@ -672,18 +753,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60F7F9F1E35FB8E009978FC /* segoe_print_bold.ttf in Resources */,
+				D600D5F31E7938AD00549C65 /* daughter-mom.jpg in Resources */,
+				D600D5FB1E79676F00549C65 /* launch-image.jpg in Resources */,
 				D60ECB881DFEB04300E35CB0 /* purple_health_record.png in Resources */,
 				D6C770651E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png in Resources */,
 				D6FB57AC1DD4733C0045910F /* 960x720chronic_conditions.jpg in Resources */,
+				D600D5FA1E79676F00549C65 /* launch-image@3x.jpg in Resources */,
+				D6FD816E1E792A090092BAA6 /* health-profile@3x.jpg in Resources */,
 				D6AE62991E0D2A9800A33C94 /* ic_profile_side.png in Resources */,
 				D60ECB731DFEB04300E35CB0 /* blue_delete.png in Resources */,
 				D6AE629E1E0D2B1C00A33C94 /* ic_otp_side.png in Resources */,
 				D60ECB851DFEB04300E35CB0 /* loginpic.png in Resources */,
+				D600D5E31E79366600549C65 /* mom-withipad@3x.jpg in Resources */,
 				D656020D1E28C68800A8ED22 /* ic_path_sub.png in Resources */,
 				D60ECB751DFEB04300E35CB0 /* blue_medicine.png in Resources */,
+				D600D5EE1E7937A300549C65 /* running-girl.jpg in Resources */,
+				D6FD81731E792AB80092BAA6 /* health-assessments.jpg in Resources */,
+				D66E937A1E7AE6D7003DA2C5 /* ld.png in Resources */,
 				D60ECB7A1DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png in Resources */,
 				D6C770751E1FBB6B0006A2E4 /* ic_otp_sub@2x.png in Resources */,
 				D6FB57AD1DD4733C0045910F /* 960x720share_records.jpg in Resources */,
+				D600D5E71E79371E00549C65 /* mom-baby.jpg in Resources */,
+				D6FD81741E792AB80092BAA6 /* health-assessments@3x.jpg in Resources */,
 				D656020A1E28C68800A8ED22 /* ic_hos_sub.png in Resources */,
 				D6293F561DD1AF080037B2B2 /* LaunchScreen.storyboard in Resources */,
 				D60ECB791DFEB04300E35CB0 /* lifedoc_icons_allergy.png in Resources */,
@@ -694,19 +785,28 @@
 				D656020B1E28C68800A8ED22 /* ic_medi_sub.png in Resources */,
 				D60ECB801DFEB04300E35CB0 /* lifedoc_icons_chronic_condition.png in Resources */,
 				D60ECB771DFEB04300E35CB0 /* blue_unhide.png in Resources */,
+				D600D5E91E79371E00549C65 /* mom-baby@3x.jpg in Resources */,
+				D600D5E81E79371E00549C65 /* mom-baby@2x.jpg in Resources */,
+				D66E937B1E7AE6D7003DA2C5 /* ld@3x.png in Resources */,
 				D6AE629A1E0D2A9800A33C94 /* ic_assess_health_bar.png in Resources */,
 				D60ECB831DFEB04300E35CB0 /* lifedoc_icons_pulse.png in Resources */,
 				D60ECB811DFEB04300E35CB0 /* lifedoc_icons_height.png in Resources */,
 				D6FB57951DD31E980045910F /* mainpic.jpg in Resources */,
+				D6FD81791E792BC60092BAA6 /* my-profile@2x.jpg in Resources */,
+				D600D5E21E79366600549C65 /* mom-withipad@2x.jpg in Resources */,
 				D60ECB861DFEB04300E35CB0 /* my_profile.png in Resources */,
+				D600D5F91E79676F00549C65 /* launch-image@2x.jpg in Resources */,
 				D60ECB4F1DF6BC2A00E35CB0 /* WWCalendarTimeSelector.storyboard in Resources */,
 				D60ECB7E1DFEB04300E35CB0 /* lifedoc_icons_chol_new.png in Resources */,
 				D656020C1E28C68800A8ED22 /* ic_note_sub.png in Resources */,
 				D60ECB371DE3125200E35CB0 /* ic_action_calendar_month.png in Resources */,
+				D6FD816C1E792A090092BAA6 /* health-profile.jpg in Resources */,
 				D60ECB871DFEB04300E35CB0 /* photo.jpg in Resources */,
+				D600D5F51E7938AD00549C65 /* daughter-mom@3x.jpg in Resources */,
 				D6AE629C1E0D2A9800A33C94 /* ic_profile_health.png in Resources */,
 				D60ECB711DFEB04300E35CB0 /* blue_attachment.png in Resources */,
 				D6FB57B01DD48A360045910F /* logo_life.png in Resources */,
+				D6FD817A1E792BC60092BAA6 /* my-profile@3x.jpg in Resources */,
 				D60ECB7F1DFEB04300E35CB0 /* lifedoc_icons_cholesterol.png in Resources */,
 				D65602091E28C68800A8ED22 /* ic_doc_sub.png in Resources */,
 				D6AE629B1E0D2A9800A33C94 /* ic_change_password.png in Resources */,
@@ -715,19 +815,27 @@
 				D60ECB1A1DD9D94C00E35CB0 /* webfont.ttf in Resources */,
 				D6FB57961DD31E980045910F /* health_assess_pic.jpg in Resources */,
 				D60ECB7B1DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png in Resources */,
+				D600D5EF1E7937A300549C65 /* running-girl@2x.jpg in Resources */,
 				D60ECB7C1DFEB04300E35CB0 /* lifedoc_icons_bmi.png in Resources */,
 				D60ECB721DFEB04300E35CB0 /* blue_camera.png in Resources */,
 				D6C770761E1FBB6B0006A2E4 /* ic_otp_sub.png in Resources */,
 				D6C770661E1F6EC20006A2E4 /* ic_profile_health_bar.png in Resources */,
+				D600D5F41E7938AD00549C65 /* daughter-mom@2x.jpg in Resources */,
 				D6FB57871DD1E8FA0045910F /* splashbackground.jpg in Resources */,
+				D6FD81781E792BC60092BAA6 /* my-profile.jpg in Resources */,
+				D6FD816D1E792A090092BAA6 /* health-profile@2x.jpg in Resources */,
+				D66E937C1E7AE6D7003DA2C5 /* ld@2x.png in Resources */,
 				D60ECB761DFEB04300E35CB0 /* blue_more.png in Resources */,
 				D6FB57941DD31E980045910F /* profile_pic.jpg in Resources */,
+				D600D5E11E79366600549C65 /* mom-withipad.jpg in Resources */,
 				D6FB57981DD338430045910F /* imageheader.png in Resources */,
 				D60ECB781DFEB04300E35CB0 /* edit_details.png in Resources */,
 				D60ECB821DFEB04300E35CB0 /* lifedoc_icons_note.png in Resources */,
 				D60ECB7D1DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png in Resources */,
+				D600D5ED1E7937A300549C65 /* running-girl@3x.jpg in Resources */,
 				D60ECB701DFEB04300E35CB0 /* blue_attach.png in Resources */,
 				D6FB57AB1DD4733C0045910F /* 960x720your_family_health.jpg in Resources */,
+				D6FD81721E792AB80092BAA6 /* health-assessments@2x.jpg in Resources */,
 				D60ECB741DFEB04300E35CB0 /* blue_hide.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

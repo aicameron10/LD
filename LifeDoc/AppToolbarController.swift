@@ -129,14 +129,14 @@ class AppToolbarController: ToolbarController {
     
     private func prepareToolbar() {
         toolbar.depthPreset = .none
-        toolbar.backgroundColor = UIColor(red: 0/255, green: 153.0/255, blue: 217.0/255, alpha: 1.0)
+        toolbar.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
         
-        
+
     
         toolbar.title = "LifeDoc"
         toolbar.titleLabel.textColor = .white
         toolbar.titleLabel.textAlignment = .left
-        toolbar.titleLabel.font = UIFont(name: "SegoePrint", size: 20)
+        toolbar.titleLabel.font = UIFont(name: "SegoePrint", size: 22)
         
         
         toolbar.leftViews = [menuButton]
