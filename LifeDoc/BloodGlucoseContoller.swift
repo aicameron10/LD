@@ -14,10 +14,8 @@ import Toast_Swift
 class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bgDate: ErrorTextField!
-    
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var navItem: UINavigationItem!
@@ -25,12 +23,10 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var bgTime: ErrorTextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var bgFasting: ErrorTextField!
     @IBOutlet weak var bgHb1ac: ErrorTextField!
     @IBOutlet weak var bgRandom: ErrorTextField!
-    
     @IBOutlet weak var bgCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
     

@@ -202,9 +202,9 @@ class LoginController: UIViewController {
         
         //let pageViewController: PageViewController = {
         //    return UIStoryboard.viewController(identifier: "PageViewController") as! PageViewController
-       // }()
+        // }()
         
-       // self.present(pageViewController, animated: true, completion: nil)
+        // self.present(pageViewController, animated: true, completion: nil)
         
         
     }
@@ -323,7 +323,7 @@ class LoginController: UIViewController {
                 // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
                 let userDetailsId = json["userDetailsId"].int!
                 
-               
+                
                 
                 if status == "SUCCESS"{
                     
@@ -331,7 +331,7 @@ class LoginController: UIViewController {
                     
                     let firstName = json["detail"]["firstName"].string!
                     let lastName = json["detail"]["lastName"].string!
-                  
+                    
                     self.dismiss(animated: true, completion: nil)
                     
                     let prefs = UserDefaults.standard
@@ -344,18 +344,18 @@ class LoginController: UIViewController {
                     
                     let profilePictureData = json["detail"]["profilePictureData"].string
                     
-                   
+                    
                     
                     if(profilePictureData != nil){
                         
                         let prefs = UserDefaults.standard
                         prefs.set(profilePictureData, forKey: "attachBase64Profile")
                         
-                      
+                        
                         
                     }
-
-                 
+                    
+                    
                     
                     if(self.switchOn == true){
                         prefs.set("true", forKey: "userloggedin")

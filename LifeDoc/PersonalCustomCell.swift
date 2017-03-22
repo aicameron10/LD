@@ -10,9 +10,6 @@ import Foundation
 import UIKit
 class PersonalCustomCell: UITableViewCell {
     
-    
     @IBOutlet weak var textStr: UILabel!
-    
-    
     
 }

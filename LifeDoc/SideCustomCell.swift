@@ -11,13 +11,9 @@ import Foundation
 import UIKit
 class SideCustomCell: UITableViewCell {
     
-   
     @IBOutlet weak var pic: UIImageView!
-    
     @IBOutlet weak var textStr: UILabel!
-    
-    
     
 }
 
- 
+

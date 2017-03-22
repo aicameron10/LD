@@ -57,7 +57,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +105,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             }
             
         }
-
+        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -146,7 +146,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             
             
             weight.isEnabled = false
-         
+            
             
             for (_, object) in json {
                 
@@ -169,7 +169,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
     }
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -269,8 +269,8 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             sDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
         }
-
- 
+        
+        
         
     }
     
@@ -294,7 +294,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             sTime.text = dateToday.stringFromFormat("HH:mm")
         }
         
-
+        
         
     }
     
@@ -378,7 +378,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         if (prefs.string(forKey: "singleMeasurement") != nil){
             rightNavItem?.title = "Apply"
         }
-
+        
     }
     
     private func prepareHideButton() {
@@ -399,7 +399,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
     }
     
-
+    
     
     
     
@@ -483,7 +483,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
             return
         }
-
+        
         
         if(str1.isEmpty || !validateValue(testStr: str1)){
             weight.isErrorRevealed = true
@@ -633,7 +633,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             if date > dateToday {
                 print("future date")
                 
-                  self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -647,7 +647,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             let dateNow = sDate.text
             
             let dateTime = dateFormatter.string(from: dateToday)
-
+            
             if (date > dateToday && dateNow == dateTime){
                 print("future time")
                 
@@ -658,7 +658,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
                 sTime.text = date.stringFromFormat("HH:mm")
             }
-
+            
         }
         
         NewDate = false
@@ -744,7 +744,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
+                    
                     
                 }else{
                     self.deleteButton.isEnabled = true
@@ -797,14 +797,14 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-               
+                
                 
             }
         }
         
         
     }
-
+    
     
     private func sendHealthAssessment() {
         

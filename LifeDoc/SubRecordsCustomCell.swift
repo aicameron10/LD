@@ -10,12 +10,7 @@ import Foundation
 import UIKit
 class SubRecordsCustomCell: UITableViewCell {
     
-    
     @IBOutlet weak var count: UILabel!
-    
     @IBOutlet weak var name: UILabel!
-    
-    
-    
     
 }

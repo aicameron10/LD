@@ -143,7 +143,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadListFirst), name: NSNotification.Name(rawValue: "loginFirst"), object: nil)
         
-         NotificationCenter.default.addObserver(self, selector: #selector(noData), name: NSNotification.Name(rawValue: "showNoDataLabel"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(noData), name: NSNotification.Name(rawValue: "showNoDataLabel"), object: nil)
         
         
         imagePicker.delegate = self
@@ -266,7 +266,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 let cell = tableViewProfile.cellForRow(at: indexPath!) as UITableViewCell!
                 My.cellSnapshot  = snapshotOfCell(cell!)
                 
-   
+                
                 intialValue = (indexPath?[1])!
                 
                 //print(intialValue)
@@ -315,7 +315,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                         movedValue = (indexPath?[1])!
                         
                         //print(movedValue)
-                    
+                        
                         
                         tableViewProfile.reloadData()
                     }
@@ -339,7 +339,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     
                     prefs.set(self.saveOrder, forKey: "savedOrderProfile")
                     
-                     
+                    
                 }
                 
                 UIView.animate(withDuration: 0.25, animations: { () -> Void in
@@ -347,23 +347,23 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     if (My.cellSnapshot != nil) {
                         
                         if(cell != nil){
-                       
-                        My.cellSnapshot!.center = (cell?.center)!
-                        My.cellSnapshot!.transform = CGAffineTransform.identity
-                        My.cellSnapshot!.alpha = 0.0
-                        cell?.alpha = 1.0
+                            
+                            My.cellSnapshot!.center = (cell?.center)!
+                            My.cellSnapshot!.transform = CGAffineTransform.identity
+                            My.cellSnapshot!.alpha = 0.0
+                            cell?.alpha = 1.0
                         }
                         
                     }
                     
                 }, completion: { (finished) -> Void in
-                     if (My.cellSnapshot != nil) {
-                    if finished {
-                        Path.initialIndexPath = nil
-                        My.cellSnapshot!.removeFromSuperview()
-                        My.cellSnapshot = nil
+                    if (My.cellSnapshot != nil) {
+                        if finished {
+                            Path.initialIndexPath = nil
+                            My.cellSnapshot!.removeFromSuperview()
+                            My.cellSnapshot = nil
+                        }
                     }
-                }
                 })
             }
         }
@@ -631,7 +631,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     getDetails()
                 }else{
                     
-                     self.view.makeToast("This record can only be viewed and not edited. If you wish to edit this record, please visit www.lifedoc.co.za. This functionality will be available on the App soon.", duration: 3.0, position: .center)
+                    self.view.makeToast("This record can only be viewed and not edited. If you wish to edit this record, please visit www.lifedoc.co.za. This functionality will be available on the App soon.", duration: 3.0, position: .center)
                 }
                 
                 
@@ -883,28 +883,28 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 }            })
             
             /*let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
-                
-                let navigationBarAppearace = UINavigationBar.appearance()
-                
-                navigationBarAppearace.tintColor = .white
-                navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
-                
-                let fileExplorer = FileExplorerViewController()
-                fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
-                fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
-                fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
-                fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
-                
-                //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
-                //  in: .userDomainMask).first!
-                //fileExplorer.initialDirectoryURL = documentsUrl
-                fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
-                fileExplorer.delegate = self
-                
-                self.present(fileExplorer, animated: true, completion: nil)
-                
-            })*/
+             (alert: UIAlertAction!) -> Void in
+             
+             let navigationBarAppearace = UINavigationBar.appearance()
+             
+             navigationBarAppearace.tintColor = .white
+             navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+             
+             let fileExplorer = FileExplorerViewController()
+             fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
+             fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
+             fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
+             fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
+             
+             //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
+             //  in: .userDomainMask).first!
+             //fileExplorer.initialDirectoryURL = documentsUrl
+             fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
+             fileExplorer.delegate = self
+             
+             self.present(fileExplorer, animated: true, completion: nil)
+             
+             })*/
             //
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
@@ -1121,27 +1121,27 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 let addValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                 
-                   if(!addValue.isEmpty){
-                
-                let addThis = addValue[0]
-                
-                self.saveOrder.insert(addThis, at: 0)
-                
-                var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
-                
-                for i in 0 ..< self.arrayHealthProfile.count  {
+                if(!addValue.isEmpty){
                     
-                    let obj = self.arrayHealthProfile[i]
+                    let addThis = addValue[0]
                     
-                    let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                    self.saveOrder.insert(addThis, at: 0)
                     
-                    arrayHealthProfileTemp[new_index!] = obj
+                    var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
                     
-                }
-                
-                prefs.set(saveOrder, forKey: "savedOrderProfile")
-                self.arrayHealthProfile.removeAll()
-                self.arrayHealthProfile = arrayHealthProfileTemp
+                    for i in 0 ..< self.arrayHealthProfile.count  {
+                        
+                        let obj = self.arrayHealthProfile[i]
+                        
+                        let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                        
+                        arrayHealthProfileTemp[new_index!] = obj
+                        
+                    }
+                    
+                    prefs.set(saveOrder, forKey: "savedOrderProfile")
+                    self.arrayHealthProfile.removeAll()
+                    self.arrayHealthProfile = arrayHealthProfileTemp
                 }
                 
             }
@@ -1157,29 +1157,29 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 
                 let deleteValue = arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
                 
-                   if(!deleteValue.isEmpty){
-                
-                let deleteThis = deleteValue[0]
-                
-                //print(deleteThis)
-                
-                self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
-                
-                var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
-                
-                for i in 0 ..< self.arrayHealthProfile.count  {
+                if(!deleteValue.isEmpty){
                     
-                    let obj = self.arrayHealthProfile[i]
+                    let deleteThis = deleteValue[0]
                     
-                    let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                    //print(deleteThis)
                     
-                    arrayHealthProfileTemp[new_index!] = obj
+                    self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
                     
-                }
-                
-                prefs.set(saveOrder, forKey: "savedOrderProfile")
-                self.arrayHealthProfile.removeAll()
-                self.arrayHealthProfile = arrayHealthProfileTemp
+                    var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
+                    
+                    for i in 0 ..< self.arrayHealthProfile.count  {
+                        
+                        let obj = self.arrayHealthProfile[i]
+                        
+                        let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                        
+                        arrayHealthProfileTemp[new_index!] = obj
+                        
+                    }
+                    
+                    prefs.set(saveOrder, forKey: "savedOrderProfile")
+                    self.arrayHealthProfile.removeAll()
+                    self.arrayHealthProfile = arrayHealthProfileTemp
                     
                 }
             }
@@ -1439,13 +1439,13 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         // Both calls are equivalent
         HealthProfileController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
-         
+            
             
             if let jsonResponse = response.result.value {
                 //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 
-   
+                
                 let status = json["status"]
                 let records = json["records"]
                 self.messageStr = json["message"].string!
@@ -1454,12 +1454,12 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                 if(records.isEmpty){
                     
                     let prefs = UserDefaults.standard
-                   
+                    
                     prefs.removeObject(forKey: "jsonHealthProfile")
                     prefs.removeObject(forKey: "savedOrderProfile")
                     self.arrayHealthProfile.removeAll()
                     self.saveOrder.removeAll()
-
+                    
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
                     print("make label")
@@ -1471,199 +1471,199 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     label.text = Constants.welcome_nodata
                     self.view.addSubview(label)
                 }else{
-                
-                if status == "SUCCESS"{
                     
-                    let responseJSON = response.result.value
-                    
-                    if(responseJSON != nil){
-                        let json1 = JSON(responseJSON as Any)
+                    if status == "SUCCESS"{
                         
-                        self.saveJSON(j: json1)
-                    }
-                    self.removeSubview()
-                    
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
-                    
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.hideActivityIndicator(uiView: self.view)
-                    
-                    print("success")
-                    
-                    self.arrayHealthProfile.removeAll()
-                    
-                    // tell refresh control it can stop showing up now
-                    if self.refreshControl.isRefreshing
-                    {
-                        self.refreshControl.endRefreshing()
-                    }
-                    
-                    
-                    let prefs = UserDefaults.standard
-                    
-                    var counter = -1
-                    for item in json["records"].arrayValue {
+                        let responseJSON = response.result.value
                         
-                        counter += 1
-                        let healthprofile = HealthProfile()
-                        healthprofile.recordId = item["recordId"].stringValue
-                        healthprofile.description = item["description"].stringValue
-                        healthprofile.hide = item["_hide"].stringValue
-                        
-                        healthprofile.subRecordCount = item["subRecordCount"].stringValue
-                        healthprofile.lastUpdated = item["lastUpdated"].stringValue
-                        
-                        healthprofile.name = item["attributes"][0]["value"].stringValue
-                        
-                        healthprofile.subRecords = String(describing: item["subRecords"].arrayValue)
-                        
-                        self.arrayHealthProfile.append(healthprofile)
-                        
-                    }
-                    
-                    
-                    
-                    //re-order assesements to saved order list
-                    
-                    
-                    if (prefs.object(forKey: "savedOrderProfile") == nil){
-                        //re-order code
-                        
-                        for i in 0 ..< self.arrayHealthProfile.count  {
+                        if(responseJSON != nil){
+                            let json1 = JSON(responseJSON as Any)
                             
-                            let recordID = self.arrayHealthProfile[i].recordId
+                            self.saveJSON(j: json1)
+                        }
+                        self.removeSubview()
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
+                        
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.hideActivityIndicator(uiView: self.view)
+                        
+                        print("success")
+                        
+                        self.arrayHealthProfile.removeAll()
+                        
+                        // tell refresh control it can stop showing up now
+                        if self.refreshControl.isRefreshing
+                        {
+                            self.refreshControl.endRefreshing()
+                        }
+                        
+                        
+                        let prefs = UserDefaults.standard
+                        
+                        var counter = -1
+                        for item in json["records"].arrayValue {
                             
-                            self.saveOrder.append(recordID)
+                            counter += 1
+                            let healthprofile = HealthProfile()
+                            healthprofile.recordId = item["recordId"].stringValue
+                            healthprofile.description = item["description"].stringValue
+                            healthprofile.hide = item["_hide"].stringValue
+                            
+                            healthprofile.subRecordCount = item["subRecordCount"].stringValue
+                            healthprofile.lastUpdated = item["lastUpdated"].stringValue
+                            
+                            healthprofile.name = item["attributes"][0]["value"].stringValue
+                            
+                            healthprofile.subRecords = String(describing: item["subRecords"].arrayValue)
+                            
+                            self.arrayHealthProfile.append(healthprofile)
                             
                         }
                         
                         
-                        prefs.set(self.saveOrder, forKey: "savedOrderProfile")
                         
-                        //print(prefs.object(forKey: "savedOrderProfile") as Any)
+                        //re-order assesements to saved order list
                         
-                        //end re-order code
+                        
+                        if (prefs.object(forKey: "savedOrderProfile") == nil){
+                            //re-order code
+                            
+                            for i in 0 ..< self.arrayHealthProfile.count  {
+                                
+                                let recordID = self.arrayHealthProfile[i].recordId
+                                
+                                self.saveOrder.append(recordID)
+                                
+                            }
+                            
+                            
+                            prefs.set(self.saveOrder, forKey: "savedOrderProfile")
+                            
+                            //print(prefs.object(forKey: "savedOrderProfile") as Any)
+                            
+                            //end re-order code
+                            
+                        }else{
+                            
+                            
+                            self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
+                            
+                            
+                            
+                            if(self.saveOrder.count == self.arrayHealthProfile.count){
+                                
+                                var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
+                                
+                                for i in 0 ..< self.arrayHealthProfile.count  {
+                                    
+                                    let obj = self.arrayHealthProfile[i]
+                                    
+                                    let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                                    
+                                    arrayHealthProfileTemp[new_index!] = obj
+                                    
+                                }
+                                
+                                
+                                self.arrayHealthProfile.removeAll()
+                                self.arrayHealthProfile = arrayHealthProfileTemp
+                                
+                            }else if(self.arrayHealthProfile.count > self.saveOrder.count){
+                                
+                                var TempOrder : [String] = []
+                                TempOrder.removeAll()
+                                for i in 0 ..< self.arrayHealthProfile.count  {
+                                    
+                                    TempOrder.append(self.arrayHealthProfile[i].recordId)
+                                }
+                                
+                                
+                                let addValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                                
+                                if(!addValue.isEmpty){
+                                    
+                                    let addThis = addValue[0]
+                                    
+                                    self.saveOrder.insert(addThis, at: 0)
+                                    
+                                    var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
+                                    
+                                    for i in 0 ..< self.arrayHealthProfile.count  {
+                                        
+                                        let obj = self.arrayHealthProfile[i]
+                                        
+                                        let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                                        
+                                        arrayHealthProfileTemp[new_index!] = obj
+                                        
+                                    }
+                                    
+                                    prefs.set(self.saveOrder, forKey: "savedOrderProfile")
+                                    self.arrayHealthProfile.removeAll()
+                                    self.arrayHealthProfile = arrayHealthProfileTemp
+                                    
+                                }
+                                
+                            }
+                            else if(self.arrayHealthProfile.count < self.saveOrder.count){
+                                var TempOrder : [String] = []
+                                TempOrder.removeAll()
+                                for i in 0 ..< self.arrayHealthProfile.count  {
+                                    
+                                    TempOrder.append(self.arrayHealthProfile[i].recordId)
+                                }
+                                
+                                
+                                
+                                let deleteValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
+                                
+                                if(!deleteValue.isEmpty){
+                                    
+                                    let deleteThis = deleteValue[0]
+                                    
+                                    print(deleteThis)
+                                    
+                                    self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
+                                    
+                                    var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
+                                    
+                                    for i in 0 ..< self.arrayHealthProfile.count  {
+                                        
+                                        let obj = self.arrayHealthProfile[i]
+                                        
+                                        let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
+                                        
+                                        arrayHealthProfileTemp[new_index!] = obj
+                                        
+                                    }
+                                    
+                                    prefs.set(self.saveOrder, forKey: "savedOrderProfile")
+                                    self.arrayHealthProfile.removeAll()
+                                    self.arrayHealthProfile = arrayHealthProfileTemp
+                                    
+                                }
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        //end re-order
+                        
+                        
+                        self.tableViewProfile?.reloadData()
                         
                     }else{
                         
-                        
-                        self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
-                        
-                        
-                        
-                        if(self.saveOrder.count == self.arrayHealthProfile.count){
-                            
-                            var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
-                            
-                            for i in 0 ..< self.arrayHealthProfile.count  {
-                                
-                                let obj = self.arrayHealthProfile[i]
-                                
-                                let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
-                                
-                                arrayHealthProfileTemp[new_index!] = obj
-                                
-                            }
-                            
-                            
-                            self.arrayHealthProfile.removeAll()
-                            self.arrayHealthProfile = arrayHealthProfileTemp
-                            
-                        }else if(self.arrayHealthProfile.count > self.saveOrder.count){
-                            
-                            var TempOrder : [String] = []
-                            TempOrder.removeAll()
-                            for i in 0 ..< self.arrayHealthProfile.count  {
-                                
-                                TempOrder.append(self.arrayHealthProfile[i].recordId)
-                            }
-                            
-                            
-                            let addValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
-                            
-                             if(!addValue.isEmpty){
-                            
-                            let addThis = addValue[0]
-                            
-                            self.saveOrder.insert(addThis, at: 0)
-                            
-                            var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
-                            
-                            for i in 0 ..< self.arrayHealthProfile.count  {
-                                
-                                let obj = self.arrayHealthProfile[i]
-                                
-                                let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
-                                
-                                arrayHealthProfileTemp[new_index!] = obj
-                                
-                            }
-                            
-                            prefs.set(self.saveOrder, forKey: "savedOrderProfile")
-                            self.arrayHealthProfile.removeAll()
-                            self.arrayHealthProfile = arrayHealthProfileTemp
-                                
-                            }
-                            
-                        }
-                        else if(self.arrayHealthProfile.count < self.saveOrder.count){
-                            var TempOrder : [String] = []
-                            TempOrder.removeAll()
-                            for i in 0 ..< self.arrayHealthProfile.count  {
-                                
-                                TempOrder.append(self.arrayHealthProfile[i].recordId)
-                            }
-                            
-                            
-                            
-                            let deleteValue = self.arrayOfNonCommonElements(lhs: self.saveOrder,rhs: TempOrder)
-                            
-                               if(!deleteValue.isEmpty){
-                            
-                            let deleteThis = deleteValue[0]
-                            
-                            print(deleteThis)
-                            
-                            self.saveOrder = self.saveOrder.filter{$0 != deleteThis}
-                            
-                            var arrayHealthProfileTemp = [HealthProfile](repeating: self.arrayHealthProfile[0],count: self.arrayHealthProfile.count)
-                            
-                            for i in 0 ..< self.arrayHealthProfile.count  {
-                                
-                                let obj = self.arrayHealthProfile[i]
-                                
-                                let new_index =  self.saveOrder.index(of: self.arrayHealthProfile[i].recordId)
-                                
-                                arrayHealthProfileTemp[new_index!] = obj
-                                
-                            }
-                            
-                            prefs.set(self.saveOrder, forKey: "savedOrderProfile")
-                            self.arrayHealthProfile.removeAll()
-                            self.arrayHealthProfile = arrayHealthProfileTemp
-                                
-                            }
-                        }
-                        
-                        
+                        // get a reference to the app delegate
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.hideActivityIndicator(uiView: self.view)
+                        self.showError()
                     }
                     
-                    
-                    //end re-order
-                    
-                    
-                    self.tableViewProfile?.reloadData()
-                    
-                }else{
-                    
-                    // get a reference to the app delegate
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.hideActivityIndicator(uiView: self.view)
-                    self.showError()
                 }
-                
             }
-        }
             if let error = response.result.error as? AFError{
                 switch error {
                 case .invalidURL(let url):

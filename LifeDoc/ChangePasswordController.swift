@@ -39,19 +39,19 @@ class ChangePasswordController: UIViewController  {
         preparePasswordConfirmField()
         prepareCloseButton()
         prepareSubmitButton()
-      
+        
         
         view.addSubview(scrollView)
     }
     
-   
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,7 +62,7 @@ class ChangePasswordController: UIViewController  {
         super.viewWillLayoutSubviews()
         scrollView.contentSize = CGSize(width: 300, height: 700)
     }
-
+    
     private func prepareCloseButton() {
         
         let leftNavItem = closeButton
@@ -70,12 +70,12 @@ class ChangePasswordController: UIViewController  {
         
         
     }
-
+    
     func buttonTapActionClose() {
-      
+        
         
         self.dismiss(animated: true, completion: nil)
-  
+        
     }
     
     private func prepareOldPasswordField() {
@@ -93,7 +93,7 @@ class ChangePasswordController: UIViewController  {
         
         oldPassword.addTarget(self,action: #selector(textFieldDidChangePassOld),for: UIControlEvents.editingDidEnd)
         oldPassword.addTarget(self,action: #selector(textFieldDidChangePassLengthOld),for: UIControlEvents.editingChanged)
-
+        
     }
     
     
@@ -186,7 +186,7 @@ class ChangePasswordController: UIViewController  {
             oldPassword.deleteBackward()
         }
     }
-
+    
     
     private func preparePasswordConfirmField() {
         
@@ -239,7 +239,7 @@ class ChangePasswordController: UIViewController  {
             confirmPassword.deleteBackward()
         }
     }
-
+    
     func validatePassword(testStr:String) -> Bool {
         
         let regex = Constants.regex
@@ -263,7 +263,7 @@ class ChangePasswordController: UIViewController  {
         return true
         
     }
-
+    
     
     func validatePasswordConfirm(testStr:String) -> Bool {
         
@@ -298,12 +298,12 @@ class ChangePasswordController: UIViewController  {
     }
     
     func buttonTapAction(sender: UIButton!) {
-    
+        
         
         
         let passwordStrOld: String = oldPassword.text!
         let passwordStr: String = newPassword.text!
-       
+        
         let confirmPasswordStr: String = confirmPassword.text!
         
         if(!validatePasswordOld(testStr: passwordStrOld)){
@@ -330,12 +330,12 @@ class ChangePasswordController: UIViewController  {
             return
         }
         
-       
+        
         
         changePassword()
         
     }
-
+    
     private func changePassword() {
         
         // get a reference to the app delegate
@@ -345,7 +345,7 @@ class ChangePasswordController: UIViewController  {
         let passwordOld: String = oldPassword.text!
         
         let password: String = newPassword.text!
-       
+        
         
         submitButton.isEnabled = false
         
@@ -361,7 +361,7 @@ class ChangePasswordController: UIViewController  {
         let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
         
         let authToken = prefs.string(forKey: "authToken")
-
+        
         
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,
@@ -400,7 +400,7 @@ class ChangePasswordController: UIViewController  {
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     
                     appDelegate.showToast()
-
+                    
                     self.dismiss(animated: true, completion: nil)
                     
                 }else{
@@ -452,7 +452,7 @@ class ChangePasswordController: UIViewController  {
                 appDelegate.hideActivityIndicator(uiView: self.view)
                 self.showNetworkError()
                 
-            } 
+            }
             
         }
         
@@ -536,7 +536,7 @@ extension ChangePasswordController: TextFieldDelegate {
             
             return string == filtered
         }
-
+            
         else{
             
             let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-(){}[]*^%$#@!?,._'/;:\\&amp;&quot;&lt;&gt;\n").inverted

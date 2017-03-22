@@ -23,7 +23,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
     @IBOutlet weak var showMoreAssess: UIButton!
     @IBOutlet weak var measurements: UILabel!
     
-  
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,7 +46,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
     
     var arrayHealthAssessmentMeasure = [HealthAssessmentMeasure]()
     
-  
+    
     var deletedList : Array<String> = Array()
     
     var hideList : Array<String> = Array()
@@ -100,7 +100,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "singleMeasurement") != nil){
-       
+            
             
             for (_, object) in json {
                 
@@ -148,7 +148,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                         finalStr = finalStr + "\n" +  type + ": " + value + " " + unit
                     }
                     
-                   
+                    
                     
                 }
                 
@@ -201,7 +201,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         
         //print(healthAssess.hide)
         
-      
+        
         
         if(cell.hiddenValue.text! == "false"){
             let image = UIImage(named: "blue_unhide") as UIImage?
@@ -212,7 +212,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             cell.hide.setBackgroundImage(image, for: .normal)
             
         }
-
+        
         
         
         if(indexPath.row == indexOfChangedCell)
@@ -243,7 +243,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             
             
         }
-
+        
         
         
         if(indexPath.row == indexOfDeletedCell)
@@ -267,7 +267,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         
         if(indexPath.row == indexOfEditCell)
         {
-          
+            
             
             let prefs = UserDefaults.standard
             prefs.removeObject(forKey: "singleMeasurement")
@@ -282,12 +282,12 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             
             self.saveJSONNow(j: json)
             
-       
+            
             
         }
-
         
-       
+        
+        
         
         
         
@@ -319,10 +319,10 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-     
+        
         return 90
         
-      
+        
         
     }
     
@@ -338,25 +338,25 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         indexOfEditCell = buttonRow
         print("Edit clicked")
         
-       
+        
         
         let indexPath = IndexPath(item: indexOfEditCell, section: 0)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .fade)
         self.tableView.endUpdates()
         
-     
+        
         
         self.window?.rootViewController?.dismiss(animated: false, completion: nil)
         
         let prefs = UserDefaults.standard
         var typeOf = ""
-         if (prefs.string(forKey: "AssessmentType") != nil){
+        if (prefs.string(forKey: "AssessmentType") != nil){
             
             typeOf = prefs.string(forKey: "AssessmentType")!
             
         }
-      
+        
         
         let cholesterolController: CholesterolController = {
             return UIStoryboard.viewController(identifier: "CholesterolController") as! CholesterolController
@@ -394,34 +394,34 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             self.window?.rootViewController?.present(cholesterolController, animated: false, completion: nil)
         }
         if(typeOf == "Weight"){
-             self.window?.rootViewController?.present(weightContoller, animated: false, completion: nil)
+            self.window?.rootViewController?.present(weightContoller, animated: false, completion: nil)
         }
-
+        
         if(typeOf == "Pulse"){
-             self.window?.rootViewController?.present(pulseContoller, animated: false, completion: nil)
+            self.window?.rootViewController?.present(pulseContoller, animated: false, completion: nil)
         }
-
+        
         if(typeOf == "Height"){
-             self.window?.rootViewController?.present(heightContoller, animated: false, completion: nil)
+            self.window?.rootViewController?.present(heightContoller, animated: false, completion: nil)
         }
-
+        
         if(typeOf == "Body Temperature"){
-             self.window?.rootViewController?.present(bodyTempContoller, animated: false, completion: nil)
+            self.window?.rootViewController?.present(bodyTempContoller, animated: false, completion: nil)
         }
-
+        
         if(typeOf == "BMI"){
-             self.window?.rootViewController?.present(bmiController, animated: false, completion: nil)
+            self.window?.rootViewController?.present(bmiController, animated: false, completion: nil)
         }
-
+        
         if(typeOf == "Blood Glucose"){
-             self.window?.rootViewController?.present(bloodGlucoseContoller, animated: false, completion: nil)
+            self.window?.rootViewController?.present(bloodGlucoseContoller, animated: false, completion: nil)
         }
-
+        
         if(typeOf == "Blood Pressure"){
-             self.window?.rootViewController?.present(bloodPresssureContoller, animated: false, completion: nil)
+            self.window?.rootViewController?.present(bloodPresssureContoller, animated: false, completion: nil)
         }
-
-       
+        
+        
         
         
     }
@@ -433,18 +433,18 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         let buttonRow = sender.tag
         indexOfChangedCell = buttonRow
         
-    
-        
-       
-            let indexPath = IndexPath(item: indexOfChangedCell, section: 0)
-            self.tableView.beginUpdates()
-            self.tableView.reloadRows(at: [indexPath], with: .fade)
-            self.tableView.endUpdates()
         
         
-            
-            self.hideUnhideRecord()
-            
+        
+        let indexPath = IndexPath(item: indexOfChangedCell, section: 0)
+        self.tableView.beginUpdates()
+        self.tableView.reloadRows(at: [indexPath], with: .fade)
+        self.tableView.endUpdates()
+        
+        
+        
+        self.hideUnhideRecord()
+        
         
         
         
@@ -510,13 +510,13 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         ac.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default)
         { action -> Void in
             
-         
+            
             
             self.deleteRecord()
         })
-         self.window?.rootViewController?.present(ac, animated: true)
+        self.window?.rootViewController?.present(ac, animated: true)
     }
-
+    
     
     private func deleteRecord() {
         
@@ -525,7 +525,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.showActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
         
-       
+        
         self.window!.rootViewController?.view.makeToast("Deleting record...", duration: 3.0, position: .bottom)
         
         let urlString: String
@@ -583,15 +583,15 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     
                     appDelegate.gethealthAssessments()
-
-                    
-                  
-                     //self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 5.0, position: .bottom)
                     
                     
-                     //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
                     
-                   
+                    //self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 5.0, position: .bottom)
+                    
+                    
+                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
+                    
+                    
                     
                 }else{
                     //Toast(text: self.messageStr, duration: Delay.long).show()
@@ -714,13 +714,13 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                     
                     appDelegate.gethealthAssessments()
                     
-                   
-
-                   
-                     //self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 5.0, position: .bottom)
                     
                     
-                     //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
+                    
+                    //self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 5.0, position: .bottom)
+                    
+                    
+                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
                     
                     
                     

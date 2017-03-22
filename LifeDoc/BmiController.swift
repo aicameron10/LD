@@ -56,14 +56,14 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
     var hideImage : Bool = Bool()
     
     
-   
-  
+    
+    
     var deletedList : Array<String> = Array()
     
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,11 +108,11 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
                 editDate = myStringArr [0]
                 editTime = myStringArr [1]
-              
+                
             }
             
         }
-
+        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -155,7 +155,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
             
             weight.isEnabled = false
             height.isEnabled = false
-           
+            
             
             for (_, object) in json {
                 
@@ -196,7 +196,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         
     }
     
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -297,7 +297,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             sDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
         }
-
+        
         
         
     }
@@ -321,7 +321,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             Time.text = dateToday.stringFromFormat("HH:mm")
         }
-
+        
         
         
         
@@ -538,7 +538,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
     }
-
+    
     
     
     
@@ -582,7 +582,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
         present(ac, animated: true)
     }
     
-
+    
     
     private func prepareDeleteButton() {
         
@@ -622,9 +622,9 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
             self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
             return
         }
-
         
- 
+        
+        
         if(str2.isEmpty || !validateValueWeight(testStr: str2)){
             weight.isErrorRevealed = true
             weight.detail = Constants.err_msg_weight
@@ -820,7 +820,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
             if date > dateToday {
                 print("future date")
                 
-                 self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -833,9 +833,9 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
             let dateNow = sDate.text
             
             let dateTime = dateFormatter.string(from: dateToday)
-
             
-             if (date > dateToday && dateNow == dateTime) {
+            
+            if (date > dateToday && dateNow == dateTime) {
                 print("future time")
                 
                 
@@ -843,9 +843,9 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             }else{
                 
-                          Time.text = date.stringFromFormat("HH:mm")
+                Time.text = date.stringFromFormat("HH:mm")
             }
-
+            
         }
         
         NewDate = false
@@ -984,14 +984,14 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-               
+                
                 
             }
         }
         
         
     }
-
+    
     
     private func sendHealthAssessment() {
         
@@ -1102,7 +1102,7 @@ class BmiController: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
+                    
                 }else{
                     
                     self.saveButton.isEnabled = true

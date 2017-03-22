@@ -18,7 +18,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     public func fileExplorerViewControllerDidFinish(_ controller: FileExplorerViewController) {
         //
     }
- 
+    
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -47,7 +47,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         }
         
     }
-
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -76,7 +76,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     var messageStr : String = String()
     
     let imagePicker = UIImagePickerController()
-
+    
     
     var NewDate : Bool = Bool()
     
@@ -95,7 +95,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var hideImage : Bool = Bool()
     
-       var countSkip : Bool = Bool()
+    var countSkip : Bool = Bool()
     
     var hidelater : Bool = Bool()
     
@@ -190,7 +190,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
     }
     
-  
+    
     
     func loadList(notification: NSNotification){
         //load data here
@@ -202,25 +202,25 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         shouldCellBeExpanded = false
         
-    
+        
         loadDataNotes()
         loadDataPath()
         loadDataDoc()
         loadDataHos()
         loadDataMedi()
         
-      self.tableView.reloadData()
+        self.tableView.reloadData()
         
     }
     
     func loadListAttach(notification: NSNotification){
         //load data here
-      
-          listAttachments()
-       
+        
+        listAttachments()
+        
         
     }
-
+    
     
     
     public func loadJSONSingle() -> JSON {
@@ -317,7 +317,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 let del = object["_delete"].stringValue
                 
                 print("del-"+del)
-            
+                
                 
                 if(del == "false" || del == "" || del == " "){
                     
@@ -338,7 +338,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     public func loadJSONDoc() -> JSON {
         let prefs = UserDefaults.standard
         
@@ -439,7 +439,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     public func loadJSONMedi() -> JSON {
         let prefs = UserDefaults.standard
         
@@ -489,8 +489,8 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
-
+    
+    
     
     func loadDataSingle(){
         
@@ -548,7 +548,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             if(description == "Notes"){
                 let details = item["details"].arrayValue
                 counterNote = item["count"].stringValue
-              
+                
                 print(counterNote)
                 
                 let json = JSON(details)
@@ -700,50 +700,50 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         }
         
         if(indexPath.row == 0 && cell.name.text == "Notes"){
-        if(cell.name.text == "Notes" && counterNote != "" && countNotes == 0 && countSkip == false){
-            
-            print("i want this one now ")
-            cell.count.text = counterNote
-        }else{
-            
-            cell.count.text = String(describing: countNotes)
-        }
+            if(cell.name.text == "Notes" && counterNote != "" && countNotes == 0 && countSkip == false){
+                
+                print("i want this one now ")
+                cell.count.text = counterNote
+            }else{
+                
+                cell.count.text = String(describing: countNotes)
+            }
         }
         if(indexPath.row == 1 && cell.name.text == "Doctor Visits"){
-        if(cell.name.text == "Doctor Visits" && counterDoc != "" && countDoc == 0 && countSkip == false){
-            cell.count.text = counterDoc
-        }else{
-            cell.count.text = String(describing: countDoc)
-        }
+            if(cell.name.text == "Doctor Visits" && counterDoc != "" && countDoc == 0 && countSkip == false){
+                cell.count.text = counterDoc
+            }else{
+                cell.count.text = String(describing: countDoc)
+            }
         }
         if(indexPath.row == 2 && cell.name.text == "Medication"){
-        if(cell.name.text == "Medication" && counterMedi != "" && countMedi == 0 && countSkip == false){
-            cell.count.text = counterMedi
-        }else{
-            cell.count.text = String(describing: countMedi)
-        }
+            if(cell.name.text == "Medication" && counterMedi != "" && countMedi == 0 && countSkip == false){
+                cell.count.text = counterMedi
+            }else{
+                cell.count.text = String(describing: countMedi)
+            }
         }
         if(indexPath.row == 3 && cell.name.text == "Hospital Visits"){
-        if(cell.name.text == "Hospital Visits" && counterHos != "" && countHos == 0 && countSkip == false){
-            cell.count.text = counterHos
-        }else{
-            cell.count.text = String(describing: countHos)
+            if(cell.name.text == "Hospital Visits" && counterHos != "" && countHos == 0 && countSkip == false){
+                cell.count.text = counterHos
+            }else{
+                cell.count.text = String(describing: countHos)
+            }
         }
+        
+        if(indexPath.row == 4 && cell.name.text == "Pathology Results"){
+            if(cell.name.text == "Pathology Results" && counterPath != "" && countPath == 0 && countSkip == false){
+                cell.count.text = counterPath
+            }else{
+                cell.count.text = String(describing: countPath)
+            }
         }
-  
-         if(indexPath.row == 4 && cell.name.text == "Pathology Results"){
-        if(cell.name.text == "Pathology Results" && counterPath != "" && countPath == 0 && countSkip == false){
-            cell.count.text = counterPath
-        }else{
-            cell.count.text = String(describing: countPath)
-        }
-        }
-
+        
         
         
         if(shouldCellBeExpanded  && indexPath.row == indexOfExpandedCell)
         {
-          
+            
             
             cell.tableView.isHidden = false
             
@@ -837,16 +837,16 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     public func fileExplorerViewController(_ controller: FileExplorerViewController, didChooseURLs urls: [URL]) {
         //Your code here
     }
-
+    
     
     private func prepareAttachButton() {
-      
-              attach.addTarget(self, action: #selector(buttonAttachAction), for: .touchUpInside)
-       
-     
+        
+        attach.addTarget(self, action: #selector(buttonAttachAction), for: .touchUpInside)
+        
+        
         
     }
-
+    
     func buttonAttachAction(sender: UIButton!) {
         print("Button tapped")
         
@@ -894,29 +894,29 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 }            })
             
             /*let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
-                
-                let navigationBarAppearace = UINavigationBar.appearance()
-                
-                navigationBarAppearace.tintColor = .white
-                navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
-
-                
-                let fileExplorer = FileExplorerViewController()
-                fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
-                fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
-                fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
-                     fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
-                
-                //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
-                //  in: .userDomainMask).first!
-                //fileExplorer.initialDirectoryURL = documentsUrl
-                fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
-                fileExplorer.delegate = self
-                
-                self.present(fileExplorer, animated: true, completion: nil)
-                
-            })*/
+             (alert: UIAlertAction!) -> Void in
+             
+             let navigationBarAppearace = UINavigationBar.appearance()
+             
+             navigationBarAppearace.tintColor = .white
+             navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+             
+             
+             let fileExplorer = FileExplorerViewController()
+             fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
+             fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
+             fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
+             fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
+             
+             //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
+             //  in: .userDomainMask).first!
+             //fileExplorer.initialDirectoryURL = documentsUrl
+             fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
+             fileExplorer.delegate = self
+             
+             self.present(fileExplorer, animated: true, completion: nil)
+             
+             })*/
             //
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
@@ -934,25 +934,25 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             //presentViewController(optionMenu, animated: true, completion: nil)
             parent?.present(optionMenuPhoto, animated: true, completion: nil)
             //self.present(optionMenu, animated: true, completion: nil)
-
-        
+            
+            
         }else{
             self.view.makeToast("Please save record before adding an attachment", duration: 3.0, position: .center)
             
         }
-
+        
         
         
     }
-
-   
-
+    
+    
+    
     
     
     private func preparedropdown() {
         
         chooseDropDown.anchorView = dropDownButton
-     
+        
         chooseDropDown.bottomOffset = CGPoint(x: 0, y: dropDownButton.bounds.height)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
@@ -964,7 +964,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             self.dropDownButton.setTitle(self.dropDownOption, for: .normal)
             self.serverityValue = dropDownOption
         }
-   
+        
         // Action triggered on selection
         chooseDropDown.selectionAction = { [unowned self] (index, item) in
             
@@ -974,9 +974,9 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             self.serverityValue = item
             
         }
-   
+        
         chooseDropDown.direction = .any
-     
+        
         
     }
     
@@ -1160,7 +1160,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             self.view.makeToast("Record has been hidden, please apply to save", duration: 3.0, position: .center)
             let prefs = UserDefaults.standard
             if (prefs.string(forKey: "mainAllergyChronic") != nil){
-              hideUnhideRecord()
+                hideUnhideRecord()
             }else{
                 hidelater = true
             }
@@ -1432,7 +1432,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 
                 
                 savedFilesPath.append(add as [String : AnyObject])
-          
+                
                 
             }
             
@@ -1493,14 +1493,14 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 add["recordId"] = object["recordId"].stringValue
                 add["_type"] = object["_type"].stringValue
                 add["Admission date"] = object["Admission date"].stringValue
-                 add["Discharge date"] = object["Discharge date"].stringValue
+                add["Discharge date"] = object["Discharge date"].stringValue
                 add["_hide"] = object["_hide"].stringValue
                 add["_save"] = object["_save"].stringValue
                 add["_delete"] = object["_delete"].stringValue
                 add["lastUpdated"] = object["lastUpdated"].stringValue
                 add["Hospital name"] = object["Hospital name"].stringValue
                 add["Who was the treating doctor?"] = object["Who was the treating doctor?"].stringValue
-              
+                
                 add["Diagnosis/Reason for visit?"] = object["Diagnosis/Reason for visit?"].stringValue
                 add["What treatment did you receive?"] = object["What treatment did you receive?"].stringValue
                 
@@ -1513,7 +1513,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             
         }
-
+        
         if (prefs.string(forKey: "Medication") != nil){
             
             let json = self.loadJSONMedi()
@@ -1545,9 +1545,9 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 
                 add["Diagnosis/Reason for visit?"] = object["Diagnosis/Reason for visit?"].stringValue
                 add["Was this medicine prescribed by a doctor?"] = object["Was this medicine prescribed by a doctor?"].stringValue
-                  add["Is this a repeat prescription?"] = object["Is this a repeat prescription?"].stringValue
-            
-               savedFilesMedi.append(add as [String : AnyObject])
+                add["Is this a repeat prescription?"] = object["Is this a repeat prescription?"].stringValue
+                
+                savedFilesMedi.append(add as [String : AnyObject])
                 
                 
             }
@@ -1555,8 +1555,8 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             
         }
-
-
+        
+        
         
         savedSubs["Notes"] = savedFiles as NSArray?
         savedSubs["Pathology"] = savedFilesPath as NSArray?
@@ -1614,12 +1614,12 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 if status == "SUCCESS"{
                     
                     let prefs = UserDefaults.standard
-          
+                    
                     
                     if(self.hidelater == true){
                         
                         self.recordValue = self.recordIdValue
-                         self.hideUnhideRecord()
+                        self.hideUnhideRecord()
                     }
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -1631,7 +1631,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
                     
-                   
+                    
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
@@ -1818,7 +1818,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     
     public func saveJSONList(j: JSON) {
         let prefs = UserDefaults.standard
@@ -1827,7 +1827,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         // here I save my JSON as a string
     }
-
+    
     
     
     
@@ -1880,7 +1880,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 
                 self.saveJSONList(j: json1)
             }
-
+            
             
             if let jsonResponse = response.result.value {
                 //print("JSON: \(json)")
@@ -2031,7 +2031,7 @@ extension MainAllergy: TextFieldDelegate {
         
         prefs.set(desc.text, forKey: "globalReason")
     }
-   
+    
     
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {

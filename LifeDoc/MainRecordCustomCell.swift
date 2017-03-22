@@ -984,11 +984,11 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         self.tableView.reloadRows(at: [indexPath], with: .fade)
         self.tableView.endUpdates()
         
-      let fileExtension = self.downloadName.fileExtension()
+        let fileExtension = self.downloadName.fileExtension()
         
         if(fileExtension == "jpg" || fileExtension == "jpeg" || fileExtension == "png"){
             
-           self.download()
+            self.download()
         }
             
         else if(fileExtension == "pdf"){
@@ -998,8 +998,8 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             self.parentViewController?.view.makeToast("Only PDF or image based files can be downloaded from the app.Login via the website to complete your download.", duration: 3.0, position: .center)
         }
-
-       
+        
+        
         
         self.indexOfAttachCell = -1
         
@@ -1575,7 +1575,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         
         // Both calls are equivalent
         MainRecordCustomCell.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).response { response in
-       
+            
             
             let fileExtension = self.downloadName.fileExtension()
             
@@ -1616,7 +1616,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                         })
                         
                     }
-                        
+                    
                     if(fileExtension == "pdf"){
                         let dataDecoded : Data = Data(base64Encoded: data, options: .ignoreUnknownCharacters)!
                         

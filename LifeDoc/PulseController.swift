@@ -57,7 +57,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +105,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             }
             
         }
-
+        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -146,7 +146,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             
             
             pulse.isEnabled = false
-    
+            
             
             for (_, object) in json {
                 
@@ -162,7 +162,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                 }
                 
-              
+                
                 
                 
             }
@@ -170,7 +170,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
     }
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -268,9 +268,9 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         if (prefs.string(forKey: "singleMeasurement") != nil){
             sDate.text = editDate
         }else{
-           sDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
+            sDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
         }
-
+        
         
         
     }
@@ -294,7 +294,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             sTime.text = dateToday.stringFromFormat("HH:mm")
         }
-
+        
         
         
         
@@ -381,7 +381,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         if (prefs.string(forKey: "singleMeasurement") != nil){
             rightNavItem?.title = "Apply"
         }
-
+        
     }
     
     private func prepareHideButton() {
@@ -417,7 +417,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = false
             self.view.makeToast("Record has been made visible, please apply to save", duration: 3.0, position: .bottom)
-        
+            
         }
     }
     
@@ -484,7 +484,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
             return
         }
-
+        
         
         if(str1.isEmpty || !validateValue(testStr: str1)){
             pulse.isErrorRevealed = true
@@ -633,7 +633,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             if date > dateToday {
                 print("future date")
                 
-                  self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -647,7 +647,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             let dateNow = sDate.text
             
             let dateTime = dateFormatter.string(from: dateToday)
-
+            
             if (date > dateToday && dateNow == dateTime) {
                 print("future time")
                 
@@ -658,7 +658,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
                 sTime.text = date.stringFromFormat("HH:mm")
             }
-
+            
         }
         
         NewDate = false
@@ -803,7 +803,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
     }
-
+    
     private func sendHealthAssessment() {
         
         
@@ -911,8 +911,8 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
-
+                    
+                    
                 }else{
                     
                     self.saveButton.isEnabled = true
@@ -964,7 +964,7 @@ class PulseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-              
+                
                 
                 
             }

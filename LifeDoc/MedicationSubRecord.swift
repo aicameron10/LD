@@ -176,7 +176,7 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
         prepareRepeat()
         prepareRadio1()
         prepareRadio()
-       
+        
         
         
     }
@@ -316,7 +316,7 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
             fromDoc = false
         }else if(editFromDoc == "Yes" || editFromDoc == "true"){
             checkBox.isSelected = true
-               checkBox1.isEnabled = true
+            checkBox1.isEnabled = true
             preDoctor.isEnabled = true
             fromDoc = true
             NewCheck = false
@@ -1274,11 +1274,11 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
             
             if(endDate == false){
                 
-                    //self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .center)
-                    
+                //self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .center)
                 
-                    
-                    bpDate.text = date.stringFromFormat("dd-MM-yyyy")
+                
+                
+                bpDate.text = date.stringFromFormat("dd-MM-yyyy")
                 
             }else{
                 

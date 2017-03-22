@@ -27,7 +27,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
     @IBOutlet weak var closeButton: UIBarButtonItem!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
-   
+    
     
     @IBOutlet weak var ReasonText: UITextView!
     
@@ -84,8 +84,8 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
     var editReason = ""
     var editTreat = ""
     var editDocName = ""
-     var editDocNum = ""
-     var editDocSpecial = ""
+    var editDocNum = ""
+    var editDocSpecial = ""
     
     var recordValue = ""
     
@@ -148,7 +148,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         
         prepareReason()
         
-    
+        
         
         
     }
@@ -182,12 +182,12 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         
         let recordId = json[posIndex!]["recordId"].stringValue
         let docName = json[posIndex!]["Name of doctor"].stringValue
-         let docNum = json[posIndex!]["Contact number"].stringValue
-         let docSpecail = json[posIndex!]["Doctor type/specialization"].stringValue
+        let docNum = json[posIndex!]["Contact number"].stringValue
+        let docSpecail = json[posIndex!]["Doctor type/specialization"].stringValue
         let reason = json[posIndex!]["Diagnosis/Reason for visit?"].stringValue
         let desc = json[posIndex!]["What treatment was given?"].stringValue
         let updatedDate = json[posIndex!]["lastUpdated"].stringValue
-       
+        
         
         
         
@@ -304,7 +304,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         
     }
     
-   
+    
     
     
     
@@ -344,7 +344,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         
         let prefs = UserDefaults.standard
         
-      
+        
         if (prefs.string(forKey: "DocEdit") != nil){
             docName.text = editDocName
             
@@ -458,7 +458,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
             docNum.deleteBackward()
         }
     }
-
+    
     private func prepareDocSpecail() {
         
         docSpecial.placeholder = "Doctor Specialisation"
@@ -518,7 +518,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
             docSpecial.deleteBackward()
         }
     }
-
+    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
@@ -591,11 +591,11 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         if (prefs.string(forKey: "globalReason") != nil){
             
             ReasonText.text = prefs.string(forKey: "globalReason")!
-             wordCount.text = String(describing: (1000 - prefs.string(forKey: "globalReason")!.characters.count))
+            wordCount.text = String(describing: (1000 - prefs.string(forKey: "globalReason")!.characters.count))
         }
         
         ReasonText.delegate = self
-      
+        
         if (prefs.string(forKey: "DocEdit") != nil){
             ReasonText.text = editReason
             wordCount.text = String(describing: (1000 - editReason.characters.count))
@@ -759,13 +759,13 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
             }
         }
         
-     
-            let prefs = UserDefaults.standard
-            if (prefs.string(forKey: "DocEdit") != nil) {
-                editValues()
-            }else{
-                save()
-            }
+        
+        let prefs = UserDefaults.standard
+        if (prefs.string(forKey: "DocEdit") != nil) {
+            editValues()
+        }else{
+            save()
+        }
         
         
     }
@@ -855,8 +855,8 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         let treat: String = TreatText.text!
         
         let docName: String = self.docName.text!
-          let docNum: String = self.docNum.text!
-          let docSpecial: String = self.docSpecial.text!
+        let docNum: String = self.docNum.text!
+        let docSpecial: String = self.docSpecial.text!
         
         
         let jsonObject: NSMutableDictionary = NSMutableDictionary()
@@ -991,7 +991,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
             json[posIndex!]["Doctor type/specialization"].stringValue = docSpecial.text!
             json[posIndex!]["_hide"].boolValue = hideBool
             json[posIndex!]["_save"].boolValue = true
-  
+            
             
             
             self.saveJSON(j: json)
@@ -1137,7 +1137,7 @@ extension DoctorSubRecord: TextFieldDelegate {
         
         prefs.set(docName.text, forKey: "globalDoctor")
     }
-
+    
     
     
     public func textFieldShouldClear(_ textField: UITextField) -> Bool {

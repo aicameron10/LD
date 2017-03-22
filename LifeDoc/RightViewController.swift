@@ -57,7 +57,7 @@ class RightViewController: UIViewController {
     
     @objc
     internal func handleTermsButton() {
-          navigationDrawerController?.closeRightView()
+        navigationDrawerController?.closeRightView()
         let terms: TermsViewController = {
             return UIStoryboard.viewController(identifier: "TermsViewController") as! TermsViewController
         }()
@@ -99,14 +99,14 @@ class RightViewController: UIViewController {
         prefs.removeObject(forKey: "savedOrderProfile")
         prefs.removeObject(forKey: "savedServerMessage")
         prefs.removeObject(forKey: "attachBase64Profile")
-     
+        
         
         
         logOut()
         
         //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         
-       
+        
         
         //UIApplication.shared.keyWindow?.rootViewController = pageViewController
         
@@ -179,7 +179,7 @@ class RightViewController: UIViewController {
         // Both calls are equivalent
         RightViewController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
-          
+            
             
             if let jsonResponse = response.result.value {
                 
@@ -194,7 +194,7 @@ class RightViewController: UIViewController {
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.showToast()
-
+                    
                     
                 }else{
                     

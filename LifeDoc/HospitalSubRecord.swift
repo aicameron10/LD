@@ -62,7 +62,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     var NewCheck : Bool = Bool()
     
     var deleteRecord : Bool = Bool()
-     var dischargeDate : Bool = Bool()
+    var dischargeDate : Bool = Bool()
     
     var fromDoc : Bool = Bool()
     
@@ -82,11 +82,11 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     var editDateTime = ""
     
     var editDatead = ""
-     var editDatedis = ""
+    var editDatedis = ""
     var editReason = ""
     var editTreat = ""
     var edithosName = ""
- 
+    
     var edithosDoc = ""
     
     var recordValue = ""
@@ -145,7 +145,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         prepareTreat()
         prepareDate()
         prepareDateView()
-               prepareDateView1()
+        prepareDateView1()
         prepareClearButton()
         prepareClearButton1()
         preparehosName()
@@ -187,7 +187,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         let recordId = json[posIndex!]["recordId"].stringValue
         let hosName = json[posIndex!]["Hospital name"].stringValue
-
+        
         let hosDoc = json[posIndex!]["Who was the treating doctor?"].stringValue
         let reason = json[posIndex!]["Diagnosis/Reason for visit?"].stringValue
         let desc = json[posIndex!]["What treatment did you receive?"].stringValue
@@ -213,9 +213,9 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         
         edithosDoc = hosDoc
-    
+        
         recordValue = recordId
-       
+        
         editDatead = adDate
         editDatedis = disDate
         lastdate = updatedDate
@@ -285,7 +285,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         dischargeDate = true
     }
-
+    
     
     
     private func prepareCalendarButton() {
@@ -311,7 +311,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         showCal()
     }
-
+    
     
     
     func buttonTapActionClose() {
@@ -402,13 +402,13 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         
     }
-
+    
     
     func myTargetFunctionDate1(textField: UITextField) {
         NewDate = true
         showCal()
     }
-
+    
     
     
     private func preparehosName() {
@@ -425,7 +425,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         }else{
             hosName.text = ""
         }
-
+        
         
         
         
@@ -482,7 +482,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         hosDoctorName.isClearIconButtonEnabled = true
         
         let prefs = UserDefaults.standard
-       
+        
         
         
         if (prefs.string(forKey: "HosEdit") != nil){
@@ -497,7 +497,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         hosDoctorName.delegate = self
         
-       hosDoctorName.addTarget(self,action: #selector(textFieldDidChangeNum),for: UIControlEvents.editingDidEnd)
+        hosDoctorName.addTarget(self,action: #selector(textFieldDidChangeNum),for: UIControlEvents.editingDidEnd)
         hosDoctorName.addTarget(self,action: #selector(textFieldDidChangeLengthNum),for: UIControlEvents.editingChanged)
         
     }
@@ -538,7 +538,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         }
     }
     
-       
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         
@@ -767,15 +767,15 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     func buttonTapAction(sender: UIButton!) {
         print("Button tapped")
         
-       
+        
+        
+        if(hosName.text?.trimmed.isEmpty)!{
+            hosName.isErrorRevealed = true
+            hosName.detail = Constants.err_msg_name_hos
+            self.hosName.becomeFirstResponder()
             
-            if(hosName.text?.trimmed.isEmpty)!{
-                hosName.isErrorRevealed = true
-                hosName.detail = Constants.err_msg_name_hos
-                self.hosName.becomeFirstResponder()
-                
-                return
-            }
+            return
+        }
         if(hosDoctorName.text?.trimmed.isEmpty)!{
             hosDoctorName.isErrorRevealed = true
             hosDoctorName.detail = Constants.err_msg_name_hos_treat
@@ -796,12 +796,12 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         let myDateString1 = bpDate1.text!
         
         let dateFormatter = DateFormatter()
-         dateFormatter.dateFormat = "dd-MM-yyyy"
+        dateFormatter.dateFormat = "dd-MM-yyyy"
         let myDate = dateFormatter.date(from: myDateString)!
         let myDate1 = dateFormatter.date(from: myDateString1)!
         
-       
-
+        
+        
         if(myDate1 < myDate){
             self.bpDate1.isErrorRevealed = true
             self.bpDate1.detail = Constants.err_msg_date_hos_ad
@@ -809,7 +809,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
             
             return
         }
-
+        
         
         
         let prefs = UserDefaults.standard
@@ -873,22 +873,22 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         if(NewDate == true){
             
             if(dischargeDate == false){
-            if date > dateToday {
-                print("future date")
-                
-                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .center)
-                
-            }else{
-                
-                bpDate.text = date.stringFromFormat("dd-MM-yyyy")
-            }
+                if date > dateToday {
+                    print("future date")
+                    
+                    self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .center)
+                    
+                }else{
+                    
+                    bpDate.text = date.stringFromFormat("dd-MM-yyyy")
+                }
             }else{
                 
                 
                 bpDate1.isErrorRevealed = false
                 bpDate1.text = date.stringFromFormat("dd-MM-yyyy")
-               
-               
+                
+                
             }
         }
         
@@ -911,7 +911,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         
         let strDate: String = bpDate.text!
-         let strDate1: String = bpDate1.text!
+        let strDate1: String = bpDate1.text!
         
         let reason: String = ReasonText.text!
         
@@ -919,7 +919,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         
         let hosName: String = self.hosName.text!
         let docName: String = self.hosDoctorName.text!
-
+        
         
         
         let jsonObject: NSMutableDictionary = NSMutableDictionary()
@@ -943,7 +943,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         jsonObject.setValue(hideBool, forKey: "_hide")
         jsonObject.setValue(hosName, forKey: "Hospital name")
         jsonObject.setValue(docName, forKey: "Who was the treating doctor?")
-
+        
         jsonObject.setValue(reason, forKey: "Diagnosis/Reason for visit?")
         jsonObject.setValue(treat, forKey: "What treatment did you receive?")
         
@@ -1044,7 +1044,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         let  posIndex = Int(prefs.string(forKey: "posEdit")!)
         
         var json = self.loadJSON()
-     
+        
         
         if (prefs.string(forKey: "Hospitals") != nil){
             
@@ -1158,7 +1158,7 @@ extension HospitalSubRecord: TextFieldDelegate {
         //somethingChanged = true
     }
     
-   
+    
     
     
     
@@ -1172,7 +1172,7 @@ extension HospitalSubRecord: TextFieldDelegate {
         
         if(bpDate.isEditing){
             return false
-        
+            
         }else{
             
             let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-(){}[]*^%$#@!?,._'/;:\\&\"<>\n ").inverted

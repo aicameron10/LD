@@ -14,18 +14,13 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
     @IBOutlet weak var type: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var dateStr: UILabel!
-    
     @IBOutlet weak var count: UILabel!
-    
     @IBOutlet weak var tableViewSubs: UITableView!
     @IBOutlet weak var dragHandle: UIButton!
-    
     @IBOutlet weak var imagepic: UIImageView!
-    
     @IBOutlet weak var hiddenValue: UILabel!
     @IBOutlet weak var showMore: UIButton!
     @IBOutlet weak var recordId: UILabel!
-    
     @IBOutlet weak var more: UIButton!
     @IBOutlet weak var hide: UIButton!
     @IBOutlet weak var edit: UIButton!
@@ -74,10 +69,10 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
                 subs.description = object["description"].stringValue
                 
                 if(object["count"].stringValue != "0"){
-                   
+                    
                     self.arraySubs.append(subs)
                     
-
+                    
                     
                 }
                 
@@ -132,7 +127,7 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
         let subs = arraySubs[indexPath.row]
         
         cell.count.text = subs.count
-     
+        
         
         if(subs.description == "Doctor Visit"){
             cell.name.text = "Doctor Visits"

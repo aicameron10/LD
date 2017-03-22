@@ -20,9 +20,7 @@ class TermsViewController: UIViewController,UIWebViewDelegate  {
     @IBOutlet weak var webView: UIWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Prod//https://secure.lifedoc.co.za/C0m9wcQbO76LAE5O3K4jYxJZgLs7aWgXWJMlZlarKQPERCENT3DPERCENT3DEncryptUtil
-        //Dev//https://rvp-utility.mediswitch.co.za:8443/bIlMix7LPB6PCqQSRenuLlKq9qcV7gsGwKBNR4R8HgPERCENT3DPERCENT3DEncryptUtil
+        
         
         prepareCloseButton()
         
@@ -66,7 +64,7 @@ class TermsViewController: UIViewController,UIWebViewDelegate  {
         
         self.dismiss(animated: true, completion: nil)
         
-                
+        
         
     }
     

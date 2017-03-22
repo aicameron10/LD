@@ -48,7 +48,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         }
         
     }
-
+    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -76,7 +76,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var messageStr : String = String()
     
-      let imagePicker = UIImagePickerController()
+    let imagePicker = UIImagePickerController()
     
     var NewDate : Bool = Bool()
     
@@ -91,11 +91,11 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var somethingChanged : Bool = Bool()
     
- 
+    
     
     var hideImage : Bool = Bool()
     
-   var countSkip : Bool = Bool()
+    var countSkip : Bool = Bool()
     
     var deletedList : Array<String> = Array()
     
@@ -132,7 +132,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     var countDoc = 0
     var countHos = 0
     var countPath = 0
-
+    
     
     var options = ["Notes", "Doctor Visits", "Medication", "Hospital Visits", "Pathology Results", "Attachments"]
     
@@ -152,7 +152,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadListAttach), name: NSNotification.Name(rawValue: "loadAttach"), object: nil)
-
+        
         imagePicker.delegate = self
         
         deleteRecord = false
@@ -160,7 +160,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         hideBool = false
         somethingChanged = false
         
-         countSkip = false
+        countSkip = false
         
         hidelater = false
         
@@ -206,17 +206,17 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         self.tableView.reloadData()
         
     }
-
+    
     
     func loadListAttach(notification: NSNotification){
         //load data here
         
         listAttachments()
-  
+        
         
     }
-
-   
+    
+    
     
     public func loadJSONSingle() -> JSON {
         let prefs = UserDefaults.standard
@@ -275,7 +275,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     
     public func loadJSONPath() -> JSON {
         let prefs = UserDefaults.standard
@@ -326,7 +326,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     public func loadJSONDoc() -> JSON {
         let prefs = UserDefaults.standard
         
@@ -476,7 +476,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     
     func loadDataSingle(){
         
@@ -503,14 +503,14 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             if(description == "Status of condition"){
                 
                 if(value == "Uncontrolled, even with medication"){
-                        dropDownOption = "Uncontrolled, even with medication"
+                    dropDownOption = "Uncontrolled, even with medication"
                 }
                 else if(value == "Under control, with medication"){
-                        dropDownOption = "Controlled, with medication"
+                    dropDownOption = "Controlled, with medication"
                 }else if(value == "Under control, without  medication"){
-                        dropDownOption = "Controlled, without medication"
+                    dropDownOption = "Controlled, without medication"
                 }else{
-                       dropDownOption = value
+                    dropDownOption = value
                 }
             }
             if(description == "Date first diagnosed"){
@@ -571,7 +571,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             }
             
         }
-
+        
         
         if (json["_hide"].stringValue == "true"){
             
@@ -586,7 +586,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         recordValue = json["recordId"].stringValue
         deletedList.append(json["recordId"].stringValue)
         
-          self.tableView.reloadData()
+        self.tableView.reloadData()
         
     }
     
@@ -629,7 +629,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         // here I save my JSON as a string
     }
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -693,7 +693,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         if(cell.name.text == "Attachments"){
             cell.count.text = String(describing: countAttachments)
         }
-
+        
         if(indexPath.row == 0 && cell.name.text == "Notes"){
             if(cell.name.text == "Notes" && counterNote != "" && countNotes == 0 && countSkip == false){
                 
@@ -733,12 +733,12 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 cell.count.text = String(describing: countPath)
             }
         }
-
+        
         
         
         if(shouldCellBeExpanded  && indexPath.row == indexOfExpandedCell)
         {
-                      
+            
             cell.tableView.isHidden = false
             
             let prefs = UserDefaults.standard
@@ -760,7 +760,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             ShowMoreLess = "closed"
         }
         
-
+        
         
         cell.count.layer.cornerRadius =  cell.count.frame.size.width / 2
         cell.count.clipsToBounds = true
@@ -803,7 +803,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             self.tableView.reloadRows(at: [indexPathNow], with: .fade)
             self.tableView.endUpdates()
         }
-
+        
         
     }
     
@@ -830,7 +830,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     public func fileExplorerViewController(_ controller: FileExplorerViewController, didChooseURLs urls: [URL]) {
         //Your code here
     }
-
+    
     private func prepareAttachButton() {
         
         attach.addTarget(self, action: #selector(buttonAttachAction), for: .touchUpInside)
@@ -838,7 +838,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     func buttonAttachAction(sender: UIButton!) {
         print("Button tapped")
         
@@ -886,30 +886,30 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 }            })
             
             /*let fileAction = UIAlertAction(title: "Choose a file", style: .default, handler: {
-                (alert: UIAlertAction!) -> Void in
-                
-                let navigationBarAppearace = UINavigationBar.appearance()
-                
-                navigationBarAppearace.tintColor = .white
-                navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
-
-                
-                
-                let fileExplorer = FileExplorerViewController()
-                fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
-                fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
-                fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
-                     fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
-                
-                //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
-                //  in: .userDomainMask).first!
-                //fileExplorer.initialDirectoryURL = documentsUrl
-                fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
-                fileExplorer.delegate = self
-                
-                self.present(fileExplorer, animated: true, completion: nil)
-                
-            })*/
+             (alert: UIAlertAction!) -> Void in
+             
+             let navigationBarAppearace = UINavigationBar.appearance()
+             
+             navigationBarAppearace.tintColor = .white
+             navigationBarAppearace.barTintColor = UIColor(red: 0/255, green: 153/255, blue: 217/255, alpha: 1.0)
+             
+             
+             
+             let fileExplorer = FileExplorerViewController()
+             fileExplorer.canChooseFiles = true //specify whether user is allowed to choose files
+             fileExplorer.canChooseDirectories = true //specify whether user is allowed to choose directories
+             fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
+             fileExplorer.fileFilters = [Filter.extension("txt"), Filter.extension("pdf"), Filter.extension("doc")]
+             
+             //let documentsUrl = FileManager.default.urls(for: .picturesDirectory,
+             //  in: .userDomainMask).first!
+             //fileExplorer.initialDirectoryURL = documentsUrl
+             fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
+             fileExplorer.delegate = self
+             
+             self.present(fileExplorer, animated: true, completion: nil)
+             
+             })*/
             //
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
                 (alert: UIAlertAction!) -> Void in
@@ -938,7 +938,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
     }
     
-
+    
     
     private func preparedropdown() {
         
@@ -1374,7 +1374,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let authToken = prefs.string(forKey: "authToken")
         
         var savedFiles: [[String: AnyObject]] = []
-         var savedFilesPath: [[String: AnyObject]] = []
+        var savedFilesPath: [[String: AnyObject]] = []
         var savedFilesDoc: [[String: AnyObject]] = []
         var savedFilesHos: [[String: AnyObject]] = []
         var savedFilesMedi: [[String: AnyObject]] = []
@@ -1448,7 +1448,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             
         }
-
+        
         if (prefs.string(forKey: "Doctors") != nil){
             
             let json = self.loadJSONDoc()
@@ -1521,7 +1521,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             
         }
-
+        
         if (prefs.string(forKey: "Medication") != nil){
             
             let json = self.loadJSONMedi()
@@ -1569,7 +1569,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         savedSubs["Doctor Visit"] = savedFilesDoc as NSArray?
         savedSubs["Hospital Visit"] = savedFilesHos as NSArray?
         savedSubs["Medicine"] = savedFilesMedi as NSArray?
-
+        
         
         if(deleteRecord == true){
             save = false
@@ -1577,7 +1577,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
         }
         
-
+        
         
         
         let parameters: Parameters = [
@@ -1593,7 +1593,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             "subRecords": savedSubs
         ]
         
-  
+        
         
         
         let headers: HTTPHeaders = [
@@ -1614,7 +1614,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 var json = JSON(jsonResponse)
                 let status = json["status"]
                 self.messageStr = json["message"].string!
-                 self.recordIdValue = json["recordId"].string!
+                self.recordIdValue = json["recordId"].string!
                 
                 if status == "SUCCESS"{
                     
@@ -1775,7 +1775,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     // get a reference to the app delegate
                     //let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     //appDelegate.hideActivityIndicator(uiView: self.view)
-                   // self.showError()
+                    // self.showError()
                 }
                 
             }
@@ -1822,7 +1822,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     
     public func saveJSONList(j: JSON) {
         let prefs = UserDefaults.standard
@@ -1832,7 +1832,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         // here I save my JSON as a string
     }
     
-
+    
     
     private func listAttachments() {
         
@@ -1883,7 +1883,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 
                 self.saveJSONList(j: json1)
             }
-
+            
             
             if let jsonResponse = response.result.value {
                 //print("JSON: \(json)")
@@ -1946,7 +1946,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
     }
-
+    
     
     private static var Manager: Alamofire.SessionManager = {
         

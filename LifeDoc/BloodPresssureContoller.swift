@@ -41,7 +41,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
     var idDiastolic : String = String()
     var idSystolic : String = String()
     
-
+    
     
     var NewDate : Bool = Bool()
     
@@ -54,14 +54,14 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
     var add : Array<String> = Array()
     
     var hideImage : Bool = Bool()
-  
+    
     
     var deletedList : Array<String> = Array()
     
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,12 +107,12 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
                 
                 editDate = myStringArr [0]
                 editTime = myStringArr [1]
-           
+                
                 
             }
             
         }
-
+        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -152,10 +152,10 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "singleMeasurement") != nil){
             
-        
+            
             bpSystolic.isEnabled = false
             bpDiastolic.isEnabled = false
-   
+            
             
             for (_, object) in json {
                 
@@ -188,7 +188,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         
         
     }
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -286,11 +286,11 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         if (prefs.string(forKey: "singleMeasurement") != nil){
             bpDate.text = editDate
         }else{
-             bpDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
+            bpDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
         }
-
         
-       
+        
+        
         
     }
     
@@ -313,7 +313,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         }else{
             bpTime.text = dateToday.stringFromFormat("HH:mm")
         }
-
+        
         
         
         
@@ -513,7 +513,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
         })
         present(ac, animated: true)
     }
-
+    
     
     
     private func prepareDeleteButton() {
@@ -554,7 +554,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
             self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
             return
         }
-
+        
         
         if(str1.isEmpty || !validateValueSys(testStr: str1)){
             bpSystolic.isErrorRevealed = true
@@ -750,7 +750,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
             if date > dateToday {
                 print("future date")
                 
-               self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -765,7 +765,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
             
             let dateTime = dateFormatter.string(from: dateToday)
             
-             if (date > dateToday && dateNow == dateTime) {
+            if (date > dateToday && dateNow == dateTime) {
                 print("future time")
                 
                 
@@ -775,7 +775,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
                 
                 bpTime.text = date.stringFromFormat("HH:mm")
             }
-          
+            
         }
         
         NewDate = false
@@ -861,7 +861,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
+                    
                     
                 }else{
                     self.deleteButton.isEnabled = true
@@ -914,14 +914,14 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
                 
             } else {
                 
-         
+                
                 
             }
         }
         
         
     }
-
+    
     
     private func sendHealthAssessment() {
         
@@ -1030,7 +1030,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
+                    
                 }else{
                     
                     self.saveButton.isEnabled = true
@@ -1082,7 +1082,7 @@ class BloodPresssureContoller: UIViewController, WWCalendarTimeSelectorProtocol 
                 
             } else {
                 
-              
+                
                 
                 
             }

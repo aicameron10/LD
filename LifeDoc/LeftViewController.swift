@@ -20,7 +20,6 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         //view.backgroundColor = Color.blue.base
         view.backgroundColor = Color.white
-        
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "firstName") != nil){
             
@@ -29,7 +28,6 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(loadProfilePic), name: NSNotification.Name(rawValue: "loadMyPic"), object: nil)
-        
         prepareProfilePic()
         
     }
@@ -65,7 +63,7 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "attachBase64Profile") != nil) {
-      
+            
             let image = prefs.string(forKey: "attachBase64Profile")
             
             let dataDecoded : Data = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)!
@@ -74,7 +72,7 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let resizeImg = resizeImage(image: decodedimage!, newSize: size)
             
             self.profilePic.image = resizeImg.fixOrientation()
-
+            
             
         }
     }
@@ -291,10 +289,6 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.generateOTP()
         }
-        
-        
-        
-        
         
         
     }

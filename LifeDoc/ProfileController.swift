@@ -257,7 +257,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         UIGraphicsEndImageContext()
         
         return newImage
-    }    
+    }
     
     private func prepareCloseButton() {
         
@@ -1399,7 +1399,7 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
                     
                     let dataDecoded : Data = Data(base64Encoded: profilePictureData!, options: .ignoreUnknownCharacters)!
                     let decodedimage = UIImage(data: dataDecoded)
-                     let size = CGSize(width:100, height:100)
+                    let size = CGSize(width:100, height:100)
                     let resizeImg = self.resizeImage(image: decodedimage!, newSize: size)
                     
                     self.profilePic.image = resizeImg.fixOrientation()

@@ -53,7 +53,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
     var fields : Array<String> = Array()
     
     var add : Array<String> = Array()
-
+    
     var hideImage : Bool = Bool()
     
     
@@ -79,11 +79,11 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
         idHdl = "0"
         idLdl = "0"
         idTrig = "0"
-   
+        
         NewDate = false
         NewTime = false
         hideBool = false
-     
+        
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "singleMeasurement") != nil){
             loadDataSingle()
@@ -92,26 +92,26 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
                 hideImage = true
                 
-          
+                
             }else{
                 hideImage = false
-               
+                
             }
             
             if (prefs.string(forKey: "dateValue") != nil){
                 
-               editDateTime = prefs.string(forKey: "dateValue")!
-               var myStringArr = editDateTime.components(separatedBy: " ")
+                editDateTime = prefs.string(forKey: "dateValue")!
+                var myStringArr = editDateTime.components(separatedBy: " ")
                 
                 
-              editDate = myStringArr [0]
-              editTime = myStringArr [1]
-         
+                editDate = myStringArr [0]
+                editTime = myStringArr [1]
+                
                 
             }
-
+            
         }
-      
+        
         prepareCloseButton()
         prepareCalendarButton()
         prepareSaveButton()
@@ -151,7 +151,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "singleMeasurement") != nil){
             
-           
+            
             cholesterolTotal.isEnabled = false
             cholesterolHDL.isEnabled = false
             cholesterolLDL.isEnabled = false
@@ -686,7 +686,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         let dateTime = dateNow! + " " + TimeNow! + ":00"
         let date = dateFormatter.date(from: dateTime)
-
+        
         if (date! > dateToday) {
             print("future time")
             
@@ -904,8 +904,8 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
             if date > dateToday {
                 print("future date")
                 
-               
-                   self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -918,7 +918,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
             let dateNow = cholesterolDate.text
             
             let dateTime = dateFormatter.string(from: dateToday)
-        
+            
             
             if (date > dateToday && dateNow == dateTime) {
                 print("future time")
@@ -928,10 +928,10 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             }else{
                 
-                 cholesterolTime.text = date.stringFromFormat("HH:mm")
+                cholesterolTime.text = date.stringFromFormat("HH:mm")
             }
-
-           
+            
+            
         }
         
         NewDate = false
@@ -1050,7 +1050,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     let prefs = UserDefaults.standard
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
-
+                    
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     
@@ -1107,7 +1107,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-              
+                
                 
             }
         }
@@ -1183,7 +1183,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
         ]
         
         
-       
+        
         
         let headers: HTTPHeaders = [
             "Authorization-Token": authToken!,
@@ -1217,7 +1217,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     let prefs = UserDefaults.standard
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
-
+                    
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
@@ -1273,7 +1273,7 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-             
+                
             }
             
         }

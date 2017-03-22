@@ -39,7 +39,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     var messageStr : String = String()
     
     var idHeight : String = String()
-   
+    
     
     var NewDate : Bool = Bool()
     
@@ -58,7 +58,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +108,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             }
             
         }
-
+        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -149,7 +149,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             
             
             height.isEnabled = false
-           
+            
             
             for (_, object) in json {
                 
@@ -172,7 +172,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
     }
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -272,7 +272,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             sDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
         }
-
+        
         
         
     }
@@ -296,7 +296,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             sTime.text = dateToday.stringFromFormat("HH:mm")
         }
-
+        
         
         
         
@@ -383,7 +383,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         if (prefs.string(forKey: "singleMeasurement") != nil){
             rightNavItem?.title = "Apply"
         }
-
+        
     }
     
     private func prepareHideButton() {
@@ -486,7 +486,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
             return
         }
-
+        
         
         
         if(str1.isEmpty || !validateValue(testStr: str1)){
@@ -637,7 +637,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             if date > dateToday {
                 print("future date")
                 
-                 self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -652,7 +652,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             
             let dateTime = dateFormatter.string(from: dateToday)
             
-           if (date > dateToday && dateNow == dateTime) {
+            if (date > dateToday && dateNow == dateTime) {
                 print("future time")
                 
                 
@@ -662,7 +662,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
                 sTime.text = date.stringFromFormat("HH:mm")
             }
-
+            
             
         }
         
@@ -749,7 +749,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
+                    
                     
                 }else{
                     self.deleteButton.isEnabled = true
@@ -802,14 +802,14 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-               
+                
                 
             }
         }
         
         
     }
-
+    
     
     private func sendHealthAssessment() {
         
@@ -918,7 +918,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     //self.dismiss(animated: true, completion: nil)
-
+                    
                 }else{
                     
                     self.saveButton.isEnabled = true
@@ -970,7 +970,7 @@ class HeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-               
+                
                 
                 
             }

@@ -71,7 +71,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         self.navItem.title = "Edit Body Temperature"
         idTemp = "0"
-  
+        
         
         NewDate = false
         NewTime = false
@@ -100,12 +100,12 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
                 editDate = myStringArr [0]
                 editTime = myStringArr [1]
-              
+                
                 
             }
             
         }
-
+        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -120,12 +120,12 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         prepareDateView()
         prepareTimeView()
         
-       
-
+        
+        
         
     }
     
-
+    
     
     
     public func loadJSONSingle() -> JSON {
@@ -175,7 +175,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
         
     }
-
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -275,7 +275,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         }else{
             sDate.text = dateToday.stringFromFormat("dd-MM-yyyy")
         }
-
+        
         
         
     }
@@ -297,10 +297,10 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         if (prefs.string(forKey: "singleMeasurement") != nil){
             sTime.text = editTime
         }else{
-             sTime.text = dateToday.stringFromFormat("HH:mm")
+            sTime.text = dateToday.stringFromFormat("HH:mm")
         }
         
-       
+        
         
         
     }
@@ -465,8 +465,8 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         
     }
     
-   
-
+    
+    
     
     func buttonTapAction(sender: UIButton!) {
         print("Button tapped")
@@ -490,7 +490,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             self.view.makeToast("You cannot select a future time, please select a current or past time.", duration: 3.0, position: .bottom)
             return
         }
-
+        
         
         
         if(str1.isEmpty || !validateValueTemp(testStr: str1)){
@@ -641,7 +641,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             if date > dateToday {
                 print("future date")
                 
-                  self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
+                self.view.makeToast("You cannot select a future date, please select a current or past date.", duration: 3.0, position: .bottom)
                 
             }else{
                 
@@ -655,7 +655,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
             let dateNow = sDate.text
             
             let dateTime = dateFormatter.string(from: dateToday)
-           
+            
             if (date > dateToday && dateNow == dateTime) {
                 print("future time")
                 
@@ -664,7 +664,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             }else{
                 
-             sTime.text = date.stringFromFormat("HH:mm")
+                sTime.text = date.stringFromFormat("HH:mm")
             }
         }
         
@@ -803,13 +803,13 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-         
+                
             }
         }
         
         
     }
-
+    
     
     private func sendHealthAssessment() {
         
@@ -969,7 +969,7 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-              
+                
                 
                 
             }

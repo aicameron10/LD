@@ -176,7 +176,7 @@ class SignUpController: UIViewController, WWCalendarTimeSelectorProtocol  {
         self.dismiss(animated: true, completion: nil)
         
         //let pageViewController: PageViewController = {
-         //   return UIStoryboard.viewController(identifier: "PageViewController") as! PageViewController
+        //   return UIStoryboard.viewController(identifier: "PageViewController") as! PageViewController
         //}()
         
         //self.present(pageViewController, animated: true, completion: nil)
@@ -635,7 +635,7 @@ class SignUpController: UIViewController, WWCalendarTimeSelectorProtocol  {
         if date > dateToday {
             print("future date")
             
-          
+            
             self.view.makeToast("Date of birth cannot be a future date", duration: 3.0, position: .bottom)
             
             
@@ -870,7 +870,7 @@ class SignUpController: UIViewController, WWCalendarTimeSelectorProtocol  {
                 
             } else {
                 
-                               
+                
                 
             }
             

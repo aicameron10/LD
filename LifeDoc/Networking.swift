@@ -50,14 +50,14 @@ class Networking: NSObject {
                 print("URLError occurred: \(error)")
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.showNetworkError()
-
+                
             }
             
         }
         
     }
     
-
+    
     
     private static var Manager: Alamofire.SessionManager = {
         

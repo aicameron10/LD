@@ -42,32 +42,25 @@ class SelectContoller: UIViewController {
         prepareHeight()
         preparePulse()
         prepareWeight()
-        
-         prepareAllergy()
-         prepareChronic()
+        prepareAllergy()
+        prepareChronic()
         
         let prefs = UserDefaults.standard
         prefs.removeObject(forKey: "singleMeasurement")
         prefs.removeObject(forKey: "mainAllergyChronic")
         prefs.removeObject(forKey: "globalReason")
         prefs.removeObject(forKey: "globalDoctor")
-        
         prefs.removeObject(forKey: "Notes")
         prefs.removeObject(forKey: "NotesEdit")
         prefs.removeObject(forKey: "Pathology")
         prefs.removeObject(forKey: "PathEdit")
-        
         prefs.removeObject(forKey: "Doctors")
         prefs.removeObject(forKey: "DocEdit")
-        
         prefs.removeObject(forKey: "Hospitals")
         prefs.removeObject(forKey: "HosEdit")
-        
         prefs.removeObject(forKey: "Medication")
         prefs.removeObject(forKey: "MediEdit")
-        
-        
-        
+  
         
     }
     
@@ -167,7 +160,7 @@ class SelectContoller: UIViewController {
     
     func handleTapAllergy(sender: UITapGestureRecognizer? = nil) {
         print("handling code")
-   
+        
         let allergy: MainAllergy = {
             return UIStoryboard.viewController(identifier: "MainAllergy") as! MainAllergy
         }()
@@ -177,11 +170,11 @@ class SelectContoller: UIViewController {
         self.present(allergyView, animated: false, completion: nil)
         
     }
-
+    
     func handleTapChronic(sender: UITapGestureRecognizer? = nil) {
         print("handling code")
         
-    
+        
         
         let chronic: MainChronic = {
             return UIStoryboard.viewController(identifier: "MainChronic") as! MainChronic
@@ -191,7 +184,7 @@ class SelectContoller: UIViewController {
         
         self.present(chronicView, animated: false, completion: nil)
     }
-
+    
     
     func handleTapWeight(sender: UITapGestureRecognizer? = nil) {
         print("handling code")

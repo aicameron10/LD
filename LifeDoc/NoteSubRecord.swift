@@ -243,7 +243,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
     func buttonTapActionClose() {
         print("Button tapped")
         
-         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
         
         if(somethingChanged == true){
             changed()
@@ -294,7 +294,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.characters.count // for Swift use count(newText)
         
-       
+        
         
         if(numberOfChars > 500){
             return numberOfChars <= 500
@@ -305,12 +305,12 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
                 wordCount.text = "0"
             }
         }
-   
+        
         return text == filtered
         
         
-       
-
+        
+        
     }
     
     func textViewDidChange(_ textView: UITextView) { //Handle the text changes here
@@ -462,9 +462,9 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
             noteText.becomeFirstResponder()
         }else{
             let prefs = UserDefaults.standard
-             if (prefs.string(forKey: "NotesEdit") != nil) {
-                    editNoteValues()
-             }else{
+            if (prefs.string(forKey: "NotesEdit") != nil) {
+                editNoteValues()
+            }else{
                 saveNote()
             }
         }
@@ -591,9 +591,9 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
                 let k = j?.replacingOccurrences(of: "]", with: "")
                 
                 jj = "[" + k!  + "," + jsonString + "]"
-              
+                
             }else{
-                 jj = "[" + jsonString + "]"
+                jj = "[" + jsonString + "]"
             }
             
             print(jj)
@@ -638,34 +638,34 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         // here I save my JSON as a string
     }
-
-
+    
+    
     
     private func deleteNote() {
         
-         let prefs = UserDefaults.standard
-         let  posIndex = Int(prefs.string(forKey: "posEdit")!)
+        let prefs = UserDefaults.standard
+        let  posIndex = Int(prefs.string(forKey: "posEdit")!)
         
-         var json = self.loadJSON()
+        var json = self.loadJSON()
         
-            if (prefs.string(forKey: "Notes") != nil){
-                
-             json[posIndex!]["_delete"].boolValue = true
-             json[posIndex!]["_save"].boolValue = false
-                
-              self.saveJSON(j: json)
-                
-                print(json)
-                
-            }
-        
-        
+        if (prefs.string(forKey: "Notes") != nil){
             
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
+            json[posIndex!]["_delete"].boolValue = true
+            json[posIndex!]["_save"].boolValue = false
             
-            self.dismissView();
+            self.saveJSON(j: json)
+            
+            print(json)
+            
+        }
         
-      
+        
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableRecord"), object: nil)
+        
+        self.dismissView();
+        
+        
     }
     
     private func editNoteValues() {
@@ -696,8 +696,8 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         
     }
-
-
+    
+    
     
     func loadDataDelete(){
         

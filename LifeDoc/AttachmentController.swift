@@ -19,14 +19,14 @@ class AttachmentController: UIViewController,UITextViewDelegate{
     
     @IBOutlet weak var navBar: UINavigationBar!
     
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
-
+    
     @IBOutlet weak var name: ErrorTextField!
     
     
     @IBOutlet weak var navItem: UINavigationItem!
-   
+    
     @IBOutlet weak var closeButton: UIBarButtonItem!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -37,11 +37,11 @@ class AttachmentController: UIViewController,UITextViewDelegate{
     @IBOutlet weak var dropDown: NiceButton!
     
     @IBOutlet weak var errorNote: UILabel!
-  
+    
     
     @IBOutlet weak var clearButton: UIButton!
-   
-
+    
+    
     
     var messageStr : String = String()
     
@@ -103,27 +103,27 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         somethingChanged = false
         
         
-    
+        
         
         errorNote.isHidden = true
         clearButton.isHidden = true
         
         
         prepareCloseButton()
-    
+        
         prepareSaveButton()
-  
+        
         prepareDesc()
         prepareFileName()
         
-             preparedropdown()
-  
+        preparedropdown()
+        
         prepareClearButton()
         
         
     }
     
-   
+    
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
@@ -161,19 +161,19 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         
         // You can also use localizationKeysDataSource instead. Check the docs.
         chooseDropDown.dataSource = ["Image", "Document", "Medical Certificate","X-rays","Radiology Report","Pathology Report"]
-     
+        
         
         
         // Action triggered on selection
         chooseDropDown.selectionAction = { [unowned self] (index, item) in
-        
+            
             
             self.dropDown.setTitle(item, for: .normal)
             self.ddValue = item
             
         }
-       
-       
+        
+        
         chooseDropDown.direction = .any
         
         // Action triggered on dropdown cancelation (hide)
@@ -191,7 +191,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
     @IBAction func chooseArticle(_ sender: AnyObject) {
         chooseDropDown.show()
     }
-
+    
     
     private func prepareCloseButton() {
         
@@ -201,14 +201,14 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         
     }
     
-  
+    
     
     func buttonTapActionClose() {
         print("Button tapped")
-  
-       
         
-    
+        
+        
+        
         changed()
         
         
@@ -271,7 +271,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         }
     }
     
-   
+    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
@@ -279,17 +279,17 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-(){}[]*^%$#@!?,._'/;:\\&\"<>\n ").inverted
         let components = text.components(separatedBy: inverseSet)
         let filtered = components.joined(separator: "")  // use join("", components) if you are using Swift
-      
+        
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         let numberOfChars = newText.characters.count // for Swift use count(newText)
-
+        
         
         if(numberOfChars > 200){
             return numberOfChars <= 200
         }else{
             
         }
-
+        
         return text == filtered
         
         
@@ -306,7 +306,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         //self.noteText.contentInset = UIEdgeInsetsMake(2, -2, 2, -10)
         //noteText.isScrollEnabled = false
         noteText.delegate = self
-       
+        
         
         
         
@@ -340,7 +340,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
     func buttonClearAction(sender: UIButton!) {
         print("Button tapped")
         noteText.text = ""
-       
+        
         
     }
     
@@ -369,14 +369,14 @@ class AttachmentController: UIViewController,UITextViewDelegate{
             self.name.becomeFirstResponder()
             return
         }
-
+        
         
         if noteText.text.isEmpty || noteText.text == "" || noteText.text.trimmed == "" {
             errorNote.isHidden = false
             noteText.becomeFirstResponder()
         }else{
-           
-                Upload()
+            
+            Upload()
             
         }
         
@@ -398,7 +398,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
     
     
     
-
+    
     
     private func Upload() {
         
@@ -409,7 +409,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.showActivityIndicator(uiView: self.view)
         
-         self.view.makeToast("Upload started...", duration: 1.0, position: .bottom)
+        self.view.makeToast("Upload started...", duration: 1.0, position: .bottom)
         
         let urlString: String
         
@@ -473,21 +473,21 @@ class AttachmentController: UIViewController,UITextViewDelegate{
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
                     
-           
                     
-              self.messageStr =  strName  + ".jpg" + " uploaded successfully"
-                 
-        
-                     prefs.set(self.messageStr, forKey: "savedServerMessage")
+                    
+                    self.messageStr =  strName  + ".jpg" + " uploaded successfully"
+                    
+                    
+                    prefs.set(self.messageStr, forKey: "savedServerMessage")
                     
                     
                     //Toast(text: self.messageStr, duration: Delay.long).show()
                     
                     self.showAttachMessage()
-                 
+                    
                     
                 }else{
-                  
+                    
                     // get a reference to the app delegate
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.hideActivityIndicator(uiView: self.view)
@@ -528,7 +528,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
                 print("Underlying error: \(error.underlyingError)")
             } else if let error = response.result.error as? URLError {
                 print("URLError occurred: \(error)")
-               
+                
                 // get a reference to the app delegate
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.hideActivityIndicator(uiView: self.view)
@@ -540,7 +540,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         
         
     }
-  
+    
     public func showAttachMessage(){
         
         let prefs = UserDefaults.standard
@@ -557,8 +557,8 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         ac.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default)
         { action -> Void in
             
-             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadAttach"), object: nil)
-           self.dismiss(animated: true, completion: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadAttach"), object: nil)
+            self.dismiss(animated: true, completion: nil)
         })
         
         
@@ -566,7 +566,7 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         present(ac, animated: true)
         
     }
-
+    
     
     private static var Manager: Alamofire.SessionManager = {
         
@@ -658,15 +658,15 @@ extension AttachmentController: TextFieldDelegate {
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Create an `NSCharacterSet` set which includes everything *but* the digits
         
-      
-            
-            let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]-_\n ").inverted
-            let components = string.components(separatedBy: inverseSet)
-            let filtered = components.joined(separator: "")  // use join("", components) if you are using Swift
-            
-            return string == filtered
-            
-      
+        
+        
+        let inverseSet = NSCharacterSet(charactersIn:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789(){}[]-_\n ").inverted
+        let components = string.components(separatedBy: inverseSet)
+        let filtered = components.joined(separator: "")  // use join("", components) if you are using Swift
+        
+        return string == filtered
+        
+        
         
         
     }

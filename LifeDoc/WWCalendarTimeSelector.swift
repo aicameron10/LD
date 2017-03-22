@@ -25,7 +25,7 @@ import UIKit
         }
     }
     
-   
+    
     
     public func showMonth(_ show: Bool) {
         showMonth = show
@@ -773,7 +773,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 options: [UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.allowUserInteraction],
                 animations: {
                     self.view.layoutIfNeeded()
-                },
+            },
                 completion: nil
             )
             
@@ -921,7 +921,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.monthsView.alpha = 0
                 self.yearTable.alpha = 0
                 self.clockView.alpha = 0
-            },
+        },
             completion: nil
         )
     }
@@ -945,7 +945,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.monthsView.alpha = 1
                 self.yearTable.alpha = 0
                 self.clockView.alpha = 0
-            },
+        },
             completion: nil
         )
     }
@@ -971,7 +971,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.monthsView.alpha = 0
                 self.yearTable.alpha = 1
                 self.clockView.alpha = 0
-            },
+        },
             completion: nil
         )
     }
@@ -1003,7 +1003,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
             options: [UIViewAnimationOptions.transitionCrossDissolve],
             animations: {
                 self.clockView.layer.displayIfNeeded()
-            },
+        },
             completion: nil
         )
         
@@ -1016,7 +1016,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.monthsView.alpha = 0
                 self.yearTable.alpha = 0
                 self.clockView.alpha = 1
-            },
+        },
             completion: nil
         )
     }
@@ -1163,13 +1163,13 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.yearLabel.transform = CGAffineTransform.identity
                 self.timeLabel.transform = CGAffineTransform.identity
                 self.view.layoutIfNeeded()
-            },
+        },
             completion: { _ in
                 if self.selCurrrent.showDateMonth {
                     self.yearLabel.contentScaleFactor = UIScreen.main.scale
                     self.timeLabel.contentScaleFactor = UIScreen.main.scale
                 }
-            }
+        }
         )
         selCurrrent.showDateMonth(true)
         updateDate()
@@ -1245,13 +1245,13 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.yearLabel.transform = CGAffineTransform.identity
                 self.timeLabel.transform = CGAffineTransform.identity
                 self.view.layoutIfNeeded()
-            },
+        },
             completion: { _ in
                 if self.selCurrrent.showMonth {
                     self.yearLabel.contentScaleFactor = UIScreen.main.scale
                     self.timeLabel.contentScaleFactor = UIScreen.main.scale
                 }
-            }
+        }
         )
         selCurrrent.showDateMonth(true)
         updateDate()
@@ -1326,14 +1326,14 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.dateLabel.transform = CGAffineTransform.identity
                 self.timeLabel.transform = CGAffineTransform.identity
                 self.view.layoutIfNeeded()
-            },
+        },
             completion: { _ in
                 if self.selCurrrent.showYear {
                     self.monthLabel.contentScaleFactor = UIScreen.main.scale
                     self.dateLabel.contentScaleFactor = UIScreen.main.scale
                     self.timeLabel.contentScaleFactor = UIScreen.main.scale
                 }
-            }
+        }
         )
         selCurrrent.showYear(true)
         updateDate()
@@ -1407,14 +1407,14 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 self.dateLabel.transform = CGAffineTransform.identity
                 self.yearLabel.transform = CGAffineTransform.identity
                 self.view.layoutIfNeeded()
-            },
+        },
             completion: { _ in
                 if self.selCurrrent.showTime {
                     self.monthLabel.contentScaleFactor = UIScreen.main.scale
                     self.dateLabel.contentScaleFactor = UIScreen.main.scale
                     self.yearLabel.contentScaleFactor = UIScreen.main.scale
                 }
-            }
+        }
         )
         selCurrrent.showTime(true)
         updateDate()
@@ -1442,12 +1442,12 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
     
     open  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         //print("scrolling")
-         targetContentOffset.pointee = scrollView.contentOffset
+        targetContentOffset.pointee = scrollView.contentOffset
         
     }
     
     open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-         //print("scrolling acc")
+        //print("scrolling acc")
         
     }
     
@@ -1456,7 +1456,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
         
     }
     open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-         //print("start scrolling")
+        //print("start scrolling")
         
         
     }
@@ -1545,14 +1545,14 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
             displayYearNew = yearRow1 + (indexPath as NSIndexPath).row
             
             /*if(displayYear >= 1900){
-                tableView.isScrollEnabled = true
-            }else{
-                
-                tableView.isScrollEnabled = false
-
-            }*/
+             tableView.isScrollEnabled = true
+             }else{
+             
+             tableView.isScrollEnabled = false
+             
+             }*/
             //if(displayYear >= 1900){
-                
+            
             if displayYear > currentYear {
                 cell.textLabel?.font = optionCurrentDate.year == displayYear ? optionCalendarFontFutureYearsHighlight : optionCalendarFontFutureYears
                 cell.textLabel?.textColor = optionCurrentDate.year == displayYear ? optionCalendarFontColorFutureYearsHighlight : optionCalendarFontColorFutureYears
@@ -1565,12 +1565,12 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
                 cell.textLabel?.font = optionCurrentDate.year == displayYear ? optionCalendarFontCurrentYearHighlight : optionCalendarFontCurrentYear
                 cell.textLabel?.textColor = optionCurrentDate.year == displayYear ? optionCalendarFontColorCurrentYearHighlight : optionCalendarFontColorCurrentYear
             }
-               
+            
             cell.textLabel?.text = "\(displayYear)"
-           // }else{
-                
-               // cell.isHidden = true
-          //  }
+            // }else{
+            
+            // cell.isHidden = true
+            //  }
             
         }
         else { // multiple dates table
@@ -1597,15 +1597,15 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
         if tableView == yearTable {
             
             let displayYear = yearRow1 + (indexPath as NSIndexPath).row
-           if(displayYear >= 1900){
-            let newDate = optionCurrentDate.change(year: displayYear)
-          
-            if delegate?.WWCalendarTimeSelectorShouldSelectDate?(self, date: newDate!) ?? true {
-                optionCurrentDate = newDate!
-                updateDate()
-                tableView.reloadData()
+            if(displayYear >= 1900){
+                let newDate = optionCurrentDate.change(year: displayYear)
+                
+                if delegate?.WWCalendarTimeSelectorShouldSelectDate?(self, date: newDate!) ?? true {
+                    optionCurrentDate = newDate!
+                    updateDate()
+                    tableView.reloadData()
+                }
             }
-        }
         }
         else if tableView == selMultipleDatesTable {
             let date = multipleDates[(indexPath as NSIndexPath).row]
@@ -1781,8 +1781,8 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
             case .single:
                 
                 if(date.year >= 1900){
-                optionCurrentDate = optionCurrentDate.change(year: date.year, month: date.month, day: date.day)
-                updateDate()
+                    optionCurrentDate = optionCurrentDate.change(year: date.year, month: date.month, day: date.day)
+                    updateDate()
                 }
                 
                 
@@ -1885,7 +1885,7 @@ open class WWCalendarTimeSelector: UIViewController, UITableViewDelegate, UITabl
             options: [UIViewAnimationOptions.transitionCrossDissolve, UIViewAnimationOptions.allowUserInteraction, UIViewAnimationOptions.beginFromCurrentState],
             animations: {
                 self.clockView.layer.displayIfNeeded()
-            },
+        },
             completion: nil
         )
     }
@@ -2127,7 +2127,7 @@ internal class WWCalendarRow: UIView {
                             options: [UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.allowUserInteraction, UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseOut],
                             animations: {
                                 flashView.alpha = 0.75
-                            },
+                        },
                             completion: { _ in
                                 UIView.animate(
                                     withDuration: self.flashDuration / 2,
@@ -2135,12 +2135,12 @@ internal class WWCalendarRow: UIView {
                                     options: [UIViewAnimationOptions.allowAnimatedContent, UIViewAnimationOptions.allowUserInteraction, UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.curveEaseIn],
                                     animations: {
                                         flashView.alpha = 0
-                                    },
+                                },
                                     completion: { _ in
                                         flashView.removeFromSuperview()
-                                    }
+                                }
                                 )
-                            }
+                        }
                         )
                         return true
                     }

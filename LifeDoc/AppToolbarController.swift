@@ -45,7 +45,7 @@ class AppToolbarController: ToolbarController {
         prepareToolbar()
     }
     
-   
+    
     
     lazy var leftViewController: LeftViewController = {
         return UIStoryboard.viewController(identifier: "LeftViewController") as! LeftViewController
@@ -71,7 +71,7 @@ class AppToolbarController: ToolbarController {
     lazy var pageViewController: PageViewController = {
         return UIStoryboard.viewController(identifier: "PageViewController") as! PageViewController
     }()
-
+    
     
     
     @objc
@@ -94,16 +94,16 @@ class AppToolbarController: ToolbarController {
         let navigationController  = AppNavigationDrawerController(rootViewController: menuController, leftViewController: leftViewController,rightViewController: rightViewController)
         let statusController = AppStatusBarController(rootViewController: navigationController)
         
-         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         
         UIApplication.shared.keyWindow?.rootViewController = statusController
         
         //self.present((rootViewController: statusController),animated: false)
- 
+        
         
     }
     
-
+    
     
     private func prepareMenuButton() {
         menuButton = IconButton(image: Icon.cm.menu, tintColor: .white)
@@ -131,8 +131,8 @@ class AppToolbarController: ToolbarController {
         toolbar.depthPreset = .none
         toolbar.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
         
-
-    
+        
+        
         toolbar.title = "LifeDoc"
         toolbar.titleLabel.textColor = .white
         toolbar.titleLabel.textAlignment = .left

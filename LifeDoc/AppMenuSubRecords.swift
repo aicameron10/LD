@@ -77,7 +77,7 @@ extension AppMenuSubRecords {
     internal func handleOTP(button: Button) {
         
         closeMenu()
-       
+        
     }
     
     /// Handle the menu toggle event.
@@ -87,9 +87,9 @@ extension AppMenuSubRecords {
         
         let prefs = UserDefaults.standard
         prefs.removeObject(forKey: "NotesEdit")
-
+        
         let note: NoteSubRecord = {
-        return UIStoryboard.viewController(identifier: "NoteSubRecord") as! NoteSubRecord}()
+            return UIStoryboard.viewController(identifier: "NoteSubRecord") as! NoteSubRecord}()
         
         
         self.present(note, animated: true, completion: nil)
@@ -109,7 +109,7 @@ extension AppMenuSubRecords {
         
         self.present(path, animated: true, completion: nil)
     }
-
+    
     /// Handle the menu toggle event.
     internal func handleDoc(button: Button) {
         
@@ -124,7 +124,7 @@ extension AppMenuSubRecords {
         
         self.present(doc, animated: true, completion: nil)
     }
-
+    
     /// Handle the menu toggle event.
     internal func handleHos(button: Button) {
         
@@ -154,13 +154,13 @@ extension AppMenuSubRecords {
         
         self.present(medi, animated: true, completion: nil)
     }
-
+    
     
     internal func prepareAddButton() {
         addButton = FabButton(image: Icon.cm.add, tintColor: .white)
         addButton.pulseColor = .white
         addButton.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
-     
+        
         
         addButton.addTarget(self, action: #selector(handleToggleMenu), for: .touchUpInside)
     }
@@ -175,26 +175,26 @@ extension AppMenuSubRecords {
         NoteMenuItem.button.backgroundColor = UIColor(red: 0/255, green: 149/255, blue: 217/255, alpha: 1.0)
         NoteMenuItem.button.depthPreset = .depth1
         NoteMenuItem.title = "Notes"
-       
+        
         NoteMenuItem.button.addTarget(self, action: #selector(handleNote), for: .touchUpInside)
         
     }
     
     internal func prepareDocButton() {
-          let imageotp : UIImage = UIImage(named:"ic_doc_sub")!
+        let imageotp : UIImage = UIImage(named:"ic_doc_sub")!
         DocMenuItem = MenuItem()
         DocMenuItem.button.image = imageotp
         DocMenuItem.button.tintColor = .white
         DocMenuItem.button.pulseColor = .white
         DocMenuItem.button.backgroundColor = UIColor(red: 217/255, green: 42/255, blue: 24/255, alpha: 1.0)
         DocMenuItem.title = "Doctor Visit"
-         
+        
         DocMenuItem.button.addTarget(self, action: #selector(handleDoc), for: .touchUpInside)
     }
     
     internal func prepareMediButton() {
         
-         let imageotp : UIImage = UIImage(named:"ic_medi_sub")!
+        let imageotp : UIImage = UIImage(named:"ic_medi_sub")!
         MediMenuItem = MenuItem()
         MediMenuItem.button.image = imageotp
         MediMenuItem.button.tintColor = .white
@@ -204,7 +204,7 @@ extension AppMenuSubRecords {
         
         MediMenuItem.button.addTarget(self, action: #selector(handlemedi), for: .touchUpInside)
     }
-
+    
     internal func prepareHosButton() {
         
         let imageotp : UIImage = UIImage(named:"ic_hos_sub")!
@@ -217,7 +217,7 @@ extension AppMenuSubRecords {
         
         HosMenuItem.button.addTarget(self, action: #selector(handleHos), for: .touchUpInside)
     }
-
+    
     internal func preparePathButton() {
         
         let imageotp : UIImage = UIImage(named:"ic_path_sub")!
@@ -230,8 +230,8 @@ extension AppMenuSubRecords {
         
         PathMenuItem.button.addTarget(self, action: #selector(handlePath), for: .touchUpInside)
     }
-
-  
+    
+    
     
     internal func prepareMenu() {
         view.layout(menu)
@@ -247,7 +247,7 @@ extension AppMenuSubRecords {
 
 /// MenuDelegate.
 extension AppMenuSubRecords: MenuDelegate {
-     func menu(menu: Menu, tappedAt point: CGPoint, isOutside: Bool) {
+    func menu(menu: Menu, tappedAt point: CGPoint, isOutside: Bool) {
         guard isOutside else {
             return
         }

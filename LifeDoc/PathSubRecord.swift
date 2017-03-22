@@ -61,7 +61,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
     var deleteRecord : Bool = Bool()
     
     
-        var fromDoc : Bool = Bool()
+    var fromDoc : Bool = Bool()
     
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
@@ -177,11 +177,11 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         let recordId = json[posIndex!]["recordId"].stringValue
         let docName = json[posIndex!]["Prescribed by?"].stringValue
-         let reason = json[posIndex!]["Diagnosis/Reason for test?"].stringValue
-         let desc = json[posIndex!]["Test description"].stringValue
+        let reason = json[posIndex!]["Diagnosis/Reason for test?"].stringValue
+        let desc = json[posIndex!]["Test description"].stringValue
         let updatedDate = json[posIndex!]["lastUpdated"].stringValue
         let fromDoctor = json[posIndex!]["Was this test prescribed by a doctor?"].stringValue
-       
+        
         
         
         let Date = json[posIndex!]["Test Date"].stringValue
@@ -303,7 +303,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
             docName.isEnabled = false
             fromDoc = false
         }else{
-           checkBox.isSelected = true
+            checkBox.isSelected = true
             fromDoc = true
             docName.isEnabled = true
         }
@@ -314,7 +314,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         
     }
-
+    
     func logSelectedButton(sender: ISRadioButton){
         
         if checkBox.isEqual(self.checkBox) {
@@ -330,17 +330,17 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
             }else{
                 print("false")
                 NewCheck = false
-                  docName.isEnabled = true
+                docName.isEnabled = true
                 fromDoc = true
             }
             
-          
+            
         }
         
         
     }
     
-
+    
     
     private func prepareDate() {
         
@@ -375,7 +375,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         docName.placeholder = "Doctor Name"
         docName.detail = Constants.err_msg_name_path
         docName.isClearIconButtonEnabled = true
-       
+        
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "globalDoctor") != nil){
             docName.text = prefs.string(forKey: "globalDoctor")!
@@ -385,12 +385,12 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         }
         if (prefs.string(forKey: "PathEdit") != nil){
             docName.text = editDocName
-           
+            
         }
-
+        
         
         docName.detailLabel.numberOfLines = 0
-
+        
         docName.delegate = self
         
         docName.addTarget(self,action: #selector(textFieldDidChange),for: UIControlEvents.editingDidEnd)
@@ -433,7 +433,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
             docName.deleteBackward()
         }
     }
-
+    
     
     
     
@@ -460,7 +460,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
                     wordCount.text = "0"
                 }
             }
-
+            
         }
         if(TestDescText.isFirstResponder == true){
             if(numberOfChars > 1000){
@@ -472,7 +472,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
                     wordCount1.text = "0"
                 }
             }
-
+            
         }
         
         
@@ -483,14 +483,14 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
     }
     
-   
+    
     func textViewDidChange(_ textView: UITextView) { //Handle the text changes here
         print(textView.text); //the textView parameter is the textView where text was changed
     }
     
     private func prepareDesc() {
         
-       
+        
         TestDescText.delegate = self
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "PathEdit") != nil){
@@ -505,13 +505,13 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
     }
     
     private func prepareReason() {
-          let prefs = UserDefaults.standard
+        let prefs = UserDefaults.standard
         if (prefs.string(forKey: "globalReason") != nil){
             
-           ReasonText.text = prefs.string(forKey: "globalReason")!
+            ReasonText.text = prefs.string(forKey: "globalReason")!
             wordCount.text = String(describing: (1000 - prefs.string(forKey: "globalReason")!.characters.count))
         }
-
+        
         ReasonText.delegate = self
         if (prefs.string(forKey: "PathEdit") != nil){
             ReasonText.text = editReason
@@ -521,7 +521,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         
     }
-
+    
     
     func textViewDidBeginEditing (_ textView: UITextView) {
         
@@ -562,7 +562,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         
     }
-
+    
     
     func buttonClearAction(sender: UIButton!) {
         print("Button tapped")
@@ -671,16 +671,16 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         print("Button tapped")
         
         if(NewCheck == false){
-
-        if(docName.text?.trimmed.isEmpty)!{
-            docName.isErrorRevealed = true
-            docName.detail = Constants.err_msg_name_path
-            self.docName.becomeFirstResponder()
             
-            return
+            if(docName.text?.trimmed.isEmpty)!{
+                docName.isErrorRevealed = true
+                docName.detail = Constants.err_msg_name_path
+                self.docName.becomeFirstResponder()
+                
+                return
+            }
         }
-    }
-    
+        
         if TestDescText.text.isEmpty || TestDescText.text == "" || TestDescText.text.trimmed == "" {
             errorDesc.isHidden = false
             TestDescText.becomeFirstResponder()
@@ -777,9 +777,9 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         let reason: String = ReasonText.text!
         
-         let desc: String = TestDescText.text!
+        let desc: String = TestDescText.text!
         
-          let docName: String = self.docName.text!
+        let docName: String = self.docName.text!
         
         
         let jsonObject: NSMutableDictionary = NSMutableDictionary()
@@ -803,7 +803,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         jsonObject.setValue(docName, forKey: "Prescribed by?")
         jsonObject.setValue(reason, forKey: "Diagnosis/Reason for test?")
         jsonObject.setValue(desc, forKey: "Test description")
-         jsonObject.setValue(fromDoc, forKey: "Was this test prescribed by a doctor?")
+        jsonObject.setValue(fromDoc, forKey: "Was this test prescribed by a doctor?")
         
         let jsonData: NSData
         
@@ -912,7 +912,7 @@ class PathSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
             json[posIndex!]["_hide"].boolValue = hideBool
             json[posIndex!]["_save"].boolValue = true
             json[posIndex!]["Was this test prescribed by a doctor?"].boolValue = fromDoc
-          
+            
             
             self.saveJSON(j: json)
             

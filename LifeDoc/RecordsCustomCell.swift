@@ -19,7 +19,6 @@ class RecordsCustomCell: UITableViewCell {
     @IBOutlet weak var values: UILabel!
     @IBOutlet weak var edit: UIButton!
     @IBOutlet weak var hiddenValue: UILabel!
-   
     @IBOutlet weak var pos: UILabel!
    
 }
