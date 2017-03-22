@@ -4000,7 +4000,6 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="w5j-f6-gnI" firstAttribute="top" secondItem="iIF-bg-XZe" secondAttribute="topMargin" constant="91" id="4L2-kH-Ngm"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="PAY-G2-QKI" secondAttribute="trailing" constant="-6" id="4lw-4N-fzR"/>
                                                         <constraint firstItem="PAY-G2-QKI" firstAttribute="bottom" secondItem="iIF-bg-XZe" secondAttribute="bottomMargin" constant="1" id="Cag-3I-7m2"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="aOa-M3-MiU" secondAttribute="trailing" constant="7" id="KEr-Nu-Q4c"/>
@@ -4009,11 +4008,10 @@
                                                         <constraint firstItem="w5j-f6-gnI" firstAttribute="centerX" secondItem="iIF-bg-XZe" secondAttribute="centerX" id="YuA-zC-WQY"/>
                                                         <constraint firstItem="PAY-G2-QKI" firstAttribute="leading" secondItem="iIF-bg-XZe" secondAttribute="leadingMargin" constant="-11" id="ani-wm-BHV"/>
                                                         <constraint firstItem="cK4-fm-Tij" firstAttribute="leading" secondItem="iIF-bg-XZe" secondAttribute="leadingMargin" id="bHM-fv-whb"/>
+                                                        <constraint firstItem="w5j-f6-gnI" firstAttribute="top" secondItem="iIF-bg-XZe" secondAttribute="topMargin" constant="91" id="c1Y-9f-MEA"/>
                                                         <constraint firstItem="aOa-M3-MiU" firstAttribute="leading" secondItem="cK4-fm-Tij" secondAttribute="trailing" constant="30" id="fpB-nR-asL"/>
                                                         <constraint firstItem="PAY-G2-QKI" firstAttribute="top" secondItem="cK4-fm-Tij" secondAttribute="bottom" constant="8" id="kds-xy-sFc"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="w5j-f6-gnI" secondAttribute="bottom" constant="89" id="ki9-LY-exp"/>
                                                         <constraint firstItem="cK4-fm-Tij" firstAttribute="top" secondItem="aOa-M3-MiU" secondAttribute="top" constant="2" id="pzs-Kq-est"/>
-                                                        <constraint firstItem="w5j-f6-gnI" firstAttribute="centerY" secondItem="iIF-bg-XZe" secondAttribute="centerY" id="tSb-mh-T3w"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.19667701200000001" colorSpace="calibratedWhite"/>
@@ -4695,14 +4693,14 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Characters remaining: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh9-Cg-Huh">
                                         <rect key="frame" x="7" y="485" width="186" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2S-x9-bpn">
                                         <rect key="frame" x="167" y="485" width="157" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4723,7 +4721,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Characters remaining: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTY-2Z-285">
                                         <rect key="frame" x="6" y="691" width="186" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -4834,7 +4832,7 @@
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJd-SV-5Xf">
                                         <rect key="frame" x="167" y="691" width="157" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

@@ -12,18 +12,6 @@ import Alamofire
 import FileExplorer
 import UserNotifications
 
-extension UIStoryboard {
-    class func viewController(identifier: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
-    }
-}
-
-extension NSURLRequest {
-    static func allowsAnyHTTPSCertificateForHost(host: String) -> Bool {
-        return true
-    }
-}
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -135,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func mainViewLoad() {
         
         
-       setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139/255, blue: 197/255, alpha: 1.0))
+        setStatusBarBackgroundColor(color: UIColor(red: 1/255, green: 139/255, blue: 197/255, alpha: 1.0))
         
         let prefs = UserDefaults.standard
         window = UIWindow(frame: Screen.bounds)
@@ -541,41 +529,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     prefs.removeObject(forKey: "savedOrderProfile")
                     self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
                     self.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showNoDataLabel"), object: nil)
-                   
-                }else{
-                
-                if status == "SUCCESS"{
-                    
-                    
-                    let responseJSON = response.result.value
-                    
-                    if(responseJSON != nil){
-                        let json1 = JSON(responseJSON as Any)
-                        
-                        self.saveJSONProfile(j: json1)
-                    }
-
-                    
-                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                    
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableProfileHistory"), object: nil)
-                    
-                    
-                    let prefs = UserDefaults.standard
-                    
-                    if (prefs.string(forKey: "savedServerMessage") != nil){
-                        
-                        self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
-                    }
-                    
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showNoDataLabel"), object: nil)
                     
                 }else{
-                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                    self.showError()
-                }
+                    
+                    if status == "SUCCESS"{
+                        
+                        
+                        let responseJSON = response.result.value
+                        
+                        if(responseJSON != nil){
+                            let json1 = JSON(responseJSON as Any)
+                            
+                            self.saveJSONProfile(j: json1)
+                        }
+                        
+                        
+                        self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                        self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                        
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableProfileHistory"), object: nil)
+                        
+                        
+                        let prefs = UserDefaults.standard
+                        
+                        if (prefs.string(forKey: "savedServerMessage") != nil){
+                            
+                            self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
+                        }
+                        
+                        
+                    }else{
+                        self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                        self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                        self.showError()
+                    }
                 }
             }
             if let error = response.result.error as? AFError{
@@ -692,34 +680,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showNoDataLabelAssess"), object: nil)
                     
                 }else{
-                
-                if status == "SUCCESS"{
                     
-                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                    
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableHistory"), object: nil)
-                    
-                    
-                    let prefs = UserDefaults.standard
-                    
-                    if (prefs.string(forKey: "savedServerMessage") != nil){
+                    if status == "SUCCESS"{
                         
-                        self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
+                        self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                        self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                         
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTableHistory"), object: nil)
+                        
+                        
+                        let prefs = UserDefaults.standard
+                        
+                        if (prefs.string(forKey: "savedServerMessage") != nil){
+                            
+                            self.window!.rootViewController?.view.makeToast(prefs.string(forKey: "savedServerMessage")!, duration: 5.0, position: .bottom)
+                            
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }else{
+                        
+                        self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
+                        self.window!.rootViewController?.dismiss(animated: false, completion: nil)
+                        self.showError()
                         
                     }
-                    
-                    
-                    
-                    
-                }else{
-                    
-                    self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
-                    self.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                    self.showError()
-                    
-                }
                 }
                 
             }
@@ -1097,7 +1085,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prefs.removeObject(forKey: "attachBase64Profile")
         
         
-        
         let urlString: String
         
         urlString = Constants.baseURL + "logout"
@@ -1114,86 +1101,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         ]
         
-        
         let headers: HTTPHeaders = [
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
         
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
         
-        
-        
-        // Both calls are equivalent
-        AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
+        Networking().ldmgw(urlString: urlString, parameters: parameters, headers: headers){
+            jsonResponse in
             
+            var json = JSON(jsonResponse!)
+            let status = json["status"]
+            let msg = json["message"].string!
             
-            
-            if let jsonResponse = response.result.value {
+            if status == "SUCCESS"{
                 
-                var json = JSON(jsonResponse)
-                let status = json["status"]
-                let msg = json["message"].string!
+                // get a reference to the app delegate
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 
-                if status == "SUCCESS"{
-                    
-                    // get a reference to the app delegate
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    
-                    
-                    let prefs = UserDefaults.standard
-                    prefs.set(msg, forKey: "savedServerMessage")
-                    
-                    appDelegate.logOutScreen()
-                    appDelegate.showToast()
-                    
-                    
-                }else{
-                    
-                    
-                }
+                let prefs = UserDefaults.standard
+                prefs.set(msg, forKey: "savedServerMessage")
                 
-            }
-            
-            if let error = response.result.error  as? AFError {
-                switch error {
-                case .invalidURL(let url):
-                    print("Invalid URL: \(url) - \(error.localizedDescription)")
-                case .parameterEncodingFailed(let reason):
-                    print("Parameter encoding failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                case .multipartEncodingFailed(let reason):
-                    print("Multipart encoding failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                case .responseValidationFailed(let reason):
-                    print("Response validation failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                    
-                    switch reason {
-                    case .dataFileNil, .dataFileReadFailed:
-                        print("Downloaded file could not be read")
-                    case .missingContentType(let acceptableContentTypes):
-                        print("Content Type Missing: \(acceptableContentTypes)")
-                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
-                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
-                    case .unacceptableStatusCode(let code):
-                        print("Response status code was unacceptable: \(code)")
-                    }
-                case .responseSerializationFailed(let reason):
-                    print("Response serialization failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                }
-                
-                print("Underlying error: \(error.underlyingError)")
-            } else if let error = response.result.error  as? URLError {
-                print("URLError occurred: \(error)")
-                self.showNetworkError()
+                appDelegate.logOutScreen()
+                appDelegate.showToast()
                 
             }
             
         }
-        
         
     }
     
@@ -1233,13 +1167,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
-extension NSURLRequest {
-    #if DEBUG
-    static func allowsAnyHTTPSCertificate(forHost host: String) -> Bool {
-        return true
-    }
-    #endif
-}
 
 extension UIView {
     var parentViewController: UIViewController? {
@@ -1303,5 +1230,17 @@ extension String {
         } else {
             return ""
         }
+    }
+}
+
+extension UIStoryboard {
+    class func viewController(identifier: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+    }
+}
+
+extension NSURLRequest {
+    static func allowsAnyHTTPSCertificateForHost(host: String) -> Bool {
+        return true
     }
 }
