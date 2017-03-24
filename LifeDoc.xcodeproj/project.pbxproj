@@ -143,21 +143,13 @@
 		D6FB577F1DD1D3D20045910F /* AppPageTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB577E1DD1D3D20045910F /* AppPageTabBarController.swift */; };
 		D6FB57831DD1DB9A0045910F /* AppToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57821DD1DB9A0045910F /* AppToolbarController.swift */; };
 		D6FB57851DD1E71A0045910F /* AppMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57841DD1E71A0045910F /* AppMenuController.swift */; };
-		D6FB57871DD1E8FA0045910F /* splashbackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57861DD1E8FA0045910F /* splashbackground.jpg */; };
 		D6FB578D1DD310B30045910F /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB578C1DD310B30045910F /* RightViewController.swift */; };
-		D6FB57941DD31E980045910F /* profile_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57911DD31E980045910F /* profile_pic.jpg */; };
-		D6FB57951DD31E980045910F /* mainpic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57921DD31E980045910F /* mainpic.jpg */; };
-		D6FB57961DD31E980045910F /* health_assess_pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57931DD31E980045910F /* health_assess_pic.jpg */; };
 		D6FB57981DD338430045910F /* imageheader.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57971DD338430045910F /* imageheader.png */; };
 		D6FB579A1DD34E000045910F /* AppStatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57991DD34E000045910F /* AppStatusBarController.swift */; };
 		D6FB579C1DD441E50045910F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB579B1DD441E50045910F /* LoginController.swift */; };
 		D6FB579E1DD443AC0045910F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6FB579D1DD443AC0045910F /* Main.storyboard */; };
 		D6FB57A51DD46F2F0045910F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57A31DD46F2F0045910F /* PageViewController.swift */; };
 		D6FB57A61DD46F2F0045910F /* ShowPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57A41DD46F2F0045910F /* ShowPageViewController.swift */; };
-		D6FB57AB1DD4733C0045910F /* 960x720your_family_health.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57A71DD4733C0045910F /* 960x720your_family_health.jpg */; };
-		D6FB57AC1DD4733C0045910F /* 960x720chronic_conditions.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57A81DD4733C0045910F /* 960x720chronic_conditions.jpg */; };
-		D6FB57AD1DD4733C0045910F /* 960x720share_records.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */; };
-		D6FB57AE1DD4733C0045910F /* 960x720key_health_indicators.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */; };
 		D6FB57B01DD48A360045910F /* logo_life.png in Resources */ = {isa = PBXBuildFile; fileRef = D6FB57AF1DD48A360045910F /* logo_life.png */; };
 		D6FB57B41DD5A50B0045910F /* TermsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB57B31DD5A50B0045910F /* TermsController.swift */; };
 		D6FD816C1E792A090092BAA6 /* health-profile.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D6FD81691E792A090092BAA6 /* health-profile.jpg */; };
@@ -335,21 +327,13 @@
 		D6FB577E1DD1D3D20045910F /* AppPageTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppPageTabBarController.swift; sourceTree = "<group>"; };
 		D6FB57821DD1DB9A0045910F /* AppToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppToolbarController.swift; sourceTree = "<group>"; };
 		D6FB57841DD1E71A0045910F /* AppMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppMenuController.swift; sourceTree = "<group>"; };
-		D6FB57861DD1E8FA0045910F /* splashbackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splashbackground.jpg; sourceTree = "<group>"; };
 		D6FB578C1DD310B30045910F /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
-		D6FB57911DD31E980045910F /* profile_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile_pic.jpg; sourceTree = "<group>"; };
-		D6FB57921DD31E980045910F /* mainpic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mainpic.jpg; sourceTree = "<group>"; };
-		D6FB57931DD31E980045910F /* health_assess_pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = health_assess_pic.jpg; sourceTree = "<group>"; };
 		D6FB57971DD338430045910F /* imageheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageheader.png; sourceTree = "<group>"; };
 		D6FB57991DD34E000045910F /* AppStatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStatusBarController.swift; sourceTree = "<group>"; };
 		D6FB579B1DD441E50045910F /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D6FB579D1DD443AC0045910F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D6FB57A31DD46F2F0045910F /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		D6FB57A41DD46F2F0045910F /* ShowPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowPageViewController.swift; sourceTree = "<group>"; };
-		D6FB57A71DD4733C0045910F /* 960x720your_family_health.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720your_family_health.jpg; sourceTree = "<group>"; };
-		D6FB57A81DD4733C0045910F /* 960x720chronic_conditions.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720chronic_conditions.jpg; sourceTree = "<group>"; };
-		D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720share_records.jpg; sourceTree = "<group>"; };
-		D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960x720key_health_indicators.jpg; sourceTree = "<group>"; };
 		D6FB57AF1DD48A360045910F /* logo_life.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_life.png; sourceTree = "<group>"; };
 		D6FB57B21DD4903F0045910F /* webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = webfont.ttf; sourceTree = "<group>"; };
 		D6FB57B31DD5A50B0045910F /* TermsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsController.swift; sourceTree = "<group>"; };
@@ -677,11 +661,7 @@
 				D60ECB6E1DFEB04300E35CB0 /* photo.jpg */,
 				D60ECB6F1DFEB04300E35CB0 /* purple_health_record.png */,
 				D60ECB361DE3125200E35CB0 /* ic_action_calendar_month.png */,
-				D6FB57A71DD4733C0045910F /* 960x720your_family_health.jpg */,
-				D6FB57A81DD4733C0045910F /* 960x720chronic_conditions.jpg */,
 				D6FB57AF1DD48A360045910F /* logo_life.png */,
-				D6FB57A91DD4733C0045910F /* 960x720share_records.jpg */,
-				D6FB57AA1DD4733C0045910F /* 960x720key_health_indicators.jpg */,
 				D6FB57971DD338430045910F /* imageheader.png */,
 				D600D5E41E79371E00549C65 /* mom-baby.jpg */,
 				D600D5E51E79371E00549C65 /* mom-baby@2x.jpg */,
@@ -692,10 +672,6 @@
 				D600D5F11E7938AD00549C65 /* daughter-mom@2x.jpg */,
 				D600D5F21E7938AD00549C65 /* daughter-mom@3x.jpg */,
 				D600D5EC1E7937A300549C65 /* running-girl@2x.jpg */,
-				D6FB57911DD31E980045910F /* profile_pic.jpg */,
-				D6FB57921DD31E980045910F /* mainpic.jpg */,
-				D6FB57931DD31E980045910F /* health_assess_pic.jpg */,
-				D6FB57861DD1E8FA0045910F /* splashbackground.jpg */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -834,7 +810,6 @@
 				D600D5FB1E79676F00549C65 /* launch-image.jpg in Resources */,
 				D60ECB881DFEB04300E35CB0 /* purple_health_record.png in Resources */,
 				D6C770651E1F6EC20006A2E4 /* ic_profile_health_bar@3x.png in Resources */,
-				D6FB57AC1DD4733C0045910F /* 960x720chronic_conditions.jpg in Resources */,
 				D600D5FA1E79676F00549C65 /* launch-image@3x.jpg in Resources */,
 				D6FD816E1E792A090092BAA6 /* health-profile@3x.jpg in Resources */,
 				D6AE62991E0D2A9800A33C94 /* ic_profile_side.png in Resources */,
@@ -849,14 +824,12 @@
 				D66E937A1E7AE6D7003DA2C5 /* ld.png in Resources */,
 				D60ECB7A1DFEB04300E35CB0 /* lifedoc_icons_blood_glucose.png in Resources */,
 				D6C770751E1FBB6B0006A2E4 /* ic_otp_sub@2x.png in Resources */,
-				D6FB57AD1DD4733C0045910F /* 960x720share_records.jpg in Resources */,
 				D600D5E71E79371E00549C65 /* mom-baby.jpg in Resources */,
 				D6FD81741E792AB80092BAA6 /* health-assessments@3x.jpg in Resources */,
 				D656020A1E28C68800A8ED22 /* ic_hos_sub.png in Resources */,
 				D6293F561DD1AF080037B2B2 /* LaunchScreen.storyboard in Resources */,
 				D60ECB791DFEB04300E35CB0 /* lifedoc_icons_allergy.png in Resources */,
 				D60ECB841DFEB04300E35CB0 /* lifedoc_icons_weight.png in Resources */,
-				D6FB57AE1DD4733C0045910F /* 960x720key_health_indicators.jpg in Resources */,
 				D6BAC6E51E000D3100C9514F /* ic_action_drag.png in Resources */,
 				D6C770641E1F6EC20006A2E4 /* ic_profile_health_bar@2x.png in Resources */,
 				D656020B1E28C68800A8ED22 /* ic_medi_sub.png in Resources */,
@@ -868,7 +841,6 @@
 				D6AE629A1E0D2A9800A33C94 /* ic_assess_health_bar.png in Resources */,
 				D60ECB831DFEB04300E35CB0 /* lifedoc_icons_pulse.png in Resources */,
 				D60ECB811DFEB04300E35CB0 /* lifedoc_icons_height.png in Resources */,
-				D6FB57951DD31E980045910F /* mainpic.jpg in Resources */,
 				D6FD81791E792BC60092BAA6 /* my-profile@2x.jpg in Resources */,
 				D600D5E21E79366600549C65 /* mom-withipad@2x.jpg in Resources */,
 				D60ECB861DFEB04300E35CB0 /* my_profile.png in Resources */,
@@ -890,7 +862,6 @@
 				D6293F531DD1AF080037B2B2 /* Assets.xcassets in Resources */,
 				D6FB579E1DD443AC0045910F /* Main.storyboard in Resources */,
 				D60ECB1A1DD9D94C00E35CB0 /* webfont.ttf in Resources */,
-				D6FB57961DD31E980045910F /* health_assess_pic.jpg in Resources */,
 				D60ECB7B1DFEB04300E35CB0 /* lifedoc_icons_blood_pressure.png in Resources */,
 				D600D5EF1E7937A300549C65 /* running-girl@2x.jpg in Resources */,
 				D60ECB7C1DFEB04300E35CB0 /* lifedoc_icons_bmi.png in Resources */,
@@ -898,12 +869,10 @@
 				D6C770761E1FBB6B0006A2E4 /* ic_otp_sub.png in Resources */,
 				D6C770661E1F6EC20006A2E4 /* ic_profile_health_bar.png in Resources */,
 				D600D5F41E7938AD00549C65 /* daughter-mom@2x.jpg in Resources */,
-				D6FB57871DD1E8FA0045910F /* splashbackground.jpg in Resources */,
 				D6FD81781E792BC60092BAA6 /* my-profile.jpg in Resources */,
 				D6FD816D1E792A090092BAA6 /* health-profile@2x.jpg in Resources */,
 				D66E937C1E7AE6D7003DA2C5 /* ld@2x.png in Resources */,
 				D60ECB761DFEB04300E35CB0 /* blue_more.png in Resources */,
-				D6FB57941DD31E980045910F /* profile_pic.jpg in Resources */,
 				D600D5E11E79366600549C65 /* mom-withipad.jpg in Resources */,
 				D6FB57981DD338430045910F /* imageheader.png in Resources */,
 				D60ECB781DFEB04300E35CB0 /* edit_details.png in Resources */,
@@ -911,7 +880,6 @@
 				D60ECB7D1DFEB04300E35CB0 /* lifedoc_icons_body_temperature.png in Resources */,
 				D600D5ED1E7937A300549C65 /* running-girl@3x.jpg in Resources */,
 				D60ECB701DFEB04300E35CB0 /* blue_attach.png in Resources */,
-				D6FB57AB1DD4733C0045910F /* 960x720your_family_health.jpg in Resources */,
 				D6FD81721E792AB80092BAA6 /* health-assessments@2x.jpg in Resources */,
 				D60ECB741DFEB04300E35CB0 /* blue_hide.png in Resources */,
 			);

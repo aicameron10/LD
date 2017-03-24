@@ -1072,7 +1072,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
     private func logOut() {
         
         let prefs = UserDefaults.standard
@@ -1083,6 +1082,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         prefs.removeObject(forKey: "savedOrderProfile")
         prefs.removeObject(forKey: "savedServerMessage")
         prefs.removeObject(forKey: "attachBase64Profile")
+        
         
         
         let urlString: String
@@ -1101,36 +1101,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         ]
         
+        
         let headers: HTTPHeaders = [
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
         
+        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
+        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
         
-        Networking().ldmgw(urlString: urlString, parameters: parameters, headers: headers){
-            jsonResponse in
+        
+        
+        // Both calls are equivalent
+        AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
-            var json = JSON(jsonResponse!)
-            let status = json["status"]
-            let msg = json["message"].string!
             
-            if status == "SUCCESS"{
+            
+            if let jsonResponse = response.result.value {
                 
-                // get a reference to the app delegate
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                var json = JSON(jsonResponse)
+                let status = json["status"]
+                let msg = json["message"].string!
                 
-                let prefs = UserDefaults.standard
-                prefs.set(msg, forKey: "savedServerMessage")
+                if status == "SUCCESS"{
+                    
+                    // get a reference to the app delegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    
+                    
+                    let prefs = UserDefaults.standard
+                    prefs.set(msg, forKey: "savedServerMessage")
+                    
+                    appDelegate.logOutScreen()
+                    appDelegate.showToast()
+                    
+                    
+                }else{
+                    
+                    
+                }
                 
-                appDelegate.logOutScreen()
-                appDelegate.showToast()
+            }
+            
+            if let error = response.result.error  as? AFError {
+                switch error {
+                case .invalidURL(let url):
+                    print("Invalid URL: \(url) - \(error.localizedDescription)")
+                case .parameterEncodingFailed(let reason):
+                    print("Parameter encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .multipartEncodingFailed(let reason):
+                    print("Multipart encoding failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                case .responseValidationFailed(let reason):
+                    print("Response validation failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                    
+                    switch reason {
+                    case .dataFileNil, .dataFileReadFailed:
+                        print("Downloaded file could not be read")
+                    case .missingContentType(let acceptableContentTypes):
+                        print("Content Type Missing: \(acceptableContentTypes)")
+                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
+                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
+                    case .unacceptableStatusCode(let code):
+                        print("Response status code was unacceptable: \(code)")
+                    }
+                case .responseSerializationFailed(let reason):
+                    print("Response serialization failed: \(error.localizedDescription)")
+                    print("Failure Reason: \(reason)")
+                }
+                
+                print("Underlying error: \(error.underlyingError)")
+            } else if let error = response.result.error  as? URLError {
+                print("URLError occurred: \(error)")
+                self.showNetworkError()
                 
             }
             
         }
         
+        
     }
-    
+
     
     
     func showNetworkError() {
