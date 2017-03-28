@@ -821,7 +821,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             return 190 //Your desired height for the expanded cell
         }else{
-            return 45
+            return 38
         }
         
         

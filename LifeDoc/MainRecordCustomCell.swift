@@ -996,7 +996,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }
         else{
             
-            self.parentViewController?.view.makeToast("Only PDF or image based files can be downloaded from the app.Login via the website to complete your download.", duration: 3.0, position: .center)
+            self.parentViewController?.view.makeToast("Only PDF or image based files can be downloaded from the app. Login via the website to complete your download.", duration: 3.0, position: .center)
         }
         
         
