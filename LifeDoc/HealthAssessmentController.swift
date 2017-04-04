@@ -178,7 +178,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                 
                 intialValue = (indexPath?[1])!
                 
-                print(intialValue)
+                //print(intialValue)
                 
                 var center = cell?.center
                 My.cellSnapshot!.center = center!
@@ -240,7 +240,7 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
                     cell?.isHidden = false
                     cell?.alpha = 0.0
                 }
-                if(section == 1 && intialValue != -1 && movedValue != -1){
+                if(intialValue != -1 && movedValue != -1){
                     let prefs = UserDefaults.standard
                     self.saveOrder = prefs.object(forKey: "savedOrder") as! [String]
                     

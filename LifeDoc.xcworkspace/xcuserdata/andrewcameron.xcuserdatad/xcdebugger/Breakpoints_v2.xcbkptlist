@@ -104,11 +104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/MainAllergy.swift"
-            timestampString = "510127560.529414"
+            timestampString = "513000333.206669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1891"
-            endingLineNumber = "1891"
+            startingLineNumber = "1893"
+            endingLineNumber = "1893"
             landmarkName = "listAttachments()"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,11 +120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/MainAllergy.swift"
-            timestampString = "510127560.529414"
+            timestampString = "513000333.206669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1890"
-            endingLineNumber = "1890"
+            startingLineNumber = "1892"
+            endingLineNumber = "1892"
             landmarkName = "listAttachments()"
             landmarkType = "7">
          </BreakpointContent>
@@ -424,11 +424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/MainAllergy.swift"
-            timestampString = "510127560.529414"
+            timestampString = "512999801.539087"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1612"
-            endingLineNumber = "1612"
+            startingLineNumber = "1605"
+            endingLineNumber = "1605"
             landmarkName = "sendMainAllergy()"
             landmarkType = "7">
          </BreakpointContent>
@@ -456,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/HealthProfileController.swift"
-            timestampString = "510672461.823318"
+            timestampString = "512995517.160074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "867"
-            endingLineNumber = "867"
+            startingLineNumber = "899"
+            endingLineNumber = "899"
             landmarkName = "buttonMoreClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/HealthProfileController.swift"
-            timestampString = "510672461.823318"
+            timestampString = "512995517.160074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "593"
-            endingLineNumber = "593"
+            startingLineNumber = "606"
+            endingLineNumber = "606"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/HealthProfileController.swift"
-            timestampString = "511438094.804513"
+            timestampString = "512995517.160074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1620"
-            endingLineNumber = "1620"
+            startingLineNumber = "1652"
+            endingLineNumber = "1652"
             landmarkName = "gethealthProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -632,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LifeDoc/HealthProfileController.swift"
-            timestampString = "510672461.823318"
+            timestampString = "512995517.160074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "905"
-            endingLineNumber = "905"
+            startingLineNumber = "937"
+            endingLineNumber = "937"
             landmarkName = "buttonMoreClicked(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -686,6 +686,22 @@
             startingLineNumber = "10"
             endingLineNumber = "10"
             landmarkName = "ldmgw(urlString:parameters:headers:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LifeDoc/MainAllergy.swift"
+            timestampString = "513000089.461955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1713"
+            endingLineNumber = "1713"
+            landmarkName = "hideUnhideRecord()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

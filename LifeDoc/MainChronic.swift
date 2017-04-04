@@ -82,7 +82,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var deleteRecord : Bool = Bool()
     
-    var hidelater : Bool = Bool()
+    var hidelater = "null"
     
     var savedNotes: [[String: AnyObject]] = []
     
@@ -162,7 +162,6 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         countSkip = false
         
-        hidelater = false
         
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "mainAllergyChronic") != nil){
@@ -1167,24 +1166,20 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = true
             self.view.makeToast("Record has been hidden, please apply to save", duration: 3.0, position: .center)
-            let prefs = UserDefaults.standard
-            if (prefs.string(forKey: "mainAllergyChronic") != nil){
-                hideUnhideRecord()
-            }else{
-                hidelater = true
-            }
+           
+          
+           hidelater = "true"
+           
             
         }else if (hideBool == true){
             let image = UIImage(named: "blue_unhide") as UIImage?
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = false
             self.view.makeToast("Record has been made visible, please apply to save", duration: 3.0, position: .center)
-            let prefs = UserDefaults.standard
-            if (prefs.string(forKey: "mainAllergyChronic") != nil){
-                hideUnhideRecord()
-            }else{
-                hidelater = true
-            }
+           
+            
+            hidelater = "false"
+           
             
         }
     }
@@ -1587,7 +1582,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             "condition": dec,
             "recordId": recordValue,
             "status": serverityValue,
-            "_hide": hideBool,
+            "_hide": false,
             "_save": save,
             "_delete": del,
             "subRecords": savedSubs
@@ -1623,7 +1618,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     //appDelegate.hideActivityIndicator(uiView: self.view)
                     //self.showSuccess()
                     
-                    if(self.hidelater == true){
+                    if(self.hidelater != "null"){
                         
                         self.recordValue = self.recordIdValue
                         self.hideUnhideRecord()
@@ -1720,6 +1715,15 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
         
         let authToken = prefs.string(forKey: "authToken")
+        
+        if (hidelater == "false"){
+            hideBool = false
+        }
+        
+        if (hidelater == "true"){
+            hideBool = true
+        }
+
         
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,

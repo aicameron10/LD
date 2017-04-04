@@ -97,9 +97,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var countSkip : Bool = Bool()
     
-    var hidelater : Bool = Bool()
-    
-    
+    var hidelater = "null"
     
     
     var deletedList : Array<String> = Array()
@@ -166,7 +164,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         hideBool = false
         somethingChanged = false
         countSkip = false
-        hidelater = false
+     
         
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "mainAllergyChronic") != nil){
@@ -1158,12 +1156,9 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = true
             self.view.makeToast("Record has been hidden, please apply to save", duration: 3.0, position: .center)
-            let prefs = UserDefaults.standard
-            if (prefs.string(forKey: "mainAllergyChronic") != nil){
-                hideUnhideRecord()
-            }else{
-                hidelater = true
-            }
+          
+            hidelater = "true"
+            
             
             
         }else if (hideBool == true){
@@ -1171,12 +1166,10 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = false
             self.view.makeToast("Record has been made visible, please apply to save", duration: 3.0, position: .center)
-            let prefs = UserDefaults.standard
-            if (prefs.string(forKey: "mainAllergyChronic") != nil){
-                hideUnhideRecord()
-            }else{
-                hidelater = true
-            }
+        
+           
+            hidelater = "false"
+        
         }
     }
     
@@ -1583,7 +1576,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             "description": dec,
             "recordId": recordValue,
             "severity": serverityValue,
-            "_hide": hideBool,
+            "_hide": false,
             "_save": save,
             "_delete": del,
             "subRecords": savedSubs
@@ -1616,7 +1609,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     let prefs = UserDefaults.standard
                     
                     
-                    if(self.hidelater == true){
+                     if(self.hidelater != "null"){
                         
                         self.recordValue = self.recordIdValue
                         self.hideUnhideRecord()
@@ -1716,6 +1709,15 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let currentActiveUserDetailsId = prefs.integer(forKey: "currentActiveUserDetailsId")
         
         let authToken = prefs.string(forKey: "authToken")
+        
+       
+        if (hidelater == "false"){
+            hideBool = false
+        }
+        
+        if (hidelater == "true"){
+            hideBool = true
+        }
         
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,

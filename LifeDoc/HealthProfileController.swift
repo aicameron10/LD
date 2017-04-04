@@ -330,7 +330,9 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
                     cell?.isHidden = false
                     cell?.alpha = 0.0
                 }
-                if(section == 1 && intialValue != -1 && movedValue != -1){
+                
+               
+                if(intialValue != -1 && movedValue != -1){
                     let prefs = UserDefaults.standard
                     self.saveOrder = prefs.object(forKey: "savedOrderProfile") as! [String]
                     
@@ -448,14 +450,10 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             let healthProfile = arrayHealthProfile[indexPath.row]
             
             
-            
             cell.count.text = healthProfile.subRecordCount
             
             cell.hiddenValue.text = healthProfile.hide
             
-            cell.showMore.tag = indexPath.row
-            
-            cell.showMore.addTarget(self,action:#selector(self.buttonClicked), for: .touchUpInside)
             
             cell.name.text = healthProfile.name
             cell.type.text = healthProfile.description
@@ -465,13 +463,28 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             cell.recordId.text = healthProfile.recordId
             
             
-            cell.showMore.setTitle("Show More/Less", for: .normal)
             
-            if(cell.count.text! == "0"){
-                cell.showMore.isHidden = true
+            if(cell.type.text!.uppercased() == "ALLERGY" || cell.type.text!.uppercased() == "CHRONIC CONDITION"){
+                cell.showMore.tag = indexPath.row
+                
+                cell.showMore.addTarget(self,action:#selector(self.buttonClicked), for: .touchUpInside)
+                
+                cell.showMore.setTitle("Show More/Less", for: .normal)
+                
+                if(cell.count.text! == "0"){
+                    cell.showMore.isHidden = true
+                }else{
+                    cell.showMore.isHidden = false
+                }
+                
+                
             }else{
-                cell.showMore.isHidden = false
+                
+                cell.showMore.isHidden = true
+
             }
+            
+        
             
             cell.subRecords.text = healthProfile.subRecords
             
@@ -647,19 +660,38 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             cell.count.layer.cornerRadius =  cell.count.frame.size.width / 2
             cell.count.clipsToBounds = true
             
-            cell.edit.tag = indexPath.row
             
-            cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
-            
-            cell.hide.tag = indexPath.row
-            
-            cell.hide.addTarget(self,action:#selector(self.buttonHideClicked), for: .touchUpInside)
-            
-            cell.more.tag = indexPath.row
-            
-            cell.more.addTarget(self,action:#selector(self.buttonMoreClicked), for: .touchUpInside)
-            
-            
+            if(cell.type.text!.uppercased() == "ALLERGY" || cell.type.text!.uppercased() == "CHRONIC CONDITION"){
+                
+                
+                cell.edit.tag = indexPath.row
+                
+                cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
+                
+                cell.edit.isHidden = false
+                
+                cell.hide.tag = indexPath.row
+                
+                cell.hide.addTarget(self,action:#selector(self.buttonHideClicked), for: .touchUpInside)
+                
+                cell.hide.isHidden = false
+                
+                cell.more.tag = indexPath.row
+                
+                cell.more.addTarget(self,action:#selector(self.buttonMoreClicked), for: .touchUpInside)
+                
+                cell.more.isHidden = false
+                
+            }else{
+                
+                
+                cell.edit.isHidden = true
+                
+                cell.hide.isHidden = true
+                
+                cell.more.isHidden = true
+                
+            }
             
             
             if(healthProfile.description == "Allergy"){
