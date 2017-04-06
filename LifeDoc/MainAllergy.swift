@@ -164,7 +164,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         hideBool = false
         somethingChanged = false
         countSkip = false
-     
+        
         
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "mainAllergyChronic") != nil){
@@ -1156,7 +1156,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = true
             self.view.makeToast("Record has been hidden, please apply to save", duration: 3.0, position: .center)
-          
+            
             hidelater = "true"
             
             
@@ -1166,10 +1166,10 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = false
             self.view.makeToast("Record has been made visible, please apply to save", duration: 3.0, position: .center)
-        
-           
+            
+            
             hidelater = "false"
-        
+            
         }
     }
     
@@ -1609,26 +1609,18 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     let prefs = UserDefaults.standard
                     
                     
-                     if(self.hidelater != "null"){
+                    if(self.hidelater != "null"){
                         
                         self.recordValue = self.recordIdValue
+                        prefs.set(self.messageStr, forKey: "savedServerMessage")
                         self.hideUnhideRecord()
+                    }else{
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.gethealthProfile()
+                        prefs.set(self.messageStr, forKey: "savedServerMessage")
+                        
                     }
                     
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //appDelegate.hideActivityIndicator(uiView: self.view)
-                    //self.showSuccess()
-                    
-                    appDelegate.gethealthProfile()
-                    //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                    
-                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
-                    
-                    
-                    prefs.set(self.messageStr, forKey: "savedServerMessage")
-                    
-                    //Toast(text: self.messageStr, duration: Delay.long).show()
-                    //self.dismiss(animated: true, completion: nil)
                     
                 }else{
                     
@@ -1710,7 +1702,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         let authToken = prefs.string(forKey: "authToken")
         
-       
+        
         if (hidelater == "false"){
             hideBool = false
         }
@@ -1759,21 +1751,10 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 if status == "SUCCESS"{
                     print("success")
                     
-                    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.gethealthProfile()
+       
                     
-                    //let prefs = UserDefaults.standard
-                    //prefs.set(self.messageStr, forKey: "savedServerMessage")
-                    
-                    //appDelegate.gethealthProfile()
-                    
-                    
-                    
-                }else{
-                    
-                    // get a reference to the app delegate
-                    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //appDelegate.hideActivityIndicator(uiView: self.view)
-                    //self.showError()
                 }
                 
             }

@@ -1615,25 +1615,20 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //appDelegate.hideActivityIndicator(uiView: self.view)
-                    //self.showSuccess()
-                    
+                  
                     if(self.hidelater != "null"){
                         
                         self.recordValue = self.recordIdValue
+                        prefs.set(self.messageStr, forKey: "savedServerMessage")
                         self.hideUnhideRecord()
+                    }else{
+                        appDelegate.gethealthProfile()
+                        let prefs = UserDefaults.standard
+                        prefs.set(self.messageStr, forKey: "savedServerMessage")
+
                     }
                     
-                    appDelegate.gethealthProfile()
-                    //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
                     
-                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
-                    
-                    let prefs = UserDefaults.standard
-                    prefs.set(self.messageStr, forKey: "savedServerMessage")
-                    
-                    //Toast(text: self.messageStr, duration: Delay.long).show()
-                    //self.dismiss(animated: true, completion: nil)
                     
                 }else{
                     
@@ -1765,21 +1760,11 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 if status == "SUCCESS"{
                     print("success")
                     
-                    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                   
+                    appDelegate.gethealthProfile()
+      
                     
-                    //let prefs = UserDefaults.standard
-                    //prefs.set(self.messageStr, forKey: "savedServerMessage")
-                    
-                    //appDelegate.gethealthProfile()
-                    
-                    
-                    
-                }else{
-                    
-                    // get a reference to the app delegate
-                    //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //appDelegate.hideActivityIndicator(uiView: self.view)
-                    // self.showError()
                 }
                 
             }
