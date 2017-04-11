@@ -23,13 +23,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            //save image
-            //display image
             
-            
-            //let myImage = image.resized(withPercentage: 50)
-            
-            //print(myImage)
             
             let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(image, jpegCompressionQuality)?.base64EncodedString()
@@ -1166,20 +1160,20 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = true
             self.view.makeToast("Record has been hidden, please apply to save", duration: 3.0, position: .center)
-           
-          
-           hidelater = "true"
-           
+            
+            
+            hidelater = "true"
+            
             
         }else if (hideBool == true){
             let image = UIImage(named: "blue_unhide") as UIImage?
             hideButton.setBackgroundImage(image, for: .normal)
             hideBool = false
             self.view.makeToast("Record has been made visible, please apply to save", duration: 3.0, position: .center)
-           
+            
             
             hidelater = "false"
-           
+            
             
         }
     }
@@ -1615,7 +1609,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                  
+                    
                     if(self.hidelater != "null"){
                         
                         self.recordValue = self.recordIdValue
@@ -1625,7 +1619,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                         appDelegate.gethealthProfile()
                         let prefs = UserDefaults.standard
                         prefs.set(self.messageStr, forKey: "savedServerMessage")
-
+                        
                     }
                     
                     
@@ -1718,7 +1712,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         if (hidelater == "true"){
             hideBool = true
         }
-
+        
         
         let parameters: Parameters = [
             "currentActiveUserDetailsId": currentActiveUserDetailsId,
@@ -1761,9 +1755,9 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     print("success")
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                   
+                    
                     appDelegate.gethealthProfile()
-      
+                    
                     
                 }
                 

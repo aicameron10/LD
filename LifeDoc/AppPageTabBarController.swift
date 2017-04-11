@@ -55,6 +55,6 @@ extension AppPageTabBarController {
 
 extension AppPageTabBarController: PageTabBarControllerDelegate {
     func pageTabBarController(pageTabBarController: PageTabBarController, didTransitionTo viewController: UIViewController) {
-        //print("pageTabBarController", pageTabBarController, "didTransitionTo viewController:", viewController)
+     
     }
 }

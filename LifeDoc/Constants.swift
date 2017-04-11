@@ -16,8 +16,7 @@ struct Constants {
     //static let appSSL: String = "secure.lifedoc.co.za"
     //static let appSSL: String = "csa-utility.mediswitch.co.za"
     
-    
-    static let appName: String = "LifeDoc"
+  
     static let baseURL: String = "https://rvp-utility.mediswitch.co.za:8443/ldmgw/"
     //static let baseURL: String = "https://secure.lifedoc.co.za/ldmgw/"
     //static let baseURL: String = "https://csa-utility.mediswitch.co.za:8443/ldmgw/"
@@ -28,7 +27,7 @@ struct Constants {
     //Dev
     //static let termsUrl: String = "https://rvp-utility.mediswitch.co.za:8443/bIlMix7LPB6PCqQSRenuLlKq9qcV7gsGwKBNR4R8HgPERCENT3DPERCENT3DEncryptUtil"
     
-    
+    static let appName: String = "LifeDoc"
     static let err_msg_email_forgot: String = "Please enter a valid email address."
     static let err_msg_email: String = "Please enter your email address."
     static let err_msg_email_valid: String = "Please enter a valid email address."
@@ -40,8 +39,6 @@ struct Constants {
     static let err_msg_dob: String = "Please enter your date of birth."
     static let err_msg_two_decimal: String = "Please ensure input starts with a digit and only has two decimal places"
     static let msg_lifedoc_terms: String = "The LifeDoc terms and conditions have been updated. Your continual use of the app implies your acceptance of these terms and conditions."
-    
-    
     static let err_msg_Fasting: String = "Please capture between 0.00 and 150.00"
     static let err_msg_HB1AC: String = "Please capture between 0.00 and 100.00"
     static let err_msg_Random: String = "Please capture between 0.00 and 150.00"
@@ -79,9 +76,7 @@ struct Constants {
     static let err_msg_profile_dob: String = "Please enter your date of birth."
     static let err_msg_profile_id: String = "Please enter a valid 13-digit South African ID number."
     static let welcome_nodata: String = "Welcome to LifeDoc. Start adding records by clicking on the + icon at the bottom right of your screen."
- 
     static let regex: String = "^(?=(.*\\d){1})(?=.*[a-zA-Z])(?=.*[!@#$%^/|=&*?~\\^])[0-9a-zA-Z!@#$%^/|=&*?~\\^]{8,20}"
-    
     static let err_msg_cholesterol: String = "Please capture between 0.00 and 20.00"
     
     

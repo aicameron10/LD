@@ -22,17 +22,11 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            //save image
-            //display image
             
-            
-            //let myImage = image.resized(withPercentage: 50)
-            
-            //print(myImage)
             
             let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(image, jpegCompressionQuality)?.base64EncodedString()
-            //print(base64String as Any)
+            
             
             let prefs = UserDefaults.standard
             prefs.set(base64String, forKey: "attachBase64")
@@ -51,23 +45,17 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
-    
     @IBOutlet weak var dropDownButton: NiceButton!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var desc: ErrorTextField!
     @IBOutlet weak var attach: UIButton!
-    
     @IBOutlet weak var bpCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
     
@@ -84,14 +72,10 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     var savedNotes: [[String: AnyObject]] = []
     
-    
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
     
     var somethingChanged : Bool = Bool()
-    
-    
     
     var hideImage : Bool = Bool()
     
@@ -191,15 +175,13 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     
     func loadList(notification: NSNotification){
-        //load data here
-        print("reloading table on allergy")
+        
         
         indexOfExpandedCell = -1
         
         ShowMoreLess = "closed"
         
         shouldCellBeExpanded = false
-        
         
         loadDataNotes()
         loadDataPath()
@@ -212,7 +194,6 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     }
     
     func loadListAttach(notification: NSNotification){
-        //load data here
         
         listAttachments()
         
@@ -257,13 +238,8 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             for (_, object) in json {
                 
-                print(object)
-                
                 let del = object["_delete"].stringValue
                 
-                print("del-"+del)
-                
-                print("hello*****************************"+del)
                 
                 if(del == "false" || del == "" || del == " "){
                     
@@ -310,12 +286,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             for (_, object) in json {
                 
-                print(object)
-                
                 let del = object["_delete"].stringValue
-                
-                print("del-"+del)
-                
                 
                 if(del == "false" || del == "" || del == " "){
                     
@@ -360,11 +331,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             for (_, object) in json {
                 
-                print(object)
-                
                 let del = object["_delete"].stringValue
-                
-                print("del-"+del)
                 
                 
                 if(del == "false" || del == "" || del == " "){
@@ -411,16 +378,12 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             for (_, object) in json {
                 
-                print(object)
                 
                 let del = object["_delete"].stringValue
-                
-                print("del-"+del)
                 
                 
                 if(del == "false" || del == "" || del == " "){
                     
-                    print("count me in")
                     countHos += 1
                 }
                 
@@ -461,16 +424,13 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             for (_, object) in json {
                 
-                print(object)
                 
                 let del = object["_delete"].stringValue
-                
-                print("del-"+del)
                 
                 
                 if(del == "false" || del == "" || del == " "){
                     
-                    print("count me in")
+                    
                     countMedi += 1
                 }
                 
@@ -636,7 +596,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        
         view.endEditing(true)
     }
     
@@ -674,10 +634,6 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = MainRecordCustomCell()
-        
-        //let cell:HealthAssessmentCustomCell = self.tableViewAssess.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! HealthAssessmentCustomCell
-        // Don't forget to enter this in IB also
-        //let cellReuseIdentifier = "CellAssess\(indexPath.row-2)"
         
         cell = tableView.dequeueReusableCell(withIdentifier: "CellMainRecord", for: indexPath) as! MainRecordCustomCell
         
@@ -783,10 +739,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         if(ShowMoreLess == "closed"){
             shouldCellBeExpanded = true
             
-            
-            
             indexOfExpandedCell = indexPath.row
-            //print(indexOfEditCell)
             let indexPathNow = IndexPath(item: indexOfExpandedCell, section: 0)
             self.tableView.beginUpdates()
             self.tableView.reloadRows(at: [indexPathNow], with: .fade)
@@ -800,7 +753,6 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             
             
             indexOfExpandedCell = indexPath.row
-            //print(indexOfEditCell)
             let indexPathNow = IndexPath(item: indexOfExpandedCell, section: 0)
             self.tableView.beginUpdates()
             self.tableView.reloadRows(at: [indexPathNow], with: .fade)
@@ -922,13 +874,11 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             })
             
             
-            // 4
             optionMenuPhoto.addAction(photoAction)
             optionMenuPhoto.addAction(galleryAction)
             //optionMenuPhoto.addAction(fileAction)
             optionMenuPhoto.addAction(cancelAction)
             
-            // 5
             //presentViewController(optionMenu, animated: true, completion: nil)
             parent?.present(optionMenuPhoto, animated: true, completion: nil)
             //self.present(optionMenu, animated: true, completion: nil)
@@ -1753,7 +1703,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.gethealthProfile()
-       
+                    
                     
                 }
                 

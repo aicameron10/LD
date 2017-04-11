@@ -17,73 +17,49 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
     
     
     public func fileExplorerViewControllerDidFinish(_ controller: FileExplorerViewController) {
-        //
+        
     }
     
-    
-    
     @IBOutlet weak var count: UILabel!
-    
     @IBOutlet weak var name: UILabel!
-    
     @IBOutlet weak var expandRow: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         setUpTable()
         
-        
     }
-    
     
     func setUpTable()
     {
         tableView?.delegate = self
         tableView?.dataSource = self
-        
-        
-        
     }
     
     
     var downLoadID = ""
-    
     var downloadName = ""
-    
     var arrayNoteSub = [NoteSub]()
     var arrayPathSub = [PathSub]()
     var arrayDocSub = [DocSub]()
     var arrayHosSub = [HosSub]()
     var arrayMediSub = [MediSub]()
-    
     var arrayAttachSub = [AttachSub]()
-    
     var deletedList : Array<String> = Array()
-    
     var hideList : Array<String> = Array()
-    
     var messageStr : String = String()
     var indexOfChangedCell = -1
-    
     var indexOfDeletedCell = -1
-    
     var indexOfEditCell = -1
-    
     var indexOfAttachCell = -1
-    
     var hideValue = false
-    
-    let cellReuseIdentifier = "cellAllergy"
-    
     var hideRecord = false
-    
     var hideRecordValue = false
     var counterNow = -1
-    
-    
     var downFail = false
+    
+    let cellReuseIdentifier = "cellAllergy"
     
     public func loadJSON() -> JSON {
         let prefs = UserDefaults.standard
@@ -91,7 +67,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         if (prefs.string(forKey: "Notes") != nil){
             //print(JSON.parse(prefs.string(forKey: "Notes")!))
             return JSON.parse(prefs.string(forKey: "Notes")!)
-            
             
         }else{
             return nil
@@ -183,7 +158,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             for item in json["attachments"].arrayValue {
                 
-                //print(object["Date"].stringValue)
                 count += 1
                 
                 let attach = AttachSub()
@@ -195,7 +169,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 attach.pos = count
                 
                 self.arrayAttachSub.append(attach)
-                
                 
             }
             
@@ -210,10 +183,8 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "Pathology") != nil){
             
-            //print(json)
             var count = -1
             for (_, object) in json {
-                //print(object["Date"].stringValue)
                 count += 1
                 
                 let path = PathSub()
@@ -273,7 +244,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 
                 self.arrayDocSub.append(doc)
                 
-                
             }
             
         }
@@ -314,7 +284,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 
                 self.arrayHosSub.append(hos)
                 
-                
             }
             
         }
@@ -353,7 +322,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 
                 self.arrayMediSub.append(medi)
                 
-                
             }
             
         }
@@ -367,10 +335,9 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "Notes") != nil){
             
-            //print(json)
             var count = -1
             for (_, object) in json {
-                //print(object["Date"].stringValue)
+                
                 count += 1
                 
                 let notes = NoteSub()
@@ -408,7 +375,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             type = prefs.string(forKey: "SubType")!
             
         }
-        
         
         self.arrayNoteSub.removeAll()
         self.arrayPathSub.removeAll()
@@ -487,7 +453,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         let cell:RecordsCustomCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! RecordsCustomCell
         
         
-        
         let prefs = UserDefaults.standard
         var type = ""
         if (prefs.string(forKey: "SubType") != nil){
@@ -510,9 +475,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             let note = arrayNoteSub[indexPath.row]
             
             
-            
-            //cell.pos.text = String(indexPath.row)
-            
             cell.name.text = note.note
             cell.dateStr.text = note.date
             cell.recordId.text = note.id
@@ -525,7 +487,9 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             if(note.delete == "true"){
                 cell.isHidden = true
-                cell.tag = note.tag
+                cell.tag = -1
+                
+                
             }
             
             cell.edit.tag = indexPath.row
@@ -535,9 +499,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         }else if(type == "Pathology Results"){
             let path = arrayPathSub[indexPath.row]
             
-            
-            
-            //cell.pos.text = String(indexPath.row)
             
             cell.name.text = path.desc
             cell.dateStr.text = path.date
@@ -561,16 +522,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         else if(type == "Doctor Visits"){
             let doc = arrayDocSub[indexPath.row]
             
-            
-            
-            //cell.pos.text = String(indexPath.row)
-            
             cell.name.text = doc.docName
             cell.dateStr.text = doc.date
             cell.recordId.text = doc.id
             
-            
-            print(doc.pos)
             cell.pos.text = String(describing: doc.pos)
             
             cell.hiddenValue.text = doc.hide
@@ -588,15 +543,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             let hos = arrayHosSub[indexPath.row]
             
             
-            
-            //cell.pos.text = String(indexPath.row)
-            
             cell.name.text = hos.hosName
             cell.dateStr.text = hos.datead + " to " +  hos.datedis
             cell.recordId.text = hos.id
             
-            
-            print(hos.pos)
             cell.pos.text = String(describing: hos.pos)
             
             cell.hiddenValue.text = hos.hide
@@ -613,9 +563,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         else if(type == "Medication"){
             let medi = arrayMediSub[indexPath.row]
             
-            
-            
-            //cell.pos.text = String(indexPath.row)
             
             cell.name.text = medi.mediName
             if(medi.dateend == ""){
@@ -654,9 +601,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.edit.setBackgroundImage(image, for: .normal)
             
             
-            
-            //cell.pos.text = String(indexPath.row)
-            
             cell.name.text = attach.attachmentName
             
             cell.dateStr.text = attach.description
@@ -671,15 +615,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.edit.addTarget(self,action:#selector(self.buttonAttachClicked), for: .touchUpInside)
             
             
-            
-            
         }
-        
-        
-        
-        
-        
-        
         
         
         if(cell.hiddenValue.text! == "false"){
@@ -753,7 +689,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             showAreYouSure()
             
             
-            
         }
         
         if(indexPath.row == indexOfAttachCell)
@@ -803,15 +738,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             }
             
             
-            
-            
-            
         }
-        
-        
-        
-        
-        
         
         
         
@@ -833,7 +760,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         let prefs = UserDefaults.standard
         prefs.set(j.rawString()!, forKey: "singleMeasurement")
         
-        // here I save my JSON as a string
     }
     
     public func saveJSONSubNote(){
@@ -865,19 +791,69 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = tableView.cellForRow(at: indexPath)
         
-        print(cell?.tag as Any)
-        if(cell?.tag == -1){
-            print("table cell")
-            return 1
-        }
+        
+        let prefs = UserDefaults.standard
+        var type = ""
+        if (prefs.string(forKey: "SubType") != nil){
             
-        else{
-            print("table cell 2")
-            return 90
+            type = prefs.string(forKey: "SubType")!
+            
         }
         
+        
+        if(type == "Notes"){
+            let show  = arrayNoteSub[indexPath.row]
+            if(show.delete == "true"){
+                
+                return 0
+            }else{
+                
+                return 90
+            }
+            
+        }else if(type == "Pathology Results"){
+            let show = arrayPathSub[indexPath.row]
+            if(show.delete == "true"){
+                
+                return 0
+            }else{
+                
+                return 90
+            }
+        }
+        else if(type == "Doctor Visits"){
+            let show = arrayDocSub[indexPath.row]
+            if(show.delete == "true"){
+                
+                return 0
+            }else{
+                
+                return 90
+            }
+        }
+        else if(type == "Hospital Visits"){
+            let show = arrayHosSub[indexPath.row]
+            if(show.delete == "true"){
+                
+                return 0
+            }else{
+                
+                return 90
+            }
+        }
+        else if(type == "Medication"){
+            let show = arrayMediSub[indexPath.row]
+            if(show.delete == "true"){
+                
+                return 0
+            }else{
+                
+                return 90
+            }
+        }
+        
+        return 90
         
         
         
@@ -903,9 +879,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         self.tableView.reloadRows(at: [indexPath], with: .fade)
         self.tableView.endUpdates()
         
-        
-        
-        //self.window?.rootViewController?.dismiss(animated: false, completion: nil)
         
         let prefs = UserDefaults.standard
         var typeOf = ""
@@ -975,9 +948,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         
         let buttonRow = sender.tag
         indexOfAttachCell = buttonRow
-        print("attach clicked")
-        
-        
         
         let indexPath = IndexPath(item: indexOfAttachCell, section: 0)
         self.tableView.beginUpdates()
@@ -1013,9 +983,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
         
         let buttonRow = sender.tag
         indexOfChangedCell = buttonRow
-        
-        
-        
         
         let indexPath = IndexPath(item: indexOfChangedCell, section: 0)
         self.tableView.beginUpdates()
@@ -1483,8 +1450,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             fileExplorer.allowsMultipleSelection = false //specify whether user is allowed to choose multiple files and/or directories
             fileExplorer.fileFilters = [Filter.extension("jpg"),Filter.extension("png"),Filter.extension("pdf")]
             
-            //let documentsUrl = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
-            //fileExplorer.initialDirectoryURL = documentsUrl
             fileExplorer.ignoredFileFilters = [Filter.extension("txt")]
             fileExplorer.delegate = self
             
@@ -1566,14 +1531,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             "Content-Type": "application/json",
             "Cache-Control": "no-cache"
         ]
-        
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
-        
-        // Both calls are equivalent
+ 
         MainRecordCustomCell.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).response { response in
             
             
@@ -1603,16 +1561,13 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                             PHAssetChangeRequest.creationRequestForAsset(from: decodedimage!)
                         }, completionHandler: { success, error in
                             if success {
-                                // Saved successfully!
+                      
                             }
                             else if let error = error {
-                                // Save photo failed with error
-                                
+                    
                                 print(error)
                             }
-                            else {
-                                // Save photo failed with no error
-                            }
+                            
                         })
                         
                     }
@@ -1624,10 +1579,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                         let filename = self.getDocumentsDirectory().appendingPathComponent(name)
                         try? dataDecoded.write(to: filename)
                     }
-                    
-                    
-                    
-                    
+             
                     
                     self.messageStr =  self.downloadName +  " downloaded successfully"
                     
@@ -1718,12 +1670,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 json[posIndex!]["_hide"].boolValue = false
                 json[posIndex!]["_save"].boolValue = true
             }
-            
-            
+
             
             self.saveJSONMedi(j: json)
-            
-            print(json)
+      
             
         }
         

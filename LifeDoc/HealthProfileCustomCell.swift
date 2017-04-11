@@ -26,16 +26,13 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
     @IBOutlet weak var edit: UIButton!
     
     
-    
     var indexOfTouchCell = -1
     
     var arraySubs = [SubsCount]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         setUpTable()
-        
         let prefs = UserDefaults.standard
         prefs.removeObject(forKey: "recordSubs")
     }
@@ -71,7 +68,6 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
                 if(object["count"].stringValue != "0"){
                     
                     self.arraySubs.append(subs)
-                    
                     
                     
                 }
@@ -157,26 +153,7 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
         if(indexPath.row == indexOfTouchCell)
         {
             
-            
-            // let prefs = UserDefaults.standard
-            // prefs.removeObject(forKey: "singleMeasurement")
-            
-            //let hidden = cell.hiddenValue.text!
-            // let date = cell.date.text!
-            
-            //prefs.set(hidden, forKey: "isHiddenValue")
-            //prefs.set(date, forKey: "dateValue")
-            
-            //let json = JSON(cell.recordId.text!)
-            
-            //self.saveJSONNow(j: json)
-            
-            
-            
         }
-        
-        
-        
         
         return cell
     }
@@ -195,18 +172,4 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
         
     }
     
-    
 }
-
-
-
-
-class SubsCount{
-    var count = ""
-    var description = ""
-    
-    
-    
-    
-}
-

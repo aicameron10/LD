@@ -98,7 +98,7 @@ class AppToolbarController: ToolbarController {
         
         UIApplication.shared.keyWindow?.rootViewController = statusController
         
-        //self.present((rootViewController: statusController),animated: false)
+    
         
         
     }

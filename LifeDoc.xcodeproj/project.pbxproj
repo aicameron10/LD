@@ -93,6 +93,7 @@
 		D656020D1E28C68800A8ED22 /* ic_path_sub.png in Resources */ = {isa = PBXBuildFile; fileRef = D65602081E28C68800A8ED22 /* ic_path_sub.png */; };
 		D656020F1E28D05A00A8ED22 /* MainRecordCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D656020E1E28D05A00A8ED22 /* MainRecordCustomCell.swift */; };
 		D659FDA11DFF0EDE00131288 /* AssessmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */; };
+		D65D53FB1E9CC21800B2183B /* SubsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D53FA1E9CC21800B2183B /* SubsCount.swift */; };
 		D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */; };
 		D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */; };
 		D66E937A1E7AE6D7003DA2C5 /* ld.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93771E7AE6D7003DA2C5 /* ld.png */; };
@@ -102,6 +103,7 @@
 		D67EFD561E4985E00073DF8F /* DoctorSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */; };
 		D67EFD581E498E920073DF8F /* HospitalSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */; };
 		D67EFD5A1E4AE6880073DF8F /* MedicationSubRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67EFD591E4AE6870073DF8F /* MedicationSubRecord.swift */; };
+		D68ABED11E9B9C0900984622 /* HealthAssessmentMeasure.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68ABED01E9B9C0800984622 /* HealthAssessmentMeasure.swift */; };
 		D69B8E9E1E025DF5008F1739 /* BodyTempController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */; };
 		D69B8EA01E0266BF008F1739 /* HeightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8E9F1E0266BF008F1739 /* HeightController.swift */; };
 		D69B8EA21E026A3B008F1739 /* PulseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69B8EA11E026A3B008F1739 /* PulseController.swift */; };
@@ -277,6 +279,7 @@
 		D65602081E28C68800A8ED22 /* ic_path_sub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_path_sub.png; sourceTree = "<group>"; };
 		D656020E1E28D05A00A8ED22 /* MainRecordCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRecordCustomCell.swift; sourceTree = "<group>"; };
 		D659FDA01DFF0EDE00131288 /* AssessmentsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssessmentsCell.swift; sourceTree = "<group>"; };
+		D65D53FA1E9CC21800B2183B /* SubsCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubsCount.swift; sourceTree = "<group>"; };
 		D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodGlucoseContoller.swift; sourceTree = "<group>"; };
 		D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPresssureContoller.swift; sourceTree = "<group>"; };
 		D66E93771E7AE6D7003DA2C5 /* ld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ld.png; sourceTree = "<group>"; };
@@ -286,6 +289,7 @@
 		D67EFD551E4985DF0073DF8F /* DoctorSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoctorSubRecord.swift; sourceTree = "<group>"; };
 		D67EFD571E498E920073DF8F /* HospitalSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalSubRecord.swift; sourceTree = "<group>"; };
 		D67EFD591E4AE6870073DF8F /* MedicationSubRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MedicationSubRecord.swift; sourceTree = "<group>"; };
+		D68ABED01E9B9C0800984622 /* HealthAssessmentMeasure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAssessmentMeasure.swift; sourceTree = "<group>"; };
 		D69B8E9D1E025DF5008F1739 /* BodyTempController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyTempController.swift; sourceTree = "<group>"; };
 		D69B8E9F1E0266BF008F1739 /* HeightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightController.swift; sourceTree = "<group>"; };
 		D69B8EA11E026A3B008F1739 /* PulseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseController.swift; sourceTree = "<group>"; };
@@ -594,6 +598,8 @@
 				D6F422321E826F2A00A7FB70 /* HosSub.swift */,
 				D6F422341E826F4100A7FB70 /* MediSub.swift */,
 				D6F422361E826F5400A7FB70 /* AttachSub.swift */,
+				D68ABED01E9B9C0800984622 /* HealthAssessmentMeasure.swift */,
+				D65D53FA1E9CC21800B2183B /* SubsCount.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1072,9 +1078,11 @@
 				D69B8E9E1E025DF5008F1739 /* BodyTempController.swift in Sources */,
 				D6FB578D1DD310B30045910F /* RightViewController.swift in Sources */,
 				D6FB577D1DD1D3C70045910F /* HealthProfileController.swift in Sources */,
+				D68ABED11E9B9C0900984622 /* HealthAssessmentMeasure.swift in Sources */,
 				D6F4222F1E826EFF00A7FB70 /* PathSub.swift in Sources */,
 				D69B8EA01E0266BF008F1739 /* HeightController.swift in Sources */,
 				D656020F1E28D05A00A8ED22 /* MainRecordCustomCell.swift in Sources */,
+				D65D53FB1E9CC21800B2183B /* SubsCount.swift in Sources */,
 				D6FB577F1DD1D3D20045910F /* AppPageTabBarController.swift in Sources */,
 				D60ECB491DF6BC2A00E35CB0 /* Duration.swift in Sources */,
 				D65602001E26A34A00A8ED22 /* KCFABWindow.swift in Sources */,

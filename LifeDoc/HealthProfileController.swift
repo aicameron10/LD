@@ -434,10 +434,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             
         }
         if (indexPath.section == 1){
-            //let cell:HealthAssessmentCustomCell = self.tableViewAssess.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! HealthAssessmentCustomCell
-            // Don't forget to enter this in IB also
-            //let cellReuseIdentifier = "CellAssess\(indexPath.row-2)"
-            
+        
             cell = tableView.dequeueReusableCell(withIdentifier: "CellProfile", for: indexPath) as! HealthProfileCustomCell
             
             cell.separatorInset.left = 20.0

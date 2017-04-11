@@ -15,14 +15,12 @@ import Toast_Swift
 class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate  {
     
     @IBOutlet weak var assessName: UILabel!
-    
     @IBOutlet weak var count: UILabel!
     @IBOutlet weak var dragHandle: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var assessImage: UIImageView!
     @IBOutlet weak var showMoreAssess: UIButton!
     @IBOutlet weak var measurements: UILabel!
-    
     
     
     override func awakeFromNib() {
@@ -40,30 +38,17 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         tableView?.delegate = self
         tableView?.dataSource = self
         
-        
-        
     }
     
     var arrayHealthAssessmentMeasure = [HealthAssessmentMeasure]()
-    
-    
     var deletedList : Array<String> = Array()
-    
     var hideList : Array<String> = Array()
-    
     var messageStr : String = String()
     var indexOfChangedCell = -1
-    
     var indexOfDeletedCell = -1
-    
     var indexOfEditCell = -1
-    
-    
-    
     let cellReuseIdentifier = "cellID"
-    
     var hideRecord = false
-    
     var hideRecordValue = false
     
     
@@ -108,13 +93,11 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                 
                 deletedList.append(object["id"].stringValue)
                 
-                
             }
         }
         
         
     }
-    
     
     
     func loadData(){
@@ -124,7 +107,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "measurementValue") != nil){
             
-            // print(json)
             
             for (_, object) in json {
                 
@@ -148,14 +130,10 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                         finalStr = finalStr + "\n" +  type + ": " + value + " " + unit
                     }
                     
-                    
-                    
                 }
                 
                 
                 healthAssess.measurements = finalStr
-                
-                
                 self.arrayHealthAssessmentMeasure.append(healthAssess)
                 
             }
@@ -194,27 +172,8 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         cell.valueStr.text = healthAssess.measurements
         cell.date.text = healthAssess.datetime
         cell.recordId.text = healthAssess.individualMeasure
-        
         cell.hiddenValue.text = healthAssess.hide
-        
-        
-        
-        //print(healthAssess.hide)
-        
-        
-        
-        if(cell.hiddenValue.text! == "false"){
-            let image = UIImage(named: "blue_unhide") as UIImage?
-            cell.hide.setBackgroundImage(image, for: .normal)
-            
-        }else if (cell.hiddenValue.text! == "true"){
-            let image = UIImage(named: "blue_hide") as UIImage?
-            cell.hide.setBackgroundImage(image, for: .normal)
-            
-        }
-        
-        
-        
+  
         if(indexPath.row == indexOfChangedCell)
         {
             hideList.removeAll()
@@ -226,15 +185,14 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             self.saveJSONNow(j: json)
             
             loadDataSingle()
+       
             
-            let hidden = cell.hiddenValue.text!
-            
-            if(hidden == "false"){
+            if(healthAssess.hide == "false"){
                 let image = UIImage(named: "blue_hide") as UIImage?
                 cell.hide.setBackgroundImage(image, for: .normal)
                 hideRecordValue = true
                 
-            }else if (hidden == "true"){
+            }else if (healthAssess.hide == "true"){
                 let image = UIImage(named: "blue_unhide") as UIImage?
                 cell.hide.setBackgroundImage(image, for: .normal)
                 hideRecordValue = false
@@ -243,7 +201,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             
             
         }
-        
         
         
         if(indexPath.row == indexOfDeletedCell)
@@ -258,8 +215,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             self.saveJSONNow(j: json)
             
             loadDataSingle()
-            
-            
             
             
         }
@@ -287,8 +242,17 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         }
         
         
+        if(healthAssess.hide == "false"){
+            let image = UIImage(named: "blue_unhide") as UIImage?
+            cell.hide.setBackgroundImage(image, for: .normal)
+            
+        }else if (healthAssess.hide == "true"){
+            let image = UIImage(named: "blue_hide") as UIImage?
+            cell.hide.setBackgroundImage(image, for: .normal)
+            
+        }
         
-        
+
         
         
         cell.edit.tag = indexPath.row
@@ -313,7 +277,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         let prefs = UserDefaults.standard
         prefs.set(j.rawString()!, forKey: "singleMeasurement")
         
-        // here I save my JSON as a string
     }
     
     
@@ -321,7 +284,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         
         
         return 90
-        
         
         
     }
@@ -344,7 +306,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .fade)
         self.tableView.endUpdates()
-        
         
         
         self.window?.rootViewController?.dismiss(animated: false, completion: nil)
@@ -433,15 +394,10 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         let buttonRow = sender.tag
         indexOfChangedCell = buttonRow
         
-        
-        
-        
         let indexPath = IndexPath(item: indexOfChangedCell, section: 0)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: [indexPath], with: .fade)
         self.tableView.endUpdates()
-        
-        
         
         self.hideUnhideRecord()
         
@@ -460,7 +416,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         
         let optionMenu = UIAlertController(title: nil, message: "More Options", preferredStyle: .actionSheet)
         
-        // 2
         let deleteAction = UIAlertAction(title: "Delete", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             
@@ -474,8 +429,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             self.tableView.reloadRows(at: [indexPath], with: .fade)
             self.tableView.endUpdates()
             
-            
-            
             self.showAreYouSure()
             
         })
@@ -486,15 +439,11 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             print("Cancelled")
         })
         
-        
-        // 4
         optionMenu.addAction(deleteAction)
         optionMenu.addAction(cancelAction)
         
-        // 5
-        //presentViewController(optionMenu, animated: true, completion: nil)
         self.window?.rootViewController?.present(optionMenu, animated: true, completion: nil)
-        //self.present(optionMenu, animated: true, completion: nil)
+        
         
     }
     
@@ -511,7 +460,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         { action -> Void in
             
             
-            
             self.deleteRecord()
         })
         self.window?.rootViewController?.present(ac, animated: true)
@@ -520,8 +468,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
     
     private func deleteRecord() {
         
-        
-        // get a reference to the app delegate
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.showActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
         
@@ -555,24 +501,14 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
             "Accept": "application/json"
         ]
         
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
-        
-        // Both calls are equivalent
         HealthAssessmentCustomCell.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
             
             
             if let jsonResponse = response.result.value {
-                //print("JSON: \(jsonResponse)")
                 var json = JSON(jsonResponse)
                 let status = json["status"]
                 self.messageStr = json["message"].string!
-                
-                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
                 
                 
                 if status == "SUCCESS"{
@@ -584,17 +520,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                     
                     appDelegate.gethealthAssessments()
                     
-                    
-                    
-                    //self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 5.0, position: .bottom)
-                    
-                    
-                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
-                    
-                    
-                    
-                }else{
-                    //Toast(text: self.messageStr, duration: Delay.long).show()
                     
                 }
                 
@@ -633,13 +558,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                 print("URLError occurred: \(error)")
                 
                 
-                
-            } else {
-                
-                // get a reference to the app delegate
-                // let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                //appDelegate.hideActivityIndicator(uiView: self.view)
-                // self.showNetworkError()
                 
             }
         }
@@ -685,24 +603,15 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         ]
         
         
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
-        
-        // Both calls are equivalent
         HealthAssessmentCustomCell.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
             
             
             if let jsonResponse = response.result.value {
-                //print("JSON: \(jsonResponse)")
+                
                 var json = JSON(jsonResponse)
                 let status = json["status"]
                 self.messageStr = json["message"].string!
-                
-                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
-                
                 
                 if status == "SUCCESS"{
                     
@@ -715,18 +624,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                     appDelegate.gethealthAssessments()
                     
                     
-                    
-                    
-                    //self.window!.rootViewController?.view.makeToast(self.messageStr, duration: 5.0, position: .bottom)
-                    
-                    
-                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
-                    
-                    
-                    
-                }else{
-                    
-                    //Toast(text: self.messageStr, duration: Delay.long).show()
                 }
                 
             }
@@ -765,13 +662,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                 
                 
                 
-            } else {
-                
-                // get a reference to the app delegate
-                // let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                //appDelegate.hideActivityIndicator(uiView: self.view)
-                // self.showNetworkError()
-                
             }
         }
         
@@ -785,7 +675,6 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         let serverTrustPolicies: [String: ServerTrustPolicy] = [
             Constants.appSSL: .disableEvaluation
         ]
-        
         // Create custom manager
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
@@ -799,16 +688,3 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
     
     
 }
-
-class HealthAssessmentMeasure {
-    var id = ""
-    var hide = ""
-    var datetime = ""
-    var measurements = ""
-    var individualMeasure = ""
-    
-    
-    
-}
-
-

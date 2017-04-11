@@ -43,7 +43,6 @@ class AppMenuSubRecords: MenuController {
     }
 }
 
-/// Menu.
 extension AppMenuSubRecords {
     open override func openMenu(completion: ((UIView) -> Void)? = nil) {
         super.openMenu(completion: completion)

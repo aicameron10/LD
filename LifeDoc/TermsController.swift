@@ -11,9 +11,6 @@ import UIKit
 import Material
 
 
-
-
-
 class TermsController: UIViewController,UIWebViewDelegate  {
     
     @IBOutlet weak var closeButton: UIBarButtonItem!
@@ -29,9 +26,7 @@ class TermsController: UIViewController,UIWebViewDelegate  {
         let url = NSURL(string: Constants.termsUrl)
         let urlRequest = NSURLRequest(url: url! as URL)
         self.webView.loadRequest(urlRequest as URLRequest)
-        
-        
-        
+  
         
     }
     
