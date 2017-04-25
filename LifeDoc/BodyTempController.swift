@@ -14,57 +14,38 @@ import Toast_Swift
 class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sDate: ErrorTextField!
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var sTime: ErrorTextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var btTemp: ErrorTextField!
-    
-    
-    
     @IBOutlet weak var sCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var idTemp : String = String()
-    
     var NewDate : Bool = Bool()
-    
     var NewTime : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+      
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BodyTempContoller.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+       
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -115,8 +96,6 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         prepareTemp()
         prepareDate()
         prepareTime()
-        
-        
         prepareDateView()
         prepareTimeView()
         
@@ -905,19 +884,13 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                     
                     
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    //appDelegate.hideActivityIndicator(uiView: self.view)
-                    //self.showSuccess()
                     
                     appDelegate.gethealthAssessments()
-                    //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-                    
-                    //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadTable"), object: nil)
-                    
+                   
                     let prefs = UserDefaults.standard
                     prefs.set(self.messageStr, forKey: "savedServerMessage")
                     
-                    //Toast(text: self.messageStr, duration: Delay.long).show()
-                    //self.dismiss(animated: true, completion: nil)
+                  
                 }else{
                     
                     self.saveButton.isEnabled = true
@@ -966,11 +939,6 @@ class BodyTempContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.hideActivityIndicator(uiView: self.view)
                 self.showNetworkError()
-                
-            } else {
-                
-                
-                
                 
             }
             

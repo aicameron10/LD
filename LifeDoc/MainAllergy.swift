@@ -19,7 +19,6 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         //
     }
     
-    
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
@@ -60,60 +59,34 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     fileprivate var singleDate: Date = Date()
     
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     let imagePicker = UIImagePickerController()
-    
-    
     var NewDate : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
-    
     var savedNotes: [[String: AnyObject]] = []
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var hideImage : Bool = Bool()
-    
     var countSkip : Bool = Bool()
-    
     var hidelater = "null"
-    
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDate = ""
-    
     var serverityValue = "Select Severity"
     var recordValue = ""
-    
     var dropDownOption = ""
-    
     var countAttachments = 0
-    
     var counterNote = ""
     var counterMedi = ""
     var counterPath = ""
     var counterHos = ""
     var counterDoc = ""
-    
     var recordIdValue = ""
-    
     let chooseDropDown = DropDown()
-    
     var indexOfExpandedCell = -1
-    
     var ShowMoreLess = "closed"
-    
     var shouldCellBeExpanded = false
-    
-    
     var countNotes = 0
     var countMedi = 0
     var countDoc = 0
@@ -124,17 +97,10 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
-        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MainAllergy.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        //view.addGestureRecognizer(tap)
-        
+       
         view.addSubview(scrollView)
         
         self.navItem.title = "Edit Allergy"
-        
         
         imagePicker.delegate = self
         
@@ -178,9 +144,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         
         
         indexOfExpandedCell = -1
-        
         ShowMoreLess = "closed"
-        
         shouldCellBeExpanded = false
         
         loadDataNotes()

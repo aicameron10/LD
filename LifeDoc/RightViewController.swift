@@ -171,11 +171,7 @@ class RightViewController: UIViewController {
             "Accept": "application/json"
         ]
         
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
-        
+
         // Both calls are equivalent
         RightViewController.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
@@ -236,10 +232,6 @@ class RightViewController: UIViewController {
             } else if let error = response.result.error  as? URLError {
                 print("URLError occurred: \(error)")
                 self.showNetworkError()
-                
-            } else {
-                
-                
                 
             }
             

@@ -29,29 +29,18 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     @IBOutlet weak var bgRandom: ErrorTextField!
     @IBOutlet weak var bgCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var idRandom : String = String()
     var idHb1ac : String = String()
     var idFasting : String = String()
-    
-   
     var NewDate : Bool = Bool()
-    
     var NewTime : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
@@ -59,11 +48,9 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+    
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BloodGlucoseContoller.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+      
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -118,7 +105,6 @@ class BloodGlucoseContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         prepareFasting()
         prepareDate()
         prepareTime()
-        
         prepareDateView()
         prepareTimeView()
         

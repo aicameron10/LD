@@ -46,81 +46,50 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
-    
     @IBOutlet weak var dropDownButton: NiceButton!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var condition: ErrorTextField!
     @IBOutlet weak var attach: UIButton!
-    
     @IBOutlet weak var bpCalendar: UIButton!
-    fileprivate var singleDate: Date = Date()
     
+    fileprivate var singleDate: Date = Date()
     fileprivate var multipleDates: [Date] = []
     
     var messageStr : String = String()
-    
     let imagePicker = UIImagePickerController()
-    
     var NewDate : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
-    
     var hidelater = "null"
-    
     var savedNotes: [[String: AnyObject]] = []
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
-    
-    
     var hideImage : Bool = Bool()
-    
     var countSkip : Bool = Bool()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDate = ""
-    
     var serverityValue = "Status of condition"
     var recordValue = ""
-    
     var dropDownOption = ""
-    
     var recordIdValue = ""
-    
     var countAttachments = 0
-    
     var counterNote = ""
     var counterMedi = ""
     var counterPath = ""
     var counterHos = ""
     var counterDoc = ""
-    
     let chooseDropDown = DropDown()
-    
     var indexOfExpandedCell = -1
-    
     var ShowMoreLess = "closed"
-    
     var shouldCellBeExpanded = false
-    
-    
     var countNotes = 0
     var countMedi = 0
     var countDoc = 0
@@ -132,13 +101,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
-        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BloodPresssureContoller.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
-        //view.addGestureRecognizer(tap)
-        
+      
         view.addSubview(scrollView)
         
         self.navItem.title = "Edit Chronic Condition"
@@ -184,12 +147,9 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         print("reloading table on chronic")
         
         indexOfExpandedCell = -1
-        
         ShowMoreLess = "closed"
-        
         shouldCellBeExpanded = false
-        
-        
+    
         loadDataNotes()
         loadDataPath()
         loadDataDoc()
@@ -249,7 +209,6 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 
                 let del = object["_delete"].stringValue
                 
-                print("hello*****************************"+del)
                 
                 if(del == "false" || del == "" || del == " "){
                     countNotes += 1
@@ -664,10 +623,6 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = MainRecordCustomCell()
-        
-        //let cell:HealthAssessmentCustomCell = self.tableViewAssess.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! HealthAssessmentCustomCell
-        // Don't forget to enter this in IB also
-        //let cellReuseIdentifier = "CellAssess\(indexPath.row-2)"
         
         cell = tableView.dequeueReusableCell(withIdentifier: "CellMainRecordChronic", for: indexPath) as! MainRecordCustomCell
         
@@ -1673,11 +1628,6 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                 appDelegate.hideActivityIndicator(uiView: self.view)
                 self.showNetworkError()
                 
-            } else {
-                
-                
-                
-                
             }
             
         }
@@ -1688,10 +1638,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
     
     private func hideUnhideRecord() {
         
-        
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //appDelegate.showActivityIndicator(uiView: self.view)
-        
+    
         
         let urlString: String
         
@@ -1731,11 +1678,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
             "Accept": "application/json"
         ]
         
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
+   
         
         // Both calls are equivalent
         MainChronic.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
@@ -1811,8 +1754,7 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         let prefs = UserDefaults.standard
         
         prefs.set(j.rawString()!, forKey: "Attachments")
-        
-        // here I save my JSON as a string
+   
     }
     
     
@@ -1883,9 +1825,6 @@ class MainChronic: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
                     
                     self.tableView.reloadData()
                     
-                }else{
-                    
-                    //self.showError()
                 }
                 
             }

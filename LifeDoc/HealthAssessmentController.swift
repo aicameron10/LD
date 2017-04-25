@@ -29,29 +29,17 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
     }
     
     var messageStr : String = String()
-    
     var shouldCellBeExpanded = false
     var indexOfExpandedCell = -1
     var ShowMoreLess = "Show More"
-    
     var measurementValue = ""
-    
     var tempCell = 0
-    
-    
     var arrayHealthAssessment = [HealthAssessment]()
-    
-    
     var intialValue = -1
-    
     var movedValue = -1
-    
     var saveOrder : [String] = []
-    
     var add : Array<String> = Array()
-    
     let NUMBER_OF_STATIC_CELLS = 1
-    
     open override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -1077,13 +1065,4 @@ class HealthAssessmentController: UIViewController, UITableViewDataSource, UITab
 }
 
 
-class HealthAssessment {
-    var id = ""
-    var type = ""
-    var count = ""
-    var measurements = ""
-    var sortNum = 0
-    
-    
-}
 

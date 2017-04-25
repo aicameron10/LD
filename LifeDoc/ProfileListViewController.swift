@@ -21,8 +21,7 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     private func preparePageTabBarItem() {
-        //pageTabBarItem.title = "My Profile"
-        //pageTabBarItem.titleColor = Color.white
+      
         
         let myString = "My Profile"
         let myMutableString = NSMutableAttributedString(
@@ -39,8 +38,7 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
         
         pageTabBarItem.setAttributedTitle(myMutableString, for: UIControlState.normal)
         
-        
-        
+
     }
     
     
@@ -68,8 +66,7 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
         
         cell.textStr.text = textNames[indexPath.row]
         
-        
-        
+
         
         return cell
         
@@ -90,10 +87,7 @@ class ProfileListViewController: UIViewController, UITableViewDataSource, UITabl
             self.present(profile, animated: false, completion: nil)
             
         }
-        
-        
-        
-        
+ 
         
     }
     

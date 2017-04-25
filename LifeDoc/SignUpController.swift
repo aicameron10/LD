@@ -31,21 +31,16 @@ class SignUpController: UIViewController, WWCalendarTimeSelectorProtocol  {
     @IBOutlet weak var lastNameField: ErrorTextField!
     
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var GenderStr = String()
     var NewsStr : Bool = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+  
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+ 
         view.addGestureRecognizer(tap)
         
         NewsStr = false
@@ -174,12 +169,7 @@ class SignUpController: UIViewController, WWCalendarTimeSelectorProtocol  {
         print("Button tapped")
         
         self.dismiss(animated: true, completion: nil)
-        
-        //let pageViewController: PageViewController = {
-        //   return UIStoryboard.viewController(identifier: "PageViewController") as! PageViewController
-        //}()
-        
-        //self.present(pageViewController, animated: true, completion: nil)
+    
         
         
     }

@@ -659,8 +659,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
                 print("Underlying error: \(error.underlyingError)")
             } else if let error = response.result.error as? URLError {
                 print("URLError occurred: \(error)")
-                
-                
+     
                 
             }
         }
@@ -668,7 +667,7 @@ class HealthAssessmentCustomCell: UITableViewCell,UITableViewDataSource,UITableV
         
     }
     
-    
+
     private static var Manager: Alamofire.SessionManager = {
         
         // Create the server trust policies

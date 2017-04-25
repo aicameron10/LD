@@ -169,7 +169,6 @@ class HealthProfileCustomCell: UITableViewCell,UITableViewDataSource,UITableView
         
         return 45
         
-        
     }
     
 }

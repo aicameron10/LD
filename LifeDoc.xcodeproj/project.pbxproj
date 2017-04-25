@@ -96,6 +96,8 @@
 		D65D53FB1E9CC21800B2183B /* SubsCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D53FA1E9CC21800B2183B /* SubsCount.swift */; };
 		D65D84F91E00799900F87817 /* BloodGlucoseContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */; };
 		D65D84FB1E00873B00F87817 /* BloodPresssureContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */; };
+		D66262BE1EAF544400BFE838 /* HealthAssessment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66262BD1EAF544400BFE838 /* HealthAssessment.swift */; };
+		D66262C01EAF54AA00BFE838 /* HealthProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66262BF1EAF54AA00BFE838 /* HealthProfile.swift */; };
 		D66E937A1E7AE6D7003DA2C5 /* ld.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93771E7AE6D7003DA2C5 /* ld.png */; };
 		D66E937B1E7AE6D7003DA2C5 /* ld@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93781E7AE6D7003DA2C5 /* ld@3x.png */; };
 		D66E937C1E7AE6D7003DA2C5 /* ld@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D66E93791E7AE6D7003DA2C5 /* ld@2x.png */; };
@@ -282,6 +284,8 @@
 		D65D53FA1E9CC21800B2183B /* SubsCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubsCount.swift; sourceTree = "<group>"; };
 		D65D84F81E00799900F87817 /* BloodGlucoseContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodGlucoseContoller.swift; sourceTree = "<group>"; };
 		D65D84FA1E00873B00F87817 /* BloodPresssureContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloodPresssureContoller.swift; sourceTree = "<group>"; };
+		D66262BD1EAF544400BFE838 /* HealthAssessment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthAssessment.swift; sourceTree = "<group>"; };
+		D66262BF1EAF54AA00BFE838 /* HealthProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthProfile.swift; sourceTree = "<group>"; };
 		D66E93771E7AE6D7003DA2C5 /* ld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ld.png; sourceTree = "<group>"; };
 		D66E93781E7AE6D7003DA2C5 /* ld@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ld@3x.png"; sourceTree = "<group>"; };
 		D66E93791E7AE6D7003DA2C5 /* ld@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ld@2x.png"; sourceTree = "<group>"; };
@@ -600,6 +604,8 @@
 				D6F422361E826F5400A7FB70 /* AttachSub.swift */,
 				D68ABED01E9B9C0800984622 /* HealthAssessmentMeasure.swift */,
 				D65D53FA1E9CC21800B2183B /* SubsCount.swift */,
+				D66262BD1EAF544400BFE838 /* HealthAssessment.swift */,
+				D66262BF1EAF54AA00BFE838 /* HealthProfile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1086,6 +1092,7 @@
 				D6FB577F1DD1D3D20045910F /* AppPageTabBarController.swift in Sources */,
 				D60ECB491DF6BC2A00E35CB0 /* Duration.swift in Sources */,
 				D65602001E26A34A00A8ED22 /* KCFABWindow.swift in Sources */,
+				D66262BE1EAF544400BFE838 /* HealthAssessment.swift in Sources */,
 				D65602031E26A34A00A8ED22 /* KCFloatingActionButtonItem.swift in Sources */,
 				D60ECB151DD9B59F00E35CB0 /* ForgotPasswordController.swift in Sources */,
 				D65601F41E26300300A8ED22 /* MainAllergy.swift in Sources */,
@@ -1110,6 +1117,7 @@
 				D6293F4C1DD1AF080037B2B2 /* AppDelegate.swift in Sources */,
 				D67EFD581E498E920073DF8F /* HospitalSubRecord.swift in Sources */,
 				D6F422371E826F5400A7FB70 /* AttachSub.swift in Sources */,
+				D66262C01EAF54AA00BFE838 /* HealthProfile.swift in Sources */,
 				D65601F61E264B3700A8ED22 /* NiceButton.swift in Sources */,
 				D6C770681E1F822D0006A2E4 /* TermsViewController.swift in Sources */,
 				D6FB57851DD1E71A0045910F /* AppMenuController.swift in Sources */,

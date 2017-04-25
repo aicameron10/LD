@@ -15,17 +15,14 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
     
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var cholesterolDate: ErrorTextField!
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var cholesterolTime: ErrorTextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var cholesterolTrig: ErrorTextField!
     @IBOutlet weak var cholesterolLDL: ErrorTextField!
@@ -33,43 +30,28 @@ class CholesterolController: UIViewController, WWCalendarTimeSelectorProtocol  {
     @IBOutlet weak var cholesterolTotal: ErrorTextField!
     @IBOutlet weak var cholesterolCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var idTotal : String = String()
     var idHdl : String = String()
     var idLdl : String = String()
     var idTrig : String = String()
-    
-    
     var NewDate : Bool = Bool()
-    
     var NewTime : Bool = Bool()
-    
     var hideBool : Bool = Bool()
-    
     var fields : Array<String> = Array()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+      
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CholesterolController.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+     
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)

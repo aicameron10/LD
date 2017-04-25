@@ -18,79 +18,43 @@ import UserNotifications
 class AttachmentController: UIViewController,UITextViewDelegate{
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
-    
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var name: ErrorTextField!
-    
-    
     @IBOutlet weak var navItem: UINavigationItem!
-    
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var noteText: UITextView!
-    
     @IBOutlet weak var dropDown: NiceButton!
-    
     @IBOutlet weak var errorNote: UILabel!
-    
-    
     @IBOutlet weak var clearButton: UIButton!
     
-    
-    
     var messageStr : String = String()
-    
     var idDiastolic : String = String()
-    
     var NewDate : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
-    
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var subRecords : Array<String> = Array()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDate = ""
-    
     var editNote = ""
-    
     var recordValue = ""
-    
     var lastdate = ""
-    
     var dropDownOption = ""
-    
     let chooseDropDown = DropDown()
-    
     var countAttachments = 0
-    
     var ddValue = "Image"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+      
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(AttachmentController.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+        
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -101,23 +65,16 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         NewDate = false
         hideBool = false
         somethingChanged = false
-        
-        
-        
-        
+
         errorNote.isHidden = true
         clearButton.isHidden = true
         
         
         prepareCloseButton()
-        
         prepareSaveButton()
-        
         prepareDesc()
         prepareFileName()
-        
         preparedropdown()
-        
         prepareClearButton()
         
         
@@ -151,20 +108,12 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         
         chooseDropDown.anchorView = dropDown
         
-        // Will set a custom with instead of anchor view width
-        //		dropDown.width = 100
-        
-        // By default, the dropdown will have its origin on the top left corner of its anchor view
-        // So it will come over the anchor view and hide it completely
-        // If you want to have the dropdown underneath your anchor view, you can do this:
+       
         chooseDropDown.bottomOffset = CGPoint(x: 0, y: dropDown.bounds.height)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
         chooseDropDown.dataSource = ["Image", "Document", "Medical Certificate","X-rays","Radiology Report","Pathology Report"]
-        
-        
-        
-        // Action triggered on selection
+
         chooseDropDown.selectionAction = { [unowned self] (index, item) in
             
             
@@ -176,15 +125,6 @@ class AttachmentController: UIViewController,UITextViewDelegate{
         
         chooseDropDown.direction = .any
         
-        // Action triggered on dropdown cancelation (hide)
-        //		dropDown.cancelAction = { [unowned self] in
-        //			// You could for example deselect the selected item
-        //			self.dropDown.deselectRowAtIndexPath(self.dropDown.indexForSelectedRow)
-        //			self.actionButton.setTitle("Canceled", forState: .Normal)
-        //		}
-        
-        // You can manually select a row if needed
-        //		dropDown.selectRowAtIndex(3)
         
     }
     

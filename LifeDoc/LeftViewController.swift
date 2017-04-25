@@ -38,7 +38,6 @@ class LeftViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         profilePic.isUserInteractionEnabled = true
         profilePic.addGestureRecognizer(tapGestureRecognizer)
-        
         profilePic.layer.cornerRadius = profilePic.frame.size.width / 2;
         profilePic.clipsToBounds = true
         

@@ -58,7 +58,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
     var hideRecordValue = false
     var counterNow = -1
     var downFail = false
-    
     let cellReuseIdentifier = "cellAllergy"
     
     public func loadJSON() -> JSON {
@@ -203,7 +202,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     path.tag = 1
                 }
                 
-                
                 self.arrayPathSub.append(path)
                 
                 
@@ -240,7 +238,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 }else{
                     doc.tag = 1
                 }
-                
                 
                 self.arrayDocSub.append(doc)
                 
@@ -281,7 +278,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     hos.tag = 1
                 }
                 
-                
                 self.arrayHosSub.append(hos)
                 
             }
@@ -319,7 +315,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     medi.tag = 1
                 }
                 
-                
                 self.arrayMediSub.append(medi)
                 
             }
@@ -354,9 +349,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                     notes.tag = 1
                 }
                 
-                
                 self.arrayNoteSub.append(notes)
-                
                 
             }
             
@@ -478,22 +471,16 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.name.text = note.note
             cell.dateStr.text = note.date
             cell.recordId.text = note.id
-            
-            
-            print(note.pos)
             cell.pos.text = String(describing: note.pos)
-            
             cell.hiddenValue.text = note.hide
             
             if(note.delete == "true"){
                 cell.isHidden = true
                 cell.tag = -1
                 
-                
             }
             
             cell.edit.tag = indexPath.row
-            
             cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
             
         }else if(type == "Pathology Results"){
@@ -503,11 +490,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.name.text = path.desc
             cell.dateStr.text = path.date
             cell.recordId.text = path.id
-            
-            
-            print(path.pos)
             cell.pos.text = String(describing: path.pos)
-            
             cell.hiddenValue.text = path.hide
             
             if(path.delete == "true"){
@@ -516,7 +499,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             }
             
             cell.edit.tag = indexPath.row
-            
             cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
         }
         else if(type == "Doctor Visits"){
@@ -525,9 +507,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.name.text = doc.docName
             cell.dateStr.text = doc.date
             cell.recordId.text = doc.id
-            
             cell.pos.text = String(describing: doc.pos)
-            
             cell.hiddenValue.text = doc.hide
             
             if(doc.delete == "true"){
@@ -535,7 +515,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 cell.tag = doc.tag
             }
             cell.edit.tag = indexPath.row
-            
             cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
             
         }
@@ -546,9 +525,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             cell.name.text = hos.hosName
             cell.dateStr.text = hos.datead + " to " +  hos.datedis
             cell.recordId.text = hos.id
-            
             cell.pos.text = String(describing: hos.pos)
-            
             cell.hiddenValue.text = hos.hide
             
             if(hos.delete == "true"){
@@ -557,7 +534,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             }
             
             cell.edit.tag = indexPath.row
-            
             cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
         }
         else if(type == "Medication"){
@@ -573,11 +549,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             
             cell.recordId.text = medi.id
-            
-            
-            print(medi.pos)
             cell.pos.text = String(describing: medi.pos)
-            
             cell.hiddenValue.text = medi.hide
             
             if(medi.delete == "true"){
@@ -585,7 +557,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
                 cell.tag = medi.tag
             }
             cell.edit.tag = indexPath.row
-            
             cell.edit.addTarget(self,action:#selector(self.buttonEditClicked), for: .touchUpInside)
             
         }
@@ -594,7 +565,6 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             cell.hide.isHidden = true
             cell.delete.isHidden = true
-            
             cell.recordId.text = attach.id
             
             let image = UIImage(named : "blue_attach.png")
@@ -602,16 +572,10 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             
             cell.name.text = attach.attachmentName
-            
             cell.dateStr.text = attach.description
-            
             cell.recordId.text = attach.id
-            
-            
             cell.pos.text = String(describing: attach.pos)
-            
             cell.edit.tag = indexPath.row
-            
             cell.edit.addTarget(self,action:#selector(self.buttonAttachClicked), for: .touchUpInside)
             
             
@@ -700,9 +664,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             
         }
-        
-        
-        
+
         if(indexPath.row == indexOfEditCell)
         {
             
@@ -716,9 +678,7 @@ class MainRecordCustomCell: UITableViewCell,UITableViewDataSource,UITableViewDel
             
             
             let pos = cell.pos.text!
-            
-            print(pos)
-            
+  
             prefs.set(pos, forKey: "posEdit")
             
             

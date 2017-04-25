@@ -15,45 +15,28 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sDate: ErrorTextField!
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var sTime: ErrorTextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var weight: ErrorTextField!
-    
-    
-    
     @IBOutlet weak var sCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var idWeight : String = String()
-    
     var NewDate : Bool = Bool()
-    
     var NewTime : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
     var editTime = ""
     var editDate = ""
@@ -61,11 +44,9 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+       
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WeightContoller.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+       
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -114,8 +95,7 @@ class WeightContoller: UIViewController, WWCalendarTimeSelectorProtocol  {
         prepareDeleteButton()
         prepareTime()
         prepareDate()
-        prepareWeight()
-        
+        prepareWeight() 
         prepareDateView()
         prepareTimeView()
         

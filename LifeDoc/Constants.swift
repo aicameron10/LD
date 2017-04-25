@@ -13,13 +13,13 @@ struct Constants {
     
     //SSL
     //static let appSSL: String = "rvp-utility.mediswitch.co.za"
-    //static let appSSL: String = "secure.lifedoc.co.za"
-    static let appSSL: String = "csa-utility.mediswitch.co.za"
+    static let appSSL: String = "secure.lifedoc.co.za"
+    //static let appSSL: String = "csa-utility.mediswitch.co.za"
     
     //Base URL
     //static let baseURL: String = "https://rvp-utility.mediswitch.co.za:8443/ldmgw/"
-    //static let baseURL: String = "https://secure.lifedoc.co.za/ldmgw/"
-    static let baseURL: String = "https://csa-utility.mediswitch.co.za:8443/ldmgw/"
+    static let baseURL: String = "https://secure.lifedoc.co.za/ldmgw/"
+    //static let baseURL: String = "https://csa-utility.mediswitch.co.za:8443/ldmgw/"
  
     
     //Production

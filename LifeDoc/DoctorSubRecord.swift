@@ -16,95 +16,60 @@ import DropDown
 class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextViewDelegate{
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
-    
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var ReasonText: UITextView!
-    
     @IBOutlet weak var docName: ErrorTextField!
     @IBOutlet weak var docNum: ErrorTextField!
     @IBOutlet weak var docSpecial: ErrorTextField!
     @IBOutlet weak var TreatText: UITextView!
     @IBOutlet weak var hideButton: UIButton!
-    
     @IBOutlet weak var errorReason: UILabel!
     @IBOutlet weak var errorTreat: UILabel!
-    
     @IBOutlet weak var wordCount: UILabel!
     @IBOutlet weak var wordCount1: UILabel!
-    
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var clearButton1: UIButton!
-    
     @IBOutlet weak var bpCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var idDiastolic : String = String()
-    
     var NewDate : Bool = Bool()
-    
     var NewCheck : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
-    
-    
     var fromDoc : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var subRecords : Array<String> = Array()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDate = ""
-    
     var editReason = ""
     var editTreat = ""
     var editDocName = ""
     var editDocNum = ""
     var editDocSpecial = ""
-    
     var recordValue = ""
-    
     var editFromDoc = ""
-    
     var lastdate = ""
-    
     var dropDownOption = ""
-    
     var countAttachments = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DoctorSubRecord.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+   
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -145,7 +110,6 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         prepareDocName()
         prepareDocSpecail()
         prepareDocNum()
-        
         prepareReason()
         
         
@@ -214,11 +178,7 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         editDate = Date
         lastdate = updatedDate
         deletedList.append(json[posIndex!]["recordId"].stringValue)
-        
-        
-        
-        
-        
+ 
         
     }
     
@@ -303,9 +263,6 @@ class DoctorSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextVi
         
         
     }
-    
-    
-    
     
     
     private func prepareDate() {

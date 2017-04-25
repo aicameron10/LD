@@ -737,5 +737,242 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LifeDoc/ProfileController.swift"
+            timestampString = "514805711.469633"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "ProfileController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.ProfileController.bloodType.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;LifeDoc.NiceButton&gt;"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/ProfileController.swift"
+                  timestampString = "514805712.714869"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.ProfileController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; LifeDoc.ProfileController"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/ProfileController.swift"
+                  timestampString = "514805712.717548"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "615">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of LifeDoc.ProfileController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;LifeDoc.ProfileController&gt;"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/ProfileController.swift"
+                  timestampString = "514805712.719477"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "587">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LifeDoc/BmiController.swift"
+            timestampString = "514805800.055975"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "BmiController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.BmiController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; LifeDoc.BmiController"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/BmiController.swift"
+                  timestampString = "514805800.565997"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "417">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of LifeDoc.BmiController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;LifeDoc.BmiController&gt;"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/BmiController.swift"
+                  timestampString = "514805800.568403"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "392">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LifeDoc/HealthProfileController.swift"
+            timestampString = "514806895.599956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "HealthProfileController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.HealthProfileController.imagePickerControllerDidCancel (__ObjC.UIImagePickerController) -&gt; ()"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/HealthProfileController.swift"
+                  timestampString = "514806896.281746"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "@objc LifeDoc.HealthProfileController.imagePickerControllerDidCancel (__ObjC.UIImagePickerController) -&gt; ()"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/HealthProfileController.swift"
+                  timestampString = "514806896.285078"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LifeDoc/BloodGlucoseContoller.swift"
+            timestampString = "514807082.763548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "BloodGlucoseContoller"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.BloodGlucoseContoller.NewTime.getter : Swift.Bool"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/BloodGlucoseContoller.swift"
+                  timestampString = "514807083.40818"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.BloodGlucoseContoller.NewTime.setter : Swift.Bool"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/BloodGlucoseContoller.swift"
+                  timestampString = "514807083.41009"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LifeDoc.BloodGlucoseContoller.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; LifeDoc.BloodGlucoseContoller"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/BloodGlucoseContoller.swift"
+                  timestampString = "514807083.412575"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "548">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of LifeDoc.BloodGlucoseContoller.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;LifeDoc.BloodGlucoseContoller&gt;"
+                  moduleName = "LifeDoc"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrewcameron/Desktop/IOS/LifeDoc/LifeDoc/BloodGlucoseContoller.swift"
+                  timestampString = "514807083.414462"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "523">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

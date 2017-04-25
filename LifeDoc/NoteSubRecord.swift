@@ -16,76 +16,46 @@ import DropDown
 class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextViewDelegate{
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
-    
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var noteText: UITextView!
     @IBOutlet weak var hideButton: UIButton!
-    
     @IBOutlet weak var errorNote: UILabel!
-    
     @IBOutlet weak var wordCount: UILabel!
-    
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var bpCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
     var idDiastolic : String = String()
-    
     var NewDate : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
-    
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var subRecords : Array<String> = Array()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDate = ""
-    
     var editNote = ""
-    
     var recordValue = ""
-    
     var lastdate = ""
-    
     var dropDownOption = ""
-    
     var countAttachments = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+      
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BloodPresssureContoller.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+     
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -105,7 +75,6 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         errorNote.isHidden = true
         clearButton.isHidden = true
-        
         
         prepareCloseButton()
         prepareCalendarButton()
@@ -168,11 +137,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         lastdate = updatedDate
         deletedList.append(json[posIndex!]["recordId"].stringValue)
         
-        
-        
-        
-        
-        
+
     }
     
     
@@ -250,10 +215,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         }else{
             self.dismiss(animated: true, completion: nil)
         }
-        
-        
-        
-        
+  
         
     }
     
@@ -307,10 +269,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         }
         
         return text == filtered
-        
-        
-        
-        
+  
     }
     
     func textViewDidChange(_ textView: UITextView) { //Handle the text changes here
@@ -318,9 +277,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
     }
     
     private func prepareDesc() {
-        
-        //self.noteText.contentInset = UIEdgeInsetsMake(2, -2, 2, -10)
-        //noteText.isScrollEnabled = false
+
         noteText.delegate = self
         let prefs = UserDefaults.standard
         if (prefs.string(forKey: "NotesEdit") != nil){
@@ -489,10 +446,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         
         return true
     }
-    
-    
-    
-    
+ 
     
     private func showCal() {
         
@@ -552,11 +506,7 @@ class NoteSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextView
         let strDate: String = bpDate.text!
         
         let note: String = noteText.text!
-        
-        //let strDesc: String = condition.text!
-        
-        
-        
+
         let jsonObject: NSMutableDictionary = NSMutableDictionary()
         
         

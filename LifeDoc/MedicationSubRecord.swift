@@ -16,111 +16,75 @@ import DropDown
 class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextViewDelegate{
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var dateView1: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
     @IBOutlet weak var bpDate1: ErrorTextField!
-    
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var checkBox: ISRadioButton!
     @IBOutlet weak var checkBox1: ISRadioButton!
-    
     @IBOutlet weak var ReasonText: UITextView!
-    
     @IBOutlet weak var mediName: ErrorTextField!
     @IBOutlet weak var strength: ErrorTextField!
     @IBOutlet weak var dosage: ErrorTextField!
     @IBOutlet weak var freq: ErrorTextField!
     @IBOutlet weak var preDoctor: ErrorTextField!
     @IBOutlet weak var repeats: ErrorTextField!
-    
     @IBOutlet weak var notesText: UITextView!
     @IBOutlet weak var hideButton: UIButton!
-    
     @IBOutlet weak var errorReason: UILabel!
     @IBOutlet weak var errorNote: UILabel!
-    
     @IBOutlet weak var wordCount: UILabel!
     @IBOutlet weak var wordCount1: UILabel!
-    
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var clearButton1: UIButton!
-    
     @IBOutlet weak var bpCalendar: UIButton!
     @IBOutlet weak var bpCalendar1: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
-    
     var NewDate : Bool = Bool()
-    
     var NewCheck : Bool = Bool()
     var NewCheck1 : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
     var endDate : Bool = Bool()
-    
     var fromDoc : Bool = Bool()
     var isRepeat : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var subRecords : Array<String> = Array()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDatestart = ""
     var editDateend = ""
     var editReason = ""
     var editNote = ""
     var editmediName = ""
-    
     var editstrength = ""
     var editdosage = ""
     var editfreq = ""
     var editpreDoc = ""
     var editrepeats = ""
-    
     var recordValue = ""
-    
     var editFromDoc = ""
     var editisRepeat = ""
-    
     var lastdate = ""
-    
     var dropDownOption = ""
-    
     var countAttachments = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+     
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MedicationSubRecord.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+        
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -151,7 +115,6 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
         clearButton.isHidden = true
         clearButton1.isHidden = true
         
-        
         prepareCloseButton()
         prepareCalendarButton()
         prepareCalendarButton1()
@@ -164,10 +127,8 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
         prepareDateView1()
         prepareClearButton()
         prepareClearButton1()
-        
         prepareDate1()
         prepareReason()
-        
         prepareMediName()
         prepareStrength()
         prepareDosage()
@@ -225,10 +186,7 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
         
         let fromDoctor = json[posIndex!]["Was this medicine prescribed by a doctor?"].stringValue
         let isRepeat = json[posIndex!]["Is this a repeat prescription?"].stringValue
-        
-        
-        
-        
+
         if (json[posIndex!]["_hide"].stringValue == "true"){
             
             hideImage = true
@@ -257,12 +215,7 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
         editDateend = endDate
         lastdate = updatedDate
         deletedList.append(json[posIndex!]["recordId"].stringValue)
-        
-        
-        
-        
-        
-        
+  
     }
     
     
@@ -497,16 +450,11 @@ class MedicationSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITe
             self.dismiss(animated: true, completion: nil)
         }
         
-        
-        
-        
+
         
     }
     
-    
-    
-    
-    
+
     private func prepareDate() {
         
         bpDate.placeholder = "Start date"

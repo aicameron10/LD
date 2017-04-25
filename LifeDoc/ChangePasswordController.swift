@@ -14,10 +14,10 @@ import Toast_Swift
 
 
 class ChangePasswordController: UIViewController  {
+    
     @IBOutlet weak var oldPassword: ErrorTextField!
     @IBOutlet weak var newPassword: ErrorTextField!
     @IBOutlet weak var confirmPassword: ErrorTextField!
-    
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -26,13 +26,10 @@ class ChangePasswordController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+     
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginController.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+    
         view.addGestureRecognizer(tap)
-        
         
         prepareOldPasswordField()
         preparePasswordField()

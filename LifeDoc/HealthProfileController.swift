@@ -13,25 +13,15 @@ import FileExplorer
 
 
 class HealthProfileController: UIViewController, UITableViewDataSource, UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,FileExplorerViewControllerDelegate {
-    /// Tells the delegate that the user finished presentation of the file explorer.
-    ///
-    /// - Parameter controller: The controller object managing the file explorer interface.
+  
     public func fileExplorerViewControllerDidFinish(_ controller: FileExplorerViewController) {
         //
     }
-    
-    
+
     
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            //save image
-            //display image
-            
-            
-            //let myImage = image.resized(withPercentage: 50)
-            
-            //print(myImage)
-            
+           
             let jpegCompressionQuality: CGFloat = 0.75 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(image, jpegCompressionQuality)?.base64EncodedString()
             //print(base64String as Any)
@@ -56,10 +46,7 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     
     let imagePicker = UIImagePickerController()
     
-    
-    
     var refreshControl = UIRefreshControl()
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,51 +61,30 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
     }
     
     var messageStr : String = String()
-    
     var shouldCellBeExpanded = false
     var indexOfExpandedCell = -1
     var ShowMoreLess = "Show More"
-    
     var indexOfChangedCell = -1
-    
     var indexOfDeletedCell = -1
     var indexOfEditCell = -1
     var indexOfAttachCell = -1
-    
     var deletedListValue = ""
-    
     var hideList : Array<String> = Array()
-    
     var deleteList : Array<String> = Array()
-    
     var deleteValue = ""
-    
     var measurementValue = ""
-    
     var arrayHealthProfile = [HealthProfile]()
-    
     var saveOrder : [String] = []
-    
     var add : Array<String> = Array()
-    
     let NUMBER_OF_STATIC_CELLS = 1
-    
     var hideRecord = false
-    
     var hideRecordValue = false
-    
     var recordType = ""
-    
     var recordValue = ""
-    
     var delIndexKey = ""
-    
     var indexPaths: [IndexPath] = []
-    
     var intialValue = -1
-    
     var movedValue = -1
-    
     open override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -126,7 +92,6 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
         self.refreshControl.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         self.tableViewProfile?.addSubview(refreshControl)
-        
         self.tableViewProfile.estimatedRowHeight = 80.0
         self.tableViewProfile.rowHeight = UITableViewAutomaticDimension
         
@@ -157,7 +122,6 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
             print("Nil value returned so no history")
             gethealthProfile()
         }
-        
         
         let prefs = UserDefaults.standard
         prefs.removeObject(forKey: "globalDoctor")
@@ -2045,16 +2009,6 @@ class HealthProfileController: UIViewController, UITableViewDataSource, UITableV
 }
 
 
-class HealthProfile {
-    var recordId = ""
-    var name = ""
-    var subRecordCount = ""
-    var description = ""
-    var lastUpdated = ""
-    var hide = ""
-    var subRecords = ""
-    
-}
 extension UIImage {
     func resized(withPercentage percentage: CGFloat) -> UIImage? {
         let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)

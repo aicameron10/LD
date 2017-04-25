@@ -19,7 +19,6 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             let upright = image.fixOrientation()
-            
             let jpegCompressionQuality: CGFloat = 0.7 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(upright, jpegCompressionQuality)?.base64EncodedString()
             
@@ -44,111 +43,70 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
     
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
-    
     @IBOutlet weak var profilePic: UIImageView!
-    
     @IBOutlet weak var navItem: UINavigationItem!
-    
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var titlenow: ErrorTextField!
-    
     @IBOutlet weak var initials: ErrorTextField!
     @IBOutlet weak var firstName: ErrorTextField!
     @IBOutlet weak var lastName: ErrorTextField!
     @IBOutlet weak var maiden: ErrorTextField!
     @IBOutlet weak var idNum: ErrorTextField!
     @IBOutlet weak var passportNum: ErrorTextField!
-    
     @IBOutlet weak var gender: NiceButton!
-    
     @IBOutlet weak var nationality: NiceButton!
-    
     @IBOutlet weak var marital: NiceButton!
     @IBOutlet weak var ethnicity: NiceButton!
-    
     @IBOutlet weak var donorNum: ErrorTextField!
     @IBOutlet weak var bloodNum: ErrorTextField!
-    
     @IBOutlet weak var bloodType: NiceButton!
-    
     @IBOutlet weak var bpCalendar: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
-    
-    
     var NewDate : Bool = Bool()
-    
-    
     var validateID : Bool = Bool()
-    
-    
-    
     let chooseDropDown = DropDown()
     let chooseDropDownNationality = DropDown()
     let chooseDropDownEthnicity = DropDown()
     let chooseDropDownMarital = DropDown()
     let chooseDropDownBloodType = DropDown()
-    
     var fromDoc : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var subRecords : Array<String> = Array()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDate = ""
-    
     var editReason = ""
     var editTreat = ""
     var editDocName = ""
     var editDocNum = ""
     var editDocSpecial = ""
-    
     var valueGender = "Please select"
     var valueNationality = "South African"
     var valueEthnicity = "Please select"
     var valueMarital = "Please select"
     var valueBloodType = "Please select"
-    
     var recordValue = ""
-    
     var editFromDoc = ""
-    
     var lastdate = ""
-    
     var dropDownOption = ""
-    
     var countAttachments = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+      
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DoctorSubRecord.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+     
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -167,10 +125,8 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         prepareCloseButton()
         prepareCalendarButton()
         prepareSaveButton()
-        
         prepareDate()
         prepareDateView()
-        
         prepareTitle()
         prepareFirstName()
         prepareMaiden()
@@ -185,7 +141,6 @@ class ProfileController: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         preparedropdownBloodType()
         prepareOrgan()
         prepareBlood()
-        
         prepareProfilePic()
         
         getDetails()

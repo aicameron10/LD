@@ -78,7 +78,6 @@ class LoginController: UIViewController {
         emailField.detailLabel.numberOfLines = 0
         emailField.delegate = self
         
-        
         emailField.addTarget(self,action: #selector(textFieldDidChangeEmail),for: UIControlEvents.editingDidEnd)
         
         emailField.addTarget(self,action: #selector(textFieldDidChangeEmailLength),for: UIControlEvents.editingChanged)

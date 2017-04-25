@@ -16,97 +16,62 @@ import DropDown
 class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UITextViewDelegate{
     
     @IBOutlet weak var navBar: UINavigationBar!
-    
     @IBOutlet weak var dateView: UIView!
     @IBOutlet weak var dateView1: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bpDate: ErrorTextField!
     @IBOutlet weak var bpDate1: ErrorTextField!
-    
-    
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var closeButton: UIBarButtonItem!
-    
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    
     @IBOutlet weak var ReasonText: UITextView!
-    
     @IBOutlet weak var hosName: ErrorTextField!
     @IBOutlet weak var hosDoctorName: ErrorTextField!
-    
     @IBOutlet weak var TreatText: UITextView!
     @IBOutlet weak var hideButton: UIButton!
-    
     @IBOutlet weak var errorReason: UILabel!
     @IBOutlet weak var errorTreat: UILabel!
-    
     @IBOutlet weak var wordCount: UILabel!
     @IBOutlet weak var wordCount1: UILabel!
-    
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var clearButton1: UIButton!
-    
     @IBOutlet weak var bpCalendar: UIButton!
     @IBOutlet weak var bpCalendar1: UIButton!
     fileprivate var singleDate: Date = Date()
-    
     fileprivate var multipleDates: [Date] = []
-    
     var messageStr : String = String()
-    
-    
     var NewDate : Bool = Bool()
-    
     var NewCheck : Bool = Bool()
-    
     var deleteRecord : Bool = Bool()
     var dischargeDate : Bool = Bool()
-    
     var fromDoc : Bool = Bool()
-    
     var hideBool : Bool = Bool()
     var fields : Array<String> = Array()
-    
     var somethingChanged : Bool = Bool()
-    
     var add : Array<String> = Array()
-    
     var hideImage : Bool = Bool()
-    
     var subRecords : Array<String> = Array()
-    
     var deletedList : Array<String> = Array()
-    
     var editDateTime = ""
-    
     var editDatead = ""
     var editDatedis = ""
     var editReason = ""
     var editTreat = ""
     var edithosName = ""
-    
     var edithosDoc = ""
-    
     var recordValue = ""
-    
     var editFromDoc = ""
-    
     var lastdate = ""
-    
     var dropDownOption = ""
-    
     var countAttachments = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        //Looks for single or multiple taps.
+    
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HospitalSubRecord.dismissKeyboard))
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
+        
         view.addGestureRecognizer(tap)
         
         view.addSubview(scrollView)
@@ -152,14 +117,10 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         preparehosDoc()
         prepareDate1()
         prepareReason()
-        
-        
-        
+ 
         
     }
-    
-    
-    
+ 
     
     public func loadJSONSingle() -> JSON {
         let prefs = UserDefaults.standard
@@ -192,10 +153,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         let reason = json[posIndex!]["Diagnosis/Reason for visit?"].stringValue
         let desc = json[posIndex!]["What treatment did you receive?"].stringValue
         let updatedDate = json[posIndex!]["lastUpdated"].stringValue
-        
-        
-        
-        
+
         let adDate = json[posIndex!]["Admission date"].stringValue
         let disDate = json[posIndex!]["Discharge date"].stringValue
         
@@ -220,11 +178,7 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         editDatedis = disDate
         lastdate = updatedDate
         deletedList.append(json[posIndex!]["recordId"].stringValue)
-        
-        
-        
-        
-        
+ 
         
     }
     
@@ -324,9 +278,6 @@ class HospitalSubRecord: UIViewController, WWCalendarTimeSelectorProtocol,UIText
         }else{
             self.dismiss(animated: true, completion: nil)
         }
-        
-        
-        
         
         
     }
