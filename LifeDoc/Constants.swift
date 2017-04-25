@@ -12,14 +12,14 @@ import Foundation
 struct Constants {
     
     //SSL
-    static let appSSL: String = "rvp-utility.mediswitch.co.za"
+    //static let appSSL: String = "rvp-utility.mediswitch.co.za"
     //static let appSSL: String = "secure.lifedoc.co.za"
-    //static let appSSL: String = "csa-utility.mediswitch.co.za"
+    static let appSSL: String = "csa-utility.mediswitch.co.za"
     
     //Base URL
-    static let baseURL: String = "https://rvp-utility.mediswitch.co.za:8443/ldmgw/"
+    //static let baseURL: String = "https://rvp-utility.mediswitch.co.za:8443/ldmgw/"
     //static let baseURL: String = "https://secure.lifedoc.co.za/ldmgw/"
-    //static let baseURL: String = "https://csa-utility.mediswitch.co.za:8443/ldmgw/"
+    static let baseURL: String = "https://csa-utility.mediswitch.co.za:8443/ldmgw/"
  
     
     //Production
@@ -62,7 +62,7 @@ struct Constants {
     static let err_msg_name_hos_treat: String = "Please enter a Doctor Name"
     static let err_msg_name_medi_doc: String = "Please enter a Doctor Name"
     static let err_msg_medi_repeat: String = "Please enter the number of repeats"
-    static let err_msg_medi_repeat_error: String = "Cannot be a negative number or zero.Minimum = 1, Maximum = 12"
+    static let err_msg_medi_repeat_error: String = "Cannot be a negative number or zero. Minimum = 1, Maximum = 12"
     static let err_msg_name_medi: String = "Please enter a Medicine Name"
     static let err_msg_date_medi: String = "Date cannot be before the start date"
     static let err_msg_date_path: String = "Please enter a date"

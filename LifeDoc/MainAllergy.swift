@@ -24,7 +24,7 @@ class MainAllergy: UIViewController, WWCalendarTimeSelectorProtocol, UITableView
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             
-            let jpegCompressionQuality: CGFloat = 0.5 // Set this to whatever suits your purpose
+            let jpegCompressionQuality: CGFloat = 0.75 // Set this to whatever suits your purpose
             let base64String = UIImageJPEGRepresentation(image, jpegCompressionQuality)?.base64EncodedString()
             
             
