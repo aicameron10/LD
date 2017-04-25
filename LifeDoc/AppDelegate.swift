@@ -66,23 +66,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              NSFontAttributeName: UIFont(name: "SegoePrint", size: 20)!]
         
         
-        
-        //application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
-        //UIFont.familyNames.sorted().forEach({print($0)})
-        
         let prefs = UserDefaults.standard
         
         prefs.removeObject(forKey: "savedOrderProfile")
-        //prefs.removeObject(forKey: "savedOrder")
+        prefs.removeObject(forKey: "savedOrder")
         prefs.removeObject(forKey: "savedServerMessage")
-        
-        
-        
+ 
         
         mainViewLoad()
-        
-        
-        
+
         
         return true
     }
@@ -276,7 +268,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let prefs = UserDefaults.standard
         prefs.set(j.rawString()!, forKey: "jsonHealthProfile")
         
-        // here I save my JSON as a string
     }
     
     
@@ -470,11 +461,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     public func gethealthProfile() {
         
         
-        // get a reference to the app delegate
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //appDelegate.showActivityIndicator(uiView: self.view)
-        
-        
         let urlString: String
         
         urlString = Constants.baseURL + "healthProfiles/list"
@@ -497,21 +483,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
-        
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
+
         
         // Both calls are equivalent
         AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
-            
-            
-            //print(response)
-            
-            
-            
+  
             
             if let jsonResponse = response.result.value {
                 //print("JSON: \(jsonResponse)")
@@ -601,13 +577,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.hideActivityIndicator(uiView: (self.window?.rootViewController?.view)!)
                 self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                 self.showNetworkError()
-            } else {
-                
-                // get a reference to the app delegate
-                // let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                //appDelegate.hideActivityIndicator(uiView: self.view)
-                // self.showNetworkError()
-                
             }
         }
         
@@ -642,18 +611,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
-        
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
+    
         
         // Both calls are equivalent
         AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
-            
-            
-            //print(response)
+      
             let responseJSON = response.result.value
             if(responseJSON != nil){
                 let json1 = JSON(responseJSON as Any)
@@ -697,9 +659,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                             
                         }
-                        
-                        
-                        
+            
                         
                     }else{
                         
@@ -747,13 +707,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.rootViewController?.dismiss(animated: false, completion: nil)
                 self.showNetworkError()
                 
-            } else {
-                
-                // get a reference to the app delegate
-                // let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                //appDelegate.hideActivityIndicator(uiView: self.view)
-                // self.showNetworkError()
-                
             }
         }
         
@@ -787,12 +740,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
-        
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
+
         
         // Both calls are equivalent
         AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
@@ -805,11 +753,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let status = json["status"]
                 self.messageStr = json["message"].string!
                 let value = json["value"].bool!
-                
-                
-                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
-                
-                
+        
                 if status == "SUCCESS"{
                     
                     if (value == false) {
@@ -893,12 +837,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Accept": "application/json"
         ]
         
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
-        
+ 
         // Both calls are equivalent
         AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
             
@@ -910,10 +849,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let status = json["status"]
                 self.messageStr = json["message"].string!
                 
-                
-                
-                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
-                
+
                 
                 if status == "SUCCESS"{
                     
@@ -995,12 +931,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
-        
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
+
         
         // Both calls are equivalent
         AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
@@ -1013,9 +944,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let status = json["status"]
                 self.messageStr = json["message"].string!
                 let value = json["value"].bool!
-                
-                
-                // let currentActiveuserDetailsId = json["currentActiveuserDetailsId"].string!
+
                 
                 
                 if status == "SUCCESS"{
@@ -1106,11 +1035,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "Authorization-Token": authToken!,
             "Accept": "application/json"
         ]
-        
-        //let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.default)
-        //let delegate: Alamofire.SessionDelegate = sessionManager.delegate
-        
-        
+  
         
         // Both calls are equivalent
         AppDelegate.Manager.request(urlString, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers).responseJSON { response in
@@ -1134,9 +1059,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     appDelegate.logOutScreen()
                     appDelegate.showToast()
-                    
-                    
-                }else{
                     
                     
                 }
